@@ -8,4 +8,8 @@ public class GameState {
 
   /** Indicates whether the key has been found. */
   public static boolean isKeyFound = false;
+  public static int timeLeft;
+  public static boolean isPaused = false;
+
+  public static int timeLimit = 120;
 }
