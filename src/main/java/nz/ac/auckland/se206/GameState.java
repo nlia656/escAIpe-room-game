@@ -11,5 +11,10 @@ public class GameState {
   public static int timeLeft;
   public static boolean isPaused = false;
 
-  public static int timeLimit = 120;
+  public static int timeLimit;
+
+  public static boolean isUnlimitedHint;
+  public static int remainsHint;
+
+  public static boolean isTts;
 }
