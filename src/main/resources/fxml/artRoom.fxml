@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -10,5 +12,96 @@
          <image>
             <Image url="@../images/artRoom.png" />
          </image></ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="62.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true" rotate="35.0">
+         <image>
+            <Image url="@../images/arrow.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="585.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true" rotate="320.0">
+         <image>
+            <Image url="@../images/arrow.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <Rectangle fx:id="dagger" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="38.0" layoutX="249.0" layoutY="327.0" onMouseClicked="#daggerClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="46.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="armour" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="301.0" layoutY="292.0" onMouseClicked="#armourClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="pillar" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="451.0" layoutY="321.0" onMouseClicked="#pillarClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="28.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="crown" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="465.0" layoutY="196.0" onMouseClicked="#crownClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="vase1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="537.0" layoutY="235.0" onMouseClicked="#vase1Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="28.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="sword" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="585.0" layoutY="232.0" onMouseClicked="#swordClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="28.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="vase2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="635.0" layoutY="292.0" onMouseClicked="#vase2Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="28.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="bench1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="132.0" layoutY="265.0" onMouseClicked="#bench1Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="74.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="bench2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="285.0" layoutY="178.0" onMouseClicked="#bench2Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="74.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="painting1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="58.0" layoutY="190.0" onMouseClicked="#painting1Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="painting2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="143.0" layoutY="142.0" onMouseClicked="#painting2Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="painting3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="232.0" layoutY="94.0" onMouseClicked="#painting3Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="46.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="painting4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="332.0" layoutY="94.0" onMouseClicked="#painting4Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="painting5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="38.0" layoutX="423.0" layoutY="142.0" onMouseClicked="#painting5Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="36.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
+      <Rectangle fx:id="books1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="418.0" layoutY="235.0" onMouseClicked="#books1Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="46.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Rectangle>
    </children>
 </AnchorPane>
