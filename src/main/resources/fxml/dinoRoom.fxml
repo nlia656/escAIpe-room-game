@@ -22,6 +22,9 @@
          <image>
             <Image url="@../images/arrow.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
       </ImageView>
       <Rectangle fx:id="books2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="551.0" layoutY="263.0" onMouseClicked="#books2Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="40.0">
          <cursor>
