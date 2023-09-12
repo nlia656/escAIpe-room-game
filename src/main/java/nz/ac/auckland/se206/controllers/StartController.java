@@ -6,12 +6,14 @@ import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
 
 public class StartController {
-@FXML
+
+  @FXML
   private Button startButton;
-@FXML
+  @FXML
   private Button creditButton;
-@FXML
+  @FXML
   private Button exitButton;
+
   @FXML
   private void start() {
     try {
@@ -20,9 +22,11 @@ public class StartController {
       throw new RuntimeException(e);
     }
   }
+
   @FXML
   private void credit() {
   }
+
   @FXML
   private void exit() {
     System.exit(0);
