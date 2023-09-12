@@ -12,25 +12,25 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button fx:id="startButton" layoutX="358.0" layoutY="98.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" text="Start">
-         <font>
-            <Font name="System Bold" size="34.0" />
-         </font></Button>
       <Text layoutX="27.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Place Holder game                                                                                                                                                                                            " textAlignment="CENTER" wrappingWidth="545.2401733398438" />
-      <Button fx:id="creditButton" layoutX="358.0" layoutY="188.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" text="Credit">
-         <font>
-            <Font name="System Bold" size="34.0" />
-         </font>
-      </Button>
-      <Button fx:id="exitButton" layoutX="358.0" layoutY="282.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" text="Exit">
-         <font>
-            <Font name="System Bold" size="34.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="49.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/start.png" />
          </image>
       </ImageView>
+      <Button fx:id="startButton" layoutX="358.0" layoutY="98.0" mnemonicParsing="false" onAction="#start" prefHeight="72.0" prefWidth="186.0" text="Start">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font></Button>
+      <Button fx:id="creditButton" layoutX="358.0" layoutY="188.0" mnemonicParsing="false" onAction="#credit" prefHeight="72.0" prefWidth="186.0" text="Credit">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Button>
+      <Button fx:id="exitButton" layoutX="358.0" layoutY="282.0" mnemonicParsing="false" onAction="#exit" prefHeight="72.0" prefWidth="186.0" text="Exit">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
