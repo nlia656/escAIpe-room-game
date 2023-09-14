@@ -7,6 +7,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LevelController {
 
@@ -64,7 +65,7 @@ public class LevelController {
     }
     try {
       //todo change to intro screen later
-      App.setRoot("lobbyRoom");
+      App.setUi(AppUi.LOBBY_ROOM);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
