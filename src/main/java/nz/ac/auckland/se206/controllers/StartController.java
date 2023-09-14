@@ -17,11 +17,7 @@ public class StartController {
 
   @FXML
   private void start() {
-    try {
-      App.setUi(AppUi.LEVEL);;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    App.setUi(AppUi.LEVEL);;
   }
 
   @FXML

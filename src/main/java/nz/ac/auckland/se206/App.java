@@ -1,3 +1,5 @@
+package nz.ac.auckland.se206;
+
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -57,12 +59,8 @@ public class App extends Application {
             Platform.runLater(() -> {
               GameState.timeLeft = finalI;
               if (finalI == 0) {
-                try {
-                  // TODO: Handle game over here, e.g., transition to the game over screen
-                  App.setUi(AppUi.LEVEL);
-                } catch (IOException e) {
-                  e.printStackTrace();
-                }
+                // TODO: Handle game over here, e.g., transition to the game over screen
+                App.setUi(AppUi.LEVEL);
               }
             });
           }

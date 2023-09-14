@@ -63,12 +63,8 @@ public class LevelController {
       default:
         break;
     }
-    try {
-      //todo change to intro screen later
-      App.setUi(AppUi.LOBBY_ROOM);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    //todo change to intro screen later
+    App.setUi(AppUi.LOBBY_ROOM);
 
   }
 
