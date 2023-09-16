@@ -17,4 +17,6 @@ public class GameState {
   public static int remainsHint;
 
   public static boolean isTts;
+  public static boolean isUnlocked;
+  public static String passcode;
 }
