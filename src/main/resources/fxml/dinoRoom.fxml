@@ -41,7 +41,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="newspaper3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="351.0" layoutY="92.0" onMouseClicked="#newspaper3Clicked" opacity="0.0" rotate="24.0" stroke="BLACK" strokeType="INSIDE" width="85.0">
+      <Rectangle fx:id="poster3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="351.0" layoutY="92.0" onMouseClicked="#poster3Clicked" opacity="0.0" rotate="24.0" stroke="BLACK" strokeType="INSIDE" width="85.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -56,12 +56,12 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="newspaper2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="209.0" layoutY="166.0" onMouseClicked="#newspaper2Clicked" opacity="0.0" rotate="-26.6" stroke="BLACK" strokeType="INSIDE" width="55.0">
+      <Rectangle fx:id="poster2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="209.0" layoutY="166.0" onMouseClicked="#poster2Clicked" opacity="0.0" rotate="-26.6" stroke="BLACK" strokeType="INSIDE" width="55.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="newspaper1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="81.0" layoutY="244.0" onMouseClicked="#newspaper1Clicked" opacity="0.0" rotate="-26.6" stroke="BLACK" strokeType="INSIDE" width="55.0">
+      <Rectangle fx:id="poster1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="81.0" layoutY="244.0" onMouseClicked="#poster1Clicked" opacity="0.0" rotate="-26.6" stroke="BLACK" strokeType="INSIDE" width="55.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
