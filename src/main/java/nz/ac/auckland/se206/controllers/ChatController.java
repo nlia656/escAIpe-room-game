@@ -99,7 +99,7 @@ public class ChatController {
   @FXML
   private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
     if (GameState.onArtRoom) {
-      App.setUi(AppUi.ROOM);
+      App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
       App.setUi(AppUi.DINO_ROOM);
     } else {
