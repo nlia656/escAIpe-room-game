@@ -14,39 +14,44 @@
          </image>
       </ImageView>
       <Button layoutX="625.0" layoutY="500.0" mnemonicParsing="false" text="Go Back" />
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="117.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="86.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/couchSnip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="117.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="86.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/dinosaurSnip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="117.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="154.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/maskSnip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="261.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="154.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/robeSnip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="430.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="480.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/poster3Snip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="430.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="393.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/poster2Snip.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="436.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="480.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/poster1Snip.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="393.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/vaseSnip.png" />
          </image>
       </ImageView>
    </children>
