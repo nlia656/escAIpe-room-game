@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -28,63 +29,61 @@ public class DinoRoomController {
 
   @FXML private Label lblGM;
 
+
   public void initialize() {}
 
   @FXML
+
   private void goArtRoom() {
     App.setUi(AppUi.ART_ROOM);
     GameState.onDinoRoom = false;
     GameState.onArtRoom = true;
   }
 
-  @FXML
-  private void vase3Clicked() {
-    // Add your code for handling the vase3Clicked event here
+
+  public void books2(MouseEvent event) {
+    System.out.println("books2 clicked");
   }
 
   @FXML
-  private void books2Clicked() {
-    // Add your code for handling the books2Clicked event here
+  public void mask(MouseEvent event) {
+    System.out.println("mask clicked");
   }
 
   @FXML
-  private void maskClicked() {
-    // Add your code for handling the maskClicked event here
+  public void poster1Clicked(MouseEvent event) {
+    System.out.println("poster1 clicked");
   }
 
   @FXML
-  private void painting6Clicked() {
-    // Add your code for handling the painting6Clicked event here
+  public void poster2Clicked(MouseEvent event) {
+    System.out.println("poster2 clicked");
   }
 
   @FXML
-  private void newspaper3Clicked() {
-    // Add your code for handling the newspaper3Clicked event here
+  public void poster3Clicked(MouseEvent event) {
+    System.out.println("poster3 clicked");
   }
 
   @FXML
-  private void couch1Clicked() {
-    // Add your code for handling the couch1Clicked event here
+  public void couch1Clicked(MouseEvent event) {
+    System.out.println("couch1 clicked");
   }
 
   @FXML
-  private void robeClicked() {
-    // Add your code for handling the robeClicked event here
+  public void robeClicked(MouseEvent event) {
+    System.out.println("robe clicked");
   }
 
   @FXML
-  private void newspaper2Clicked() {
-    // Add your code for handling the newspaper2Clicked event here
+  public void dinosaurClicked(MouseEvent event) {
+    System.out.println("dinosaur clicked");
   }
 
   @FXML
-  private void newspaper1Clicked() {
-    // Add your code for handling the newspaper1Clicked event here
-  }
+  public void vase3Clicked(MouseEvent event) {
+    System.out.println("vase3 clicked");
 
-  @FXML
-  private void dinosaurClicked() {
-    // Add your code for handling the dinosaurClicked event here
   }
 
   @FXML
