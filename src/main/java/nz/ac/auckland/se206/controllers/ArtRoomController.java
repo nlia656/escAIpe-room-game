@@ -1,8 +1,11 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -31,9 +34,44 @@ public class ArtRoomController {
   @FXML private Rectangle painting5;
   @FXML private Rectangle books1;
 
+  @FXML private Button btnHelp;
+
   @FXML private TitledPane artRoomPane;
 
-  public void initialize() {}
+  public void initialize() {
+    
+  }
+
+  @FXML
+  private void onHelp() {
+    if (GameState.onPaintPuzzle) {
+          showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+    }
+  }
+
+  private void showDialogPic(String title, String headerText, String message) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setWidth(800); // Set width
+    alert.setHeight(600);
+    Image image = new Image(getClass().getResource("/images/Painting-1.jpg").toExternalForm());
+    ImageView imageView = new ImageView(image);
+    imageView.setFitWidth(750);
+    imageView.setPreserveRatio(true);
+    alert.setGraphic(imageView);
+    alert.setTitle(title);
+    alert.setHeaderText(headerText);
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
+
+  private void showDialog(String title, String headerText, String message) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(headerText);
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
+
 
   @FXML
   private void onOpenGM() {
@@ -56,6 +94,13 @@ public class ArtRoomController {
 
   @FXML
   private void daggerClicked() {
+    // Testing for the alert and this will only be shown after the first riddle is solved and can be shown again through a help button.
+    if (GameState.isArtComplete) {
+      showDialog("Info", "You have already solved the puzzle", "Good Job!");
+      return;
+    }
+    showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+    GameState.onPaintPuzzle = true;
     // Add your code for handling the daggerClicked event here
   }
 
@@ -116,7 +161,13 @@ public class ArtRoomController {
 
   @FXML
   private void painting4Clicked() {
-    // Add your code for handling the painting4Clicked event here
+    if (GameState.onPaintPuzzle) {
+      showDialog("One Room Complete", "You have solved the puzzle!", "Code: 1234");
+      GameState.onPaintPuzzle = false;
+      GameState.isArtComplete = true; 
+    }
+
+
   }
 
   @FXML

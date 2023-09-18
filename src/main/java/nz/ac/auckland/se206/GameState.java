@@ -20,6 +20,6 @@ public class GameState {
   public static boolean onArtRoom = false;
   public static boolean onDinoRoom = false;
   public static boolean onLobbyRoom = false;
-
-
+  public static boolean onPaintPuzzle = false;
+  public static boolean isArtComplete = false;
 }
