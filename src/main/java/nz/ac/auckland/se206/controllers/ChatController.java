@@ -9,8 +9,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -27,9 +29,8 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class ChatController {
 
-
-
-
+  @FXML
+  private Text hintRemains;
   @FXML
   private Button backButton;
   @FXML
@@ -41,7 +42,9 @@ public class ChatController {
   @FXML
   private Button sendButton;
   @FXML
-  private ProgressBar progressBar;
+  private ProgressIndicator progressBar;
+  @FXML
+  private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
@@ -52,10 +55,6 @@ public class ChatController {
   @FXML
   public void initialize() throws ApiProxyException {
     chatCompletionRequest = GameState.chatCompletionRequest;
-    if (!GameState.isTts) {
-      noTtsButton.setDisable(true);
-      noTtsButton.setVisible(false);
-    }
     Task task = new Task() {
       @Override
       protected Object call() throws Exception {
@@ -72,6 +71,12 @@ public class ChatController {
         return null;
       }
     };
+    if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
+      hintRemains.setVisible(true);
+    }
+    if (GameState.remainsHint == 0) {
+      hintButton.setDisable(true);
+    }
     if (GameState.chatHistory.isEmpty()) {
       chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
           .setMaxTokens(140);
@@ -131,7 +136,6 @@ public class ChatController {
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       showApiError(e);
-
       return null;
     }
   }
@@ -201,5 +205,35 @@ public class ChatController {
     alert.setHeaderText("OpenAI Api Error");
     alert.setContentText(e.getMessage());
     alert.showAndWait();
+  }
+
+  @FXML
+  private void askHint() {
+    Task task = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        inProcess();
+        try {
+          runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+        } catch (ApiProxyException e) {
+          showApiError(e);
+        }
+        Platform.runLater(() -> {
+          finishProcess();
+        });
+        return null;
+      }
+    };
+    if (!GameState.isUnlimitedHint) {
+      GameState.remainsHint--;
+      hintRemains.setText(Integer.toString(GameState.remainsHint) + "/5");
+      if (GameState.remainsHint == 0) {
+        hintButton.setDisable(true);
+        hintRemains.setVisible(false);
+      }
+    }
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    thread.start();
   }
 }

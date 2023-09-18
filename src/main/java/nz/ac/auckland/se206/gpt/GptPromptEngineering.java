@@ -22,4 +22,10 @@ public class GptPromptEngineering {
         + "[System] Now give me a riddle about "
         + wordToGuess;
   }
+  public static String getHints(){
+    if(!GameState.isRiddleResolved){
+      return "[System] give me a hint about word "+GameState.artroomRiddleAnswer;
+    }
+    return null;
+  }
 }
