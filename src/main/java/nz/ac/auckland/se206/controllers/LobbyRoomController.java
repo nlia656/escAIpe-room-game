@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class ArtRoomController {
+public class LobbyRoomController {
     @FXML Label lblGM;
     
     public void initialize() {
@@ -15,4 +15,5 @@ public class ArtRoomController {
     private void onOpenGM() {
         App.setUi(AppUi.CHAT);
     } 
+    
 }
