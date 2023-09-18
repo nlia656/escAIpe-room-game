@@ -63,7 +63,7 @@ public class LevelController {
         break;
     }
     //todo change to intro screen later
-    App.setUi(AppUi.LOBBY_ROOM);
+    App.setUi(AppUi.ART_ROOM);
 
   }
 

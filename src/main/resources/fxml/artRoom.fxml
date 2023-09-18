@@ -107,7 +107,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <TitledPane animated="false" layoutX="14.0" layoutY="436.0" prefHeight="91.0" prefWidth="310.0" text="Game Master">
+      <TitledPane fx:id="artRoomPane" animated="false" layoutX="14.0" layoutY="436.0" prefHeight="91.0" prefWidth="310.0" text="Game Master">
         <content>
           <AnchorPane fx:id="s" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
