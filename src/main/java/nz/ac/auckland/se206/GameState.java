@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206;
 
+import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
+
 /**
  * Represents the state of the game.
  */
@@ -33,6 +35,8 @@ public class GameState {
   public static int remainsHint;
 
   public static boolean isTts;
+  public static ChatCompletionRequest chatCompletionRequest;
+  public static String chatHistory;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -45,6 +49,8 @@ public class GameState {
     artroomRiddleAnswer=artroomRiddleAnswers[getRandom(artroomRiddleAnswers.length-1)];
     isTts = false;
     room = rooms[getRandom(rooms.length-1)];
+    chatCompletionRequest = null;
+    chatHistory = null;
     switch (room){
       case "lobby" -> answer=lobbyAnswers[getRandom(lobbyAnswers.length-1)];
       case "dino" -> answer=dinoAnswers[getRandom(dinoAnswers.length-1)];

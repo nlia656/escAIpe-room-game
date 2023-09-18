@@ -14,12 +14,12 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "You are a AI for a escape room game master, you will get message with start with"
+    return "You are AI for a escape room game master, you will get message with start with"
         + " different tag, [System] is message by game told you what player did or"
         + " let you do something, [Player] is what player typed to you,"
         + " you should not give hint to Player without [System] let you to do."
-        + " response you generated will give to player directly. Now give me a riddle about "
-        + GameState.answer +
-        " and tell player this is located in "+GameState.room+ " room";
+        + " response you generated will give to player directly. "
+        + "[System] Now give me a riddle about "
+        + wordToGuess;
   }
 }
