@@ -31,6 +31,11 @@ public class GameState {
   public static int remainsHint;
 
   public static boolean isTts;
+  public static boolean onArtRoom = false;
+  public static boolean onDinoRoom = false;
+  public static boolean onLobbyRoom = false;
+  public static boolean onPaintPuzzle = false;
+  public static boolean isArtComplete = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);

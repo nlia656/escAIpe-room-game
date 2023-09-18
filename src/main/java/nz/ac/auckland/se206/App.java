@@ -81,7 +81,9 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
+
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
+
     stage.setScene(scene);
     stage.show();
   }
