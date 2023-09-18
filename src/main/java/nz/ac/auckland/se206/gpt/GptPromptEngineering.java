@@ -20,7 +20,7 @@ public class GptPromptEngineering {
         + " you should not give hint to Player without [System] let you to do."
         + " response you generated will give to player directly. "
         + "[System] Now give me a riddle about "
-        + wordToGuess;
+        + wordToGuess+ " , reply Correct if player guess right.";
   }
   public static String getHints(){
     if(!GameState.isRiddleResolved){
