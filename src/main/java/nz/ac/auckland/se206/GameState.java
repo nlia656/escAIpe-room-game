@@ -11,7 +11,7 @@ public class GameState {
   public static final String[] lobbyAnswers = {"couch", "table", "plant"};
   public static final String[] dinoAnswers = {"dinosaur", "vase", "book", "mask", "painting",
       "poster", "robe", "couch"};
-  public static final String[] artroomRiddleAnswers = {"dagger","book","armour","crown","vase","pillar","sword"};
+    public static final String[] artRoomRiddleAnswers = {"dagger","book","armour","crown","vase","pillar","sword"};
   //public static final String[] artAnswers = {"painting", "vase", "book", "mask", "dinosaur"};
   /**
    * Indicates whether the riddle has been resolved.
@@ -20,7 +20,7 @@ public class GameState {
   public static String answer;
 
   public static boolean isRiddleResolved = false;
-  public static String artroomRiddleAnswer;
+  public static String artRoomRiddleAnswer;
 
   /**
    * Indicates whether the key has been found.
@@ -52,7 +52,7 @@ public class GameState {
     isUnlimitedHint = false;
     remainsHint=0;
     timeLeft=timeLimit;
-    artroomRiddleAnswer=artroomRiddleAnswers[getRandom(artroomRiddleAnswers.length-1)];
+    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length-1)];
     isTts = false;
     room = rooms[getRandom(rooms.length-1)];
     chatCompletionRequest = new ChatCompletionRequest();

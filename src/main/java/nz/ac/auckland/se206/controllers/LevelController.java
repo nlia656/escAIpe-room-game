@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -7,6 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LevelController {
@@ -23,7 +25,6 @@ public class LevelController {
   private Text levelTexts;
   @FXML
   private CheckBox ttsButton;
-
   @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
@@ -38,7 +39,8 @@ public class LevelController {
   }
 
   @FXML
-  private void start() {
+  private void start() throws IOException {
+    GameState.initial();
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;
@@ -72,6 +74,7 @@ public class LevelController {
     else{
       GameState.isTts=false;
     }
+    SceneManager.addAppUi(AppUi.CHAT, App.loadFxml("chat"));
     //todo change to intro screen later
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
