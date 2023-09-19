@@ -36,6 +36,7 @@ public class GameState {
   public static boolean onLobbyRoom = false;
   public static boolean onPaintPuzzle = false;
   public static boolean isArtComplete = false;
+  public static boolean isGameComplete = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -45,7 +46,7 @@ public class GameState {
     isUnlimitedHint = false;
     remainsHint=0;
     timeLeft=timeLimit;
-
+    isGameComplete = false;
     isTts = false;
     room = rooms[getRandom(rooms.length-1)];
     switch (room){

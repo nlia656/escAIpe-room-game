@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
@@ -12,6 +13,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LobbyRoomController {
     @FXML private Label lblGM;
+    @FXML private Label lblTime;
 
     @FXML private ImageView lobbyToArt;
 
@@ -24,7 +26,22 @@ public class LobbyRoomController {
     @FXML private TitledPane lobbyRoomPane;
 
 
-    public void initialize() {}
+    public void initialize() {    Task timer = new Task() {
+        @Override
+        protected Object call() throws Exception {
+            while (!GameState.isGameComplete) {
+                if (!GameState.isPaused) {
+                    lblTime.setText(String.valueOf(GameState.timeLeft));
+                }
+                Thread.sleep(100);
+            }
+            return null;
+        }
+    };
+        Thread timerThread = new Thread(timer);
+        timerThread.setDaemon(true);
+        timerThread.start();
+    }
 
     @FXML
     private void onOpenGM() {

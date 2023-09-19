@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,6 +15,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController {
   @FXML private Label lblGM;
+  @FXML private Label lblTime;
 
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
@@ -39,7 +41,21 @@ public class ArtRoomController {
   @FXML private TitledPane artRoomPane;
 
   public void initialize() {
-    
+    Task timer = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        while (!GameState.isGameComplete) {
+          if (!GameState.isPaused) {
+            lblTime.setText(String.valueOf(GameState.timeLeft));
+          }
+          Thread.sleep(100);
+        }
+        return null;
+      }
+    };
+    Thread timerThread = new Thread(timer);
+    timerThread.setDaemon(true);
+    timerThread.start();
   }
 
   @FXML

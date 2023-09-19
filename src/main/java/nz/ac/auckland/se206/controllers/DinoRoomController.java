@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
@@ -12,25 +13,56 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class DinoRoomController {
 
-  @FXML private ImageView dinoToArt;
+  @FXML
+  private ImageView dinoToArt;
 
-  @FXML private Rectangle vase3;
-  @FXML private Rectangle books2;
-  @FXML private Rectangle mask;
-  @FXML private Rectangle painting6;
-  @FXML private Rectangle newspaper3;
-  @FXML private Rectangle couch1;
-  @FXML private Rectangle robe;
-  @FXML private Rectangle newspaper2;
-  @FXML private Rectangle newspaper1;
-  @FXML private Rectangle dinosaur;
+  @FXML
+  private Rectangle vase3;
+  @FXML
+  private Rectangle books2;
+  @FXML
+  private Rectangle mask;
+  @FXML
+  private Rectangle painting6;
+  @FXML
+  private Rectangle newspaper3;
+  @FXML
+  private Rectangle couch1;
+  @FXML
+  private Rectangle robe;
+  @FXML
+  private Rectangle newspaper2;
+  @FXML
+  private Rectangle newspaper1;
+  @FXML
+  private Rectangle dinosaur;
 
-  @FXML private TitledPane dinoRoomPane;
+  @FXML
+  private TitledPane dinoRoomPane;
 
-  @FXML private Label lblGM;
+  @FXML
+  private Label lblGM;
+  @FXML
+  private Label lblTime;
 
 
-  public void initialize() {}
+  public void initialize() {
+    Task timer = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        while (!GameState.isGameComplete) {
+          if (!GameState.isPaused) {
+            lblTime.setText(String.valueOf(GameState.timeLeft));
+          }
+          Thread.sleep(100);
+        }
+        return null;
+      }
+    };
+    Thread timerThread = new Thread(timer);
+    timerThread.setDaemon(true);
+    timerThread.start();
+  }
 
   @FXML
 

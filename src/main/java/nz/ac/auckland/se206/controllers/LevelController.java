@@ -63,6 +63,7 @@ public class LevelController {
         break;
     }
     //todo change to intro screen later
+    App.makeTimer();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
 
