@@ -44,28 +44,13 @@ public class DinoRoomController {
   @FXML
   private Label lblTime;
 
-
+@FXML
   public void initialize() {
-    Task timer = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        while (!GameState.isGameComplete) {
-          if (!GameState.isPaused) {
-            lblTime.setText(String.valueOf(GameState.timeLeft));
-          }
-          Thread.sleep(100);
-        }
-        return null;
-      }
-    };
-    Thread timerThread = new Thread(timer);
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 
-
-  @FXML
-  private Label lblGM;
 
   @FXML
   private void goArtRoom() {
