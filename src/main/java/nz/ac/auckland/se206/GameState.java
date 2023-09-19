@@ -1,5 +1,4 @@
 package nz.ac.auckland.se206;
-
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 
 /**
@@ -19,21 +18,18 @@ public class GameState {
   public static String room;
   public static String answer;
 
+
   public static boolean isRiddleResolved = false;
   public static String artroomRiddleAnswer;
 
-  /**
-   * Indicates whether the key has been found.
-   */
-  public static boolean isKeyFound = false;
+  /** Indicates whether the puzzle has been resolved. */
+  public static boolean isPuzzleResolved = false;
+
   public static int timeLeft;
   public static boolean isPaused = false;
-
   public static int timeLimit;
-
   public static boolean isUnlimitedHint;
   public static int remainsHint;
-
   public static boolean isTts;
   public static ChatCompletionRequest chatCompletionRequest;
   public static String chatHistory="";
@@ -42,7 +38,6 @@ public class GameState {
   public static boolean onLobbyRoom = false;
   public static boolean onPaintPuzzle = false;
   public static boolean isArtComplete = false;
-
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
