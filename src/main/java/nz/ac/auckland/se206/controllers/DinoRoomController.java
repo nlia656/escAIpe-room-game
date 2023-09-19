@@ -29,17 +29,14 @@ public class DinoRoomController {
 
   @FXML private Label lblGM;
 
-
   public void initialize() {}
 
   @FXML
-
   private void goArtRoom() {
     App.setUi(AppUi.ART_ROOM);
     GameState.onDinoRoom = false;
     GameState.onArtRoom = true;
   }
-
 
   public void books2(MouseEvent event) {
     System.out.println("books2 clicked");
@@ -48,6 +45,7 @@ public class DinoRoomController {
   @FXML
   public void mask(MouseEvent event) {
     System.out.println("mask clicked");
+    App.setUi(AppUi.BOOK_PUZZLE);
   }
 
   @FXML
@@ -83,7 +81,6 @@ public class DinoRoomController {
   @FXML
   public void vase3Clicked(MouseEvent event) {
     System.out.println("vase3 clicked");
-
   }
 
   @FXML

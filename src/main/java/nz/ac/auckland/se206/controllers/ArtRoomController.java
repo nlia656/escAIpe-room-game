@@ -38,6 +38,8 @@ public class ArtRoomController {
 
   @FXML private TitledPane artRoomPane;
 
+  public static String puzzleAnswer;
+
   public void initialize() {
     
   }
@@ -45,7 +47,10 @@ public class ArtRoomController {
   @FXML
   private void onHelp() {
     if (GameState.onPaintPuzzle) {
-          showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+      showDialogPic(
+          "Guess The Painting",
+          "The rest of the hint got burned and you are only left with this.",
+          "Click on the help button to view image again.");
     }
   }
 
@@ -72,7 +77,6 @@ public class ArtRoomController {
     alert.showAndWait();
   }
 
-
   @FXML
   private void onOpenGM() {
     App.setUi(AppUi.CHAT);
@@ -94,12 +98,16 @@ public class ArtRoomController {
 
   @FXML
   private void daggerClicked() {
-    // Testing for the alert and this will only be shown after the first riddle is solved and can be shown again through a help button.
+    // Testing for the alert and this will only be shown after the first riddle is solved and can be
+    // shown again through a help button.
     if (GameState.isArtComplete) {
       showDialog("Info", "You have already solved the puzzle", "Good Job!");
       return;
     }
-    showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+    showDialogPic(
+        "Guess The Painting",
+        "The rest of the hint got burned and you are only left with this.",
+        "Click on the help button to view image again.");
     GameState.onPaintPuzzle = true;
     // Add your code for handling the daggerClicked event here
   }
@@ -164,10 +172,8 @@ public class ArtRoomController {
     if (GameState.onPaintPuzzle) {
       showDialog("One Room Complete", "You have solved the puzzle!", "Code: 1234");
       GameState.onPaintPuzzle = false;
-      GameState.isArtComplete = true; 
+      GameState.isArtComplete = true;
     }
-
-
   }
 
   @FXML
