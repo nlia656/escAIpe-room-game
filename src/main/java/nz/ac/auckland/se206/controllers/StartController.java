@@ -1,9 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class StartController {
 
@@ -16,11 +16,7 @@ public class StartController {
 
   @FXML
   private void start() {
-    try {
-      App.setRoot("level");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    App.setUi(AppUi.LEVEL);
   }
 
   @FXML
