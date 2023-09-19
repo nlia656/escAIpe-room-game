@@ -27,7 +27,7 @@ public class App extends Application {
    * @return The UI node of the FXML file.
    * @throws IOException If the file is not found.
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
+  public static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
@@ -74,7 +74,6 @@ public class App extends Application {
 
   @Override
   public void start(final Stage stage) throws IOException {
-    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.ROOM, loadFxml("room"));
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));

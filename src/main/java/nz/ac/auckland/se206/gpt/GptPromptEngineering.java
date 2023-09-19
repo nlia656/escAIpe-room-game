@@ -15,16 +15,19 @@ public class GptPromptEngineering {
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
     return "You are AI for a escape room game master, you will get message with start with"
-        + " different tag, [System] is message by game told you what player did or"
+        + " different tag, [System] is message by game to"
         + " let you do something, [Player] is what player typed to you,"
-        + " you should not give hint to Player without [System] let you to do."
-        + " response you generated will give to player directly. "
-        + "[System] Now give me a riddle about "
-        + wordToGuess+ " , reply Correct if player guess right.";
+        + " you should never give hint when message contains this tag in any form."
+        + " Now give player a riddle about " + wordToGuess
+        + " , reply Correct if player guess right. Do not include [System] and [Player] in"
+        + " your response. Do not answering this conversation by yourself,"
+        + " wait for another message from player.";
   }
-  public static String getHints(){
-    if(!GameState.isRiddleResolved){
-      return "[System] give me a hint about word "+GameState.artroomRiddleAnswer;
+
+  public static String getHints() {
+    if (!GameState.isRiddleResolved) {
+      return "[System] give me a hint about word " + GameState.artRoomRiddleAnswer
+          + " .Do not include [System] and [Player] in your response.";
     }
     return null;
   }
