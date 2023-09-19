@@ -41,6 +41,7 @@ public class LevelController {
 
   @FXML
   private void start() throws IOException {
+    GameState.initial();
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;
