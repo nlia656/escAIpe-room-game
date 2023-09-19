@@ -36,7 +36,7 @@ public class GameState {
 
   public static boolean isTts;
   public static ChatCompletionRequest chatCompletionRequest;
-  public static String chatHistory;
+  public static String chatHistory="";
   public static boolean onArtRoom = false;
   public static boolean onDinoRoom = false;
   public static boolean onLobbyRoom = false;
@@ -55,8 +55,8 @@ public class GameState {
     artroomRiddleAnswer=artroomRiddleAnswers[getRandom(artroomRiddleAnswers.length-1)];
     isTts = false;
     room = rooms[getRandom(rooms.length-1)];
-    chatCompletionRequest = null;
-    chatHistory = null;
+    chatCompletionRequest = new ChatCompletionRequest();
+    chatHistory = "";
     remainsHint = 0;
     timeLeft = timeLimit;
     isTts = false;
