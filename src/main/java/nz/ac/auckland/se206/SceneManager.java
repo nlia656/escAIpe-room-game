@@ -11,8 +11,8 @@ public class SceneManager {
     START,
     DINO_ROOM,
     LOBBY_ROOM,
-    ROOM,
-    BOOK_PUZZLE
+    BOOK_PUZZLE,
+    END_PAGE
   }
 
   private static HashMap<AppUi, Parent> uiMap = new HashMap<AppUi, Parent>();
@@ -21,7 +21,19 @@ public class SceneManager {
     uiMap.put(appUi, ui);
   }
 
+  public static void removeAppUi(AppUi appUi) {
+    if (uiMap.containsKey(appUi)) {
+        uiMap.remove(appUi);
+    } else {
+        return;
+    }
+}
+
+
   public static Parent getAppUi(AppUi appUi) {
     return uiMap.get(appUi);
+  }
+  public static void clearAppUi() {
+    uiMap.clear();
   }
 }
