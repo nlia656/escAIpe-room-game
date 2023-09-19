@@ -13,38 +13,59 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController {
-  @FXML private Label lblGM;
 
-  @FXML private ImageView artToDino;
-  @FXML private ImageView artToLobby;
+  @FXML
+  private Label lblGM;
 
-  @FXML private Rectangle dagger;
-  @FXML private Rectangle armour;
-  @FXML private Rectangle pillar;
-  @FXML private Rectangle crown;
-  @FXML private Rectangle vase1;
-  @FXML private Rectangle sword;
-  @FXML private Rectangle vase2;
-  @FXML private Rectangle bench1;
-  @FXML private Rectangle bench2;
-  @FXML private Rectangle painting1;
-  @FXML private Rectangle painting2;
-  @FXML private Rectangle painting3;
-  @FXML private Rectangle painting4;
-  @FXML private Rectangle painting5;
-  @FXML private Rectangle books1;
+  @FXML
+  private ImageView artToDino;
+  @FXML
+  private ImageView artToLobby;
 
-  @FXML private Button btnHelp;
+  @FXML
+  private Rectangle dagger;
+  @FXML
+  private Rectangle armour;
+  @FXML
+  private Rectangle pillar;
+  @FXML
+  private Rectangle crown;
+  @FXML
+  private Rectangle vase1;
+  @FXML
+  private Rectangle sword;
+  @FXML
+  private Rectangle vase2;
+  @FXML
+  private Rectangle bench1;
+  @FXML
+  private Rectangle bench2;
+  @FXML
+  private Rectangle painting1;
+  @FXML
+  private Rectangle painting2;
+  @FXML
+  private Rectangle painting3;
+  @FXML
+  private Rectangle painting4;
+  @FXML
+  private Rectangle painting5;
+  @FXML
+  private Rectangle books1;
 
-  @FXML private TitledPane artRoomPane;
+  @FXML
+  private Button btnHelp;
 
-  public void initialize() {}
+  @FXML
+  private TitledPane artRoomPane;
+
+  public void initialize() {
+  }
 
   @FXML
   private void onHelp() {
     if (GameState.onPaintPuzzle) {
-      showDialogPic(
-          "Guess The Painting",
+      showDialogPic("Guess The Painting",
           "The rest of the hint got burned and you are only left with this.",
           "Click on the help button to view image again.");
     }
@@ -94,48 +115,45 @@ public class ArtRoomController {
 
   @FXML
   private void daggerClicked() {
-    // Testing for the alert and this will only be shown after the first riddle is solved and can be
-    // shown again through a help button.
-    if (GameState.isArtComplete) {
-      showDialog("Info", "You have already solved the puzzle", "Good Job!");
-      return;
-    }
-    showDialogPic(
-        "Guess The Painting",
-        "The rest of the hint got burned and you are only left with this.",
-        "Click on the help button to view image again.");
-    GameState.onPaintPuzzle = true;
+
     // Add your code for handling the daggerClicked event here
+    clickForRiddle("dagger");
   }
 
   @FXML
   private void armourClicked() {
     // Add your code for handling the armourClicked event here
+    clickForRiddle("armour");
   }
 
   @FXML
   private void pillarClicked() {
     // Add your code for handling the pillarClicked event here
+    clickForRiddle("pillar");
   }
 
   @FXML
   private void crownClicked() {
     // Add your code for handling the crownClicked event here
+    clickForRiddle("crown");
   }
 
   @FXML
   private void vase1Clicked() {
     // Add your code for handling the vase1Clicked event here
+    clickForRiddle("vase");
   }
 
   @FXML
   private void swordClicked() {
     // Add your code for handling the swordClicked event here
+    clickForRiddle("sword");
   }
 
   @FXML
   private void vase2Clicked() {
     // Add your code for handling the vase2Clicked event here
+    clickForRiddle("vase");
   }
 
   @FXML
@@ -177,7 +195,7 @@ public class ArtRoomController {
   }
 
   @FXML
-  private void onFinish(){
+  private void onFinish() {
     App.setUi(AppUi.END_PAGE);
   }
 
@@ -191,5 +209,13 @@ public class ArtRoomController {
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
+    clickForRiddle("book");
+  }
+
+  private void clickForRiddle(String answer) {
+    if (answer == GameState.artRoomRiddleAnswer&&GameState.isRiddleResolved) {
+      showDialog("Info", "You found a piece of paper",
+          "Good Job! The first 2 dig of passcode is" + GameState.passcode+". Now find the item to get last two.");
+    }
   }
 }

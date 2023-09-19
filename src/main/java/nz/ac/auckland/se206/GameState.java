@@ -38,6 +38,8 @@ public class GameState {
   public static boolean onLobbyRoom = false;
   public static boolean onPaintPuzzle = false;
   public static boolean isArtComplete = false;
+  public static String passcode;
+
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
@@ -55,5 +57,13 @@ public class GameState {
     remainsHint = 0;
     timeLeft = timeLimit;
     isTts = false;
+    int pass = getRandom(9999);
+    if(pass<10){
+      passcode = "000"+pass;
+    }else if(pass<100){
+      passcode = "00"+pass;
+    }else if(pass<1000){
+      passcode = "0"+pass;
+    }
   }
 }
