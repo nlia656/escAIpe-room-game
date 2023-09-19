@@ -40,12 +40,12 @@ public class GameState {
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
+
   public static void initial() {
     //randomize the answer
     isUnlimitedHint = false;
-    remainsHint=0;
-    timeLeft=timeLimit;
+    remainsHint = 0;
+    timeLeft = timeLimit;
     isTts = false;
-    }
   }
 }
