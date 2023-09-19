@@ -10,7 +10,7 @@ public class GameState {
   public static final String[] lobbyAnswers = {"couch", "table", "plant"};
   public static final String[] dinoAnswers = {"dinosaur", "vase", "book", "mask", "painting",
       "poster", "robe", "couch"};
-    public static final String[] artRoomRiddleAnswers = {"dagger","book","armour","crown","vase","pillar","sword"};
+  public static final String[] artRoomRiddleAnswers = {"dagger","book","armour","crown","vase","pillar","sword"};
   //public static final String[] artAnswers = {"painting", "vase", "book", "mask", "dinosaur"};
   /**
    * Indicates whether the riddle has been resolved.
