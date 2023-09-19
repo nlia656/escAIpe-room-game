@@ -17,7 +17,7 @@
             <Image url="@../images/lobbyRoom.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="lobbyToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="166.0" layoutY="386.0" onMouseClicked="#toLobby" pickOnBounds="true" preserveRatio="true" rotate="35.0">
+      <ImageView fx:id="lobbyToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="166.0" layoutY="386.0" onMouseClicked="#goArtRoom" pickOnBounds="true" preserveRatio="true" rotate="35.0">
          <image>
             <Image url="@../images/arrow.png" />
          </image>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <TitledPane animated="false" layoutX="15.0" layoutY="435.0" prefHeight="91.0" prefWidth="310.0" text="Game Master">
+      <TitledPane fx:id="lobbyRoomPane" animated="false" layoutX="15.0" layoutY="435.0" prefHeight="91.0" prefWidth="310.0" text="Game Master">
          <content>
             <AnchorPane fx:id="s" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

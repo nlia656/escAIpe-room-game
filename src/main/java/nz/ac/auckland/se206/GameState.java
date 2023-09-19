@@ -37,10 +37,16 @@ public class GameState {
   public static boolean isTts;
   public static ChatCompletionRequest chatCompletionRequest;
   public static String chatHistory;
+  public static boolean onArtRoom = false;
+  public static boolean onDinoRoom = false;
+  public static boolean onLobbyRoom = false;
+  public static boolean onPaintPuzzle = false;
+  public static boolean isArtComplete = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
+
   public static void initial() {
     //randomize the answer
     isUnlimitedHint = false;
@@ -51,10 +57,8 @@ public class GameState {
     room = rooms[getRandom(rooms.length-1)];
     chatCompletionRequest = null;
     chatHistory = null;
-    switch (room){
-      case "lobby" -> answer=lobbyAnswers[getRandom(lobbyAnswers.length-1)];
-      case "dino" -> answer=dinoAnswers[getRandom(dinoAnswers.length-1)];
-      default -> answer = "couch";
-    }
+    remainsHint = 0;
+    timeLeft = timeLimit;
+    isTts = false;
   }
 }

@@ -73,7 +73,8 @@ public class LevelController {
       GameState.isTts=false;
     }
     //todo change to intro screen later
-    App.setUi(AppUi.START);
+    App.setUi(AppUi.ART_ROOM);
+    GameState.onArtRoom = true;
 
   }
 
