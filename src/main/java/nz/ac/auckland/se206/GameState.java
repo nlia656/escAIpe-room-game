@@ -5,8 +5,8 @@ public class GameState {
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved = false;
 
-  /** Indicates whether the key has been found. */
-  public static boolean isKeyFound = false;
+  /** Indicates whether the puzzle has been resolved. */
+  public static boolean isPuzzleResolved = false;
 
   public static int timeLeft;
   public static boolean isPaused = false;

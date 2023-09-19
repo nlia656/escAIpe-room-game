@@ -40,12 +40,14 @@ public class DinoRoomController {
 
   public void books2(MouseEvent event) {
     System.out.println("books2 clicked");
+    if (GameState.isRiddleResolved) {
+      App.setUi(AppUi.BOOK_PUZZLE);
+    }
   }
 
   @FXML
   public void mask(MouseEvent event) {
     System.out.println("mask clicked");
-    App.setUi(AppUi.BOOK_PUZZLE);
   }
 
   @FXML
