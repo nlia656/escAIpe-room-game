@@ -2,6 +2,8 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class BookPuzzleController {
   public static String puzzleAnswer;
@@ -103,5 +105,10 @@ public class BookPuzzleController {
         tableSnip.setVisible(true);
         break;
     }
+  }
+
+  @FXML
+  private void closeBook() {
+    App.setUi(AppUi.DINO_ROOM);
   }
 }

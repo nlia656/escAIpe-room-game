@@ -11,7 +11,6 @@ public class SceneManager {
     START,
     DINO_ROOM,
     LOBBY_ROOM,
-    ROOM,
     BOOK_PUZZLE
   }
 

@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BookPuzzleController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="811.0" layoutX="-39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redbook.png" />
          </image>
       </ImageView>
-      <Button layoutX="625.0" layoutY="500.0" mnemonicParsing="false" text="Go Back" />
-      <ImageView fx:id="couch1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="86.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <Button layoutX="625.0" layoutY="500.0" mnemonicParsing="false" onAction="#closeBook" text="Go Back" />
+      <ImageView fx:id="couch1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="86.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/couchSnip.png" />
          </image>
@@ -30,7 +30,7 @@
             <Image url="@../images/maskSnip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="robeSnip" fitHeight="175.0" fitWidth="175.0" layoutX="154.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="robeSnip" fitHeight="175.0" fitWidth="175.0" layoutX="154.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/robeSnip.png" />
          </image>
@@ -40,12 +40,12 @@
             <Image url="@../images/poster3Snip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="poster2Snip" fitHeight="175.0" fitWidth="175.0" layoutX="393.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="poster2Snip" fitHeight="175.0" fitWidth="175.0" layoutX="393.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/poster2Snip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="poster1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="480.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="poster1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="481.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/poster1Snip.png" />
          </image>
@@ -55,7 +55,7 @@
             <Image url="@../images/vaseSnip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="painting1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="117.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="painting1Snip" fitHeight="175.0" fitWidth="175.0" layoutX="117.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/painting1Snip.png" />
          </image>
@@ -70,7 +70,7 @@
             <Image url="@../images/painting3Snip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="painting4Snip" fitHeight="175.0" fitWidth="175.0" layoutX="439.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="painting4Snip" fitHeight="175.0" fitWidth="175.0" layoutX="439.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/painting4Snip.png" />
          </image>

@@ -75,11 +75,11 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
-    SceneManager.addAppUi(AppUi.ROOM, loadFxml("room"));
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
+    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
 
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
 

@@ -140,7 +140,9 @@ public class ArtRoomController {
 
   @FXML
   private void bench1Clicked() {
-    // Add your code for handling the bench1Clicked event here
+    GameState.isRiddleResolved = true;
+    System.out.println("bench1 clicked");
+    System.out.println(GameState.isRiddleResolved);
   }
 
   @FXML
