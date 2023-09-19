@@ -1,6 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
@@ -10,6 +13,8 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LevelController {
 
+  @FXML
+  private Button startButton;
   @FXML
   private Slider levelSlider;
 
@@ -35,10 +40,12 @@ public class LevelController {
   }
 
   @FXML
-  private void start() {
+  private void start() throws IOException {
+    GameState.initial();
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;
+        GameState.remainsHint = 0;
         break;
       case 1:
         GameState.remainsHint = 5;
@@ -62,8 +69,15 @@ public class LevelController {
       default:
         break;
     }
+    if(ttsButton.isSelected()){
+      GameState.isTts=true;
+    }
+    else{
+      GameState.isTts=false;
+    }
     //todo change to intro screen later
     App.makeTimer();
+    App.loadRoom();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
 

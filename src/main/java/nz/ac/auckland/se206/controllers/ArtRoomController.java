@@ -40,6 +40,7 @@ public class ArtRoomController {
 
   @FXML private TitledPane artRoomPane;
 
+
   public void initialize() {
     Task timer = new Task() {
       @Override
@@ -58,10 +59,14 @@ public class ArtRoomController {
     timerThread.start();
   }
 
+
   @FXML
   private void onHelp() {
     if (GameState.onPaintPuzzle) {
-          showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+      showDialogPic(
+          "Guess The Painting",
+          "The rest of the hint got burned and you are only left with this.",
+          "Click on the help button to view image again.");
     }
   }
 
@@ -88,7 +93,6 @@ public class ArtRoomController {
     alert.showAndWait();
   }
 
-
   @FXML
   private void onOpenGM() {
     App.setUi(AppUi.CHAT);
@@ -110,12 +114,16 @@ public class ArtRoomController {
 
   @FXML
   private void daggerClicked() {
-    // Testing for the alert and this will only be shown after the first riddle is solved and can be shown again through a help button.
+    // Testing for the alert and this will only be shown after the first riddle is solved and can be
+    // shown again through a help button.
     if (GameState.isArtComplete) {
       showDialog("Info", "You have already solved the puzzle", "Good Job!");
       return;
     }
-    showDialogPic("Guess The Painting", "The rest of the hint got burned and you are only left with this.", "Click on the help button to view image again.");
+    showDialogPic(
+        "Guess The Painting",
+        "The rest of the hint got burned and you are only left with this.",
+        "Click on the help button to view image again.");
     GameState.onPaintPuzzle = true;
     // Add your code for handling the daggerClicked event here
   }
@@ -162,33 +170,42 @@ public class ArtRoomController {
 
   @FXML
   private void painting1Clicked() {
-    // Add your code for handling the painting1Clicked event here
+    if (BookPuzzleController.puzzleAnswer == "painting1") {
+      GameState.isPuzzleResolved = true;
+    }
   }
 
   @FXML
   private void painting2Clicked() {
-    // Add your code for handling the painting2Clicked event here
+    if (BookPuzzleController.puzzleAnswer == "painting2") {
+      GameState.isPuzzleResolved = true;
+    }
   }
 
   @FXML
   private void painting3Clicked() {
-    // Add your code for handling the painting3Clicked event here
+    if (BookPuzzleController.puzzleAnswer == "painting3") {
+      GameState.isPuzzleResolved = true;
+    }
   }
 
   @FXML
   private void painting4Clicked() {
-    if (GameState.onPaintPuzzle) {
-      showDialog("One Room Complete", "You have solved the puzzle!", "Code: 1234");
-      GameState.onPaintPuzzle = false;
-      GameState.isArtComplete = true; 
+    if (BookPuzzleController.puzzleAnswer == "painting4") {
+      GameState.isPuzzleResolved = true;
     }
+  }
 
-
+  @FXML
+  private void onFinish(){
+    App.setUi(AppUi.END_PAGE);
   }
 
   @FXML
   private void painting5Clicked() {
-    // Add your code for handling the painting5Clicked event here
+    if (BookPuzzleController.puzzleAnswer == "painting5") {
+      GameState.isPuzzleResolved = true;
+    }
   }
 
   @FXML
