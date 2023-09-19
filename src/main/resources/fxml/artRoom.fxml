@@ -7,7 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -121,7 +121,20 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="btnHelp" layoutX="663.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHelp" text="Help" />
+      <HBox layoutX="20.0" layoutY="30.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="145.0" text="Time Remaining:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" prefHeight="26.0" prefWidth="82.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
