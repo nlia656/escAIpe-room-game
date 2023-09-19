@@ -40,18 +40,12 @@ public class GameState {
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
+
   public static void initial() {
     //randomize the answer
     isUnlimitedHint = false;
-    remainsHint=0;
-    timeLeft=timeLimit;
-
+    remainsHint = 0;
+    timeLeft = timeLimit;
     isTts = false;
-    room = rooms[getRandom(rooms.length-1)];
-    switch (room){
-      case "lobby" -> answer=lobbyAnswers[getRandom(lobbyAnswers.length-1)];
-      case "dino" -> answer=dinoAnswers[getRandom(dinoAnswers.length-1)];
-      default -> answer = "couch";
-    }
   }
 }

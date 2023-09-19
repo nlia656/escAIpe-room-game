@@ -12,25 +12,39 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class DinoRoomController {
 
-  @FXML private ImageView dinoToArt;
+  @FXML
+  private ImageView dinoToArt;
 
-  @FXML private Rectangle vase3;
-  @FXML private Rectangle books2;
-  @FXML private Rectangle mask;
-  @FXML private Rectangle painting6;
-  @FXML private Rectangle newspaper3;
-  @FXML private Rectangle couch1;
-  @FXML private Rectangle robe;
-  @FXML private Rectangle newspaper2;
-  @FXML private Rectangle newspaper1;
-  @FXML private Rectangle dinosaur;
+  @FXML
+  private Rectangle vase3;
+  @FXML
+  private Rectangle books2;
+  @FXML
+  private Rectangle mask;
+  @FXML
+  private Rectangle painting6;
+  @FXML
+  private Rectangle newspaper3;
+  @FXML
+  private Rectangle couch1;
+  @FXML
+  private Rectangle robe;
+  @FXML
+  private Rectangle newspaper2;
+  @FXML
+  private Rectangle newspaper1;
+  @FXML
+  private Rectangle dinosaur;
 
-  @FXML private TitledPane dinoRoomPane;
+  @FXML
+  private TitledPane dinoRoomPane;
 
-  @FXML private Label lblGM;
+  @FXML
+  private Label lblGM;
 
-
-  public void initialize() {}
+  @FXML
+  public void initialize() {
+  }
 
   @FXML
 
@@ -89,5 +103,21 @@ public class DinoRoomController {
   @FXML
   private void onOpenGM() {
     App.setUi(AppUi.CHAT);
+  }
+
+  @FXML
+  public void books2Clicked(MouseEvent mouseEvent) {
+    System.out.println("book2 clicked");
+  }
+
+  @FXML
+  public void maskClicked(MouseEvent mouseEvent) {
+    System.out.println("mask clicked");
+  }
+
+  @FXML
+  public void painting6Clicked(MouseEvent mouseEvent) {
+
+    System.out.println("painting6 clicked");
   }
 }
