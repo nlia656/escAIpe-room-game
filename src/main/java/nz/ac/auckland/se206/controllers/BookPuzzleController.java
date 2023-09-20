@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class BookPuzzleController {
@@ -49,9 +50,8 @@ public class BookPuzzleController {
       "plant",
       "table"
     };
-    int randomNumber = (int) (Math.random() * puzzleObjects.length);
-    puzzleAnswer = puzzleObjects[randomNumber];
-    switch ((String) puzzleAnswer) {
+    puzzleAnswer = puzzleObjects[GameState.getRandom(puzzleObjects.length-1)];
+    switch (puzzleAnswer) {
       case "couch1":
         couch1Snip.setVisible(true);
         break;

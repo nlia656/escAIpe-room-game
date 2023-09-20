@@ -30,7 +30,7 @@ public class LobbyRoomController extends ScrollController {
 
 @FXML
     public void initialize() {
-        Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
+        Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime,lblGM));
         timerThread.setDaemon(true);
         timerThread.start();
     }

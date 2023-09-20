@@ -35,7 +35,7 @@ public class GameState {
   public static boolean isUnlocked;
   public static String passcode;
   public static ChatCompletionRequest chatCompletionRequest;
-  public static String chatHistory = "";
+  public static String lastMsg = "";
   public static boolean onArtRoom = false;
   public static boolean onDinoRoom = false;
   public static boolean onLobbyRoom = false;
@@ -65,7 +65,7 @@ public class GameState {
     isTts = false;
     room = rooms[getRandom(rooms.length - 1)];
     chatCompletionRequest = new ChatCompletionRequest();
-    chatHistory = "";
+    lastMsg = "";
     remainsHint = 0;
     timeLeft = timeLimit;
     isTts = false;
