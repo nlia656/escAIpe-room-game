@@ -129,9 +129,11 @@ public class ChatController {
           return null;
         }
       };
-      Thread thread = new Thread(tts);
-      thread.setDaemon(true);
-      thread.start();
+      if(GameState.isTts){
+        Thread thread = new Thread(tts);
+        thread.setDaemon(true);
+        thread.start();
+      }
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       showApiError(e);
