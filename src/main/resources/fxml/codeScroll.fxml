@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: #7A1712;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ScrollController">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="428.0" layoutX="-16.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-10.0">
+         <image>
+            <Image url="@../images/paperscroll.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="540.0" fitWidth="428.0" layoutX="337.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-40.0">
+         <image>
+            <Image url="@../images/paperscroll.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="144.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Riddle Code">
+         <font>
+            <Font name="Papyrus" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="488.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puzzle Code">
+         <font>
+            <Font name="Papyrus" size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="closeScroll" layoutX="646.0" layoutY="500.0" mnemonicParsing="false" onAction="#closeScroll" text="Go Back" />
+      <Label fx:id="riddleCodeLabel" layoutX="183.0" layoutY="192.0" text="??">
+         <font>
+            <Font name="Papyrus" size="70.0" />
+         </font>
+      </Label>
+      <Label fx:id="puzzleCodeLabel" layoutX="531.0" layoutY="192.0" text="??">
+         <font>
+            <Font name="Papyrus" size="70.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
