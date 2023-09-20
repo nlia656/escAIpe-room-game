@@ -8,10 +8,13 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ScrollController {
   @FXML private Label puzzleCodeLabel;
+  @FXML private Label riddleCodeLabel;
   public static Label staticPuzzleCodeLabel;
+  public static Label staticRiddleCodeLabel;
 
   public void initialize() {
     staticPuzzleCodeLabel = puzzleCodeLabel;
+    staticRiddleCodeLabel = riddleCodeLabel;
   }
 
   @FXML

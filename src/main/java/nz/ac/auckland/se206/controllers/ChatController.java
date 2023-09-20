@@ -165,6 +165,11 @@ public class ChatController {
             return null;
           }
         };
+    ChatMessage lastMsg = runGpt(msg);
+    if (lastMsg.getRole().equals("assistant")
+      && lastMsg.getContent().startsWith("Correct")) {
+      Platform.runLater(() -> GameState.isRiddleResolved = true);
+    }
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
