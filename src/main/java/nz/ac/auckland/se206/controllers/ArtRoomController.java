@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,6 +16,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
   @FXML private Label lblGM;
+  @FXML private Label lblTime;
 
   @FXML private ImageView scrollArt;
 
@@ -40,7 +43,31 @@ public class ArtRoomController extends ScrollController {
 
   @FXML private TitledPane artRoomPane;
 
-  public void initialize() {}
+@FXML
+  private void initialize() {
+  Thread timerThread = new Thread(getTimer(lblTime));
+    timerThread.setDaemon(true);
+    timerThread.start();
+  }
+@FXML
+  protected static Task getTimer(Label lblTime) {
+    Task timer = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        while (!GameState.isGameComplete) {
+          if (!GameState.isPaused) {
+            Platform.runLater(
+                () -> {
+                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                });
+          }
+          Thread.sleep(300);
+        }
+        return null;
+      }
+    };
+    return timer;
+  }
 
   @FXML
   private void onHelp() {

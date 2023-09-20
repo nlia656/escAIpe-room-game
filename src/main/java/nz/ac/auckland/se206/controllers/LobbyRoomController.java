@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -12,8 +13,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 // import javafx.scene.Cursor;
 
+
 public class LobbyRoomController extends ScrollController {
   @FXML private Label lblGM;
+@FXML private Label lblTime;
 
   @FXML private ImageView lobbyToArt;
 
@@ -25,7 +28,12 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML private TitledPane lobbyRoomPane;
 
-  public void initialize() {}
+@FXML
+    public void initialize() {
+        Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
+        timerThread.setDaemon(true);
+        timerThread.start();
+    }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);

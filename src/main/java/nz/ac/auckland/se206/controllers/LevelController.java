@@ -68,8 +68,9 @@ public class LevelController {
     } else {
       GameState.isTts = false;
     }
+    //todo change to intro screen later
+    App.makeTimer();
 
-    // todo change to intro screen later
     App.loadRoom();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;

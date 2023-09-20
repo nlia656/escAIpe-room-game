@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -89,6 +90,21 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <HBox layoutX="20.0" layoutY="30.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="145.0" text="Time Remaining:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" prefHeight="26.0" prefWidth="82.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+
       <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="25.0" onMouseClicked="#scrollDinoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
          <image>
             <Image url="@../images/paperscroll.png" />

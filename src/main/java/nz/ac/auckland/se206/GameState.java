@@ -41,6 +41,7 @@ public class GameState {
   public static boolean onLobbyRoom = false;
   public static boolean onPaintPuzzle = false;
   public static boolean isArtComplete = false;
+  public static boolean isGameComplete = false;
   public static int randomCode;
   public static String riddleCode;
   private static double randNumber;
@@ -52,9 +53,10 @@ public class GameState {
   public static void initial() {
     // randomize the answer
     isUnlimitedHint = false;
-    remainsHint = 0;
-    timeLeft = timeLimit;
-    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
+    remainsHint=0;
+    timeLeft=timeLimit;
+    isGameComplete = false;
+    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length-1)];
     isTts = false;
     room = rooms[getRandom(rooms.length - 1)];
     chatCompletionRequest = new ChatCompletionRequest();
