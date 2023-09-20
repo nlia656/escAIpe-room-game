@@ -59,7 +59,7 @@ public class App extends Application {
                       GameState.timeLeft = finalI;
                       if (finalI == 0) {
                         // TODO: Handle game over here, e.g., transition to the game over screen
-                        App.setUi(AppUi.LEVEL);
+                        App.setUi(AppUi.LOSE_SCREEN);
                       }
                     });
               }
