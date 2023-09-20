@@ -112,6 +112,7 @@ public class ChatController {
       if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
           .getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
+        GameState.firstTimeCode = true;
       }
       Task tts = new Task() {
         @Override
@@ -168,14 +169,6 @@ public class ChatController {
     thread.start();
   }
 
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
-
   /**
    * Navigates back to the previous view.
    *
@@ -191,11 +184,6 @@ public class ChatController {
       App.setUi(AppUi.DINO_ROOM);
     } else {
       App.setUi(AppUi.LOBBY_ROOM);
-    }
-
-    if (GameState.isRiddleResolved&!GameState.isPopShowed) {
-      showDialog("Congratulations!", "You have solved the riddle!", "Find the book in the other room to continue.");
-      GameState.isPopShowed = true;
     }
   }
 

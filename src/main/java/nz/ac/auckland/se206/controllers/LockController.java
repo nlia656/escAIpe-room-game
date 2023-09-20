@@ -67,20 +67,23 @@ public class LockController {
   private void checkCode() {
     if (passcode.size() == 4) {
       StringBuilder sb = new StringBuilder();
+      StringBuilder exitKey = new StringBuilder();
+      exitKey.append(GameState.riddleCode);
+      exitKey.append(BookPuzzleController.puzzleCode);
       sb.append(passcode.get(0));
       sb.append(passcode.get(1));
       sb.append(passcode.get(2));
       sb.append(passcode.get(3));
-      if (sb.toString().equals(GameState.passcode)) {
+      if (sb.toString().equals(exitKey.toString())) {
         textBox.clear();
         textBox.appendText("Door Unlocked");
         buttonDisable();
         GameState.isUnlocked = true;
-      } else {
+      } 
+    } else {
         textBox.clear();
         textBox.appendText("Incorrect passcode");
         passcode.clear();
-      }
     }
 
   }
