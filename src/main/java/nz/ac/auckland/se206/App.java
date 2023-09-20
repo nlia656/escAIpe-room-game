@@ -47,13 +47,17 @@ public class App extends Application {
    * Create and run a timer that handles game timing.
    */
   public static void makeTimer() {
-    Task<Void> task = new Task<Void>() {
+    Task<Void> task = new Task<>() {
       @Override
       protected Void call() throws Exception {
         // Create a timer thread
         for (int i = GameState.timeLimit; i >= 0; i--) {
           if (!timerRunning) {
             break;
+          }
+          if (GameState.timeOver) {
+            GameState.timeOver = false;
+            return null;
           }
           if (!GameState.isPaused) {
             final int finalI = i;

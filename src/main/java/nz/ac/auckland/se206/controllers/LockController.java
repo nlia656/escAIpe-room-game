@@ -84,6 +84,7 @@ public class LockController {
   @FXML
   private void escapeButtonClicked() {
     if (GameState.isUnlocked) {
+      GameState.timeOver = true;
       App.setUi(AppUi.WIN_SCREEN);
     }
   }
