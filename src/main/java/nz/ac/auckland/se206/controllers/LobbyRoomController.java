@@ -75,7 +75,12 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void elevatorClicked() {
-    if (GameState.isUnlocked) {
+    if (!GameState.isPuzzleResolved || !GameState.isRiddleResolved) {
+      showDialog(
+          "Info",
+          "Elevator locked!",
+          "You need to solve the puzzle and riddle first.");
+    } else if (GameState.isUnlocked) {
       App.setUi(AppUi.WIN_SCREEN);
     } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
       App.setUi(AppUi.LOCK);
