@@ -184,6 +184,7 @@ public class DinoRoomController extends ScrollController {
     }
     if (GameState.isRiddleResolved) {
       App.setUi(AppUi.BOOK_PUZZLE);
+      GameState.firstTimeCode = false;
     }
   }
 
