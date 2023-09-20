@@ -23,56 +23,60 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Controller class for the chat view. */
+/**
+ * Controller class for the chat view.
+ */
 public class ChatController {
 
-  @FXML private Text hintRemains;
-  @FXML private Button backButton;
-  @FXML private TextArea chatTextArea;
-  @FXML private TextField inputText;
-  @FXML private Button noTtsButton;
-  @FXML private Button sendButton;
-  @FXML private ProgressIndicator progressBar;
-  @FXML private Button hintButton;
+  @FXML
+  private Text hintRemains;
+  @FXML
+  private Button backButton;
+  @FXML
+  private TextArea chatTextArea;
+  @FXML
+  private TextField inputText;
+  @FXML
+  private Button noTtsButton;
+  @FXML
+  private Button sendButton;
+  @FXML
+  private ProgressIndicator progressBar;
+  @FXML
+  private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
    * Initializes the chat view, loading the riddle.
-   *
-   * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   @FXML
-  public void initialize() throws ApiProxyException {
+  public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
-    Task task =
-        new Task() {
-          @Override
-          protected Object call() throws Exception {
-            inProcess();
-            try {
-              runGpt(
-                  new ChatMessage(
-                      "user",
-                      GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
-            } catch (ApiProxyException e) {
-              showApiError(e);
-            }
-            Platform.runLater(
-                () -> {
-                  finishProcess();
-                });
-            return null;
-          }
-        };
+    Task task = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        inProcess();
+        try {
+          runGpt(new ChatMessage("user",
+              GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
+        } catch (ApiProxyException e) {
+          showApiError(e);
+        }
+        Platform.runLater(() -> {
+          finishProcess();
+        });
+        return null;
+      }
+    };
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0&&!GameState.isUnlimitedHint){
+    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
     if (GameState.chatHistory.isEmpty()) {
-      chatCompletionRequest =
-          new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(140);
+      chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
+          .setMaxTokens(140);
       Thread thread = new Thread(task);
       thread.setDaemon(true);
       thread.start();
@@ -90,14 +94,6 @@ public class ChatController {
     chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
-  @FXML
-  private void onDisableTts(ActionEvent event) {
-    noTtsButton.setDisable(true);
-    noTtsButton.setVisible(false);
-    GameState.isTts = false;
-    TextToSpeech tts = new TextToSpeech();
-    tts.terminate();
-  }
 
   /**
    * Runs the GPT model with a given chat message.
@@ -106,13 +102,18 @@ public class ChatController {
    * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+  private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
+      if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
+          .getContent().startsWith("Correct")) {
+        GameState.isRiddleResolved = true;
+        GameState.firstTimeCode = true;
+      }
       Task tts = new Task() {
         @Override
         protected Object call() {
@@ -123,13 +124,13 @@ public class ChatController {
           return null;
         }
       };
-      Thread thread = new Thread(tts);
-      thread.setDaemon(true);
-      thread.start();
-      return result.getChatMessage();
+      if (GameState.isTts) {
+        Thread thread = new Thread(tts);
+        thread.setDaemon(true);
+        thread.start();
+      }
     } catch (ApiProxyException e) {
       showApiError(e);
-      return null;
     }
   }
 
@@ -138,7 +139,7 @@ public class ChatController {
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException if there is an I/O error
+   * @throws IOException       if there is an I/O error
    */
   @FXML
   private void onSendMessage(ActionEvent event)
@@ -152,19 +153,17 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     // Run GPT model in a separate thread
-    Task task =
-        new Task() {
-          @Override
-          protected Object call() throws Exception {
-            inProcess();
-            runGpt(msg);
-            Platform.runLater(
-                () -> {
-                  finishProcess();
-                });
-            return null;
-          }
-        };
+    Task task = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        inProcess();
+        runGpt(msg);
+        Platform.runLater(() -> {
+          finishProcess();
+        });
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -175,7 +174,7 @@ public class ChatController {
    *
    * @param event the action event triggered by the go back button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException if there is an I/O error
+   * @throws IOException       if there is an I/O error
    */
   @FXML
   private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
@@ -210,23 +209,21 @@ public class ChatController {
 
   @FXML
   private void askHint() {
-    Task task =
-        new Task() {
-          @Override
-          protected Object call() throws Exception {
-            inProcess();
-            try {
-              runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
-            } catch (ApiProxyException e) {
-              showApiError(e);
-            }
-            Platform.runLater(
-                () -> {
-                  finishProcess();
-                });
-            return null;
-          }
-        };
+    Task task = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        inProcess();
+        try {
+          runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+        } catch (ApiProxyException e) {
+          showApiError(e);
+        }
+        Platform.runLater(() -> {
+          finishProcess();
+        });
+        return null;
+      }
+    };
     if (!GameState.isUnlimitedHint) {
       GameState.remainsHint--;
       hintRemains.setText(GameState.remainsHint + "/5");

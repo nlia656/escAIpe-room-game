@@ -1,11 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -14,10 +15,13 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
   @FXML private Label lblGM;
+  @FXML private Label lblTime;
+
+  @FXML private ImageView scrollArt;
+
 
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
-  @FXML private ImageView scrollArt;
 
   @FXML private Rectangle dagger;
   @FXML private Rectangle armour;
@@ -39,32 +43,32 @@ public class ArtRoomController extends ScrollController {
 
   @FXML private TitledPane artRoomPane;
 
-  public void initialize() {}
-
-  @FXML
-  private void onHelp() {
-    if (GameState.onPaintPuzzle) {
-      showDialogPic(
-          "Guess The Painting",
-          "The rest of the hint got burned and you are only left with this.",
-          "Click on the help button to view image again.");
-    }
+@FXML
+public void initialize() {
+  Thread timerThread = new Thread(getTimer(lblTime));
+    timerThread.setDaemon(true);
+    timerThread.start();
+  }
+@FXML
+  protected static Task getTimer(Label lblTime) {
+    Task timer = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        while (!GameState.isGameComplete) {
+          if (!GameState.isPaused) {
+            Platform.runLater(
+                () -> {
+                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                });
+          }
+          Thread.sleep(300);
+        }
+        return null;
+      }
+    };
+    return timer;
   }
 
-  private void showDialogPic(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setWidth(800); // Set width
-    alert.setHeight(600);
-    Image image = new Image(getClass().getResource("/images/Painting-1.jpg").toExternalForm());
-    ImageView imageView = new ImageView(image);
-    imageView.setFitWidth(750);
-    imageView.setPreserveRatio(true);
-    alert.setGraphic(imageView);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -96,6 +100,13 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void scrollArtClicked() {
     App.setUi(AppUi.SCROLL);
+    if (GameState.firstTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "Now go find the book to continue.");
+      GameState.firstTimeCode = false;
+    }
   }
 
   @FXML
@@ -206,12 +217,9 @@ public class ArtRoomController extends ScrollController {
 
   private void clickForRiddle(String answer) {
     if (answer == GameState.artRoomRiddleAnswer && GameState.isRiddleResolved) {
-      showDialog(
-          "Info",
-          "You found a piece of paper",
-          "Good Job! The first 2 dig of passcode is"
-              + GameState.passcode
-              + ". Now find the item to get last two.");
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      staticRiddleCodeLabel.setText(GameState.riddleCode);
+      System.out.println(GameState.riddleCode);
     }
   }
 }

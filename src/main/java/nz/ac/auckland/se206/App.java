@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -82,7 +83,7 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
   }
-
+@FXML
   public static void loadRoom() throws IOException {
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
@@ -91,5 +92,7 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
     SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
+    SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
+    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
   }
 }
