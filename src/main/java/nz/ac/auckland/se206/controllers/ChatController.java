@@ -38,11 +38,9 @@ public class ChatController {
 
   /**
    * Initializes the chat view, loading the riddle.
-   *
-   * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   @FXML
-  public void initialize() throws ApiProxyException {
+  public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
     Task task =
         new Task() {
@@ -67,7 +65,7 @@ public class ChatController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0&&!GameState.isUnlimitedHint){
+    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
     if (GameState.chatHistory.isEmpty()) {
@@ -90,14 +88,6 @@ public class ChatController {
     chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
-  @FXML
-  private void onDisableTts(ActionEvent event) {
-    noTtsButton.setDisable(true);
-    noTtsButton.setVisible(false);
-    GameState.isTts = false;
-    TextToSpeech tts = new TextToSpeech();
-    tts.terminate();
-  }
 
   /**
    * Runs the GPT model with a given chat message.
@@ -106,13 +96,17 @@ public class ChatController {
    * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+  private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
+      if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
+          .getContent().startsWith("Correct")) {
+        GameState.isRiddleResolved = true;
+      }
       Task tts = new Task() {
         @Override
         protected Object call() {
@@ -123,13 +117,13 @@ public class ChatController {
           return null;
         }
       };
-      Thread thread = new Thread(tts);
-      thread.setDaemon(true);
-      thread.start();
-      return result.getChatMessage();
+      if (GameState.isTts) {
+        Thread thread = new Thread(tts);
+        thread.setDaemon(true);
+        thread.start();
+      }
     } catch (ApiProxyException e) {
       showApiError(e);
-      return null;
     }
   }
 
