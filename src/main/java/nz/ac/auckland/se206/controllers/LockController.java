@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -13,38 +15,23 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class LockController {
 
   private final ArrayList<Integer> passcode = new ArrayList<>();
-  @FXML
-  private TextArea textBox;
-  @FXML
-  private Button enterButton;
-  @FXML
-  private Button resetButton;
-  @FXML
-  private Button button0;
-  @FXML
-  private Button button1;
-  @FXML
-  private Button button2;
-  @FXML
-  private Button button3;
-  @FXML
-  private Button button4;
-  @FXML
-  private Button button5;
-  @FXML
-  private Button button6;
-  @FXML
-  private Button button7;
-  @FXML
-  private Button button8;
-  @FXML
-  private Button button9;
-  @FXML
-  private Button backButton;
+  @FXML private TextArea textBox;
+  @FXML private Button enterButton;
+  @FXML private Button resetButton;
+  @FXML private Button button0;
+  @FXML private Button button1;
+  @FXML private Button button2;
+  @FXML private Button button3;
+  @FXML private Button button4;
+  @FXML private Button button5;
+  @FXML private Button button6;
+  @FXML private Button button7;
+  @FXML private Button button8;
+  @FXML private Button button9;
+  @FXML private Button backButton;
+  @FXML private ImageView escapeButton;
 
-  /**
-   * Initializes the room view, it is called when the room loads.
-   */
+  /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
     if (GameState.isUnlocked) {
       textBox.clear();
@@ -79,17 +66,27 @@ public class LockController {
         textBox.appendText("Door Unlocked");
         buttonDisable();
         GameState.isUnlocked = true;
+
+        escapeButton.setVisible(true);
+        escapeButton.setCursor(Cursor.OPEN_HAND);
+      }
         GameState.secondTimeCode = false;
 
       } 
-    } else {
-        textBox.clear();
-        textBox.appendText("Incorrect passcode");
-        passcode.clear();
-    }
 
+    } else {
+      textBox.clear();
+      textBox.appendText("Incorrect passcode");
+      passcode.clear();
+    }
   }
 
+  @FXML
+  private void escapeButtonClicked() {
+    if (GameState.isUnlocked) {
+      App.setUi(AppUi.WIN_SCREEN);
+    }
+  }
 
   @FXML
   private void onType0(ActionEvent event) {
@@ -171,5 +168,4 @@ public class LockController {
     enterButton.setDisable(true);
     resetButton.setDisable(true);
   }
-
 }
