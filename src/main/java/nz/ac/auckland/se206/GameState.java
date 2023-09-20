@@ -45,6 +45,7 @@ public class GameState {
   public static int randomCode;
   public static String riddleCode;
   private static double randNumber;
+  public static boolean isPopShowed;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -64,6 +65,7 @@ public class GameState {
     remainsHint = 0;
     timeLeft = timeLimit;
     isTts = false;
+    isPopShowed=false;
     randNumber = Math.random();
     randomCode = (int) (randNumber * 100);
     if (randomCode < 10) {

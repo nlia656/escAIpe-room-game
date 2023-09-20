@@ -117,7 +117,6 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button fx:id="btnHelp" layoutX="663.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHelp" text="Help" />
       <HBox layoutX="20.0" layoutY="30.0">
          <children>
             <Label prefHeight="26.0" prefWidth="145.0" text="Time Remaining:" textFill="WHITE">

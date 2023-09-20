@@ -193,8 +193,9 @@ public class ChatController {
       App.setUi(AppUi.LOBBY_ROOM);
     }
 
-    if (GameState.isRiddleResolved) {
+    if (GameState.isRiddleResolved&!GameState.isPopShowed) {
       showDialog("Congratulations!", "You have solved the riddle!", "Find the book in the other room to continue.");
+      GameState.isPopShowed = true;
     }
   }
 
