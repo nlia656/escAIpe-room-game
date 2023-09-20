@@ -33,6 +33,10 @@
             <Font name="Britannic Bold" size="32.0" />
          </font>
       </Text>
-      <Text layoutX="73.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dive into the Dark Side of Art – Heist of the Century: The Art Museum Affair Lets You Become the Ultimate Artful Criminal!" />
+      <Text fill="#040000" layoutX="26.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!&quot;" textAlignment="CENTER" wrappingWidth="389.81768798828125">
+         <font>
+            <Font name="Bank Gothic Medium BT" size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
