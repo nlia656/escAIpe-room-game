@@ -47,6 +47,8 @@ public class GameState {
   private static double randNumber;
   public static boolean isPopShowed;
   public static boolean firstTimeCode = false;
+  public static boolean secondTimeCode = false;
+
 
 
   public static int getRandom(int range) {

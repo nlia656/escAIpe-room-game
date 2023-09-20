@@ -64,6 +64,12 @@ public class DinoRoomController extends ScrollController {
           "Code discovered!",
           "Now go find the book to continue.");
       GameState.firstTimeCode = false;
+    } else if (GameState.secondTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "You can try to escape through the elevator now.");
+      GameState.secondTimeCode = false;
     }
   }
 
@@ -74,6 +80,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -84,6 +91,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -94,6 +102,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -104,6 +113,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -114,6 +124,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -123,6 +134,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
     System.out.println("dinosaur clicked");
   }
@@ -134,6 +146,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -157,6 +170,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -167,6 +181,7 @@ public class DinoRoomController extends ScrollController {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 }
