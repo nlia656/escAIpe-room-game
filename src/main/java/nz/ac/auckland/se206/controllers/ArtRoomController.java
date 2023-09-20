@@ -45,12 +45,12 @@ public class ArtRoomController extends ScrollController {
 
 @FXML
 public void initialize() {
-  Thread timerThread = new Thread(getTimer(lblTime));
+  Thread timerThread = new Thread(getTimer(lblTime, lblGM));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 @FXML
-  protected static Task getTimer(Label lblTime) {
+  protected static Task getTimer(Label lblTime, Label lblGM) {
     Task timer = new Task() {
       @Override
       protected Object call() throws Exception {
@@ -59,6 +59,7 @@ public void initialize() {
             Platform.runLater(
                 () -> {
                   lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblGM.setText(GameState.lastMsg);
                 });
           }
           Thread.sleep(300);
@@ -172,6 +173,9 @@ public void initialize() {
 
   @FXML
   private void painting1Clicked() {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting1") {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -182,6 +186,9 @@ public void initialize() {
 
   @FXML
   private void painting2Clicked() {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting2") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -192,6 +199,9 @@ public void initialize() {
 
   @FXML
   private void painting3Clicked() {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting3") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -202,6 +212,9 @@ public void initialize() {
 
   @FXML
   private void painting4Clicked() {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting4") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -212,6 +225,9 @@ public void initialize() {
 
   @FXML
   private void painting5Clicked() {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting5") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));

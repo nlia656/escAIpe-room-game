@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -8,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -29,6 +27,8 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class ChatController {
 
   @FXML
+  private Text gmType;
+  @FXML
   private Text hintRemains;
   @FXML
   private Button backButton;
@@ -41,10 +41,9 @@ public class ChatController {
   @FXML
   private Button sendButton;
   @FXML
-  private ProgressIndicator progressBar;
-  @FXML
   private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
+  private boolean isGptRunning = false;
 
   /**
    * Initializes the chat view, loading the riddle.
@@ -74,15 +73,40 @@ public class ChatController {
     if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
-    if (GameState.chatHistory.isEmpty()) {
-      chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
-          .setMaxTokens(140);
-      Thread thread = new Thread(task);
-      thread.setDaemon(true);
-      thread.start();
-    } else {
-      chatTextArea.setText(GameState.chatHistory);
-    }
+    Task runAnis = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        while (true) {
+          int time = 0;
+          while (isGptRunning) {
+            switch (time) {
+              case 0:
+                gmType.setText("Game master is typing .");
+                time++;
+                Thread.sleep(200);
+              case 1:
+                gmType.setText("Game master is typing ..");
+                time++;
+                Thread.sleep(200);
+              case 2:
+                gmType.setText("Game master is typing ...");
+                time = 0;
+                Thread.sleep(200);
+            }
+          }
+          time = 0;
+          gmType.setText("");
+        }
+      }
+    };
+    chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
+        .setMaxTokens(140);
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    Thread thread2 = new Thread(runAnis);
+    thread2.setDaemon(true);
+    thread.start();
+    thread2.start();
   }
 
   /**
@@ -99,7 +123,6 @@ public class ChatController {
    * Runs the GPT model with a given chat message.
    *
    * @param msg the chat message to process
-   * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
@@ -109,6 +132,7 @@ public class ChatController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
+      GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
           .getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
@@ -138,12 +162,9 @@ public class ChatController {
    * Sends a message to the GPT model.
    *
    * @param event the action event triggered by the send button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
    */
   @FXML
-  private void onSendMessage(ActionEvent event)
-      throws ApiProxyException, IOException, InterruptedException {
+  private void onSendMessage(ActionEvent event) {
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
       return;
@@ -173,11 +194,9 @@ public class ChatController {
    * Navigates back to the previous view.
    *
    * @param event the action event triggered by the go back button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
    */
   @FXML
-  private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
+  private void onGoBack(ActionEvent event) {
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
@@ -188,15 +207,17 @@ public class ChatController {
   }
 
   private void inProcess() {
-    progressBar.setVisible(true);
+    isGptRunning = true;
     inputText.setDisable(true);
     sendButton.setDisable(true);
+    hintButton.setDisable(true);
   }
 
   private void finishProcess() {
-    progressBar.setVisible(false);
+    isGptRunning = false;
     inputText.setDisable(false);
     sendButton.setDisable(false);
+    hintButton.setDisable(false);
   }
 
   private void showApiError(ApiProxyException e) {

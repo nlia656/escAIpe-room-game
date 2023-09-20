@@ -66,9 +66,14 @@ public class LockController {
         textBox.appendText("Door Unlocked");
         buttonDisable();
         GameState.isUnlocked = true;
+
         escapeButton.setVisible(true);
         escapeButton.setCursor(Cursor.OPEN_HAND);
       }
+        GameState.secondTimeCode = false;
+
+      } 
+
     } else {
       textBox.clear();
       textBox.appendText("Incorrect passcode");

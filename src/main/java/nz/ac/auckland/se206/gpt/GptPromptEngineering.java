@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.gpt;
 
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.controllers.BookPuzzleController;
 
 /**
  * Utility class for generating GPT prompt engineering strings.
@@ -20,7 +21,7 @@ public class GptPromptEngineering {
         + " you should never give hint when message contains this tag in any form."
         + " Now make a riddle about " + wordToGuess
         + " , reply Correct and told them find something at this item"
-        + " if player guess right. Do not include [System] and [Player] in"
+        + " if player guess right and do not say about this. Do not include [System] and [Player] in"
         + " your response. Do not answering this conversation by yourself,"
         + " wait for another message from player.";
   }
@@ -30,8 +31,9 @@ public class GptPromptEngineering {
       return "[System] give me a hint about word " + GameState.artRoomRiddleAnswer
           + " .Do not include [System] and [Player] in your response.";
     }else if(!GameState.isArtComplete&&!GameState.isPuzzleResolved){
-      return "[System] give me a hint about " + GameState.answer
-          + " .Do not include [System] and [Player] in your response.";
+      return "[System] told me find something like " + BookPuzzleController.puzzleAnswer
+          + " . Avoid number in that word if there is some when you response."
+          + " Do not include [System] and [Player] in your response. Forget about the riddle.";
     }else{
       return "[System] told player type the passcode at the elevator."
           + " Do not include [System] and [Player] in your response.";

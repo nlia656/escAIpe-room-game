@@ -34,7 +34,7 @@ public class DinoRoomController extends ScrollController {
 
 @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime,lblGM));
     timerThread.setDaemon(true);
     timerThread.start();
   }
@@ -76,6 +76,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void poster1Clicked(MouseEvent event) {
     System.out.println("poster1 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "poster1") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -87,6 +90,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void poster2Clicked(MouseEvent event) {
     System.out.println("poster2 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "poster2") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -98,6 +104,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void poster3Clicked(MouseEvent event) {
     System.out.println("poster3 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "poster3") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -109,6 +118,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void couch1Clicked(MouseEvent event) {
     System.out.println("couch1 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "couch1") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -120,6 +132,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void robeClicked(MouseEvent event) {
     System.out.println("robe clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "robe") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -130,6 +145,9 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void dinosaurClicked(MouseEvent event) {
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "dinosaur") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -142,6 +160,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void vase3Clicked(MouseEvent event) {
     System.out.println("vase3 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "vase") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -158,14 +179,21 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
     System.out.println("books2 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (GameState.isRiddleResolved) {
       App.setUi(AppUi.BOOK_PUZZLE);
+      GameState.firstTimeCode = false;
     }
   }
 
   @FXML
   public void maskClicked(MouseEvent mouseEvent) {
     System.out.println("mask clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "mask") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -177,6 +205,9 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void painting6Clicked(MouseEvent mouseEvent) {
     System.out.println("painting6 clicked");
+    if (GameState.isPuzzleResolved) {
+      return;
+    }
     if (BookPuzzleController.puzzleAnswer == "painting6") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
