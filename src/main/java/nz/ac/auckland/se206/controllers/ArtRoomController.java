@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -44,7 +43,7 @@ public class ArtRoomController extends ScrollController {
   @FXML private TitledPane artRoomPane;
 
 @FXML
-  private void initialize() {
+public void initialize() {
   Thread timerThread = new Thread(getTimer(lblTime));
     timerThread.setDaemon(true);
     timerThread.start();
@@ -69,30 +68,6 @@ public class ArtRoomController extends ScrollController {
     return timer;
   }
 
-  @FXML
-  private void onHelp() {
-    if (GameState.onPaintPuzzle) {
-      showDialogPic(
-          "Guess The Painting",
-          "The rest of the hint got burned and you are only left with this.",
-          "Click on the help button to view image again.");
-    }
-  }
-
-  private void showDialogPic(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setWidth(800); // Set width
-    alert.setHeight(600);
-    Image image = new Image(getClass().getResource("/images/Painting-1.jpg").toExternalForm());
-    ImageView imageView = new ImageView(image);
-    imageView.setFitWidth(750);
-    imageView.setPreserveRatio(true);
-    alert.setGraphic(imageView);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
