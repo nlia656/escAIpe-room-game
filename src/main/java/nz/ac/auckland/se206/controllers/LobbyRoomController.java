@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -13,10 +12,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 // import javafx.scene.Cursor;
 
-
 public class LobbyRoomController extends ScrollController {
   @FXML private Label lblGM;
-@FXML private Label lblTime;
+  @FXML private Label lblTime;
 
   @FXML private ImageView lobbyToArt;
 
@@ -28,12 +26,12 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML private TitledPane lobbyRoomPane;
 
-@FXML
-    public void initialize() {
-        Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
-        timerThread.setDaemon(true);
-        timerThread.start();
-    }
+  @FXML
+  public void initialize() {
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime));
+    timerThread.setDaemon(true);
+    timerThread.start();
+  }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -59,25 +57,17 @@ public class LobbyRoomController extends ScrollController {
   private void scrollLobbyClicked() {
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "Now go find the book to continue.");
+      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
     } else if (GameState.secondTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "You can try to escape through the elevator now.");
+      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
     }
   }
 
   @FXML
   private void elevatorClicked() {
-    if (GameState.isUnlocked) {
-      App.setUi(AppUi.WIN_SCREEN);
-    } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
+    if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
       App.setUi(AppUi.LOCK);
     }
   }
