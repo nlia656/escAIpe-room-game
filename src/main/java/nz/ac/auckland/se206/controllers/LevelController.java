@@ -22,10 +22,6 @@ public class LevelController {
   @FXML private CheckBox ttsButton;
 
   @FXML
-  private Text levelTexts;
-  @FXML
-  private CheckBox ttsButton;
-  @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
     levelSlider.setValue(Math.round(level));
