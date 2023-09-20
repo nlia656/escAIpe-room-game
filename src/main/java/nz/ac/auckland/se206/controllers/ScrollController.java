@@ -8,7 +8,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ScrollController {
   @FXML private Text riddleCode;
-  @FXML private Text puzzleCode;
+  @FXML private static Text puzzleCodeDisplay;
 
   @FXML
   private void closeScroll() {
@@ -25,7 +25,8 @@ public class ScrollController {
     riddleCode.setText(code);
   }
 
-  public void setPuzzleCode(String code) {
-    puzzleCode.setText(code);
+  public static void setPuzzleCode() {
+    System.out.println(BookPuzzleController.puzzleCode);
+    puzzleCodeDisplay.setText("hi");
   }
 }

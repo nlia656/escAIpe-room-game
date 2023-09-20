@@ -41,6 +41,7 @@ public class ArtRoomController {
 
   public void initialize() {}
 
+
   @FXML
   private void onHelp() {
     if (GameState.onPaintPuzzle) {
@@ -161,6 +162,7 @@ public class ArtRoomController {
     if (BookPuzzleController.puzzleAnswer == "painting1") {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      ScrollController.setPuzzleCode();
     }
   }
 
@@ -168,6 +170,7 @@ public class ArtRoomController {
   private void painting2Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting2") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -176,6 +179,7 @@ public class ArtRoomController {
   private void painting3Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting3") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -184,6 +188,7 @@ public class ArtRoomController {
   private void painting4Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting4") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -192,6 +197,7 @@ public class ArtRoomController {
   private void painting5Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting5") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }

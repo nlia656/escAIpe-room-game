@@ -61,6 +61,7 @@ public class LobbyRoomController {
   private void couch2Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch2") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -69,6 +70,7 @@ public class LobbyRoomController {
   private void tableClicked() {
     if (BookPuzzleController.puzzleAnswer == "table") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -77,6 +79,7 @@ public class LobbyRoomController {
   private void couch3Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch3") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -85,6 +88,7 @@ public class LobbyRoomController {
   private void plantClicked() {
     if (BookPuzzleController.puzzleAnswer == "plant") {
       GameState.isPuzzleResolved = true;
+      ScrollController.setPuzzleCode();
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }

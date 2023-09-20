@@ -30,12 +30,12 @@
             <Font name="Papyrus" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="riddleCode" layoutX="183.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER">
+      <Text fx:id="riddleCodeDisplay" layoutX="183.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER">
          <font>
             <Font name="Papyrus" size="70.0" />
          </font>
       </Text>
-      <Text fx:id="puzzleCode" layoutX="523.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER">
+      <Text fx:id="puzzleCodeDisplay" layoutX="523.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER">
          <font>
             <Font name="Papyrus" size="70.0" />
          </font>
