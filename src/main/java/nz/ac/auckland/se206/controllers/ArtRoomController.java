@@ -12,63 +12,41 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-
 public class ArtRoomController extends ScrollController {
   @FXML private Label lblGM;
 
-  @FXML private ImageView artToDino;
-  @FXML private ImageView artToLobby;
   @FXML private ImageView scrollArt;
 
-  @FXML
-  private ImageView artToDino;
-  @FXML
-  private ImageView artToLobby;
+  @FXML private ImageView artToDino;
+  @FXML private ImageView artToLobby;
 
-  @FXML
-  private Rectangle dagger;
-  @FXML
-  private Rectangle armour;
-  @FXML
-  private Rectangle pillar;
-  @FXML
-  private Rectangle crown;
-  @FXML
-  private Rectangle vase1;
-  @FXML
-  private Rectangle sword;
-  @FXML
-  private Rectangle vase2;
-  @FXML
-  private Rectangle bench1;
-  @FXML
-  private Rectangle bench2;
-  @FXML
-  private Rectangle painting1;
-  @FXML
-  private Rectangle painting2;
-  @FXML
-  private Rectangle painting3;
-  @FXML
-  private Rectangle painting4;
-  @FXML
-  private Rectangle painting5;
-  @FXML
-  private Rectangle books1;
+  @FXML private Rectangle dagger;
+  @FXML private Rectangle armour;
+  @FXML private Rectangle pillar;
+  @FXML private Rectangle crown;
+  @FXML private Rectangle vase1;
+  @FXML private Rectangle sword;
+  @FXML private Rectangle vase2;
+  @FXML private Rectangle bench1;
+  @FXML private Rectangle bench2;
+  @FXML private Rectangle painting1;
+  @FXML private Rectangle painting2;
+  @FXML private Rectangle painting3;
+  @FXML private Rectangle painting4;
+  @FXML private Rectangle painting5;
+  @FXML private Rectangle books1;
 
-  @FXML
-  private Button btnHelp;
+  @FXML private Button btnHelp;
 
-  @FXML
-  private TitledPane artRoomPane;
+  @FXML private TitledPane artRoomPane;
 
-  public void initialize() {
-  }
+  public void initialize() {}
 
   @FXML
   private void onHelp() {
     if (GameState.onPaintPuzzle) {
-      showDialogPic("Guess The Painting",
+      showDialogPic(
+          "Guess The Painting",
           "The rest of the hint got burned and you are only left with this.",
           "Click on the help button to view image again.");
     }
@@ -228,9 +206,10 @@ public class ArtRoomController extends ScrollController {
   }
 
   private void clickForRiddle(String answer) {
-    if (answer == GameState.artRoomRiddleAnswer&&GameState.isRiddleResolved) {
-      showDialog("Info", "You found a piece of paper",
-          "Good Job! The first 2 dig of passcode is" + GameState.passcode+". Now find the item to get last two.");
+    if (answer == GameState.artRoomRiddleAnswer && GameState.isRiddleResolved) {
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      staticRiddleCodeLabel.setText(GameState.riddleCode);
+      System.out.println(GameState.riddleCode);
     }
   }
 }
