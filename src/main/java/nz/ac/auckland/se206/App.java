@@ -91,5 +91,6 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
+    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
   }
 }
