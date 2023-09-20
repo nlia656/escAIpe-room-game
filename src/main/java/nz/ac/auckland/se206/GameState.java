@@ -32,6 +32,8 @@ public class GameState {
   public static boolean isUnlimitedHint;
   public static int remainsHint;
   public static boolean isTts;
+  public static boolean isUnlocked;
+  public static String passcode;
   public static ChatCompletionRequest chatCompletionRequest;
   public static String chatHistory = "";
   public static boolean onArtRoom = false;
