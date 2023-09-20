@@ -72,7 +72,7 @@ public class LockController {
       }
         GameState.secondTimeCode = false;
 
-      } 
+
 
     } else {
       textBox.clear();
