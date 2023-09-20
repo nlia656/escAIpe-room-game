@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -21,10 +20,6 @@ public class LevelController {
   @FXML private Text levelTexts;
   @FXML private CheckBox ttsButton;
 
-  @FXML
-  private Text levelTexts;
-  @FXML
-  private CheckBox ttsButton;
   @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
@@ -74,7 +69,7 @@ public class LevelController {
       GameState.isTts = false;
     }
 
-    //todo change to intro screen later
+    // todo change to intro screen later
     App.loadRoom();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
