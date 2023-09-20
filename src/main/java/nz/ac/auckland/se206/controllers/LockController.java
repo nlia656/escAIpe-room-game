@@ -79,6 +79,8 @@ public class LockController {
         textBox.appendText("Door Unlocked");
         buttonDisable();
         GameState.isUnlocked = true;
+        GameState.secondTimeCode = false;
+
       } 
     } else {
         textBox.clear();
