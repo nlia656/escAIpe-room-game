@@ -106,6 +106,12 @@ public void initialize() {
           "Code discovered!",
           "Now go find the book to continue.");
       GameState.firstTimeCode = false;
+    } else if (GameState.secondTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "You can try to escape through the elevator now.");
+      GameState.secondTimeCode = false;
     }
   }
 
@@ -170,6 +176,7 @@ public void initialize() {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -179,6 +186,7 @@ public void initialize() {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -188,6 +196,7 @@ public void initialize() {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -197,6 +206,7 @@ public void initialize() {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -206,6 +216,7 @@ public void initialize() {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      GameState.secondTimeCode = true;
     }
   }
 
@@ -220,6 +231,7 @@ public void initialize() {
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
+      GameState.secondTimeCode = true;
     }
   }
 }

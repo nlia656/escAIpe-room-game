@@ -58,12 +58,25 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void scrollLobbyClicked() {
     App.setUi(AppUi.SCROLL);
+    if (GameState.firstTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "Now go find the book to continue.");
+      GameState.firstTimeCode = false;
+    } else if (GameState.secondTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "You can try to escape through the elevator now.");
+      GameState.secondTimeCode = false;
+    }
   }
 
   @FXML
   private void elevatorClicked() {
     if (GameState.isUnlocked) {
-      App.setUi(AppUi.ART_ROOM);
+      App.setUi(AppUi.WIN_SCREEN);
     } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
       App.setUi(AppUi.LOCK);
     }
