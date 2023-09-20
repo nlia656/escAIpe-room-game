@@ -27,7 +27,7 @@ public class App extends Application {
    * @return The UI node of the FXML file.
    * @throws IOException If the file is not found.
    */
-  public static Parent loadFxml(final String fxml) throws IOException {
+  private static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
@@ -75,16 +75,21 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
-    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
-    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
-    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
-    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
-    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
+
 
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
 
     stage.setScene(scene);
     stage.show();
+  }
+
+  public static void loadRoom() throws IOException {
+    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
+    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
+    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
+    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
+    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
+    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
   }
 }

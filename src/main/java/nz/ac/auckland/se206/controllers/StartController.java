@@ -16,7 +16,7 @@ public class StartController {
 
   @FXML
   private void start() {
-    App.setUi(AppUi.LEVEL);;
+    App.setUi(AppUi.LEVEL);
   }
 
   @FXML

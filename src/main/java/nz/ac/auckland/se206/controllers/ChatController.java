@@ -67,7 +67,7 @@ public class ChatController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
+    if (GameState.remainsHint == 0) {
       hintButton.setDisable(true);
     }
     if (GameState.chatHistory.isEmpty()) {
@@ -86,8 +86,8 @@ public class ChatController {
    *
    * @param msg the chat message to append
    */
-  private void appendChatMessage(ChatMessage msg, String msgText) {
-    chatTextArea.appendText(msg.getRole() + ": " + msgText + "\n\n");
+  private void appendChatMessage(ChatMessage msg) {
+    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   @FXML
@@ -112,17 +112,17 @@ public class ChatController {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage(), result.getChatMessage().getContent());
-      Task tts =
-          new Task() {
-            @Override
-            protected Object call() {
-              TextToSpeech tts = new TextToSpeech();
-              tts.speak(result.getChatMessage().getContent());
-              Platform.runLater(() -> {});
-              return null;
-            }
-          };
+      appendChatMessage(result.getChatMessage());
+      Task tts = new Task() {
+        @Override
+        protected Object call() {
+          TextToSpeech tts = new TextToSpeech();
+          tts.speak(result.getChatMessage().getContent());
+          Platform.runLater(() -> {
+          });
+          return null;
+        }
+      };
       Thread thread = new Thread(tts);
       thread.setDaemon(true);
       thread.start();
@@ -147,13 +147,10 @@ public class ChatController {
     if (message.trim().isEmpty()) {
       return;
     }
-    StringBuilder sb = new StringBuilder();
-    sb.append("[Player]: ");
-    sb.append(message);
     // Clear input text field
     inputText.clear();
-    ChatMessage msg = new ChatMessage("user", sb.toString());
-    appendChatMessage(msg, message);
+    ChatMessage msg = new ChatMessage("user", message);
+    appendChatMessage(msg);
     // Run GPT model in a separate thread
     Task task =
         new Task() {

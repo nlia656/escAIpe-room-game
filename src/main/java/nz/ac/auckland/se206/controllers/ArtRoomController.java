@@ -193,6 +193,11 @@ public class ArtRoomController extends ScrollController {
   }
 
   @FXML
+  private void onFinish(){
+    App.setUi(AppUi.END_PAGE);
+  }
+
+  @FXML
   private void painting5Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting5") {
       GameState.isPuzzleResolved = true;

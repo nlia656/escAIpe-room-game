@@ -21,7 +21,19 @@ public class SceneManager {
     uiMap.put(appUi, ui);
   }
 
+  public static void removeAppUi(AppUi appUi) {
+    if (uiMap.containsKey(appUi)) {
+        uiMap.remove(appUi);
+    } else {
+        return;
+    }
+}
+
+
   public static Parent getAppUi(AppUi appUi) {
     return uiMap.get(appUi);
+  }
+  public static void clearAppUi() {
+    uiMap.clear();
   }
 }
