@@ -24,17 +24,4 @@ public class ScrollController {
       App.setUi(AppUi.LOBBY_ROOM);
     }
   }
-
-  // public void setRiddleCode(String code) {
-  //   riddleCodeDisplay.setText(code);
-  // }
-
-  // public static void setPuzzleCode() {
-  //   System.out.println(BookPuzzleController.puzzleCode);
-  //   puzzleCodeDisplay.setText("hi");
-  // }
-  @FXML
-  private void testShow() {
-    puzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-  }
 }
