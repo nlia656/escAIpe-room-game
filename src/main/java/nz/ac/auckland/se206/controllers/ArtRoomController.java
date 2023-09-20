@@ -44,7 +44,7 @@ public class ArtRoomController extends ScrollController {
   @FXML private TitledPane artRoomPane;
 
 @FXML
-  private void initialize() {
+public void initialize() {
   Thread timerThread = new Thread(getTimer(lblTime));
     timerThread.setDaemon(true);
     timerThread.start();
