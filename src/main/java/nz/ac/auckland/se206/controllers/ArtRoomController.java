@@ -19,6 +19,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML private ImageView scrollArt;
 
+
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
 

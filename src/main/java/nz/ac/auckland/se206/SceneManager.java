@@ -13,7 +13,9 @@ public class SceneManager {
     LOBBY_ROOM,
     BOOK_PUZZLE,
     SCROLL,
-    LOCK
+    LOSE_SCREEN,
+    WIN_SCREEN,
+    LOCK;
   }
 
   private static HashMap<AppUi, Parent> uiMap = new HashMap<AppUi, Parent>();
@@ -24,16 +26,16 @@ public class SceneManager {
 
   public static void removeAppUi(AppUi appUi) {
     if (uiMap.containsKey(appUi)) {
-        uiMap.remove(appUi);
+      uiMap.remove(appUi);
     } else {
-        return;
+      return;
     }
-}
-
+  }
 
   public static Parent getAppUi(AppUi appUi) {
     return uiMap.get(appUi);
   }
+
   public static void clearAppUi() {
     uiMap.clear();
   }
