@@ -27,8 +27,6 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class ChatController {
 
   @FXML
-  private Text gmType;
-  @FXML
   private Text hintRemains;
   @FXML
   private Button backButton;
@@ -73,40 +71,11 @@ public class ChatController {
     if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
-    Task runAnis = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        while (true) {
-          int time = 0;
-          while (isGptRunning) {
-            switch (time) {
-              case 0:
-                gmType.setText("Game master is typing .");
-                time++;
-                Thread.sleep(200);
-              case 1:
-                gmType.setText("Game master is typing ..");
-                time++;
-                Thread.sleep(200);
-              case 2:
-                gmType.setText("Game master is typing ...");
-                time = 0;
-                Thread.sleep(200);
-            }
-          }
-          time = 0;
-          gmType.setText("");
-        }
-      }
-    };
     chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
         .setMaxTokens(140);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
-    Thread thread2 = new Thread(runAnis);
-    thread2.setDaemon(true);
     thread.start();
-    thread2.start();
   }
 
   /**
@@ -207,10 +176,37 @@ public class ChatController {
   }
 
   private void inProcess() {
+    Task runAnis = new Task() {
+      @Override
+      protected Object call() throws Exception {
+        int time = 0;
+        while (isGptRunning) {
+          switch (time) {
+            case 0:
+              inputText.setText("Game master is typing .");
+              time++;
+            case 1:
+              inputText.setText("Game master is typing ..");
+              time++;
+            case 2:
+              inputText.setText("Game master is typing ...");
+              time = 0;
+          }
+          Thread.sleep(200);
+        }
+        Platform.runLater(() -> {
+          inputText.setText("");
+        });
+        return null;
+      }
+    };
     isGptRunning = true;
     inputText.setDisable(true);
     sendButton.setDisable(true);
     hintButton.setDisable(true);
+    Thread thread = new Thread(runAnis);
+    thread.setDaemon(true);
+    thread.start();
   }
 
   private void finishProcess() {
