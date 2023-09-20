@@ -45,6 +45,7 @@ public class GameState {
   public static int randomCode;
   public static String riddleCode;
   private static double randNumber;
+  public static boolean firstTimeCode = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);

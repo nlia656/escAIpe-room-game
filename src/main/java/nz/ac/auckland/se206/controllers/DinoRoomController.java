@@ -58,6 +58,13 @@ public class DinoRoomController extends ScrollController {
   @FXML
   private void scrollDinoClicked() {
     App.setUi(AppUi.SCROLL);
+    if (GameState.firstTimeCode) {
+      showDialog(
+          "Info",
+          "Code discovered!",
+          "Now go find the book to continue.");
+      GameState.firstTimeCode = false;
+    }
   }
 
   @FXML

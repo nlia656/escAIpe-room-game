@@ -62,7 +62,11 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void elevatorClicked() {
-    // Add your code for handling the elevatorClicked event here
+    if (GameState.isUnlocked) {
+      App.setUi(AppUi.ART_ROOM);
+    } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
+      App.setUi(AppUi.LOCK);
+    }
   }
 
   @FXML
