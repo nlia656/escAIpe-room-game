@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="1026.0" layoutX="-46.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-40.0">
          <image>
-            <Image url="@../images/museumWallpaper3.jpg" />
+            <Image url="@../images/robberyRoom.jpg" />
          </image>
       </ImageView>
       <Button fx:id="startButton" layoutX="507.0" layoutY="270.0" mnemonicParsing="false" onAction="#start" prefHeight="72.0" prefWidth="186.0" text="Start" AnchorPane.bottomAnchor="220.0" AnchorPane.rightAnchor="40.0">
@@ -28,12 +28,12 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Button>
-      <Text layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heist of the Century: The Art Museum Affair" textAlignment="CENTER" wrappingWidth="660.5735473632812" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="23.42645263671875">
+      <Text fill="#b5a10c" layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heist of the Century: The Art Museum Affair" textAlignment="CENTER" wrappingWidth="660.5735473632812" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="23.42645263671875">
          <font>
             <Font name="Britannic Bold" size="32.0" />
          </font>
       </Text>
-      <Text fill="#040000" layoutX="26.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!&quot;" textAlignment="CENTER" wrappingWidth="389.81768798828125">
+      <Text fill="#fffa94" layoutX="14.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!" textAlignment="CENTER" wrappingWidth="389.81768798828125">
          <font>
             <Font name="Bank Gothic Medium BT" size="28.0" />
          </font>

@@ -77,7 +77,6 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
 
-
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
 
     stage.setScene(scene);
@@ -91,5 +90,6 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
+    SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
   }
 }
