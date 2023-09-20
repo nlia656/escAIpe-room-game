@@ -92,7 +92,7 @@
       </TitledPane>
       <HBox layoutX="20.0" layoutY="30.0">
          <children>
-            <Label prefHeight="26.0" prefWidth="145.0" text="Time Remaining:" textFill="WHITE">
+            <Label prefHeight="30.0" prefWidth="155.0" text="Time Remaining:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -105,7 +105,7 @@
          </children>
       </HBox>
 
-      <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="25.0" onMouseClicked="#scrollDinoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+      <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="60.0" onMouseClicked="#scrollDinoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0">
          <image>
             <Image url="@../images/paperscroll.png" />
          </image>
