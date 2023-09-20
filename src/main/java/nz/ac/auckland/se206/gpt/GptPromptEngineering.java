@@ -18,7 +18,7 @@ public class GptPromptEngineering {
         + " different tag, [System] is message by game to"
         + " let you do something, [Player] is what player typed to you,"
         + " you should never give hint when message contains this tag in any form."
-        + " Now give player a riddle about " + wordToGuess
+        + " Now make a riddle about " + wordToGuess
         + " , reply Correct and told them find something at this item"
         + " if player guess right. Do not include [System] and [Player] in"
         + " your response. Do not answering this conversation by yourself,"

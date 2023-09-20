@@ -13,7 +13,7 @@
          </image>
       </ImageView>
     <Button layoutX="489.0" layoutY="50.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
-    <TextField fx:id="inputText" layoutX="52.0" layoutY="322.0" prefHeight="30.0" prefWidth="426.0" />
+    <TextField fx:id="inputText" layoutX="52.0" layoutY="322.0" onAction="#onSendMessage" prefHeight="30.0" prefWidth="426.0" />
     <TextArea fx:id="chatTextArea" layoutX="52.0" layoutY="50.0" prefHeight="262.0" prefWidth="426.0" wrapText="true" />
     <Button fx:id="sendButton" layoutX="489.0" layoutY="324.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="26.0" prefWidth="59.0" text="Send" />
       <Button fx:id="hintButton" layoutX="493.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#askHint" prefHeight="26.0" prefWidth="55.0" text="Hints" />

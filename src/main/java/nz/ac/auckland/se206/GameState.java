@@ -65,5 +65,7 @@ public class GameState {
     }else if(pass<1000){
       passcode = "0"+pass;
     }
+    System.out.println(passcode);
+    System.out.println(artRoomRiddleAnswer);
   }
 }
