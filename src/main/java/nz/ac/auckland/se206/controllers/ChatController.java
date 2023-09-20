@@ -191,12 +191,14 @@ public class ChatController {
     progressBar.setVisible(true);
     inputText.setDisable(true);
     sendButton.setDisable(true);
+    hintButton.setDisable(true);
   }
 
   private void finishProcess() {
     progressBar.setVisible(false);
     inputText.setDisable(false);
     sendButton.setDisable(false);
+    hintButton.setDisable(false);
   }
 
   private void showApiError(ApiProxyException e) {
