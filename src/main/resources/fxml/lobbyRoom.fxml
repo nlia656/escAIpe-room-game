@@ -79,5 +79,13 @@
             </Label>
          </children>
       </HBox>
+      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="110.0" layoutY="76.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <image>
+            <Image url="@../images/paperscroll.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

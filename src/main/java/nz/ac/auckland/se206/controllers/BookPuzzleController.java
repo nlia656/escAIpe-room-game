@@ -2,9 +2,13 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class BookPuzzleController {
   public static String puzzleAnswer;
+  public static int puzzleCode = 0;
+  private double randNumber;
   @FXML private ImageView couch1Snip;
   @FXML private ImageView dinosaurSnip;
   @FXML private ImageView maskSnip;
@@ -103,5 +107,14 @@ public class BookPuzzleController {
         tableSnip.setVisible(true);
         break;
     }
+    while (puzzleCode < 10) {
+      randNumber = Math.random();
+      puzzleCode = (int) (randNumber * 100);
+    }
+  }
+
+  @FXML
+  private void closeBook() {
+    App.setUi(AppUi.DINO_ROOM);
   }
 }

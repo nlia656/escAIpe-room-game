@@ -14,9 +14,11 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class ArtRoomController {
+public class ArtRoomController extends ScrollController {
   @FXML private Label lblGM;
   @FXML private Label lblTime;
+
+  @FXML private ImageView scrollArt;
 
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
@@ -120,54 +122,58 @@ public class ArtRoomController {
   }
 
   @FXML
+  private void scrollArtClicked() {
+    App.setUi(AppUi.SCROLL);
+  }
+
+  @FXML
   private void daggerClicked() {
-    // Testing for the alert and this will only be shown after the first riddle is solved and can be
-    // shown again through a help button.
-    if (GameState.isArtComplete) {
-      showDialog("Info", "You have already solved the puzzle", "Good Job!");
-      return;
-    }
-    showDialogPic(
-        "Guess The Painting",
-        "The rest of the hint got burned and you are only left with this.",
-        "Click on the help button to view image again.");
-    GameState.onPaintPuzzle = true;
+
     // Add your code for handling the daggerClicked event here
+    clickForRiddle("dagger");
   }
 
   @FXML
   private void armourClicked() {
     // Add your code for handling the armourClicked event here
+    clickForRiddle("armour");
   }
 
   @FXML
   private void pillarClicked() {
     // Add your code for handling the pillarClicked event here
+    clickForRiddle("pillar");
   }
 
   @FXML
   private void crownClicked() {
     // Add your code for handling the crownClicked event here
+    clickForRiddle("crown");
   }
 
   @FXML
   private void vase1Clicked() {
     // Add your code for handling the vase1Clicked event here
+    clickForRiddle("vase");
   }
 
   @FXML
   private void swordClicked() {
     // Add your code for handling the swordClicked event here
+    clickForRiddle("sword");
   }
 
   @FXML
   private void vase2Clicked() {
     // Add your code for handling the vase2Clicked event here
+    clickForRiddle("vase");
   }
 
   @FXML
   private void bench1Clicked() {
-    // Add your code for handling the bench1Clicked event here
+    GameState.isRiddleResolved = true;
+    System.out.println("bench1 clicked");
+    System.out.println(GameState.isRiddleResolved);
   }
 
   @FXML
@@ -179,6 +185,8 @@ public class ArtRoomController {
   private void painting1Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting1") {
       GameState.isPuzzleResolved = true;
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
     }
   }
 
@@ -186,6 +194,8 @@ public class ArtRoomController {
   private void painting2Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting2") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
@@ -193,6 +203,8 @@ public class ArtRoomController {
   private void painting3Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting3") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
@@ -200,23 +212,31 @@ public class ArtRoomController {
   private void painting4Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting4") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
-  }
-
-  @FXML
-  private void onFinish(){
-    App.setUi(AppUi.END_PAGE);
   }
 
   @FXML
   private void painting5Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting5") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
+    clickForRiddle("book");
+  }
+
+  private void clickForRiddle(String answer) {
+    if (answer == GameState.artRoomRiddleAnswer && GameState.isRiddleResolved) {
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      staticRiddleCodeLabel.setText(GameState.riddleCode);
+      System.out.println(GameState.riddleCode);
+    }
   }
 }
