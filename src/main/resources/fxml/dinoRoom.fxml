@@ -89,5 +89,13 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="25.0" onMouseClicked="#scrollDinoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <image>
+            <Image url="@../images/paperscroll.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -94,7 +94,9 @@ public class ArtRoomController {
   }
 
   @FXML
-  private void scrollArtClicked() {}
+  private void scrollArtClicked() {
+    App.setUi(AppUi.SCROLL);
+  }
 
   @FXML
   private void daggerClicked() {

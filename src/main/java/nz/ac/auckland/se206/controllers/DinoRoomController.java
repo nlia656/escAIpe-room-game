@@ -46,6 +46,11 @@ public class DinoRoomController {
   }
 
   @FXML
+  private void scrollDinoClicked() {
+    App.setUi(AppUi.SCROLL);
+  }
+
+  @FXML
   public void poster1Clicked(MouseEvent event) {
     System.out.println("poster1 clicked");
     if (BookPuzzleController.puzzleAnswer == "poster1") {

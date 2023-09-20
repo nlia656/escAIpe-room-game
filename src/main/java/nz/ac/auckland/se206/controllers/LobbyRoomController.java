@@ -48,6 +48,11 @@ public class LobbyRoomController {
   }
 
   @FXML
+  private void scrollLobbyClicked() {
+    App.setUi(AppUi.SCROLL);
+  }
+
+  @FXML
   private void elevatorClicked() {
     // Add your code for handling the elevatorClicked event here
   }

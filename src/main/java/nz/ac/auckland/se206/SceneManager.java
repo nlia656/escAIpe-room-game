@@ -11,7 +11,8 @@ public class SceneManager {
     START,
     DINO_ROOM,
     LOBBY_ROOM,
-    BOOK_PUZZLE
+    BOOK_PUZZLE,
+    SCROLL
   }
 
   private static HashMap<AppUi, Parent> uiMap = new HashMap<AppUi, Parent>();
