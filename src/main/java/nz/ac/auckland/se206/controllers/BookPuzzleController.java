@@ -7,7 +7,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class BookPuzzleController {
   public static String puzzleAnswer;
-  public static int puzzleCode = 50;
+  public static int puzzleCode = 0;
   private double randNumber;
   @FXML private ImageView couch1Snip;
   @FXML private ImageView dinosaurSnip;
@@ -107,10 +107,10 @@ public class BookPuzzleController {
         tableSnip.setVisible(true);
         break;
     }
-    // while (puzzleCode < 10) {
-    //   randNumber = Math.random();
-    //   puzzleCode = (int) (randNumber * 100);
-    // }
+    while (puzzleCode < 10) {
+      randNumber = Math.random();
+      puzzleCode = (int) (randNumber * 100);
+    }
   }
 
   @FXML

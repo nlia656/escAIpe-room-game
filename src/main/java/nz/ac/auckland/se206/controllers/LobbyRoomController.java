@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 // import javafx.scene.Cursor;
 
-public class LobbyRoomController {
+public class LobbyRoomController extends ScrollController {
   @FXML private Label lblGM;
 
   @FXML private ImageView lobbyToArt;
@@ -61,7 +61,7 @@ public class LobbyRoomController {
   private void couch2Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch2") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -70,7 +70,7 @@ public class LobbyRoomController {
   private void tableClicked() {
     if (BookPuzzleController.puzzleAnswer == "table") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -79,7 +79,7 @@ public class LobbyRoomController {
   private void couch3Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch3") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -88,7 +88,7 @@ public class LobbyRoomController {
   private void plantClicked() {
     if (BookPuzzleController.puzzleAnswer == "plant") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }

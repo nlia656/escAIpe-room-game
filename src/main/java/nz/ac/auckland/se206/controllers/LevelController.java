@@ -13,18 +13,14 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LevelController {
 
-  @FXML
-  private Button startButton;
-  @FXML
-  private Slider levelSlider;
+  @FXML private Button startButton;
+  @FXML private Slider levelSlider;
 
-  @FXML
-  private Slider timeSlider;
+  @FXML private Slider timeSlider;
 
-  @FXML
-  private Text levelTexts;
-  @FXML
-  private CheckBox ttsButton;
+  @FXML private Text levelTexts;
+  @FXML private CheckBox ttsButton;
+
   @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
@@ -68,17 +64,15 @@ public class LevelController {
       default:
         break;
     }
-    if(ttsButton.isSelected()){
-      GameState.isTts=true;
-    }
-    else{
-      GameState.isTts=false;
+    if (ttsButton.isSelected()) {
+      GameState.isTts = true;
+    } else {
+      GameState.isTts = false;
     }
     SceneManager.addAppUi(AppUi.CHAT, App.loadFxml("chat"));
-    //todo change to intro screen later
+    // todo change to intro screen later
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
-
   }
 
   @FXML
@@ -99,5 +93,4 @@ public class LevelController {
         break;
     }
   }
-
 }

@@ -23,27 +23,17 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * Controller class for the chat view.
- */
+/** Controller class for the chat view. */
 public class ChatController {
 
-  @FXML
-  private Text hintRemains;
-  @FXML
-  private Button backButton;
-  @FXML
-  private TextArea chatTextArea;
-  @FXML
-  private TextField inputText;
-  @FXML
-  private Button noTtsButton;
-  @FXML
-  private Button sendButton;
-  @FXML
-  private ProgressIndicator progressBar;
-  @FXML
-  private Button hintButton;
+  @FXML private Text hintRemains;
+  @FXML private Button backButton;
+  @FXML private TextArea chatTextArea;
+  @FXML private TextField inputText;
+  @FXML private Button noTtsButton;
+  @FXML private Button sendButton;
+  @FXML private ProgressIndicator progressBar;
+  @FXML private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
@@ -54,22 +44,26 @@ public class ChatController {
   @FXML
   public void initialize() throws ApiProxyException {
     chatCompletionRequest = GameState.chatCompletionRequest;
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        try {
-          runGpt(new ChatMessage("user",
-              GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
-        } catch (ApiProxyException e) {
-          showApiError(e);
-        }
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            try {
+              runGpt(
+                  new ChatMessage(
+                      "user",
+                      GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
+            } catch (ApiProxyException e) {
+              showApiError(e);
+            }
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
@@ -77,8 +71,8 @@ public class ChatController {
       hintButton.setDisable(true);
     }
     if (GameState.chatHistory.isEmpty()) {
-      chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
-          .setMaxTokens(140);
+      chatCompletionRequest =
+          new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(140);
       Thread thread = new Thread(task);
       thread.setDaemon(true);
       thread.start();
@@ -118,17 +112,17 @@ public class ChatController {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage(),result.getChatMessage().getContent());
-      Task tts = new Task() {
-        @Override
-        protected Object call() {
-          TextToSpeech tts = new TextToSpeech();
-          tts.speak(result.getChatMessage().getContent());
-          Platform.runLater(() -> {
-          });
-          return null;
-        }
-      };
+      appendChatMessage(result.getChatMessage(), result.getChatMessage().getContent());
+      Task tts =
+          new Task() {
+            @Override
+            protected Object call() {
+              TextToSpeech tts = new TextToSpeech();
+              tts.speak(result.getChatMessage().getContent());
+              Platform.runLater(() -> {});
+              return null;
+            }
+          };
       Thread thread = new Thread(tts);
       thread.setDaemon(true);
       thread.start();
@@ -144,7 +138,7 @@ public class ChatController {
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
+   * @throws IOException if there is an I/O error
    */
   @FXML
   private void onSendMessage(ActionEvent event)
@@ -161,17 +155,19 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", sb.toString());
     appendChatMessage(msg, message);
     // Run GPT model in a separate thread
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        runGpt(msg);
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            runGpt(msg);
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -182,7 +178,7 @@ public class ChatController {
    *
    * @param event the action event triggered by the go back button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
+   * @throws IOException if there is an I/O error
    */
   @FXML
   private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
@@ -217,21 +213,23 @@ public class ChatController {
 
   @FXML
   private void askHint() {
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        try {
-          runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
-        } catch (ApiProxyException e) {
-          showApiError(e);
-        }
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            try {
+              runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+            } catch (ApiProxyException e) {
+              showApiError(e);
+            }
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     if (!GameState.isUnlimitedHint) {
       GameState.remainsHint--;
       hintRemains.setText(Integer.toString(GameState.remainsHint) + "/5");

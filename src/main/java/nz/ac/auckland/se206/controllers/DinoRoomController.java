@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class DinoRoomController {
+public class DinoRoomController extends ScrollController {
 
   @FXML private ImageView dinoToArt;
 
@@ -55,7 +55,7 @@ public class DinoRoomController {
     System.out.println("poster1 clicked");
     if (BookPuzzleController.puzzleAnswer == "poster1") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -65,7 +65,7 @@ public class DinoRoomController {
     System.out.println("poster2 clicked");
     if (BookPuzzleController.puzzleAnswer == "poster2") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -75,7 +75,7 @@ public class DinoRoomController {
     System.out.println("poster3 clicked");
     if (BookPuzzleController.puzzleAnswer == "poster3") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -85,7 +85,7 @@ public class DinoRoomController {
     System.out.println("couch1 clicked");
     if (BookPuzzleController.puzzleAnswer == "couch1") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -95,7 +95,7 @@ public class DinoRoomController {
     System.out.println("robe clicked");
     if (BookPuzzleController.puzzleAnswer == "robe") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -104,7 +104,7 @@ public class DinoRoomController {
   public void dinosaurClicked(MouseEvent event) {
     if (BookPuzzleController.puzzleAnswer == "dinosaur") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
     System.out.println("dinosaur clicked");
@@ -115,7 +115,7 @@ public class DinoRoomController {
     System.out.println("vase3 clicked");
     if (BookPuzzleController.puzzleAnswer == "vase") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -129,7 +129,6 @@ public class DinoRoomController {
   public void books2Clicked(MouseEvent mouseEvent) {
     System.out.println("books2 clicked");
     if (GameState.isRiddleResolved) {
-      System.out.print(BookPuzzleController.puzzleCode);
       App.setUi(AppUi.BOOK_PUZZLE);
     }
   }
@@ -139,7 +138,7 @@ public class DinoRoomController {
     System.out.println("mask clicked");
     if (BookPuzzleController.puzzleAnswer == "mask") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
@@ -149,7 +148,7 @@ public class DinoRoomController {
     System.out.println("painting6 clicked");
     if (BookPuzzleController.puzzleAnswer == "painting6") {
       GameState.isPuzzleResolved = true;
-      ScrollController.setPuzzleCode();
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
