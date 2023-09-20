@@ -76,9 +76,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
-    // SceneManager.addAppUi(AppUi.ROOM, loadFxml("room"));
 
-    SceneManager.addAppUi(AppUi.END_PAGE, loadFxml("endPage"));
 
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
 
@@ -92,5 +90,6 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
+    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
   }
 }

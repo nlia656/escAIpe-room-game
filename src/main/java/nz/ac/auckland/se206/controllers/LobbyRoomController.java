@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
@@ -11,7 +12,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 // import javafx.scene.Cursor;
 
-public class LobbyRoomController {
+public class LobbyRoomController extends ScrollController {
   @FXML private Label lblGM;
 
   @FXML private ImageView lobbyToArt;
@@ -26,6 +27,14 @@ public class LobbyRoomController {
 
   public void initialize() {}
 
+  private void showDialog(String title, String headerText, String message) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(headerText);
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
+
   @FXML
   private void onOpenGM() {
     App.setUi(AppUi.CHAT);
@@ -39,6 +48,11 @@ public class LobbyRoomController {
   }
 
   @FXML
+  private void scrollLobbyClicked() {
+    App.setUi(AppUi.SCROLL);
+  }
+
+  @FXML
   private void elevatorClicked() {
     // Add your code for handling the elevatorClicked event here
   }
@@ -47,6 +61,8 @@ public class LobbyRoomController {
   private void couch2Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch2") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
@@ -54,6 +70,8 @@ public class LobbyRoomController {
   private void tableClicked() {
     if (BookPuzzleController.puzzleAnswer == "table") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
@@ -61,6 +79,8 @@ public class LobbyRoomController {
   private void couch3Clicked() {
     if (BookPuzzleController.puzzleAnswer == "couch3") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 
@@ -68,6 +88,8 @@ public class LobbyRoomController {
   private void plantClicked() {
     if (BookPuzzleController.puzzleAnswer == "plant") {
       GameState.isPuzzleResolved = true;
+      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 }
