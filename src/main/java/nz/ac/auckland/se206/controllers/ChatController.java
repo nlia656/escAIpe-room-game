@@ -21,58 +21,51 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * Controller class for the chat view.
- */
+/** Controller class for the chat view. */
 public class ChatController {
 
-  @FXML
-  private Text hintRemains;
-  @FXML
-  private Button backButton;
-  @FXML
-  private TextArea chatTextArea;
-  @FXML
-  private TextField inputText;
-  @FXML
-  private Button noTtsButton;
-  @FXML
-  private Button sendButton;
-  @FXML
-  private Button hintButton;
+  @FXML private Text hintRemains;
+  @FXML private Button backButton;
+  @FXML private TextArea chatTextArea;
+  @FXML private TextField inputText;
+  @FXML private Button noTtsButton;
+  @FXML private Button sendButton;
+  @FXML private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
   private boolean isGptRunning = false;
 
-  /**
-   * Initializes the chat view, loading the riddle.
-   */
+  /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        try {
-          runGpt(new ChatMessage("user",
-              GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
-        } catch (ApiProxyException e) {
-          showApiError(e);
-        }
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            try {
+              runGpt(
+                  new ChatMessage(
+                      "user",
+                      GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
+            } catch (ApiProxyException e) {
+              showApiError(e);
+            }
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
     if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
-    chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
-        .setMaxTokens(140);
+    chatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(140);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -86,7 +79,6 @@ public class ChatController {
   private void appendChatMessage(ChatMessage msg) {
     chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
-
 
   /**
    * Runs the GPT model with a given chat message.
@@ -102,21 +94,21 @@ public class ChatController {
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
       GameState.lastMsg = result.getChatMessage().getContent();
-      if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
-          .getContent().startsWith("Correct")) {
+      if (result.getChatMessage().getRole().equals("assistant")
+          && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
         GameState.firstTimeCode = true;
       }
-      Task tts = new Task() {
-        @Override
-        protected Object call() {
-          TextToSpeech tts = new TextToSpeech();
-          tts.speak(result.getChatMessage().getContent());
-          Platform.runLater(() -> {
-          });
-          return null;
-        }
-      };
+      Task tts =
+          new Task() {
+            @Override
+            protected Object call() {
+              TextToSpeech tts = new TextToSpeech();
+              tts.speak(result.getChatMessage().getContent());
+              Platform.runLater(() -> {});
+              return null;
+            }
+          };
       if (GameState.isTts) {
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
@@ -143,17 +135,19 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     // Run GPT model in a separate thread
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        runGpt(msg);
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            runGpt(msg);
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -176,30 +170,32 @@ public class ChatController {
   }
 
   private void inProcess() {
-    Task runAnis = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        int time = 0;
-        while (isGptRunning) {
-          switch (time) {
-            case 0:
-              inputText.setText("Game master is typing .");
-              time++;
-            case 1:
-              inputText.setText("Game master is typing ..");
-              time++;
-            case 2:
-              inputText.setText("Game master is typing ...");
-              time = 0;
+    Task runAnis =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            int time = 0;
+            while (isGptRunning) {
+              switch (time) {
+                case 0:
+                  inputText.setText("Game master is typing .");
+                  time++;
+                case 1:
+                  inputText.setText("Game master is typing ..");
+                  time++;
+                case 2:
+                  inputText.setText("Game master is typing ...");
+                  time = 0;
+              }
+              Thread.sleep(200);
+            }
+            Platform.runLater(
+                () -> {
+                  inputText.setText("");
+                });
+            return null;
           }
-          Thread.sleep(200);
-        }
-        Platform.runLater(() -> {
-          inputText.setText("");
-        });
-        return null;
-      }
-    };
+        };
     isGptRunning = true;
     inputText.setDisable(true);
     sendButton.setDisable(true);
@@ -226,21 +222,23 @@ public class ChatController {
 
   @FXML
   private void askHint() {
-    Task task = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        inProcess();
-        try {
-          runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
-        } catch (ApiProxyException e) {
-          showApiError(e);
-        }
-        Platform.runLater(() -> {
-          finishProcess();
-        });
-        return null;
-      }
-    };
+    Task task =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            inProcess();
+            try {
+              runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+            } catch (ApiProxyException e) {
+              showApiError(e);
+            }
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                });
+            return null;
+          }
+        };
     if (!GameState.isUnlimitedHint) {
       GameState.remainsHint--;
       hintRemains.setText(GameState.remainsHint + "/5");

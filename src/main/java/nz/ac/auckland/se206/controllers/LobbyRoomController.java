@@ -26,14 +26,12 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML private TitledPane lobbyRoomPane;
 
-
-@FXML
-    public void initialize() {
-        Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime,lblGM));
-        timerThread.setDaemon(true);
-        timerThread.start();
-    }
-
+  @FXML
+  public void initialize() {
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGM));
+    timerThread.setDaemon(true);
+    timerThread.start();
+  }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -70,12 +68,7 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void elevatorClicked() {
     if (!GameState.isPuzzleResolved || !GameState.isRiddleResolved) {
-      showDialog(
-          "Info",
-          "Elevator locked!",
-          "You need to solve the puzzle and riddle first.");
-    } else if (GameState.isUnlocked) {
-      App.setUi(AppUi.WIN_SCREEN);
+      showDialog("Info", "Elevator locked!", "You need to solve the puzzle and riddle first.");
     } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
       App.setUi(AppUi.LOCK);
     }
