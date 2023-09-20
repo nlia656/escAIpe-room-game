@@ -74,14 +74,12 @@ public class ChatController {
     if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
       hintButton.setDisable(true);
     }
-    if (GameState.chatHistory.isEmpty()) {
+    if (GameState.lastMsg.isEmpty()) {
       chatCompletionRequest = new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5)
           .setMaxTokens(140);
       Thread thread = new Thread(task);
       thread.setDaemon(true);
       thread.start();
-    } else {
-      chatTextArea.setText(GameState.chatHistory);
     }
   }
 
@@ -99,7 +97,6 @@ public class ChatController {
    * Runs the GPT model with a given chat message.
    *
    * @param msg the chat message to process
-   * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
@@ -109,6 +106,7 @@ public class ChatController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
+      GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant") && result.getChatMessage()
           .getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
@@ -138,12 +136,9 @@ public class ChatController {
    * Sends a message to the GPT model.
    *
    * @param event the action event triggered by the send button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
    */
   @FXML
-  private void onSendMessage(ActionEvent event)
-      throws ApiProxyException, IOException, InterruptedException {
+  private void onSendMessage(ActionEvent event) {
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
       return;
@@ -173,11 +168,9 @@ public class ChatController {
    * Navigates back to the previous view.
    *
    * @param event the action event triggered by the go back button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
    */
   @FXML
-  private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
+  private void onGoBack(ActionEvent event) {
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {

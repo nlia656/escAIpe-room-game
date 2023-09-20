@@ -44,12 +44,12 @@ public class ArtRoomController extends ScrollController {
 
 @FXML
 public void initialize() {
-  Thread timerThread = new Thread(getTimer(lblTime));
+  Thread timerThread = new Thread(getTimer(lblTime, lblGM));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 @FXML
-  protected static Task getTimer(Label lblTime) {
+  protected static Task getTimer(Label lblTime, Label lblGM) {
     Task timer = new Task() {
       @Override
       protected Object call() throws Exception {
@@ -58,6 +58,7 @@ public void initialize() {
             Platform.runLater(
                 () -> {
                   lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblGM.setText(GameState.lastMsg);
                 });
           }
           Thread.sleep(300);
