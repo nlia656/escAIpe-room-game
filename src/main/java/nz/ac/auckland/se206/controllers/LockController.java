@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LockController {
 
@@ -148,7 +149,7 @@ public class LockController {
 
   @FXML
   private void onBack(ActionEvent event) throws IOException {
-    App.setRoot("room");
+    App.setUi(AppUi.LOBBY_ROOM);
   }
 
   private void buttonDisable() {
