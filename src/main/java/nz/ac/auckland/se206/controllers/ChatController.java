@@ -67,7 +67,7 @@ public class ChatController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0) {
+    if (GameState.remainsHint == 0&&!GameState.isUnlimitedHint){
       hintButton.setDisable(true);
     }
     if (GameState.chatHistory.isEmpty()) {
@@ -229,7 +229,7 @@ public class ChatController {
         };
     if (!GameState.isUnlimitedHint) {
       GameState.remainsHint--;
-      hintRemains.setText(Integer.toString(GameState.remainsHint) + "/5");
+      hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
         hintButton.setDisable(true);
         hintRemains.setVisible(false);
