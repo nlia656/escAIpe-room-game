@@ -17,6 +17,7 @@ public class ArtRoomController {
 
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
+  @FXML private ImageView scrollArt;
 
   @FXML private Rectangle dagger;
   @FXML private Rectangle armour;
@@ -93,6 +94,9 @@ public class ArtRoomController {
   }
 
   @FXML
+  private void scrollArtClicked() {}
+
+  @FXML
   private void daggerClicked() {
     // Testing for the alert and this will only be shown after the first riddle is solved and can be
     // shown again through a help button.
@@ -154,6 +158,7 @@ public class ArtRoomController {
   private void painting1Clicked() {
     if (BookPuzzleController.puzzleAnswer == "painting1") {
       GameState.isPuzzleResolved = true;
+      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
     }
   }
 

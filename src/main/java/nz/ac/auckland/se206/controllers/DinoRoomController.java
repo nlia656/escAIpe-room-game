@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,14 @@ public class DinoRoomController {
   @FXML private TitledPane dinoRoomPane;
 
   @FXML private Label lblGM;
+
+  private void showDialog(String title, String headerText, String message) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(headerText);
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
 
   @FXML
   private void goArtRoom() {
