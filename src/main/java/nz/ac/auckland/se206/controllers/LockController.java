@@ -82,14 +82,10 @@ public class LockController {
   }
 
   @FXML
-  private void escapeButtonClicked() throws IOException {
+  private void escapeButtonClicked() {
     if (GameState.isUnlocked) {
-      GameState.timeOver = true;
-      App.unloadRoom();
-      App.loadRoom();
       App.setUi(AppUi.WIN_SCREEN);
-      GameState.isPuzzleResolved = false;
-      GameState.isRiddleResolved = false;
+      App.unloadRoom();
     }
   }
 

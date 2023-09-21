@@ -39,11 +39,10 @@ public class ChatController {
   /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
-    chatCompletionRequest = GameState.chatCompletionRequest;
     Task<Void> task =
         new Task<Void>() {
           @Override
-          protected Void call() throws Exception {
+          protected Void call() {
             inProcess();
             try {
               runGpt(
