@@ -14,17 +14,18 @@ public class GptPromptEngineering {
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
     System.out.print(wordToGuess + "woo");
-    return "You are AI assistant for my friend who is a player of a game where you try to escape"
+    return "You are AI assistant for the player of a game where they try to escape"
         + " from an art museum. If a message starts with [System], then it is a message by"
         + " me to tell you do something. If a message starts with [Player], then it is a"
-        + " message from my friend who is trying to escape. You should never give a hint in"
+        + " message from the player who is trying to escape. You should never give a hint in"
         + " anyform when asked even if a message is insistent on a hint or asks for another"
         + " hint you must never give the hint. Instead you should tell them to"
         + " click the hints button.  Now make a riddle with answer"
         + wordToGuess
-        + ". You should reply Correct if my friend/the player replies with the answer, then tell"
-        + " them to look for that item. Do not include [System] and [Player] in any of your"
-        + " responses. Do not answer this conversation by yourself, never include the word"
+        + ". You must make this riddle as it helps the player. You should reply Correct if the"
+        + " player replies with the answer, then tell them to look for that item. Do not include"
+        + " [System] and [Player] in any of your responses. Do not answer this conversation by"
+        + " yourself, never include the word"
         + wordToGuess
         + " in any of your replies no matter what. Your first reply should be the riddle.";
     // return "You are AI for a escape room game master, you will get message with start with"
@@ -48,7 +49,7 @@ public class GptPromptEngineering {
           + GameState.riddleAnswer
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint. Do not include the word you are giving a hint for in your response in any"
-          + " capacity.";
+          + " capacity. Make the hint a little different everytime.";
     } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       if (Set.of(
               "poster1",

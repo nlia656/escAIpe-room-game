@@ -21,31 +21,21 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * Controller class for the chat view.
- */
+/** Controller class for the chat view. */
 public class ChatController {
 
-  @FXML
-  private Text hintRemains;
-  @FXML
-  private Button backButton;
-  @FXML
-  private TextArea chatTextArea;
-  @FXML
-  private TextField inputText;
-  @FXML
-  private Button noTtsButton;
-  @FXML
-  private Button sendButton;
-  @FXML
-  private Button hintButton;
+  @FXML private Text hintRemains;
+  @FXML private Button backButton;
+  @FXML private TextArea chatTextArea;
+  @FXML private TextField inputText;
+  @FXML private Button noTtsButton;
+  @FXML private Button sendButton;
+  @FXML private Button hintButton;
+
   private ChatCompletionRequest chatCompletionRequest;
   private boolean isGptRunning = false;
 
-  /**
-   * Initializes the chat view, loading the riddle.
-   */
+  /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
@@ -57,8 +47,7 @@ public class ChatController {
             try {
               runGpt(
                   new ChatMessage(
-                      "user",
-                      GptPromptEngineering.getRiddleWithGivenWord(GameState.riddleAnswer)));
+                      "user", GptPromptEngineering.getRiddleWithGivenWord(GameState.riddleAnswer)));
             } catch (ApiProxyException e) {
               showApiError(e);
             }
@@ -115,8 +104,7 @@ public class ChatController {
             protected Object call() {
               TextToSpeech tts = new TextToSpeech();
               tts.speak(result.getChatMessage().getContent());
-              Platform.runLater(() -> {
-              });
+              Platform.runLater(() -> {});
               return null;
             }
           };
@@ -242,8 +230,12 @@ public class ChatController {
           protected Object call() throws Exception {
             inProcess();
             try {
-              ChatCompletionRequest hintRequest = new ChatCompletionRequest().setN(1)
-                  .setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+              ChatCompletionRequest hintRequest =
+                  new ChatCompletionRequest()
+                      .setN(1)
+                      .setTemperature(0.1)
+                      .setTopP(0.5)
+                      .setMaxTokens(140);
               hintRequest.addMessage(new ChatMessage("user", GptPromptEngineering.getHints()));
               ChatCompletionResult chatCompletionResult = hintRequest.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
@@ -264,8 +256,7 @@ public class ChatController {
       GameState.remainsHint--;
       hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
-        hintButton.setDisable(true);
-        hintRemains.setVisible(false);
+        hintButton.setVisible(false);
       }
     }
     Thread thread = new Thread(task);
