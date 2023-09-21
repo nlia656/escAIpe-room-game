@@ -22,6 +22,7 @@ public class GameState {
 
   public static boolean isRiddleResolved = false;
   public static String artRoomRiddleAnswer;
+  public static String bookPuzzleAnswer;
 
   /** Indicates whether the puzzle has been resolved. */
   public static boolean isPuzzleResolved = false;
@@ -50,8 +51,6 @@ public class GameState {
   public static boolean secondTimeCode = false;
   public static boolean timeOver = false;
 
-
-
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
@@ -59,10 +58,10 @@ public class GameState {
   public static void initial() {
     // randomize the answer
     isUnlimitedHint = false;
-    remainsHint=0;
-    timeLeft=timeLimit;
+    remainsHint = 0;
+    timeLeft = timeLimit;
     isGameComplete = false;
-    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length-1)];
+    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     isTts = false;
     room = rooms[getRandom(rooms.length - 1)];
     chatCompletionRequest = new ChatCompletionRequest();
@@ -70,7 +69,7 @@ public class GameState {
     remainsHint = 0;
     timeLeft = timeLimit;
     isTts = false;
-    isPopShowed=false;
+    isPopShowed = false;
     randNumber = Math.random();
     randomCode = (int) (randNumber * 100);
     if (randomCode < 10) {
