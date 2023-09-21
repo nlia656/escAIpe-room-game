@@ -97,7 +97,6 @@ public class ChatController {
       if (result.getChatMessage().getRole().equals("assistant")
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
-        GameState.firstTimeCode = true;
       }
       Task tts =
           new Task() {

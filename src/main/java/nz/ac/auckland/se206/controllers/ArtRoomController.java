@@ -237,11 +237,15 @@ public class ArtRoomController extends ScrollController {
   }
 
   private void clickForRiddle(String answer) {
+    if (GameState.isRiddleCodeGiven) {
+      return;
+    }
     if (answer == GameState.artRoomRiddleAnswer && GameState.isRiddleResolved) {
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
-      GameState.secondTimeCode = true;
+      GameState.firstTimeCode = true;
+      GameState.isRiddleCodeGiven = true;
     }
   }
 }
