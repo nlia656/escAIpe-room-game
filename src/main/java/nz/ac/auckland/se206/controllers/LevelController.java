@@ -64,9 +64,9 @@ public class LevelController {
         break;
     }
     GameState.isTts = ttsButton.isSelected();
-    //todo change to intro screen later
+    // todo change to intro screen later
     App.makeTimer();
-    App.loadRoom();
+    // App.loadRoom();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
   }
