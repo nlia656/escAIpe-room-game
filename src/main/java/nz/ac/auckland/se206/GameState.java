@@ -50,6 +50,7 @@ public class GameState {
   public static int remainsHint;
   public static boolean isTts;
   public static boolean isUnlocked;
+  public static boolean isHard;
   public static String passcode;
   public static ChatCompletionRequest chatCompletionRequest;
   public static String lastMsg = "";

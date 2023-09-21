@@ -40,12 +40,15 @@ public class LevelController {
       case 0:
         GameState.isUnlimitedHint = true;
         GameState.remainsHint = 0;
+        GameState.isHard = false;
         break;
       case 1:
         GameState.remainsHint = 5;
+        GameState.isHard = false;
         break;
       case 2:
         GameState.remainsHint = 0;
+        GameState.isHard = true;
         break;
       default:
         break;

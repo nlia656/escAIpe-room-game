@@ -225,6 +225,12 @@ public class ChatController {
 
   @FXML
   private void askHint() {
+    if (GameState.isHard) {
+      hintsGone.setText("No hints!");
+      hintsGone.setVisible(true);
+      hintButton.setVisible(false);
+      return;
+    }
     Task task =
         new Task() {
           @Override
@@ -257,6 +263,7 @@ public class ChatController {
       GameState.remainsHint--;
       hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
+        hintsGone.setText("Out of hints!");
         hintButton.setVisible(false);
         hintsGone.setVisible(true);
       }
