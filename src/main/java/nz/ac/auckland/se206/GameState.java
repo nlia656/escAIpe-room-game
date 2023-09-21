@@ -69,6 +69,7 @@ public class GameState {
   private static double randNumber;
   public static boolean isRiddleCodeGiven = false;
   public static boolean isPuzzleCodeGiven = false;
+  public static boolean hasBookOpened = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -76,6 +77,18 @@ public class GameState {
 
   public static void initial() {
     // randomize the answer
+    isRiddleResolved = false;
+    isPuzzleResolved = false;
+    isUnlocked = false;
+    isHard = false;
+    isRiddleCodeGiven = false;
+    isPuzzleCodeGiven = false;
+    hasBookOpened = false;
+    isArtComplete = false;
+    isGameComplete = false;
+    timeOver = false;
+    firstTimeCode = false;
+    secondTimeCode = false;
     isUnlimitedHint = false;
     remainsHint = 0;
     timeLeft = timeLimit;
