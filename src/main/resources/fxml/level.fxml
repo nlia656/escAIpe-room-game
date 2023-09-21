@@ -47,7 +47,7 @@
         <Font name="Bank Gothic Medium BT" size="28.0" />
       </font>
     </Text>
-    <Text fx:id="levelTexts" fill="#fffa94" layoutX="95.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Easy Mode, you can attempt to get any times of hints from game master" wrappingWidth="385.0401611328125">
+    <Text fx:id="levelTexts" fill="#fffa94" layoutX="95.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Easy Mode, you can get any amount of hints." wrappingWidth="385.0401611328125">
       <font>
         <Font name="Bank Gothic Medium BT" size="19.0" />
       </font>

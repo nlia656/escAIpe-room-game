@@ -25,12 +25,14 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class ChatController {
 
   @FXML private Text hintRemains;
+  @FXML private Text hintsGone;
   @FXML private Button backButton;
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
   @FXML private Button noTtsButton;
   @FXML private Button sendButton;
   @FXML private Button hintButton;
+
   private ChatCompletionRequest chatCompletionRequest;
   private boolean isGptRunning = false;
 
@@ -46,8 +48,7 @@ public class ChatController {
             try {
               runGpt(
                   new ChatMessage(
-                      "user",
-                      GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
+                      "user", GptPromptEngineering.getRiddleWithGivenWord(GameState.riddleAnswer)));
             } catch (ApiProxyException e) {
               showApiError(e);
             }
@@ -223,13 +224,30 @@ public class ChatController {
 
   @FXML
   private void askHint() {
+    if (GameState.isHard) {
+      hintsGone.setText("No hints!");
+      hintsGone.setVisible(true);
+      hintButton.setVisible(false);
+      return;
+    }
     Task<Void> task =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
             inProcess();
             try {
-              runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionRequest hintRequest =
+                  new ChatCompletionRequest()
+                      .setN(1)
+                      .setTemperature(0.1)
+                      .setTopP(0.5)
+                      .setMaxTokens(140);
+              hintRequest.addMessage(new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionResult chatCompletionResult = hintRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              appendChatMessage(result.getChatMessage());
+              GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);
             }
@@ -244,8 +262,9 @@ public class ChatController {
       GameState.remainsHint--;
       hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
-        hintButton.setDisable(true);
-        hintRemains.setVisible(false);
+        hintsGone.setText("Out of hints!");
+        hintButton.setVisible(false);
+        hintsGone.setVisible(true);
       }
     }
     Thread thread = new Thread(task);

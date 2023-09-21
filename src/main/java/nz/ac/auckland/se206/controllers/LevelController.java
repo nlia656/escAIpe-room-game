@@ -40,12 +40,15 @@ public class LevelController {
       case 0:
         GameState.isUnlimitedHint = true;
         GameState.remainsHint = 0;
+        GameState.isHard = false;
         break;
       case 1:
         GameState.remainsHint = 5;
+        GameState.isHard = false;
         break;
       case 2:
         GameState.remainsHint = 0;
+        GameState.isHard = true;
         break;
       default:
         break;
@@ -76,15 +79,14 @@ public class LevelController {
   private void setLevelText() {
     switch ((int) levelSlider.getValue()) {
       case 0:
-        levelTexts.setText(
-            "In Easy Mode, you can attempt to get any times of hints from game master");
+        levelTexts.setText("In Easy Mode, you can get any amount of hints from the game master.");
         break;
       case 1:
         levelTexts.setText(
-            "In Medium Mode, you can attempt to get 5 times of hints from game master");
+            "In Medium Mode, you can get a maximum of 5 hints from the game master.");
         break;
       case 2:
-        levelTexts.setText("In Hard Mode, you cannot get any hints from game master");
+        levelTexts.setText("In Hard Mode, you cannot get any hints from game master.");
         break;
       default:
         break;
