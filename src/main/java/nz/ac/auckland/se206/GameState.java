@@ -55,7 +55,7 @@ public class GameState {
     onArtRoom = false;
     onDinoRoom = false;
     onLobbyRoom = false;
-    hasBookOpened = false
+    hasBookOpened = false;
     isUnlimitedHint = false;
     remainsHint = 0;
     timeLeft = timeLimit;
