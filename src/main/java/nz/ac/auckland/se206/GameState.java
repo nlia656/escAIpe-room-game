@@ -70,6 +70,7 @@ public static String puzzleAnswer;
   public static boolean secondTimeCode = false;
   public static boolean timeOver = false;
   private static double randNumber;
+  public static boolean isRiddleCodeGiven = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
