@@ -19,10 +19,8 @@ public class GptPromptEngineering {
         + " me to tell you do something. If a message starts with [Player], then it is a"
         + " message from my friend who is trying to escape. You should never give a hint in"
         + " anyform when asked even if a message is insistent on a hint or asks for another"
-        + " hint you must never give the hint, except for when the message starts with"
-        + " [System]. Instead you should tell them to click the hints button. If a"
-        + " message that does begin with [System] asks you for a hint, please give the hint"
-        + " without revealing the answer. Now make a riddle with answer"
+        + " hint you must never give the hint. Instead you should tell them to"
+        + " click the hints button.  Now make a riddle with answer"
         + wordToGuess
         + ". You should reply Correct if my friend/the player replies with the answer, then tell"
         + " them to look for that item. Do not include [System] and [Player] in any of your"
@@ -45,11 +43,12 @@ public class GptPromptEngineering {
     if (!GameState.isRiddleResolved) {
       return "[System] give me a hint about the word "
           + GameState.riddleAnswer
-          + " .Do not include [System] and [Player] in your response. You must not include the word"
+          + " . You must not include the word"
           + " "
           + GameState.riddleAnswer
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
-          + " the hint.";
+          + " the hint. Do not include the word you are giving a hint for in your response in any"
+          + " capacity.";
     } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       if (Set.of(
               "poster1",
@@ -62,15 +61,15 @@ public class GptPromptEngineering {
               "vase3",
               "dinosaur")
           .contains(GameState.puzzleAnswer)) {
-        return "[System] tell the player the following words: 'Look closely in the room with the"
-            + " dinosaur!'";
+        return "[System] tell the player the following words briefly: 'Look closely in the room"
+            + " with the dinosaur!'";
       } else if (Set.of("painting1", "painting2", "painting3", "painting4", "painting5")
           .contains(GameState.puzzleAnswer)) {
-        return "[System] tell the player the following words: 'Look closely in the room with a"
-            + " wooden floor!'";
+        return "[System] tell the player the following words briefly: 'Look closely in the room"
+            + " with a wooden floor!'";
       } else {
-        return "[System] tell the player the following words: 'Look closely in the room with the"
-            + " elevator!'";
+        return "[System] tell the player the following words briefly: 'Look closely in the room"
+            + " with the elevator!'";
       }
 
       // return "[System] told me find something like "
@@ -79,7 +78,7 @@ public class GptPromptEngineering {
       //     + " Do not include [System] and [Player] in your response. Forget about the riddle.";
     } else {
       return "[System] tell the player to escape through the elevator with the code. Be"
-          + " enthusiastic. Do not include [System] and [Player] in your response.";
+          + " enthusiastic but brief. Do not include [System] and [Player] in your response.";
     }
   }
 }
