@@ -51,20 +51,20 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
 protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
-    Task<Void> timer = new Task<Void>() {
-        @Override
-        protected Void call() throws Exception {
-            while (!GameState.isGameComplete) {
-                if (!GameState.isPaused) {
-                    Platform.runLater(() -> {
-                        lblTime.setText(String.valueOf(GameState.timeLeft));
-                        lblGM.setText(GameState.lastMsg);
-                    });
-                }
-                Thread.sleep(300);
-            }
-            return null;
+    Task<Void> timer = new Task<>() {
+      @Override
+      protected Void call() throws Exception {
+        while (!GameState.isGameComplete) {
+          if (!GameState.isPaused) {
+            Platform.runLater(() -> {
+              lblTime.setText(String.valueOf(GameState.timeLeft));
+              lblGM.setText(GameState.lastMsg);
+            });
+          }
+          Thread.sleep(300);
         }
+        return null;
+      }
     };
     return timer;
 }

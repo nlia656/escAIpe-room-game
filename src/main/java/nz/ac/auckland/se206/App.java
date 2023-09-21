@@ -55,8 +55,8 @@ public class App extends Application {
           if (!timerRunning) {
             break;
           }
-          if (GameState.timeOver) {
-            GameState.timeOver = false;
+          if (GameState.isGameComplete){
+            GameState.isGameComplete = false;
             return null;
           }
           if (!GameState.isPaused) {
@@ -92,6 +92,7 @@ public class App extends Application {
 
   @FXML
   public static void unloadRoom() {
+    GameState.isGameComplete = true;
     SceneManager.removeAppUi(AppUi.ART_ROOM);
     SceneManager.removeAppUi(AppUi.CHAT);
     SceneManager.removeAppUi(AppUi.DINO_ROOM);
