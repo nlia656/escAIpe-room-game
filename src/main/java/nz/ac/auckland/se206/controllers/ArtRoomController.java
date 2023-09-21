@@ -19,7 +19,6 @@ public class ArtRoomController extends ScrollController {
 
   @FXML private ImageView scrollArt;
 
-
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
 
@@ -43,33 +42,34 @@ public class ArtRoomController extends ScrollController {
 
   @FXML private TitledPane artRoomPane;
 
-@FXML
-public void initialize() {
-  Thread timerThread = new Thread(getTimer(lblTime, lblGM));
+  @FXML
+  public void initialize() {
+    Thread timerThread = new Thread(getTimer(lblTime, lblGM));
     timerThread.setDaemon(true);
     timerThread.start();
   }
-@FXML
+
+  @FXML
   protected static Task getTimer(Label lblTime, Label lblGM) {
-    Task timer = new Task() {
-      @Override
-      protected Object call() throws Exception {
-        while (!GameState.isGameComplete) {
-          if (!GameState.isPaused) {
-            Platform.runLater(
-                () -> {
-                  lblTime.setText(String.valueOf(GameState.timeLeft));
-                  lblGM.setText(GameState.lastMsg);
-                });
+    Task timer =
+        new Task() {
+          @Override
+          protected Object call() throws Exception {
+            while (!GameState.isGameComplete) {
+              if (!GameState.isPaused) {
+                Platform.runLater(
+                    () -> {
+                      lblTime.setText(String.valueOf(GameState.timeLeft));
+                      lblGM.setText(GameState.lastMsg);
+                    });
+              }
+              Thread.sleep(300);
+            }
+            return null;
           }
-          Thread.sleep(300);
-        }
-        return null;
-      }
-    };
+        };
     return timer;
   }
-
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -102,16 +102,10 @@ public void initialize() {
   private void scrollArtClicked() {
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "Now go find the book to continue.");
+      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
     } else if (GameState.secondTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "You can try to escape through the elevator now.");
+      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
     }
   }

@@ -69,11 +69,11 @@ public class LockController {
 
         escapeButton.setVisible(true);
         escapeButton.setCursor(Cursor.OPEN_HAND);
+      } else {
+        textBox.clear();
+        textBox.appendText("Incorrect passcode");
+        passcode.clear();
       }
-        GameState.secondTimeCode = false;
-
-
-
     } else {
       textBox.clear();
       textBox.appendText("Incorrect passcode");
@@ -86,6 +86,8 @@ public class LockController {
     if (GameState.isUnlocked) {
       GameState.timeOver = true;
       App.setUi(AppUi.WIN_SCREEN);
+      GameState.isPuzzleResolved = false;
+      GameState.isRiddleResolved = false;
     }
   }
 

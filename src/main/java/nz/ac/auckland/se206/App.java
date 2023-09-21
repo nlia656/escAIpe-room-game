@@ -79,6 +79,7 @@ public class App extends Application {
     thread.start();
   }
 
+
   @FXML
   public static void loadRoom() throws IOException {
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
