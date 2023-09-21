@@ -14,7 +14,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
-  @FXML private Label lblGM;
+  @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
 
   @FXML private ImageView scrollArt;
@@ -44,13 +44,13 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 
   @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
+  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
     Task<Void> timer =
         new Task<>() {
           @Override
@@ -60,7 +60,7 @@ public class ArtRoomController extends ScrollController {
                 Platform.runLater(
                     () -> {
                       lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGM.setText(GameState.lastMsg);
+                      lblGameMaster.setText(GameState.lastMsg);
                     });
               }
               Thread.sleep(300);

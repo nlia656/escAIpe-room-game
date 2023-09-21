@@ -28,15 +28,14 @@ public class DinoRoomController extends ScrollController {
   @FXML private TitledPane dinoRoomPane;
 
   @FXML private Label lblTime;
+  @FXML private Label lblGameMaster;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
-
-  @FXML private Label lblGM;
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
