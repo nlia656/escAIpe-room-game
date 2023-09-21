@@ -21,20 +21,31 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Controller class for the chat view. */
+/**
+ * Controller class for the chat view.
+ */
 public class ChatController {
 
-  @FXML private Text hintRemains;
-  @FXML private Button backButton;
-  @FXML private TextArea chatTextArea;
-  @FXML private TextField inputText;
-  @FXML private Button noTtsButton;
-  @FXML private Button sendButton;
-  @FXML private Button hintButton;
+  @FXML
+  private Text hintRemains;
+  @FXML
+  private Button backButton;
+  @FXML
+  private TextArea chatTextArea;
+  @FXML
+  private TextField inputText;
+  @FXML
+  private Button noTtsButton;
+  @FXML
+  private Button sendButton;
+  @FXML
+  private Button hintButton;
   private ChatCompletionRequest chatCompletionRequest;
   private boolean isGptRunning = false;
 
-  /** Initializes the chat view, loading the riddle. */
+  /**
+   * Initializes the chat view, loading the riddle.
+   */
   @FXML
   public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
@@ -47,7 +58,7 @@ public class ChatController {
               runGpt(
                   new ChatMessage(
                       "user",
-                      GptPromptEngineering.getRiddleWithGivenWord(GameState.artRoomRiddleAnswer)));
+                      GptPromptEngineering.getRiddleWithGivenWord(GameState.riddleAnswer)));
             } catch (ApiProxyException e) {
               showApiError(e);
             }
@@ -104,7 +115,8 @@ public class ChatController {
             protected Object call() {
               TextToSpeech tts = new TextToSpeech();
               tts.speak(result.getChatMessage().getContent());
-              Platform.runLater(() -> {});
+              Platform.runLater(() -> {
+              });
               return null;
             }
           };
@@ -230,7 +242,14 @@ public class ChatController {
           protected Object call() throws Exception {
             inProcess();
             try {
-              runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionRequest hintRequest = new ChatCompletionRequest().setN(1)
+                  .setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+              hintRequest.addMessage(new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionResult chatCompletionResult = hintRequest.execute();
+              Choice result = chatCompletionResult.getChoices().iterator().next();
+              chatCompletionRequest.addMessage(result.getChatMessage());
+              appendChatMessage(result.getChatMessage());
+              GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);
             }

@@ -240,7 +240,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if (answer == GameState.artRoomRiddleAnswer && GameState.isRiddleResolved) {
+    if (answer == GameState.riddleAnswer && GameState.isRiddleResolved) {
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);

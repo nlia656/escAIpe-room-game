@@ -44,10 +44,10 @@ public class GptPromptEngineering {
   public static String getHints() {
     if (!GameState.isRiddleResolved) {
       return "[System] give me a hint about the word "
-          + GameState.artRoomRiddleAnswer
+          + GameState.riddleAnswer
           + " .Do not include [System] and [Player] in your response. You must not include the word"
           + " "
-          + GameState.artRoomRiddleAnswer
+          + GameState.riddleAnswer
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint.";
     } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) {

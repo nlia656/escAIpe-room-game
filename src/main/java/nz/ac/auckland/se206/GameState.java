@@ -38,7 +38,7 @@ public class GameState {
 
   public static String puzzleAnswer;
   public static boolean isRiddleResolved = false;
-  public static String artRoomRiddleAnswer;
+  public static String riddleAnswer;
 
   /** Indicates whether the puzzle has been resolved. */
   public static boolean isPuzzleResolved = false;
@@ -79,7 +79,7 @@ public class GameState {
     timeLeft = timeLimit;
     isGameComplete = false;
     puzzleAnswer = puzzleObjects[getRandom(puzzleObjects.length - 1)];
-    artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
+    riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     isTts = false;
     room = rooms[getRandom(rooms.length - 1)];
     chatCompletionRequest = new ChatCompletionRequest();
@@ -95,7 +95,7 @@ public class GameState {
     } else {
       riddleCode = Integer.toString(randomCode);
     }
-    System.out.println(artRoomRiddleAnswer);
+    System.out.println(riddleAnswer);
     System.out.println(riddleCode);
   }
 }
