@@ -42,6 +42,7 @@ public class GameState {
   public static boolean isRiddleCodeGiven;
   public static boolean isPuzzleCodeGiven;
   private static double randNumber;
+  public static boolean hasBookOpened;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -54,6 +55,7 @@ public class GameState {
     onArtRoom = false;
     onDinoRoom = false;
     onLobbyRoom = false;
+    hasBookOpened = false
     isUnlimitedHint = false;
     remainsHint = 0;
     timeLeft = timeLimit;
