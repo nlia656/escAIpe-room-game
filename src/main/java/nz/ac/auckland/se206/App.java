@@ -11,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/**
- * This is the entry point of the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
@@ -43,42 +41,41 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /**
-   * Create and run a timer that handles game timing.
-   */
+  /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
-    Task<Void> task = new Task<>() {
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (!timerRunning) {
-            break;
-          }
-          if (GameState.timeOver) {
-            GameState.timeOver = false;
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (!timerRunning) {
+                break;
+              }
+              if (GameState.timeOver) {
+                GameState.timeOver = false;
+                return null;
+              }
+              if (!GameState.isPaused) {
+                final int finalI = i;
+                Platform.runLater(
+                    () -> {
+                      GameState.timeLeft = finalI;
+                      if (finalI == 0) {
+                        // TODO: Handle game over here, e.g., transition to the game over screen
+                        App.setUi(AppUi.LOSE_SCREEN);
+                      }
+                    });
+              }
+              Thread.sleep(1000);
+            }
             return null;
           }
-          if (!GameState.isPaused) {
-            final int finalI = i;
-            Platform.runLater(() -> {
-              GameState.timeLeft = finalI;
-              if (finalI == 0) {
-                // TODO: Handle game over here, e.g., transition to the game over screen
-                App.setUi(AppUi.LOSE_SCREEN);
-              }
-            });
-          }
-          Thread.sleep(1000);
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
   }
-
 
   @FXML
   public static void loadRoom() throws IOException {
@@ -88,15 +85,33 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
-    SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
-    SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
     SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
+  }
+
+  @FXML
+  public static void unloadRoom() {
+    SceneManager.removeAppUi(AppUi.ART_ROOM);
+    SceneManager.removeAppUi(AppUi.CHAT);
+    SceneManager.removeAppUi(AppUi.DINO_ROOM);
+    SceneManager.removeAppUi(AppUi.LOBBY_ROOM);
+    SceneManager.removeAppUi(AppUi.BOOK_PUZZLE);
+    SceneManager.removeAppUi(AppUi.SCROLL);
+    SceneManager.removeAppUi(AppUi.LOCK);
   }
 
   @Override
   public void start(final Stage stage) throws IOException {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
+    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
+    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
+    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
+    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
+    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
+    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
+    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
+    SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
+    SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
     stage.setResizable(false);
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
     stage.setTitle("Escape Room");
