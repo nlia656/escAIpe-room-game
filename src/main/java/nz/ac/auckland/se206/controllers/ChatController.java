@@ -65,7 +65,7 @@ public class ChatController {
       hintButton.setDisable(true);
     }
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(140);
+        new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
