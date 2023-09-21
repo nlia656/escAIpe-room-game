@@ -38,10 +38,10 @@ public class ChatController {
   @FXML
   public void initialize() {
     chatCompletionRequest = GameState.chatCompletionRequest;
-    Task task =
-        new Task() {
+    Task<Void> task =
+        new Task<Void>() {
           @Override
-          protected Object call() throws Exception {
+          protected Void call() throws Exception {
             inProcess();
             try {
               runGpt(
@@ -98,10 +98,9 @@ public class ChatController {
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
       }
-      Task tts =
-          new Task() {
+      Task<Void> tts = new Task<Void>() { // Specify the generic type as Void
             @Override
-            protected Object call() {
+            protected Void call() {
               TextToSpeech tts = new TextToSpeech();
               tts.speak(result.getChatMessage().getContent());
               Platform.runLater(() -> {});
@@ -134,10 +133,10 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     // Run GPT model in a separate thread
-    Task task =
-        new Task() {
+    Task<Void> task =
+        new Task<Void>() {
           @Override
-          protected Object call() throws Exception {
+          protected Void call() throws Exception {
             inProcess();
             runGpt(msg);
             Platform.runLater(
@@ -169,10 +168,10 @@ public class ChatController {
   }
 
   private void inProcess() {
-    Task runAnis =
-        new Task() {
+    Task<Void> runAnis =
+        new Task<Void>() {
           @Override
-          protected Object call() throws Exception {
+          protected Void call() throws Exception {
             int i = 0;
             while (isGptRunning) {
               switch (i) {
@@ -224,10 +223,10 @@ public class ChatController {
 
   @FXML
   private void askHint() {
-    Task task =
-        new Task() {
+    Task<Void> task =
+        new Task<Void>() {
           @Override
-          protected Object call() throws Exception {
+          protected Void call() throws Exception {
             inProcess();
             try {
               runGpt(new ChatMessage("user", GptPromptEngineering.getHints()));
