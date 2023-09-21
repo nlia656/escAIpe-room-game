@@ -50,7 +50,8 @@ public class BookPuzzleController {
       "plant",
       "table"
     };
-    puzzleAnswer = puzzleObjects[GameState.getRandom(puzzleObjects.length-1)];
+    puzzleAnswer = puzzleObjects[GameState.getRandom(puzzleObjects.length - 1)];
+    GameState.bookPuzzleAnswer = puzzleAnswer;
     switch (puzzleAnswer) {
       case "couch1":
         couch1Snip.setVisible(true);
