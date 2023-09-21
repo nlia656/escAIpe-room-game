@@ -28,7 +28,7 @@
     <TextField fx:id="inputText" layoutX="166.0" layoutY="310.0" onAction="#onSendMessage"
       prefHeight="30.0" prefWidth="330.0"/>
     <TextArea fx:id="chatTextArea" layoutX="167.0" layoutY="57.0" minWidth="-Infinity"
-      prefHeight="245.0" prefWidth="330.0" wrapText="true"/>
+      prefHeight="245.0" prefWidth="330.0" wrapText="true" editable = "false"/>
     <Button fx:id="sendButton" layoutX="504.0" layoutY="312.0" mnemonicParsing="false"
       onAction="#onSendMessage" prefHeight="26.0" prefWidth="59.0" text="Send"/>
     <Button fx:id="hintButton" layoutX="506.0" layoutY="82.0" mnemonicParsing="false"
