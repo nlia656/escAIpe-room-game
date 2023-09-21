@@ -25,6 +25,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class ChatController {
 
   @FXML private Text hintRemains;
+  @FXML private Text hintsGone;
   @FXML private Button backButton;
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
@@ -257,6 +258,7 @@ public class ChatController {
       hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
         hintButton.setVisible(false);
+        hintsGone.setVisible(true);
       }
     }
     Thread thread = new Thread(task);
