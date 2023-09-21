@@ -174,18 +174,21 @@ public class ChatController {
         new Task() {
           @Override
           protected Object call() throws Exception {
-            int time = 0;
+            int i = 0;
             while (isGptRunning) {
-              switch (time) {
+              switch (i) {
                 case 0:
                   inputText.setText("Game master is typing .");
-                  time++;
+                  i++;
+                  break;
                 case 1:
                   inputText.setText("Game master is typing ..");
-                  time++;
+                  i++;
+                  break;
                 case 2:
                   inputText.setText("Game master is typing ...");
-                  time = 0;
+                  i = 0;
+                  break;
               }
               Thread.sleep(200);
             }
