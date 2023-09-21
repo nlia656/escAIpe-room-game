@@ -11,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/**
- * This is the entry point of the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
@@ -43,37 +41,36 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /**
-   * Create and run a timer that handles game timing.
-   */
+  /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
-    Task<Void> task = new Task<>() {
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (!timerRunning) {
-            break;
-          }
-          if (GameState.isGameComplete){
-            GameState.isGameComplete = false;
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (!timerRunning) {
+                break;
+              }
+              if (GameState.isGameComplete) {
+                GameState.isGameComplete = false;
+                return null;
+              }
+              if (!GameState.isPaused) {
+                final int finalI = i;
+                Platform.runLater(
+                    () -> {
+                      GameState.timeLeft = finalI;
+                      if (finalI == 0) {
+                        App.setUi(AppUi.LOSE_SCREEN);
+                      }
+                    });
+              }
+              Thread.sleep(1000);
+            }
             return null;
           }
-          if (!GameState.isPaused) {
-            final int finalI = i;
-            Platform.runLater(() -> {
-              GameState.timeLeft = finalI;
-              if (finalI == 0) {
-                // TODO: Handle game over here, e.g., transition to the game over screen
-                App.setUi(AppUi.LOSE_SCREEN);
-              }
-            });
-          }
-          Thread.sleep(1000);
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
