@@ -83,7 +83,8 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
   }
-@FXML
+
+  @FXML
   public static void loadRoom() throws IOException {
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
