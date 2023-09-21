@@ -31,7 +31,7 @@ public class GptPromptEngineering {
       return "[System] give me a hint about word " + GameState.artRoomRiddleAnswer
           + " .Do not include [System] and [Player] in your response.";
     }else if(!GameState.isArtComplete&&!GameState.isPuzzleResolved){
-      return "[System] told me find something like " + BookPuzzleController.puzzleAnswer
+      return "[System] told me find something like " + GameState.puzzleAnswer
           + " . Avoid number in that word if there is some when you response."
           + " Do not include [System] and [Player] in your response. Forget about the riddle.";
     }else{

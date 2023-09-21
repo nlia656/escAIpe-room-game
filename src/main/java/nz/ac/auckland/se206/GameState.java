@@ -2,29 +2,49 @@ package nz.ac.auckland.se206;
 
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 
-/** Represents the state of the game. */
+/**
+ * Represents the state of the game.
+ */
 public class GameState {
 
   public static final String[] rooms = {"lobby", "dino"};
   public static final String[] lobbyAnswers = {"couch", "table", "plant"};
   public static final String[] dinoAnswers = {
-    "dinosaur", "vase", "book", "mask", "painting", "poster", "robe", "couch"
+      "dinosaur", "vase", "book", "mask", "painting", "poster", "robe", "couch"
   };
   public static final String[] artRoomRiddleAnswers = {
-    "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
+      "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
+  };
+  public static final String[] puzzleObjects = {
+      "couch1",
+      "dinosaur",
+      "mask",
+      "robe",
+      "poster3",
+      "poster2",
+      "poster1",
+      "vase",
+      "painting1",
+      "painting2",
+      "painting3",
+      "painting4",
+      "painting5",
+      "painting6",
+      "couch2",
+      "couch3",
+      "plant",
+      "table"
   };
 
-  // public static final String[] artAnswers = {"painting", "vase", "book", "mask", "dinosaur"};
-  /** Indicates whether the riddle has been resolved. */
   public static String room;
 
-  public static String answer;
-
+public static String puzzleAnswer;
   public static boolean isRiddleResolved = false;
   public static String artRoomRiddleAnswer;
-  public static String bookPuzzleAnswer;
 
-  /** Indicates whether the puzzle has been resolved. */
+  /**
+   * Indicates whether the puzzle has been resolved.
+   */
   public static boolean isPuzzleResolved = false;
 
   public static int timeLeft;
@@ -45,11 +65,11 @@ public class GameState {
   public static boolean isGameComplete = false;
   public static int randomCode;
   public static String riddleCode;
-  private static double randNumber;
   public static boolean isPopShowed;
   public static boolean firstTimeCode = false;
   public static boolean secondTimeCode = false;
   public static boolean timeOver = false;
+  private static double randNumber;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -61,6 +81,7 @@ public class GameState {
     remainsHint = 0;
     timeLeft = timeLimit;
     isGameComplete = false;
+    puzzleAnswer=puzzleObjects[getRandom(puzzleObjects.length - 1)];
     artRoomRiddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     isTts = false;
     room = rooms[getRandom(rooms.length - 1)];

@@ -170,7 +170,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (BookPuzzleController.puzzleAnswer == "painting1") {
+    if (GameState.puzzleAnswer == "painting1") {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -183,7 +183,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (BookPuzzleController.puzzleAnswer == "painting2") {
+    if (GameState.puzzleAnswer == "painting2") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -196,7 +196,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (BookPuzzleController.puzzleAnswer == "painting3") {
+    if (GameState.puzzleAnswer == "painting3") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -209,7 +209,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (BookPuzzleController.puzzleAnswer == "painting4") {
+    if (GameState.puzzleAnswer == "painting4") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -222,7 +222,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (BookPuzzleController.puzzleAnswer == "painting5") {
+    if (GameState.puzzleAnswer == "painting5") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
