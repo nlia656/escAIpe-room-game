@@ -31,7 +31,7 @@ public class DinoRoomController extends ScrollController {
   @FXML
   private Label lblTime;
 
-@FXML
+  @FXML
   public void initialize() {
     Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime,lblGM));
     timerThread.setDaemon(true);
