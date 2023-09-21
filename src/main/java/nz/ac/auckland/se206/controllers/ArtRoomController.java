@@ -106,6 +106,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     } else if (GameState.secondTimeCode) {
       showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
+      GameState.isPuzzleCodeGiven = true;
     }
   }
 
@@ -154,9 +155,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void bench1Clicked() {
-    GameState.isRiddleResolved = true;
-    System.out.println("bench1 clicked");
-    System.out.println(GameState.isRiddleResolved);
+    // Add your code for handling the bench1Clicked event here
   }
 
   @FXML
@@ -169,7 +168,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting1" && GameState.isRiddleResolved) {
+    if (GameState.puzzleAnswer == "painting1" && GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -182,7 +181,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting2" && GameState.isRiddleResolved) {
+    if (GameState.puzzleAnswer == "painting2" && GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -195,7 +194,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting3" && GameState.isRiddleResolved) {
+    if (GameState.puzzleAnswer == "painting3" && GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -208,7 +207,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting4" && GameState.isRiddleResolved) {
+    if (GameState.puzzleAnswer == "painting4" && GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -221,7 +220,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting5" && GameState.isRiddleResolved) {
+    if (GameState.puzzleAnswer == "painting5" && GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");

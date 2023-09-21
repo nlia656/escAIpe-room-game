@@ -68,6 +68,7 @@ public class GameState {
   public static boolean timeOver = false;
   private static double randNumber;
   public static boolean isRiddleCodeGiven = false;
+  public static boolean isPuzzleCodeGiven = false;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
