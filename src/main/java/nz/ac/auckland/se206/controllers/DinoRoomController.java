@@ -186,7 +186,7 @@ public class DinoRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 

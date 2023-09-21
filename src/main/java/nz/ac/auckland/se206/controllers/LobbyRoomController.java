@@ -42,7 +42,7 @@ public class LobbyRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 
