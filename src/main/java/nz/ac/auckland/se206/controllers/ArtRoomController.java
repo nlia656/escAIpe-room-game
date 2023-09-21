@@ -103,6 +103,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
+      GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
       showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
@@ -243,7 +244,6 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
       GameState.firstTimeCode = true;
-      GameState.isRiddleCodeGiven = true;
     }
   }
 }

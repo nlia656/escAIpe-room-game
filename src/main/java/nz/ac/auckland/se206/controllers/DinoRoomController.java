@@ -63,6 +63,7 @@ public class DinoRoomController extends ScrollController {
           "Code discovered!",
           "Now go find the book to continue.");
       GameState.firstTimeCode = false;
+      GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
       showDialog(
           "Info",
@@ -181,7 +182,7 @@ public class DinoRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.isRiddleResolved) {
+    if (GameState.isRiddleResolved && GameState.isRiddleCodeGiven) {
       App.setUi(AppUi.BOOK_PUZZLE);
       GameState.firstTimeCode = false;
       GameState.hasBookOpened = true;
