@@ -48,6 +48,7 @@ public class GameState {
   public static boolean isPopShowed;
   public static boolean firstTimeCode = false;
   public static boolean secondTimeCode = false;
+  public static boolean timeOver = false;
 
 
 

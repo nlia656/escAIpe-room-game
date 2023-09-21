@@ -63,11 +63,7 @@ public class LevelController {
       default:
         break;
     }
-    if (ttsButton.isSelected()) {
-      GameState.isTts = true;
-    } else {
-      GameState.isTts = false;
-    }
+    GameState.isTts = ttsButton.isSelected();
     //todo change to intro screen later
     App.makeTimer();
     App.loadRoom();
