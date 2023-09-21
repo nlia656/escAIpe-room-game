@@ -63,6 +63,7 @@ public class LevelController {
       default:
         break;
     }
+    App.loadRoom();
     GameState.isTts = ttsButton.isSelected();
     // todo change to intro screen later
     App.makeTimer();
