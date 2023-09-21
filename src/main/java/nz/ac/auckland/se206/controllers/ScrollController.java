@@ -18,7 +18,7 @@ public class ScrollController {
   }
 
   @FXML
-  private void closeScroll() {
+  private void onCloseScroll() {
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {

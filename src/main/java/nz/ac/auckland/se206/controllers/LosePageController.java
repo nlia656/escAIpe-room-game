@@ -7,7 +7,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class LosePageController {
 
   @FXML
-  private void goStartPage() {
+  private void onStartPage() {
     App.unloadRoom();
     App.setUi(AppUi.START);
   }

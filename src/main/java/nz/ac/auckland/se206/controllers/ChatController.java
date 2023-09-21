@@ -222,7 +222,7 @@ public class ChatController {
   }
 
   @FXML
-  private void askHint() {
+  private void onAskHint() {
     if (GameState.isHard) {
       hintsGone.setText("No hints!");
       hintsGone.setVisible(true);

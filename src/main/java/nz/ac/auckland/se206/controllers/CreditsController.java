@@ -9,7 +9,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class CreditsController {
 
   @FXML
-  void goStartPage(ActionEvent event) {
+  void onStartPage(ActionEvent event) {
     SceneManager.removeAppUi(AppUi.CHAT);
     SceneManager.removeAppUi(AppUi.ART_ROOM);
     SceneManager.removeAppUi(AppUi.DINO_ROOM);
