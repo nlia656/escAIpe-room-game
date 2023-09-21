@@ -67,7 +67,7 @@
       </TitledPane>
       <HBox layoutX="20.0" layoutY="30.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="154.0" text="Time Remaining:">
+            <Label prefHeight="30.0" prefWidth="168.0" text="Time Remaining:">
                <font>
                   <Font size="20.0" />
                </font>
