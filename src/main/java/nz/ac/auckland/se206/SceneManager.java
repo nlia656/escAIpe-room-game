@@ -15,7 +15,8 @@ public class SceneManager {
     SCROLL,
     LOSE_SCREEN,
     WIN_SCREEN,
-    LOCK;
+    LOCK,
+    CREDITS;
   }
 
   private static HashMap<AppUi, Parent> uiMap = new HashMap<AppUi, Parent>();

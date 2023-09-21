@@ -7,12 +7,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class StartController {
 
-  @FXML
-  private Button startButton;
-  @FXML
-  private Button creditButton;
-  @FXML
-  private Button exitButton;
+  @FXML private Button startButton;
+  @FXML private Button creditsButton;
+  @FXML private Button exitButton;
 
   @FXML
   private void start() {
@@ -20,7 +17,8 @@ public class StartController {
   }
 
   @FXML
-  private void credit() {
+  private void credits() {
+    App.setUi(AppUi.CREDITS);
   }
 
   @FXML

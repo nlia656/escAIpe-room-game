@@ -56,6 +56,11 @@ public class App extends Application {
                 GameState.timeOver = false;
                 return null;
               }
+              }
+              if (GameState.timeOver) {
+                GameState.timeOver = false;
+                return null;
+              }
               if (!GameState.isPaused) {
                 final int finalI = i;
                 Platform.runLater(
@@ -103,6 +108,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
+    SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
