@@ -106,13 +106,6 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
     SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));
-    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
-    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
-    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
-    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
-    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
-    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
-    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
     SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
     SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
     stage.setResizable(false);
