@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
+
   @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
   @FXML private ImageView scrollArt;
@@ -46,6 +47,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
+    // Timer that updates the time left to the user.
     Task<Void> timer =
         new Task<>() {
           @Override
@@ -95,6 +97,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void scrollArtClicked() {
+    // Change scene to scroll to see code, change alerts based on progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");
@@ -178,6 +181,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting2Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -194,6 +198,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting3Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -210,6 +215,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting4Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -226,6 +232,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting5Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -247,6 +254,7 @@ public class ArtRoomController extends ScrollController {
   }
 
   private void clickForRiddle(String answer) {
+    // Method that lets user get code from riddle answer
     if (GameState.isRiddleCodeGiven) {
       return;
     }

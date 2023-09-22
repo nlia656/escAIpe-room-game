@@ -42,7 +42,7 @@ public class ChatController {
     Task<Void> task =
         new Task<Void>() {
           @Override
-          protected Void call() {
+          protected Void call() { // Specify the generic type as Void
             inProcess();
             try {
               runGpt(
@@ -58,6 +58,7 @@ public class ChatController {
             return null;
           }
         };
+    // Configure the hints
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
@@ -88,7 +89,7 @@ public class ChatController {
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
-    try {
+    try { // Run the GPT model
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
@@ -107,7 +108,7 @@ public class ChatController {
               return null;
             }
           };
-      if (GameState.isTts) {
+      if (GameState.isTts) { // Check Text to Speech
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
         thread.start();
@@ -158,6 +159,7 @@ public class ChatController {
    */
   @FXML
   private void onGoBack(ActionEvent event) {
+    // Go back to the previous scene
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
@@ -184,7 +186,9 @@ public class ChatController {
                   i++;
                   break;
                 case 2:
-                  inputText.setText("Game master is typing ...");
+                  inputText.setText(
+                      "Game master is typing ..."); // Update the graphics so that the user knows
+                                                    // the GPT is replying.
                   i = 0;
                   break;
               }
@@ -207,6 +211,7 @@ public class ChatController {
   }
 
   private void finishProcess() {
+    // Reset the graphics
     isGptRunning = false;
     inputText.setDisable(false);
     sendButton.setDisable(false);
@@ -214,6 +219,7 @@ public class ChatController {
   }
 
   private void showApiError(ApiProxyException e) {
+    // Error alert for GPT
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Warning");
     alert.setHeaderText("OpenAI Api Error");
@@ -223,6 +229,7 @@ public class ChatController {
 
   @FXML
   private void onAskHint() {
+    // Give hints depending on difficulty of game
     if (GameState.isHard) {
       hintsGone.setText("No hints!");
       hintsGone.setVisible(true);
@@ -234,7 +241,7 @@ public class ChatController {
           @Override
           protected Void call() throws Exception {
             inProcess();
-            try {
+            try { // Run the GPT to give hints to user
               ChatCompletionRequest hintRequest =
                   new ChatCompletionRequest()
                       .setN(1)

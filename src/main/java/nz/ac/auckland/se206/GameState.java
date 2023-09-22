@@ -1,25 +1,38 @@
 package nz.ac.auckland.se206;
 
-/**
- * Represents the state of the game.
- */
+/** Represents the state of the game. */
 public class GameState {
 
   public static final String[] rooms = {"lobby", "dino"};
-  public static final String[] artRoomRiddleAnswers = {"dagger", "book", "armour", "crown", "vase",
-      "pillar", "sword"};
-  public static final String[] puzzleObjects = {"couch1", "dinosaur", "mask", "robe", "poster3",
-      "poster2", "poster1", "vase", "painting1", "painting2", "painting3", "painting4", "painting5",
-      "painting6", "couch2", "couch3", "plant", "table"};
-
+  public static final String[] artRoomRiddleAnswers = {
+    "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
+  };
+  public static final String[] puzzleObjects = {
+    "couch1",
+    "dinosaur",
+    "mask",
+    "robe",
+    "poster3",
+    "poster2",
+    "poster1",
+    "vase",
+    "painting1",
+    "painting2",
+    "painting3",
+    "painting4",
+    "painting5",
+    "painting6",
+    "couch2",
+    "couch3",
+    "plant",
+    "table"
+  };
 
   public static String puzzleAnswer;
   public static boolean isRiddleResolved;
   public static String riddleAnswer;
 
-  /**
-   * Indicates whether the puzzle has been resolved.
-   */
+  /** Indicates whether the puzzle has been resolved. */
   public static boolean isPuzzleResolved;
 
   public static int timeLeft;
@@ -49,7 +62,8 @@ public class GameState {
   }
 
   public static void initial() {
-    // randomize the answer
+    // Reset all the booleans to their original states so that the game runs from the beginning each
+    // time.
     isPaused = false;
     isUnlocked = false;
     onArtRoom = false;
@@ -68,7 +82,7 @@ public class GameState {
     isRiddleResolved = false;
     isPuzzleResolved = false;
     isTts = false;
-    puzzleAnswer = puzzleObjects[getRandom(puzzleObjects.length - 1)];
+    puzzleAnswer = puzzleObjects[getRandom(puzzleObjects.length - 1)]; // randomize the answer
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
