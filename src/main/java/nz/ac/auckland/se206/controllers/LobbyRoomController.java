@@ -69,6 +69,11 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void elevatorClicked() {
     // Change scene to lock if both puzzle and riddle are solved.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (!GameState.isPuzzleResolved || !GameState.isRiddleResolved) {
       showDialog("Info", "Elevator locked!", "You need to solve the puzzle and riddle first.");
     } else if (GameState.isPuzzleResolved && GameState.isRiddleResolved) {
@@ -79,6 +84,11 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void couch2Clicked() {
     // If puzzle is solved, show alert.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.puzzleAnswer == "couch2") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -89,6 +99,11 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void tableClicked() {
     // If puzzle is solved, show alert.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.puzzleAnswer == "table") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -99,6 +114,11 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void couch3Clicked() {
     // If puzzle is solved, show alert.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.puzzleAnswer == "couch3") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -109,6 +129,11 @@ public class LobbyRoomController extends ScrollController {
   @FXML
   private void plantClicked() {
     // If puzzle is solved, show alert.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.puzzleAnswer == "plant") {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
