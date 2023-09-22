@@ -63,7 +63,8 @@ public class GameState {
   }
 
   public static void initial() {
-    // randomize the answer
+    // Reset all the booleans to their original states so that the game runs from the beginning each
+    // time.
     isPaused = false;
     isUnlocked = false;
     onArtRoom = false;
@@ -82,7 +83,7 @@ public class GameState {
     isRiddleResolved = false;
     isPuzzleResolved = false;
     isTts = false;
-    puzzleAnswer = puzzleObjects[getRandom(puzzleObjects.length - 1)];
+    puzzleAnswer = puzzleObjects[getRandom(puzzleObjects.length - 1)]; // randomize the answer
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;

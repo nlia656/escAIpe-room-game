@@ -13,7 +13,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 // import javafx.scene.Cursor;
 
 public class LobbyRoomController extends ScrollController {
-  @FXML private Label lblGM;
+  @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
 
   @FXML private ImageView lobbyToArt;
@@ -28,7 +28,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
@@ -42,7 +42,7 @@ public class LobbyRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 

@@ -11,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/**
- * This is the entry point of the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
@@ -43,37 +41,36 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /**
-   * Create and run a timer that handles game timing.
-   */
+  /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
-    Task<Void> task = new Task<>() {
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (!timerRunning) {
-            break;
-          }
-          if (GameState.isGameComplete){
-            GameState.isGameComplete = false;
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (!timerRunning) {
+                break;
+              }
+              if (GameState.isGameComplete) {
+                GameState.isGameComplete = false;
+                return null;
+              }
+              if (!GameState.isPaused) {
+                final int finalI = i;
+                Platform.runLater(
+                    () -> {
+                      GameState.timeLeft = finalI;
+                      if (finalI == 0) {
+                        App.setUi(AppUi.LOSE_SCREEN);
+                      }
+                    });
+              }
+              Thread.sleep(1000);
+            }
             return null;
           }
-          if (!GameState.isPaused) {
-            final int finalI = i;
-            Platform.runLater(() -> {
-              GameState.timeLeft = finalI;
-              if (finalI == 0) {
-                // TODO: Handle game over here, e.g., transition to the game over screen
-                App.setUi(AppUi.LOSE_SCREEN);
-              }
-            });
-          }
-          Thread.sleep(1000);
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -81,6 +78,7 @@ public class App extends Application {
 
   @FXML
   public static void loadRoom() throws IOException {
+    // Add the scenes to the HashMap
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
@@ -92,6 +90,7 @@ public class App extends Application {
 
   @FXML
   public static void unloadRoom() {
+    // Remove the scenes from the HashMap
     GameState.isGameComplete = true;
     SceneManager.removeAppUi(AppUi.ART_ROOM);
     SceneManager.removeAppUi(AppUi.CHAT);
@@ -104,6 +103,7 @@ public class App extends Application {
 
   @Override
   public void start(final Stage stage) throws IOException {
+    // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
     SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));

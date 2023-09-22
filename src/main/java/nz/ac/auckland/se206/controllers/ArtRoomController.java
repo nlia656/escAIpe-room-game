@@ -14,14 +14,12 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
-  @FXML private Label lblGM;
+
+  @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
-
   @FXML private ImageView scrollArt;
-
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
-
   @FXML private Rectangle dagger;
   @FXML private Rectangle armour;
   @FXML private Rectangle pillar;
@@ -37,20 +35,20 @@ public class ArtRoomController extends ScrollController {
   @FXML private Rectangle painting4;
   @FXML private Rectangle painting5;
   @FXML private Rectangle books1;
-
   @FXML private Button btnHelp;
-
   @FXML private TitledPane artRoomPane;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 
   @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
+  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
+    // Timer that updates the time left to the user.
+
     Task<Void> timer =
         new Task<>() {
           @Override
@@ -60,7 +58,9 @@ public class ArtRoomController extends ScrollController {
                 Platform.runLater(
                     () -> {
                       lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGM.setText(GameState.lastMsg);
+
+                      lblGameMaster.setText(GameState.lastMsg);
+
                     });
               }
               Thread.sleep(300);
@@ -80,7 +80,7 @@ public class ArtRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 
@@ -100,6 +100,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void scrollArtClicked() {
+    // Change scene to scroll to see code, change alerts based on progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");

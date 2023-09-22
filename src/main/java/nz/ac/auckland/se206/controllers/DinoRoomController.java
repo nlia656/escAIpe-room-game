@@ -24,19 +24,17 @@ public class DinoRoomController extends ScrollController {
   @FXML private Rectangle newspaper2;
   @FXML private Rectangle newspaper1;
   @FXML private Rectangle dinosaur;
-
   @FXML private TitledPane dinoRoomPane;
 
   @FXML private Label lblTime;
+  @FXML private Label lblGameMaster;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
-
-  @FXML private Label lblGM;
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -55,6 +53,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   private void scrollDinoClicked() {
+    // Change scene to scroll and change alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");
@@ -221,7 +220,7 @@ public class DinoRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 

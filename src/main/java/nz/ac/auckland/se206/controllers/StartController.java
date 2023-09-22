@@ -12,17 +12,17 @@ public class StartController {
   @FXML private Button exitButton;
 
   @FXML
-  private void start() {
+  private void onStart() {
     App.setUi(AppUi.LEVEL);
   }
 
   @FXML
-  private void credits() {
+  private void onCredits() {
     App.setUi(AppUi.CREDITS);
   }
 
   @FXML
-  private void exit() {
+  private void onExit() {
     System.exit(0);
   }
 }
