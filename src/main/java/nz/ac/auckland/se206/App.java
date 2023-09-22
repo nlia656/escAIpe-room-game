@@ -43,8 +43,7 @@ public class App extends Application {
 
   /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
-    Task<Void> task = 
-        new Task<>() { // Specify the generic type as Void
+    Task<Void> task = new Task<>() { // Specify the generic type as Void
           @Override
           protected Void call() throws Exception {
             // Create a timer thread
@@ -111,7 +110,7 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
     stage.setResizable(false);
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
-    stage.setTitle("Escape Room");
+    stage.setTitle("Heist of the Century: The Art Museum Affair");
     stage.setScene(scene);
     stage.show();
   }
