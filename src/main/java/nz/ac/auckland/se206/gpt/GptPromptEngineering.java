@@ -14,6 +14,7 @@ public class GptPromptEngineering {
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
     System.out.print(wordToGuess + "woo");
+    // Give prompts to the GPT model to generate a riddle with the given word
     return "You are AI assistant for the player of a game where they try to escape"
         + " from an art museum. If a message starts with [System], then it is a message by"
         + " me to tell you do something. If a message starts with [Player], then it is a"
@@ -31,6 +32,7 @@ public class GptPromptEngineering {
   }
 
   public static String getHints() {
+    // Give prompts to the GPT model to generate a hint
     if (!GameState.isRiddleResolved) {
       return "[System] give me a hint about the word "
           + GameState.riddleAnswer

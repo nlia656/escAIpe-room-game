@@ -78,6 +78,7 @@ public class App extends Application {
 
   @FXML
   public static void loadRoom() throws IOException {
+    // Add the scenes to the HashMap
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
     SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
@@ -89,6 +90,7 @@ public class App extends Application {
 
   @FXML
   public static void unloadRoom() {
+    // Remove the scenes from the HashMap
     GameState.isGameComplete = true;
     SceneManager.removeAppUi(AppUi.ART_ROOM);
     SceneManager.removeAppUi(AppUi.CHAT);
@@ -101,6 +103,7 @@ public class App extends Application {
 
   @Override
   public void start(final Stage stage) throws IOException {
+    // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
     SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));

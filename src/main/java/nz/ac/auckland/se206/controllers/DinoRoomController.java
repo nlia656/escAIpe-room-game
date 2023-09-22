@@ -52,6 +52,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   private void scrollDinoClicked() {
+    // Change scene to scroll and change alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");
@@ -65,6 +66,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster1Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -82,6 +84,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster2Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -99,6 +102,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster3Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -116,6 +120,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void couch1Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("couch1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -133,6 +138,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void robeClicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("robe clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -150,6 +156,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void dinosaurClicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -167,6 +174,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void vase3Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("vase3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -189,6 +197,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
+    // Show the book puzzle but if already solved, dont.
     System.out.println("books2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -202,6 +211,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void maskClicked(MouseEvent mouseEvent) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("mask clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -219,6 +229,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void painting6Clicked(MouseEvent mouseEvent) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("painting6 clicked");
     if (GameState.isPuzzleResolved) {
       return;
