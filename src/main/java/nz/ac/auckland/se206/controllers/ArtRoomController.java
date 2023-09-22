@@ -14,14 +14,12 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
-  @FXML private Label lblGM;
+
+  @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
-
   @FXML private ImageView scrollArt;
-
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
-
   @FXML private Rectangle dagger;
   @FXML private Rectangle armour;
   @FXML private Rectangle pillar;
@@ -37,38 +35,38 @@ public class ArtRoomController extends ScrollController {
   @FXML private Rectangle painting4;
   @FXML private Rectangle painting5;
   @FXML private Rectangle books1;
-
   @FXML private Button btnHelp;
-
   @FXML private TitledPane artRoomPane;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGM));
+    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
 
   @FXML
-protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
-    Task<Void> timer = new Task<>() {
-      @Override
-      protected Void call() throws Exception {
-        while (!GameState.isGameComplete) {
-          if (!GameState.isPaused) {
-            Platform.runLater(() -> {
-              lblTime.setText(String.valueOf(GameState.timeLeft));
-              lblGM.setText(GameState.lastMsg);
-            });
+  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
+    // Timer that updates the time left to the user.
+    Task<Void> timer =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            while (!GameState.isGameComplete) {
+              if (!GameState.isPaused) {
+                Platform.runLater(
+                    () -> {
+                      lblTime.setText(String.valueOf(GameState.timeLeft));
+                      lblGameMaster.setText(GameState.lastMsg);
+                    });
+              }
+              Thread.sleep(300);
+            }
+            return null;
           }
-          Thread.sleep(300);
-        }
-        return null;
-      }
-    };
+        };
     return timer;
-}
-
+  }
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -79,7 +77,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 
@@ -99,6 +97,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void scrollArtClicked() {
+    // Change scene to scroll to see code, change alerts based on progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");
@@ -169,7 +168,10 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting1" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting1"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -179,10 +181,14 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void painting2Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting2" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting2"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -192,10 +198,14 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void painting3Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting3" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting3"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -205,10 +215,14 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void painting4Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting4" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting4"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -218,10 +232,14 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
 
   @FXML
   private void painting5Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting5" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting5"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -236,6 +254,7 @@ protected static Task<Void> getTimer(Label lblTime, Label lblGM) {
   }
 
   private void clickForRiddle(String answer) {
+    // Method that lets user get code from riddle answer
     if (GameState.isRiddleCodeGiven) {
       return;
     }

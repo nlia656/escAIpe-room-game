@@ -192,7 +192,8 @@ public class ChatController {
                 case 2:
                   inputText.setText(
                       "Game master is typing ..."); // Update the graphics so that the user knows
-                  // the GPT is replying.
+                                                    // the GPT is replying.
+
                   i = 0;
                   break;
               }

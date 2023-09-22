@@ -7,7 +7,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class WinPageController {
 
   @FXML
-  private void goStartPage() {
+  private void onStartPage() {
     App.setUi(AppUi.START);
   }
 }

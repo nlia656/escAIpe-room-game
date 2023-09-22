@@ -24,7 +24,7 @@
             <Font name="Impact" size="50.0" />
          </font>
       </Text>
-      <Button layoutX="260.0" layoutY="359.0" mnemonicParsing="false" onAction="#goStartPage" prefHeight="89.0" prefWidth="204.0" text="Go to main menu">
+      <Button layoutX="260.0" layoutY="359.0" mnemonicParsing="false" onAction="#onStartPage" prefHeight="89.0" prefWidth="204.0" text="Go to main menu">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>

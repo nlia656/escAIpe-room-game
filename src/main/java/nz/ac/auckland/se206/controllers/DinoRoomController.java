@@ -13,7 +13,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class DinoRoomController extends ScrollController {
 
-
   @FXML private ImageView dinoToArt;
   @FXML private Rectangle vase3;
   @FXML private Rectangle books2;
@@ -25,19 +24,16 @@ public class DinoRoomController extends ScrollController {
   @FXML private Rectangle newspaper2;
   @FXML private Rectangle newspaper1;
   @FXML private Rectangle dinosaur;
-
   @FXML private TitledPane dinoRoomPane;
-
-  @FXML
-  private Label lblTime;
+  @FXML private Label lblTime;
+  @FXML private Label lblGameMaster;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime,lblGM));
+    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
   }
-  @FXML private Label lblGM;
 
   private void showDialog(String title, String headerText, String message) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -56,30 +52,29 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   private void scrollDinoClicked() {
+    // Change scene to scroll and change alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "Now go find the book to continue.");
+      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showDialog(
-          "Info",
-          "Code discovered!",
-          "You can try to escape through the elevator now.");
+      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
     }
   }
 
   @FXML
   public void poster1Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "poster1" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "poster1"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -89,11 +84,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster2Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "poster2" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "poster2"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -103,11 +102,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster3Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("poster3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "poster3" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "poster3"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -117,11 +120,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void couch1Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("couch1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "couch1" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "couch1"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -131,11 +138,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void robeClicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("robe clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "robe" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "robe"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -145,10 +156,14 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void dinosaurClicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "dinosaur" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "dinosaur"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -159,11 +174,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void vase3Clicked(MouseEvent event) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("vase3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "vase" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "vase"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -172,12 +191,13 @@ public class DinoRoomController extends ScrollController {
   }
 
   @FXML
-  private void onOpenGM() {
+  private void onOpenGameMaster() {
     App.setUi(AppUi.CHAT);
   }
 
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
+    // Show the book puzzle but if already solved, dont.
     System.out.println("books2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -191,11 +211,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void maskClicked(MouseEvent mouseEvent) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("mask clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "mask" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "mask"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -205,11 +229,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void painting6Clicked(MouseEvent mouseEvent) {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     System.out.println("painting6 clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "painting6" && GameState.isRiddleResolved && !GameState.isPuzzleCodeGiven && GameState.hasBookOpened) {
+    if (GameState.puzzleAnswer == "painting6"
+        && GameState.isRiddleResolved
+        && !GameState.isPuzzleCodeGiven
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
