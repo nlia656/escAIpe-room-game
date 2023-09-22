@@ -68,6 +68,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster1Clicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+          return;
+    }
     System.out.println("poster1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -85,6 +90,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster2Clicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("poster2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -102,6 +112,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void poster3Clicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("poster3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -119,6 +134,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void couch1Clicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("couch1 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -136,6 +156,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void robeClicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("robe clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -153,6 +178,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void dinosaurClicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -170,6 +200,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void vase3Clicked(MouseEvent event) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("vase3 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -192,6 +227,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("books2 clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -205,6 +245,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void maskClicked(MouseEvent mouseEvent) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("mask clicked");
     if (GameState.isPuzzleResolved) {
       return;
@@ -222,6 +267,11 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void painting6Clicked(MouseEvent mouseEvent) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     System.out.println("painting6 clicked");
     if (GameState.isPuzzleResolved) {
       return;

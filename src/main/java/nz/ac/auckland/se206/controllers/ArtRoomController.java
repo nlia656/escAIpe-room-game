@@ -167,6 +167,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting1Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -183,6 +188,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting2Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -199,6 +209,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting3Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -215,6 +230,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting4Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -231,6 +251,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting5Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -248,13 +273,18 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
-    clickForRiddle("book");
+    if (GameState.isRiddleResolved && GameState.artFound && !GameState.hasBookOpened) {
+      showDialog("Info", "Wrong book!", "Find the other book!");
+    } else {
+      clickForRiddle("book");
+    }
   }
 
   private void clickForRiddle(String answer) {
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
     }
     if (GameState.isRiddleCodeGiven) {
       return;
