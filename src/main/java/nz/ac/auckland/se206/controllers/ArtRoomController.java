@@ -252,6 +252,10 @@ public class ArtRoomController extends ScrollController {
   }
 
   private void clickForRiddle(String answer) {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+    }
     if (GameState.isRiddleCodeGiven) {
       return;
     }
