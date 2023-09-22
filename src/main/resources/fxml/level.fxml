@@ -57,6 +57,7 @@
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font></CheckBox>
     <Button fx:id="startButton" layoutX="498.0" layoutY="365.0" mnemonicParsing="false" onAction="#onStart" prefHeight="48.0" prefWidth="84.0" text="Game Start!" />
+      <Button layoutX="498.0" layoutY="420.0" mnemonicParsing="false" onAction="#onBack" prefHeight="48.0" prefWidth="84.0" text="Go back" />
       <Text fill="#fffa94" layoutX="469.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" textAlignment="CENTER" wrappingWidth="112.240234375">
          <font>
             <Font name="Bank Gothic Medium BT" size="28.0" />
