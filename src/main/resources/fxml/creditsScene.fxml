@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreditsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreditsController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="1026.0" layoutX="-48.838012695312386" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-5.0">
          <image>
@@ -34,17 +32,17 @@
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Text fill="#fffa94" layoutX="40.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by Freepik https://www.freepik.com/free-photo/top-view-blank-menu-book_7453988.htm" wrappingWidth="649.229736328125">
+      <Text fill="#fffa94" layoutX="40.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by Freepik https://www.freepik.com/free-photo/top-view-blank-menu-book_7453988.htm" wrappingWidth="649.229736328125">
          <font>
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Text fill="#fffa94" layoutX="40.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by upklyak on Freepik https://www.freepik.com/free-vector/realistic-open-parchment-scroll-transparent_39845337.htm" wrappingWidth="649.229736328125">
+      <Text fill="#fffa94" layoutX="41.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by upklyak on Freepik https://www.freepik.com/free-vector/realistic-open-parchment-scroll-transparent_39845337.htm" wrappingWidth="649.229736328125">
          <font>
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Text fill="#fffa94" layoutX="40.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by vectorpouch Freepik https://www.freepik.com/free-vector/robbery-jewelry-shop-robber-with-nail-puller_5603493.htm" wrappingWidth="649.229736328125">
+      <Text fill="#fffa94" layoutX="40.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by vectorpouch Freepik https://www.freepik.com/free-vector/robbery-jewelry-shop-robber-with-nail-puller_5603493.htm" wrappingWidth="649.229736328125">
          <font>
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
