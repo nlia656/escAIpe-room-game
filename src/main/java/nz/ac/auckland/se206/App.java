@@ -43,8 +43,8 @@ public class App extends Application {
 
   /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
-    Task<Void> task =
-        new Task<>() {
+    Task<Void> task = 
+        new Task<>() { // Specify the generic type as Void
           @Override
           protected Void call() throws Exception {
             // Create a timer thread
@@ -62,7 +62,7 @@ public class App extends Application {
                     () -> {
                       GameState.timeLeft = finalI;
                       if (finalI == 0) {
-                        App.setUi(AppUi.LOSE_SCREEN);
+                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
                       }
                     });
               }

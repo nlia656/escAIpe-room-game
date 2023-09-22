@@ -19,6 +19,7 @@ public class ScrollController {
 
   @FXML
   private void onCloseScroll() {
+    // Change the scene back to the previous on scene.
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {

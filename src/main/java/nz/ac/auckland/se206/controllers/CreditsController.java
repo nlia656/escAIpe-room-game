@@ -10,6 +10,7 @@ public class CreditsController {
 
   @FXML
   void onStartPage(ActionEvent event) {
+    // Remove the scenes from the hash map to be reloaded.
     SceneManager.removeAppUi(AppUi.CHAT);
     SceneManager.removeAppUi(AppUi.ART_ROOM);
     SceneManager.removeAppUi(AppUi.DINO_ROOM);

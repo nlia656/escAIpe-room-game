@@ -15,6 +15,29 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends ScrollController {
 
+  @FXML
+  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
+    // Timer that updates the time left to the user.
+    Task<Void> timer =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception { // Specify the generic type as Void
+            while (!GameState.isGameComplete) {
+              if (!GameState.isPaused) {
+                Platform.runLater(
+                    () -> {
+                      lblTime.setText(String.valueOf(GameState.timeLeft));
+                      lblGameMaster.setText(GameState.lastMsg);
+                    });
+              }
+              Thread.sleep(300);
+            }
+            return null;
+          }
+        };
+    return timer;
+  }
+
   @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
   @FXML private ImageView scrollArt;
@@ -43,29 +66,6 @@ public class ArtRoomController extends ScrollController {
     Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
     timerThread.setDaemon(true);
     timerThread.start();
-  }
-
-  @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
-    // Timer that updates the time left to the user.
-    Task<Void> timer =
-        new Task<>() {
-          @Override
-          protected Void call() throws Exception {
-            while (!GameState.isGameComplete) {
-              if (!GameState.isPaused) {
-                Platform.runLater(
-                    () -> {
-                      lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGameMaster.setText(GameState.lastMsg);
-                    });
-              }
-              Thread.sleep(300);
-            }
-            return null;
-          }
-        };
-    return timer;
   }
 
   private void showDialog(String title, String headerText, String message) {
@@ -165,6 +165,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting1Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }

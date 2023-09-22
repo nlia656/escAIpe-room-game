@@ -52,6 +52,8 @@ public class LockController {
   }
 
   private void checkCode() {
+    // If passcode is correct length (4), check whether it is the correct code as the riddle and
+    // puzzle code.
     if (passcode.size() == 4) {
       StringBuilder sb = new StringBuilder();
       StringBuilder exitKey = new StringBuilder();
@@ -74,7 +76,7 @@ public class LockController {
         textBox.appendText("Incorrect passcode");
         passcode.clear();
       }
-    } else {
+    } else { // If not correct length (4), incorrect answer.
       textBox.clear();
       textBox.appendText("Incorrect passcode");
       passcode.clear();
@@ -156,6 +158,7 @@ public class LockController {
   }
 
   private void buttonDisable() {
+    // Disables all of the buttons on the lock as it is complete.
     button0.setDisable(true);
     button1.setDisable(true);
     button2.setDisable(true);

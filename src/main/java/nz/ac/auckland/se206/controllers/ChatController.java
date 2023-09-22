@@ -135,7 +135,7 @@ public class ChatController {
     appendChatMessage(msg);
     // Run GPT model in a separate thread
     Task<Void> task =
-        new Task<Void>() {
+        new Task<Void>() { // Specify the generic type as Void
           @Override
           protected Void call() throws Exception {
             inProcess();
@@ -230,7 +230,7 @@ public class ChatController {
   @FXML
   private void onAskHint() {
     // Give hints depending on difficulty of game
-    if (GameState.isHard) {
+    if (GameState.isHard) { // Check if the game is hard
       hintsGone.setText("No hints!");
       hintsGone.setVisible(true);
       hintButton.setVisible(false);
@@ -239,7 +239,7 @@ public class ChatController {
     Task<Void> task =
         new Task<Void>() {
           @Override
-          protected Void call() throws Exception {
+          protected Void call() throws Exception { // Specify the generic type as Void
             inProcess();
             try { // Run the GPT to give hints to user
               ChatCompletionRequest hintRequest =

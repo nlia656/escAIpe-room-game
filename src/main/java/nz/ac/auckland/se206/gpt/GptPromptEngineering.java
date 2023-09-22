@@ -42,7 +42,7 @@ public class GptPromptEngineering {
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint. Do not include the word you are giving a hint for in your response in any"
           + " capacity. Make the hint a little different everytime.";
-    } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
+    } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) { // Set the puzzle hints
       if (Set.of(
               "poster1",
               "poster2",
