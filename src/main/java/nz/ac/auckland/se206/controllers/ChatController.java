@@ -34,15 +34,16 @@ public class ChatController {
   @FXML private Button hintButton;
 
   private ChatCompletionRequest chatCompletionRequest;
+  private ChatCompletionRequest hintCompletionRequest;
   private boolean isGptRunning = false;
 
   /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
-          protected Void call() {
+          protected Void call() { // Specify the generic type as Void
             inProcess();
             try {
               runGpt(
@@ -58,6 +59,7 @@ public class ChatController {
             return null;
           }
         };
+    // Configure the hints
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
@@ -65,6 +67,8 @@ public class ChatController {
       hintButton.setDisable(true);
     }
     chatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+    hintCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
@@ -88,7 +92,7 @@ public class ChatController {
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
-    try {
+    try { // Run the GPT model
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
@@ -98,16 +102,17 @@ public class ChatController {
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
       }
-      Task<Void> tts = new Task<Void>() { // Specify the generic type as Void
-            @Override
-            protected Void call() {
-              TextToSpeech tts = new TextToSpeech();
-              tts.speak(result.getChatMessage().getContent());
-              Platform.runLater(() -> {});
-              return null;
-            }
-          };
-      if (GameState.isTts) {
+      Task<Void> tts = new Task<>() { // Specify the generic type as Void
+        @Override
+        protected Void call() {
+          TextToSpeech tts = new TextToSpeech();
+          tts.speak(result.getChatMessage().getContent());
+          Platform.runLater(() -> {
+          });
+          return null;
+        }
+      };
+      if (GameState.isTts) { // Check Text to Speech
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
         thread.start();
@@ -134,7 +139,7 @@ public class ChatController {
     appendChatMessage(msg);
     // Run GPT model in a separate thread
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             inProcess();
@@ -158,6 +163,7 @@ public class ChatController {
    */
   @FXML
   private void onGoBack(ActionEvent event) {
+    // Go back to the previous scene
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
@@ -169,7 +175,7 @@ public class ChatController {
 
   private void inProcess() {
     Task<Void> runAnis =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             int i = 0;
@@ -184,7 +190,9 @@ public class ChatController {
                   i++;
                   break;
                 case 2:
-                  inputText.setText("Game master is typing ...");
+                  inputText.setText(
+                      "Game master is typing ..."); // Update the graphics so that the user knows
+                  // the GPT is replying.
                   i = 0;
                   break;
               }
@@ -207,6 +215,7 @@ public class ChatController {
   }
 
   private void finishProcess() {
+    // Reset the graphics
     isGptRunning = false;
     inputText.setDisable(false);
     sendButton.setDisable(false);
@@ -214,6 +223,7 @@ public class ChatController {
   }
 
   private void showApiError(ApiProxyException e) {
+    // Error alert for GPT
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Warning");
     alert.setHeaderText("OpenAI Api Error");
@@ -222,7 +232,8 @@ public class ChatController {
   }
 
   @FXML
-  private void askHint() {
+  private void onAskHint() {
+    // Give hints depending on difficulty of game
     if (GameState.isHard) {
       hintsGone.setText("No hints!");
       hintsGone.setVisible(true);
@@ -230,21 +241,16 @@ public class ChatController {
       return;
     }
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             inProcess();
-            try {
-              ChatCompletionRequest hintRequest =
-                  new ChatCompletionRequest()
-                      .setN(1)
-                      .setTemperature(0.1)
-                      .setTopP(0.5)
-                      .setMaxTokens(140);
-              hintRequest.addMessage(new ChatMessage("user", GptPromptEngineering.getHints()));
-              ChatCompletionResult chatCompletionResult = hintRequest.execute();
-              Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequest.addMessage(result.getChatMessage());
+            try { // Run the GPT to give hints to user
+              hintCompletionRequest.addMessage(
+                  new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
+              Choice result = hintCompletionResult.getChoices().iterator().next();
+              hintCompletionRequest.addMessage(result.getChatMessage());
               appendChatMessage(result.getChatMessage());
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
