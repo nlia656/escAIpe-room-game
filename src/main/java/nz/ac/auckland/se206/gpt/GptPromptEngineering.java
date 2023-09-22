@@ -61,7 +61,7 @@ public class GptPromptEngineering {
               "couch1",
               "painting6",
               "mask",
-              "vase3",
+              "vase",
               "dinosaur")
           .contains(GameState.puzzleAnswer)) {
         return "[System] tell the player the following words briefly: 'Look closely in the room"
@@ -70,9 +70,12 @@ public class GptPromptEngineering {
           .contains(GameState.puzzleAnswer)) {
         return "[System] tell the player the following words briefly: 'Look closely in the room"
             + " with a wooden floor!'";
-      } else {
+      } else if (Set.of("couch2", "table", "couch3", "plant").contains(GameState.puzzleAnswer)) {
         return "[System] tell the player the following words briefly: 'Look closely in the room"
             + " with the elevator!'";
+      } else {
+        return "[System] tell the player the following words briefly: 'Look closely around the"
+            + " rooms for the object to click'";
       }
 
       // return "[System] told me find something like "
