@@ -51,7 +51,7 @@ public class ArtRoomController extends ScrollController {
     Task<Void> timer =
         new Task<>() {
           @Override
-          protected Void call() throws Exception {
+          protected Void call() throws Exception { // Specify the generic type as Void
             while (!GameState.isGameComplete) {
               if (!GameState.isPaused) {
                 Platform.runLater(
@@ -165,6 +165,7 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting1Clicked() {
+    // If already solved, do nothing. If book opened and not solved, allow to be solved.
     if (GameState.isPuzzleResolved) {
       return;
     }
