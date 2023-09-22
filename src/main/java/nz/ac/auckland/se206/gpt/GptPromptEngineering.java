@@ -50,7 +50,9 @@ public class GptPromptEngineering {
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint. Do not include the word you are giving a hint for in your response in any"
           + " capacity. Make the hint a little different everytime.";
-    } else if (GameState.isRiddleResolved && !GameState.isPuzzleResolved) {
+    } else if (GameState.isRiddleResolved
+        && !GameState.isPuzzleResolved
+        && GameState.hasBookOpened) {
       if (Set.of(
               "poster1",
               "poster2",
@@ -77,6 +79,12 @@ public class GptPromptEngineering {
       //     + GameState.puzzleAnswer
       //     + " . Avoid number in that word if there is some when you response."
       //     + " Do not include [System] and [Player] in your response. Forget about the riddle.";
+    } else if (GameState.isRiddleResolved && !GameState.artFound) {
+      return "[System] tell the player the following words briefly: 'Look for the answer of the"
+          + " riddle for a clue'";
+    } else if (GameState.artFound && !GameState.hasBookOpened) {
+      return "[System] tell the player the following words briefly: 'Look for a book in the room"
+          + " with the dinosaur'";
     } else {
       return "[System] tell the player to escape through the elevator with the code. Be"
           + " enthusiastic but brief. Do not include [System] and [Player] in your response.";
