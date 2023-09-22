@@ -16,12 +16,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class ArtRoomController extends ScrollController {
   @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
-
   @FXML private ImageView scrollArt;
-
   @FXML private ImageView artToDino;
   @FXML private ImageView artToLobby;
-
   @FXML private Rectangle dagger;
   @FXML private Rectangle armour;
   @FXML private Rectangle pillar;
@@ -37,9 +34,7 @@ public class ArtRoomController extends ScrollController {
   @FXML private Rectangle painting4;
   @FXML private Rectangle painting5;
   @FXML private Rectangle books1;
-
   @FXML private Button btnHelp;
-
   @FXML private TitledPane artRoomPane;
 
   @FXML

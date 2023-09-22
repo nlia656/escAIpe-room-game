@@ -24,9 +24,7 @@ public class DinoRoomController extends ScrollController {
   @FXML private Rectangle newspaper2;
   @FXML private Rectangle newspaper1;
   @FXML private Rectangle dinosaur;
-
   @FXML private TitledPane dinoRoomPane;
-
   @FXML private Label lblTime;
   @FXML private Label lblGameMaster;
 
