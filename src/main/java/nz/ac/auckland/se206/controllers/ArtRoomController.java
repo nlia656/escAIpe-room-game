@@ -289,6 +289,7 @@ public class ArtRoomController extends ScrollController {
   }
 
   private void clickForRiddle(String answer) {
+    // If riddle isnt solved, show alert
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -297,7 +298,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if (answer == GameState.riddleAnswer && GameState.isRiddleResolved) {
+    if (answer == GameState.riddleAnswer && GameState.isRiddleResolved) { // If riddle solved, and correct item, get code.
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);

@@ -226,6 +226,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
+    // Tell player to solve riddle first
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -235,6 +236,7 @@ public class DinoRoomController extends ScrollController {
     if (GameState.isPuzzleResolved) {
       return;
     }
+    // If riddle code given, start book puzzle.
     if (GameState.isRiddleResolved && GameState.artFound) {
       App.setUi(AppUi.BOOK_PUZZLE);
       GameState.firstTimeCode = false;
