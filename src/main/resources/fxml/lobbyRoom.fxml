@@ -55,12 +55,12 @@
          <content>
             <AnchorPane fx:id="s" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="230.0" layoutY="21.0" mnemonicParsing="false" onAction="#onOpenGM" text="Game Master">
+                  <Button layoutX="230.0" layoutY="21.0" mnemonicParsing="false" onAction="#onOpenGameMaster" text="Game Master">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Label fx:id="lblGM" layoutX="2.0" layoutY="3.0" prefHeight="60.0" prefWidth="224.0" text="Hello and welcome to meoww" />
+                  <Label fx:id="lblGameMaster" layoutX="2.0" layoutY="3.0" prefHeight="60.0" prefWidth="224.0" text="Hello and welcome to meoww" />
                </children>
             </AnchorPane>
          </content>

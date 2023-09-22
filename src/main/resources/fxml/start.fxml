@@ -14,16 +14,16 @@
             <Image url="@../images/robberyRoom.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="startButton" layoutX="507.0" layoutY="270.0" mnemonicParsing="false" onAction="#start" prefHeight="72.0" prefWidth="186.0" text="Start" AnchorPane.bottomAnchor="220.0" AnchorPane.rightAnchor="40.0">
+      <Button fx:id="startButton" layoutX="507.0" layoutY="270.0" mnemonicParsing="false" onAction="#onStart" prefHeight="72.0" prefWidth="186.0" text="Start" AnchorPane.bottomAnchor="220.0" AnchorPane.rightAnchor="40.0">
          <font>
             <Font name="System Bold" size="34.0" />
          </font></Button>
-      <Button fx:id="creditsButton" layoutX="507.0" layoutY="355.0" mnemonicParsing="false" onAction="#credits" prefHeight="72.0" prefWidth="186.0" text="Credits" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="40.0">
+      <Button fx:id="creditsButton" layoutX="507.0" layoutY="355.0" mnemonicParsing="false" onAction="#onCredits" prefHeight="72.0" prefWidth="186.0" text="Credits" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="40.0">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="507.0" layoutY="436.0" mnemonicParsing="false" onAction="#exit" prefHeight="72.0" prefWidth="186.0" text="Exit" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="40.0">
+      <Button fx:id="exitButton" layoutX="507.0" layoutY="436.0" mnemonicParsing="false" onAction="#onExit" prefHeight="72.0" prefWidth="186.0" text="Exit" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="40.0">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>

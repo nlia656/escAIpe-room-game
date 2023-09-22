@@ -28,7 +28,7 @@ public class BookPuzzleController {
   }
 
   @FXML
-  private void closeBook() {
+  private void onCloseBook() {
     App.setUi(AppUi.DINO_ROOM);
   }
 }
