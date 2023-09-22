@@ -16,6 +16,7 @@ public class BookPuzzleController {
 
   @FXML
   public void initialize() {
+    // Generate the puzzle code to give
     while (puzzleCode < 10) {
       randNumber = Math.random();
       puzzleCode = (int) (randNumber * 100);
@@ -24,7 +25,7 @@ public class BookPuzzleController {
     sb.append("/images/");
     sb.append(GameState.puzzleAnswer);
     sb.append("Snip.png");
-    image.setImage(new Image(sb.toString()));
+    image.setImage(new Image(sb.toString())); // Set the random image for puzzle
   }
 
   @FXML

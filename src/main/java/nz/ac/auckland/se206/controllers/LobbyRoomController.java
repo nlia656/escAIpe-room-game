@@ -55,6 +55,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void scrollLobbyClicked() {
+    // Change scene to scroll and show alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
       showDialog("Info", "Code discovered!", "Now go find the book to continue.");

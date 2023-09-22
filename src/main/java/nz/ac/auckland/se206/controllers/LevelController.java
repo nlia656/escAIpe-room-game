@@ -76,7 +76,7 @@ public class LevelController {
   }
 
   @FXML
-  private void setLevelText() {
+  private void setLevelText() { // Set the text for which level the user selects.
     switch ((int) levelSlider.getValue()) {
       case 0:
         levelTexts.setText("In Easy Mode, you can get any amount of hints from the game master.");

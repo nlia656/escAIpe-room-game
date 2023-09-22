@@ -14,7 +14,7 @@
             <Image url="@../images/robberyRoom.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onStartPage" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
+      <Button layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onBackToStartPage" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
