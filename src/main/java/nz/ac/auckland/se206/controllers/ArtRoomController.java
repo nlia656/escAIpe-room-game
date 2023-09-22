@@ -158,11 +158,21 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void bench1Clicked() {
     // Add your code for handling the bench1Clicked event here
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
   }
 
   @FXML
   private void bench2Clicked() {
     // Add your code for handling the bench2Clicked event here
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
   }
 
   @FXML
