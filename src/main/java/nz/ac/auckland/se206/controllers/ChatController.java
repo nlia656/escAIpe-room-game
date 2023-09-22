@@ -34,13 +34,14 @@ public class ChatController {
   @FXML private Button hintButton;
 
   private ChatCompletionRequest chatCompletionRequest;
+  private ChatCompletionRequest hintCompletionRequest;
   private boolean isGptRunning = false;
 
   /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() { // Specify the generic type as Void
             inProcess();
@@ -66,6 +67,8 @@ public class ChatController {
       hintButton.setDisable(true);
     }
     chatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+    hintCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
@@ -99,15 +102,16 @@ public class ChatController {
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
       }
-      Task<Void> tts = new Task<Void>() { // Specify the generic type as Void
-            @Override
-            protected Void call() {
-              TextToSpeech tts = new TextToSpeech();
-              tts.speak(result.getChatMessage().getContent());
-              Platform.runLater(() -> {});
-              return null;
-            }
-          };
+      Task<Void> tts = new Task<>() { // Specify the generic type as Void
+        @Override
+        protected Void call() {
+          TextToSpeech tts = new TextToSpeech();
+          tts.speak(result.getChatMessage().getContent());
+          Platform.runLater(() -> {
+          });
+          return null;
+        }
+      };
       if (GameState.isTts) { // Check Text to Speech
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
@@ -135,7 +139,7 @@ public class ChatController {
     appendChatMessage(msg);
     // Run GPT model in a separate thread
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             inProcess();
@@ -171,7 +175,7 @@ public class ChatController {
 
   private void inProcess() {
     Task<Void> runAnis =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             int i = 0;
@@ -189,6 +193,7 @@ public class ChatController {
                   inputText.setText(
                       "Game master is typing ..."); // Update the graphics so that the user knows
                                                     // the GPT is replying.
+
                   i = 0;
                   break;
               }
@@ -237,21 +242,16 @@ public class ChatController {
       return;
     }
     Task<Void> task =
-        new Task<Void>() {
+        new Task<>() {
           @Override
           protected Void call() throws Exception {
             inProcess();
             try { // Run the GPT to give hints to user
-              ChatCompletionRequest hintRequest =
-                  new ChatCompletionRequest()
-                      .setN(1)
-                      .setTemperature(0.1)
-                      .setTopP(0.5)
-                      .setMaxTokens(140);
-              hintRequest.addMessage(new ChatMessage("user", GptPromptEngineering.getHints()));
-              ChatCompletionResult chatCompletionResult = hintRequest.execute();
-              Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequest.addMessage(result.getChatMessage());
+              hintCompletionRequest.addMessage(
+                  new ChatMessage("user", GptPromptEngineering.getHints()));
+              ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
+              Choice result = hintCompletionResult.getChoices().iterator().next();
+              hintCompletionRequest.addMessage(result.getChatMessage());
               appendChatMessage(result.getChatMessage());
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
