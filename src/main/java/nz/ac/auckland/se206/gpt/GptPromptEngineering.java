@@ -44,7 +44,7 @@ public class GptPromptEngineering {
           + " capacity. Make the hint a little different everytime.";
     } else if (GameState.isRiddleResolved
         && !GameState.isPuzzleResolved
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditionals.
       if (Set.of(
               "poster1",
               "poster2",

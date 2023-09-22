@@ -70,7 +70,7 @@ public class DinoRoomController extends ScrollController {
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-          return;
+      return;
     }
     System.out.println("poster1 clicked");
     if (GameState.isPuzzleResolved) {
