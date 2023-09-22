@@ -53,7 +53,7 @@ public class GptPromptEngineering {
               "mask",
               "vase3",
               "dinosaur")
-          .contains(GameState.puzzleAnswer)) {
+          .contains(GameState.puzzleAnswer)) { // Give player a nudge in the right direction
         return "[System] tell the player the following words briefly: 'Look closely in the room"
             + " with the dinosaur!'";
       } else if (Set.of("painting1", "painting2", "painting3", "painting4", "painting5")

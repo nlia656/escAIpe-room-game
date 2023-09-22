@@ -172,7 +172,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.puzzleAnswer == "painting1"
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditions
       GameState.isPuzzleResolved = true;
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
@@ -189,7 +189,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.puzzleAnswer == "painting2"
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditions
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -206,7 +206,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.puzzleAnswer == "painting3"
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditions
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -223,7 +223,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.puzzleAnswer == "painting4"
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditions
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
@@ -240,7 +240,7 @@ public class ArtRoomController extends ScrollController {
     if (GameState.puzzleAnswer == "painting5"
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditions
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
