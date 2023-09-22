@@ -9,7 +9,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class CreditsController {
 
   @FXML
-  void onStartPage(ActionEvent event) {
+  void onBackToStartPage(ActionEvent event) {
     // Remove the scenes from the hash map to be reloaded.
     SceneManager.removeAppUi(AppUi.CHAT);
     SceneManager.removeAppUi(AppUi.ART_ROOM);

@@ -134,10 +134,9 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     // Run GPT model in a separate thread
-    Task<Void> task =
-        new Task<Void>() { // Specify the generic type as Void
+    Task<Void> task = new Task<Void>() { // Specify the generic type as Void
           @Override
-          protected Void call() throws Exception {
+          protected Void call() throws Exception { // Specify the generic type as Void
             inProcess();
             runGpt(msg);
             Platform.runLater(
@@ -188,7 +187,7 @@ public class ChatController {
                 case 2:
                   inputText.setText(
                       "Game master is typing ..."); // Update the graphics so that the user knows
-                                                    // the GPT is replying.
+                  // the GPT is replying.
                   i = 0;
                   break;
               }
