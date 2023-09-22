@@ -48,6 +48,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
     // Timer that updates the time left to the user.
+
     Task<Void> timer =
         new Task<>() {
           @Override
@@ -57,7 +58,9 @@ public class ArtRoomController extends ScrollController {
                 Platform.runLater(
                     () -> {
                       lblTime.setText(String.valueOf(GameState.timeLeft));
+
                       lblGameMaster.setText(GameState.lastMsg);
+
                     });
               }
               Thread.sleep(300);
@@ -156,15 +159,30 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void bench1Clicked() {
     // Add your code for handling the bench1Clicked event here
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
   }
 
   @FXML
   private void bench2Clicked() {
     // Add your code for handling the bench2Clicked event here
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
   }
 
   @FXML
   private void painting1Clicked() {
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -181,7 +199,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting2Clicked() {
-    // If already solved, do nothing. If book opened and not solved, allow to be solved.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -198,7 +220,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting3Clicked() {
-    // If already solved, do nothing. If book opened and not solved, allow to be solved.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -215,7 +241,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting4Clicked() {
-    // If already solved, do nothing. If book opened and not solved, allow to be solved.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -232,7 +262,11 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   private void painting5Clicked() {
-    // If already solved, do nothing. If book opened and not solved, allow to be solved.
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -250,11 +284,19 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
-    clickForRiddle("book");
+    if (GameState.isRiddleResolved && GameState.artFound && !GameState.hasBookOpened) {
+      showDialog("Info", "Wrong book!", "Find the other book!");
+    } else {
+      clickForRiddle("book");
+    }
   }
 
   private void clickForRiddle(String answer) {
-    // Method that lets user get code from riddle answer
+    if (!GameState.isRiddleResolved) {
+      showDialog(
+          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      return;
+    }
     if (GameState.isRiddleCodeGiven) {
       return;
     }
@@ -263,6 +305,7 @@ public class ArtRoomController extends ScrollController {
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
       GameState.firstTimeCode = true;
+      GameState.artFound = true;
     }
   }
 }

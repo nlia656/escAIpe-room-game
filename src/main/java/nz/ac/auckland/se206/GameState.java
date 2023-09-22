@@ -54,6 +54,7 @@ public class GameState {
   public static boolean secondTimeCode;
   public static boolean isRiddleCodeGiven;
   public static boolean isPuzzleCodeGiven;
+  public static boolean artFound;
   private static double randNumber;
   public static boolean hasBookOpened;
 
