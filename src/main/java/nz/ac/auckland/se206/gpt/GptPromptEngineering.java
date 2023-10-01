@@ -44,7 +44,7 @@ public class GptPromptEngineering {
           + " capacity. Make the hint a little different everytime.";
     } else if (GameState.isRiddleResolved
         && !GameState.isPuzzleResolved
-        && GameState.hasBookOpened) {
+        && GameState.hasBookOpened) { // Check conditionals.
       if (Set.of(
               "poster1",
               "poster2",
@@ -55,7 +55,7 @@ public class GptPromptEngineering {
               "mask",
               "vase",
               "dinosaur")
-          .contains(GameState.puzzleAnswer)) {
+          .contains(GameState.puzzleAnswer)) { // Give player a nudge in the right direction
         return "[System] tell the player the following words briefly: 'Look closely in the room"
             + " with the dinosaur!'";
       } else if (Set.of("painting1", "painting2", "painting3", "painting4", "painting5")

@@ -28,6 +28,11 @@ public class LevelController {
   }
 
   @FXML
+  private void onBack() {
+    App.setUi(AppUi.START);
+  }
+
+  @FXML
   private void finishTime() {
     double time = timeSlider.getValue();
     timeSlider.setValue(Math.round(time));

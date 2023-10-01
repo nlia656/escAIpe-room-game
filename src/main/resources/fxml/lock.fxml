@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: C4A484;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LockController">
+<AnchorPane prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: C4A484;" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LockController">
   <Pane layoutX="151.0" layoutY="86.0" prefHeight="367.0" prefWidth="258.0">
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8c95a1" height="367.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="258.0" />
     <Button fx:id="button1" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" onAction="#onType1" prefHeight="42.0" prefWidth="69.0" text="1">

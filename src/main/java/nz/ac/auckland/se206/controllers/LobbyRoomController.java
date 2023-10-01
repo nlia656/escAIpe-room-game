@@ -68,6 +68,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void elevatorClicked() {
+    // Change scene to lock if both puzzle and riddle are solved.
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -82,6 +83,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void couch2Clicked() {
+    // If puzzle is solved, show alert.
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -96,6 +98,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void tableClicked() {
+    // If puzzle is solved, show alert.
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -110,6 +113,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void couch3Clicked() {
+    // If puzzle is solved, show alert.
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
@@ -124,6 +128,7 @@ public class LobbyRoomController extends ScrollController {
 
   @FXML
   private void plantClicked() {
+    // If puzzle is solved, show alert.
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
