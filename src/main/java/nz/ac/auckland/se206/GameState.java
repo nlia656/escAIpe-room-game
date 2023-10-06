@@ -8,24 +8,24 @@ public class GameState {
     "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
   };
   public static final String[] puzzleObjects = {
-    "couch1",
+//    "couch1",
     "dinosaur",
-    "mask",
-    "robe",
-    "poster3",
-    "poster2",
-    "poster1",
-    "vase",
-    "painting1",
-    "painting2",
-    "painting3",
-    "painting4",
-    "painting5",
-    "painting6",
-    "couch2",
-    "couch3",
-    "plant",
-    "table"
+//    "mask",
+//    "robe",
+//    "poster3",
+//    "poster2",
+//    "poster1",
+//    "vase",
+//    "painting1",
+//    "painting2",
+//    "painting3",
+//    "painting4",
+//    "painting5",
+//    "painting6",
+//    "couch2",
+//    "couch3",
+//    "plant",
+//    "table"
   };
 
   public static String puzzleAnswer;
@@ -87,7 +87,6 @@ public class GameState {
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
-    timeLeft = timeLimit;
     randNumber = Math.random();
     randomCode = (int) (randNumber * 100);
     if (randomCode < 10) {

@@ -1,5 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -7,6 +11,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -31,9 +36,15 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
-    timerThread.setDaemon(true);
-    timerThread.start();
+    StringProperty time = new SimpleStringProperty();
+    lblTime.textProperty().bind(time);
+    Timeline timeline = new Timeline(
+      new KeyFrame(Duration.seconds(0.5),event -> {
+        time.setValue(String.valueOf(GameState.timeLeft));
+      })
+    );
+    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.play();
   }
 
   private void showDialog(String title, String headerText, String message) {
@@ -65,159 +76,6 @@ public class DinoRoomController extends ScrollController {
     }
   }
 
-  @FXML
-  public void poster1Clicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("poster1 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "poster1"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void poster2Clicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("poster2 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "poster2"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void poster3Clicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("poster3 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "poster3"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void couch1Clicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("couch1 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "couch1"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void robeClicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("robe clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "robe"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void dinosaurClicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "dinosaur"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-    System.out.println("dinosaur clicked");
-  }
-
-  @FXML
-  public void vase3Clicked(MouseEvent event) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("vase3 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "vase"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
 
   @FXML
   private void onOpenGameMaster() {
@@ -227,60 +85,35 @@ public class DinoRoomController extends ScrollController {
   @FXML
   public void books2Clicked(MouseEvent mouseEvent) {
     // Tell player to solve riddle first
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("books2 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
     // If riddle code given, start book puzzle.
     if (GameState.isRiddleResolved && GameState.artFound) {
       App.setUi(AppUi.BOOK_PUZZLE);
       GameState.firstTimeCode = false;
       GameState.hasBookOpened = true;
     }
+    checkClickItem("books2");
   }
 
+
   @FXML
-  public void maskClicked(MouseEvent mouseEvent) {
+  public void onClickItem(MouseEvent event){
+    String name = ((Rectangle)event.getSource()).getId();
+    checkClickItem(name);
+  }
+  private void checkClickItem(String name){
     if (!GameState.isRiddleResolved) {
       showDialog(
           "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
       return;
     }
-    System.out.println("mask clicked");
+    System.out.println(name+" clicked");
     if (GameState.isPuzzleResolved) {
       return;
     }
-    if (GameState.puzzleAnswer == "mask"
+    if (GameState.puzzleAnswer.equals(name)
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  public void painting6Clicked(MouseEvent mouseEvent) {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println("painting6 clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting6"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
+        && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
