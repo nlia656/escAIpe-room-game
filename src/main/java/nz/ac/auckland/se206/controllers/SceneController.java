@@ -30,14 +30,10 @@ public class SceneController {
   protected Label lblGameMaster;
 
   public static void timerTextSet(Label lblTime, Label lblGameMaster) {
-    StringProperty time = new SimpleStringProperty();
-    StringProperty lastmsg = new SimpleStringProperty();
-    lblTime.textProperty().bind(time);
-    lblGameMaster.textProperty().bind(lastmsg);
     Timeline timeline = new Timeline(
         new KeyFrame(Duration.seconds(0.5), event -> {
-          time.setValue(String.valueOf(GameState.timeLeft));
-          lastmsg.setValue(GameState.lastMsg);
+          lblTime.setText(String.valueOf(GameState.timeLeft));
+          lblGameMaster.setText(GameState.lastMsg);
         })
     );
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
