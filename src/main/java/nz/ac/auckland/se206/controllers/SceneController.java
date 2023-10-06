@@ -2,8 +2,6 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -29,7 +27,7 @@ public class SceneController {
   @FXML
   protected Label lblGameMaster;
 
-  public static void timerTextSet(Label lblTime, Label lblGameMaster) {
+  public static void startTextSync(Label lblTime, Label lblGameMaster) {
     Timeline timeline = new Timeline(
         new KeyFrame(Duration.seconds(0.5), event -> {
           lblTime.setText(String.valueOf(GameState.timeLeft));

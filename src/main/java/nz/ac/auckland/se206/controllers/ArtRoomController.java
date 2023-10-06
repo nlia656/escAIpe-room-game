@@ -12,7 +12,7 @@ public class ArtRoomController extends SceneController {
 
   @FXML
   public void initialize() {
-    timerTextSet(lblTime, lblGameMaster);
+    startTextSync(lblTime, lblGameMaster);
   }
 
 

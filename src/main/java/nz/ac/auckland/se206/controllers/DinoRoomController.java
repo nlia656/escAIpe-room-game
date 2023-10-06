@@ -10,7 +10,7 @@ public class DinoRoomController extends SceneController {
 
   @FXML
   public void initialize() {
-    timerTextSet(lblTime, lblGameMaster);
+    startTextSync(lblTime, lblGameMaster);
   }
 
   @FXML
