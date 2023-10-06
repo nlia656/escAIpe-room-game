@@ -1,9 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
@@ -13,31 +10,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class ArtRoomController extends ScrollController {
-
-  @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
-    // Timer that updates the time left to the user.
-    Task<Void> timer =
-        new Task<>() {
-          @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
-            while (!GameState.isGameComplete) {
-              if (!GameState.isPaused) {
-                Platform.runLater(
-                    () -> {
-                      lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGameMaster.setText(GameState.lastMsg);
-                    });
-              }
-              Thread.sleep(300);
-            }
-            return null;
-          }
-        };
-    return timer;
-  }
-
+public class ArtRoomController extends SceneController {
   @FXML private Label lblGameMaster;
   @FXML private Label lblTime;
   @FXML private ImageView scrollArt;
@@ -63,18 +36,9 @@ public class ArtRoomController extends ScrollController {
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
-    timerThread.setDaemon(true);
-    timerThread.start();
+    timerTextSet(lblTime);
   }
 
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
 
   @FXML
   private void onOpenGameMaster() {
@@ -157,8 +121,7 @@ public class ArtRoomController extends ScrollController {
   private void bench1Clicked() {
     // Add your code for handling the bench1Clicked event here
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
   }
@@ -167,8 +130,7 @@ public class ArtRoomController extends ScrollController {
   private void bench2Clicked() {
     // Add your code for handling the bench2Clicked event here
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
   }
@@ -176,8 +138,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void painting1Clicked() {
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isPuzzleResolved) {
@@ -197,8 +158,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void painting2Clicked() {
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isPuzzleResolved) {
@@ -218,8 +178,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void painting3Clicked() {
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isPuzzleResolved) {
@@ -239,8 +198,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void painting4Clicked() {
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isPuzzleResolved) {
@@ -260,8 +218,7 @@ public class ArtRoomController extends ScrollController {
   @FXML
   private void painting5Clicked() {
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isPuzzleResolved) {
@@ -291,8 +248,7 @@ public class ArtRoomController extends ScrollController {
   private void clickForRiddle(String answer) {
     // If riddle isnt solved, show alert
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isRiddleCodeGiven) {
@@ -306,4 +262,5 @@ public class ArtRoomController extends ScrollController {
       GameState.artFound = true;
     }
   }
+
 }

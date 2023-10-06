@@ -1,10 +1,10 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -12,33 +12,33 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 // import javafx.scene.Cursor;
 
-public class LobbyRoomController extends ScrollController {
-  @FXML private Label lblGameMaster;
-  @FXML private Label lblTime;
+public class LobbyRoomController extends SceneController {
 
-  @FXML private ImageView lobbyToArt;
+  @FXML
+  private Label lblGameMaster;
+  @FXML
+  private Label lblTime;
 
-  @FXML private Rectangle elevator;
-  @FXML private Rectangle couch2;
-  @FXML private Rectangle table;
-  @FXML private Rectangle couch3;
-  @FXML private Rectangle plant;
+  @FXML
+  private ImageView lobbyToArt;
 
-  @FXML private TitledPane lobbyRoomPane;
+  @FXML
+  private Rectangle elevator;
+  @FXML
+  private Rectangle couch2;
+  @FXML
+  private Rectangle table;
+  @FXML
+  private Rectangle couch3;
+  @FXML
+  private Rectangle plant;
+
+  @FXML
+  private TitledPane lobbyRoomPane;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(ArtRoomController.getTimer(lblTime, lblGameMaster));
-    timerThread.setDaemon(true);
-    timerThread.start();
-  }
-
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
+    timerTextSet(lblTime);
   }
 
   @FXML
@@ -70,8 +70,7 @@ public class LobbyRoomController extends ScrollController {
   private void elevatorClicked() {
     // Change scene to lock if both puzzle and riddle are solved.
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (!GameState.isPuzzleResolved || !GameState.isRiddleResolved) {
@@ -82,62 +81,9 @@ public class LobbyRoomController extends ScrollController {
   }
 
   @FXML
-  private void couch2Clicked() {
-    // If puzzle is solved, show alert.
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.puzzleAnswer == "couch2") {
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-    }
+  public void onClickItem(MouseEvent event) {
+    String name = ((Rectangle) event.getSource()).getId();
+    checkClickItem(name);
   }
 
-  @FXML
-  private void tableClicked() {
-    // If puzzle is solved, show alert.
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.puzzleAnswer == "table") {
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-    }
-  }
-
-  @FXML
-  private void couch3Clicked() {
-    // If puzzle is solved, show alert.
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.puzzleAnswer == "couch3") {
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-    }
-  }
-
-  @FXML
-  private void plantClicked() {
-    // If puzzle is solved, show alert.
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.puzzleAnswer == "plant") {
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-    }
-  }
 }

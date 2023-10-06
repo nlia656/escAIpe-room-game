@@ -1,22 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class DinoRoomController extends ScrollController {
+public class DinoRoomController extends SceneController {
 
   @FXML private ImageView dinoToArt;
   @FXML private Rectangle vase3;
@@ -36,23 +30,7 @@ public class DinoRoomController extends ScrollController {
 
   @FXML
   public void initialize() {
-    StringProperty time = new SimpleStringProperty();
-    lblTime.textProperty().bind(time);
-    Timeline timeline = new Timeline(
-      new KeyFrame(Duration.seconds(0.5),event -> {
-        time.setValue(String.valueOf(GameState.timeLeft));
-      })
-    );
-    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
-    timeline.play();
-  }
-
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
+    timerTextSet(lblTime);
   }
 
   @FXML
@@ -94,30 +72,10 @@ public class DinoRoomController extends ScrollController {
     checkClickItem("books2");
   }
 
-
   @FXML
   public void onClickItem(MouseEvent event){
     String name = ((Rectangle)event.getSource()).getId();
     checkClickItem(name);
   }
-  private void checkClickItem(String name){
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    System.out.println(name+" clicked");
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer.equals(name)
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) {
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
+
 }
