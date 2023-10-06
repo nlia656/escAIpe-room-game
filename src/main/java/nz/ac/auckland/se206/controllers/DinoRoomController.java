@@ -1,36 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class DinoRoomController extends SceneController {
 
-  @FXML private ImageView dinoToArt;
-  @FXML private Rectangle vase3;
-  @FXML private Rectangle books2;
-  @FXML private Rectangle mask;
-  @FXML private Rectangle painting6;
-  @FXML private Rectangle newspaper3;
-  @FXML private Rectangle couch1;
-  @FXML private Rectangle robe;
-  @FXML private Rectangle newspaper2;
-  @FXML private Rectangle newspaper1;
-  @FXML private Rectangle dinosaur;
-  @FXML private TitledPane dinoRoomPane;
-
-  @FXML private Label lblTime;
-  @FXML private Label lblGameMaster;
-
   @FXML
   public void initialize() {
-    timerTextSet(lblTime);
+    timerTextSet(lblTime, lblGameMaster);
   }
 
   @FXML
@@ -70,12 +50,6 @@ public class DinoRoomController extends SceneController {
       GameState.hasBookOpened = true;
     }
     checkClickItem("books2");
-  }
-
-  @FXML
-  public void onClickItem(MouseEvent event){
-    String name = ((Rectangle)event.getSource()).getId();
-    checkClickItem(name);
   }
 
 }
