@@ -25,15 +25,14 @@ public class DinoRoomController extends SceneController {
     // Change scene to scroll and change alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
+      showNotifications("Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
+      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
     }
   }
-
 
   @FXML
   private void onOpenGameMaster() {
@@ -51,5 +50,4 @@ public class DinoRoomController extends SceneController {
     }
     checkClickItem("books2");
   }
-
 }

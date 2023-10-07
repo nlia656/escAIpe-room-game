@@ -3,7 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -11,29 +11,26 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import org.controlsfx.control.Notifications;
 
 public class SceneController {
 
-  @FXML
-  public static Label staticPuzzleCodeLabel;
-  @FXML
-  public static Label staticRiddleCodeLabel;
-  @FXML
-  private Label puzzleCodeLabel;
-  @FXML
-  private Label riddleCodeLabel;
-  @FXML
-  protected Label lblTime;
-  @FXML
-  protected Label lblGameMaster;
+  @FXML public static Label staticPuzzleCodeLabel;
+  @FXML public static Label staticRiddleCodeLabel;
+  @FXML private Label puzzleCodeLabel;
+  @FXML private Label riddleCodeLabel;
+  @FXML protected Label lblTime;
+  @FXML protected Label lblGameMaster;
 
   public static void startTextSync(Label lblTime, Label lblGameMaster) {
-    Timeline timeline = new Timeline(
-        new KeyFrame(Duration.seconds(0.5), event -> {
-          lblTime.setText(String.valueOf(GameState.timeLeft));
-          lblGameMaster.setText(GameState.lastMsg);
-        })
-    );
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblGameMaster.setText(GameState.lastMsg);
+                }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
   }
@@ -55,17 +52,26 @@ public class SceneController {
     }
   }
 
-  protected void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
+  // protected void showDialog(String title, String headerText, String message) {
+  //   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+  //   alert.setTitle(title);
+  //   alert.setHeaderText(headerText);
+  //   alert.setContentText(message);
+  //   alert.showAndWait();
+  // }
+
+  protected void showNotifications(String title, String message) {
+    Notifications notification = Notifications.create();
+    notification.title(title);
+    notification.text(message);
+    notification.position(Pos.CENTER);
+    notification.hideAfter(Duration.seconds(3));
+    notification.show();
   }
 
   protected void showRiddleNotSolved() {
-    showDialog(
-        "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+    showNotifications(
+        "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
   }
 
   @FXML
@@ -89,7 +95,7 @@ public class SceneController {
         && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
       staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }
   }

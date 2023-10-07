@@ -9,12 +9,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ArtRoomController extends SceneController {
 
-
   @FXML
   public void initialize() {
     startTextSync(lblTime, lblGameMaster);
   }
-
 
   @FXML
   private void onOpenGameMaster() {
@@ -40,11 +38,11 @@ public class ArtRoomController extends SceneController {
     // Change scene to scroll to see code, change alerts based on progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
+      showNotifications("Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
+      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
       GameState.isPuzzleCodeGiven = true;
     }
@@ -64,12 +62,11 @@ public class ArtRoomController extends SceneController {
     }
   }
 
-
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
     if (GameState.isRiddleResolved && GameState.artFound && !GameState.hasBookOpened) {
-      showDialog("Info", "Wrong book!", "Find the other book!");
+      showNotifications("Wrong book!", "Find the other book!");
     } else {
       clickForRiddle("book");
     }
@@ -85,12 +82,11 @@ public class ArtRoomController extends SceneController {
       return;
     }
     if (answer.equals(GameState.riddleAnswer)) { // If riddle solved, and correct item, get code.
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+      showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
       GameState.firstTimeCode = true;
       GameState.artFound = true;
     }
   }
-
 }

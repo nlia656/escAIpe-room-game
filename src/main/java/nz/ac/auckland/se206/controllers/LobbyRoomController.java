@@ -5,13 +5,11 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-
 public class LobbyRoomController extends SceneController {
-
 
   @FXML
   public void initialize() {
-    startTextSync(lblTime,lblGameMaster);
+    startTextSync(lblTime, lblGameMaster);
   }
 
   @FXML
@@ -31,10 +29,10 @@ public class LobbyRoomController extends SceneController {
     // Change scene to scroll and show alerts depending on game progress.
     App.setUi(AppUi.SCROLL);
     if (GameState.firstTimeCode) {
-      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
+      showNotifications("Code discovered!", "Now go find the book to continue.");
       GameState.firstTimeCode = false;
     } else if (GameState.secondTimeCode) {
-      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
+      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
       GameState.secondTimeCode = false;
     }
   }
@@ -47,10 +45,9 @@ public class LobbyRoomController extends SceneController {
       return;
     }
     if (!GameState.isPuzzleResolved) {
-      showDialog("Info", "Elevator locked!", "You need to solve the puzzle and riddle first.");
+      showNotifications("Elevator locked!", "You need to solve the puzzle and riddle first.");
     } else {
       App.setUi(AppUi.LOCK);
     }
   }
-
 }
