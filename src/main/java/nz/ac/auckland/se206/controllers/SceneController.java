@@ -28,7 +28,7 @@ public class SceneController {
             new KeyFrame(
                 Duration.seconds(0.5),
                 event -> {
-                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblTime.setText(GameState.timeLeft);
                   lblGameMaster.setText(GameState.lastMsg);
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
