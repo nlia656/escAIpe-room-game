@@ -141,5 +141,10 @@
 			<artifactId>javax.json</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+		<dependency>
+    		<groupId>eu.hansolo.enzo</groupId>
+    		<artifactId>Enzo</artifactId>
+    		<version>0.3.6</version>
+		</dependency>
 	</dependencies>
 </project>

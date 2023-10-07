@@ -8,32 +8,29 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javax.management.Notification;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class SceneController {
 
-  @FXML
-  public static Label staticPuzzleCodeLabel;
-  @FXML
-  public static Label staticRiddleCodeLabel;
-  @FXML
-  private Label puzzleCodeLabel;
-  @FXML
-  private Label riddleCodeLabel;
-  @FXML
-  protected Label lblTime;
-  @FXML
-  protected Label lblGameMaster;
+  @FXML public static Label staticPuzzleCodeLabel;
+  @FXML public static Label staticRiddleCodeLabel;
+  @FXML private Label puzzleCodeLabel;
+  @FXML private Label riddleCodeLabel;
+  @FXML protected Label lblTime;
+  @FXML protected Label lblGameMaster;
 
   public static void startTextSync(Label lblTime, Label lblGameMaster) {
-    Timeline timeline = new Timeline(
-        new KeyFrame(Duration.seconds(0.5), event -> {
-          lblTime.setText(String.valueOf(GameState.timeLeft));
-          lblGameMaster.setText(GameState.lastMsg);
-        })
-    );
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblGameMaster.setText(GameState.lastMsg);
+                }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
   }
@@ -61,6 +58,11 @@ public class SceneController {
     alert.setHeaderText(headerText);
     alert.setContentText(message);
     alert.showAndWait();
+  }
+
+  protected void showNotifications(final String title, final String text) {
+    Notification notification = new Notification(title, 0, 0, text);
+    notification.notify();
   }
 
   protected void showRiddleNotSolved() {
