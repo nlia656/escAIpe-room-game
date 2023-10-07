@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
@@ -12,8 +13,9 @@ public class StartController {
   @FXML private Button exitButton;
 
   @FXML
-  private void onStart() {
+  private void onStart() throws IOException {
     App.setUi(AppUi.LEVEL);
+    App.loadChat();
   }
 
   @FXML
