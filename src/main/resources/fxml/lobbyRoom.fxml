@@ -31,22 +31,22 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="couch2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="360.0" layoutY="215.0" onMouseClicked="#couch2Clicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0">
+      <Rectangle fx:id="couch2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="360.0" layoutY="215.0" onMouseClicked="#onClickItem" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="table" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="420.0" layoutY="254.0" onMouseClicked="#tableClicked" opacity="0.0" rotate="26.6" stroke="BLACK" strokeType="INSIDE" width="56.0">
+      <Rectangle fx:id="table" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="420.0" layoutY="254.0" onMouseClicked="#onClickItem" opacity="0.0" rotate="26.6" stroke="BLACK" strokeType="INSIDE" width="56.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="couch3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="62.0" layoutX="474.0" layoutY="284.0" onMouseClicked="#couch3Clicked" opacity="0.0" rotate="29.7" stroke="BLACK" strokeType="INSIDE" width="74.0">
+      <Rectangle fx:id="couch3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="62.0" layoutX="474.0" layoutY="284.0" onMouseClicked="#onClickItem" opacity="0.0" rotate="29.7" stroke="BLACK" strokeType="INSIDE" width="74.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="plant" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="558.0" layoutY="290.0" onMouseClicked="#plantClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0">
+      <Rectangle fx:id="plant" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="558.0" layoutY="290.0" onMouseClicked="#onClickItem" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

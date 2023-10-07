@@ -25,7 +25,7 @@ public class GameState {
     "couch2",
     "couch3",
     "plant",
-    "table"
+   "table"
   };
 
   public static String puzzleAnswer;
@@ -87,7 +87,6 @@ public class GameState {
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
-    timeLeft = timeLimit;
     randNumber = Math.random();
     randomCode = (int) (randNumber * 100);
     if (randomCode < 10) {

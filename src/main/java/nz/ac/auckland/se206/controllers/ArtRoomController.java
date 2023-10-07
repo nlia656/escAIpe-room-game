@@ -1,80 +1,20 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class ArtRoomController extends ScrollController {
+public class ArtRoomController extends SceneController {
 
-  @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
-    // Timer that updates the time left to the user.
-    Task<Void> timer =
-        new Task<>() {
-          @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
-            while (!GameState.isGameComplete) {
-              if (!GameState.isPaused) {
-                Platform.runLater(
-                    () -> {
-                      lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGameMaster.setText(GameState.lastMsg);
-                    });
-              }
-              Thread.sleep(300);
-            }
-            return null;
-          }
-        };
-    return timer;
-  }
-
-  @FXML private Label lblGameMaster;
-  @FXML private Label lblTime;
-  @FXML private ImageView scrollArt;
-  @FXML private ImageView artToDino;
-  @FXML private ImageView artToLobby;
-  @FXML private Rectangle dagger;
-  @FXML private Rectangle armour;
-  @FXML private Rectangle pillar;
-  @FXML private Rectangle crown;
-  @FXML private Rectangle vase1;
-  @FXML private Rectangle sword;
-  @FXML private Rectangle vase2;
-  @FXML private Rectangle bench1;
-  @FXML private Rectangle bench2;
-  @FXML private Rectangle painting1;
-  @FXML private Rectangle painting2;
-  @FXML private Rectangle painting3;
-  @FXML private Rectangle painting4;
-  @FXML private Rectangle painting5;
-  @FXML private Rectangle books1;
-  @FXML private Button btnHelp;
-  @FXML private TitledPane artRoomPane;
 
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
-    timerThread.setDaemon(true);
-    timerThread.start();
+    startTextSync(lblTime, lblGameMaster);
   }
 
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
 
   @FXML
   private void onOpenGameMaster() {
@@ -111,172 +51,19 @@ public class ArtRoomController extends ScrollController {
   }
 
   @FXML
-  private void daggerClicked() {
-
-    // Add your code for handling the daggerClicked event here
-    clickForRiddle("dagger");
+  private void onRiddleItem(MouseEvent event) {
+    String name = ((Rectangle) event.getSource()).getId();
+    clickForRiddle(name);
   }
 
   @FXML
-  private void armourClicked() {
-    // Add your code for handling the armourClicked event here
-    clickForRiddle("armour");
-  }
-
-  @FXML
-  private void pillarClicked() {
-    // Add your code for handling the pillarClicked event here
-    clickForRiddle("pillar");
-  }
-
-  @FXML
-  private void crownClicked() {
-    // Add your code for handling the crownClicked event here
-    clickForRiddle("crown");
-  }
-
-  @FXML
-  private void vase1Clicked() {
-    // Add your code for handling the vase1Clicked event here
-    clickForRiddle("vase");
-  }
-
-  @FXML
-  private void swordClicked() {
-    // Add your code for handling the swordClicked event here
-    clickForRiddle("sword");
-  }
-
-  @FXML
-  private void vase2Clicked() {
-    // Add your code for handling the vase2Clicked event here
-    clickForRiddle("vase");
-  }
-
-  @FXML
-  private void bench1Clicked() {
+  private void benchClicked() {
     // Add your code for handling the bench1Clicked event here
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
+      showRiddleNotSolved();
     }
   }
 
-  @FXML
-  private void bench2Clicked() {
-    // Add your code for handling the bench2Clicked event here
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-  }
-
-  @FXML
-  private void painting1Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting1"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting2Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting2"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting3Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting3"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting4Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting4"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting5Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting5"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
 
   @FXML
   private void books1Clicked() {
@@ -291,14 +78,13 @@ public class ArtRoomController extends ScrollController {
   private void clickForRiddle(String answer) {
     // If riddle isnt solved, show alert
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if (answer == GameState.riddleAnswer && GameState.isRiddleResolved) { // If riddle solved, and correct item, get code.
+    if (answer.equals(GameState.riddleAnswer)) { // If riddle solved, and correct item, get code.
       showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
@@ -306,4 +92,5 @@ public class ArtRoomController extends ScrollController {
       GameState.artFound = true;
     }
   }
+
 }
