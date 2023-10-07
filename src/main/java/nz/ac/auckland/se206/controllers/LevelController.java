@@ -40,7 +40,6 @@ public class LevelController {
 
   @FXML
   private void onStart() throws IOException {
-    GameState.initial();
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;
@@ -71,7 +70,6 @@ public class LevelController {
       default:
         break;
     }
-    App.loadRoom();
     GameState.isTts = ttsButton.isSelected();
     // todo change to intro screen later
     App.makeTimer();

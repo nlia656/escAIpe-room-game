@@ -101,17 +101,17 @@ public class ChatController {
       if (result.getChatMessage().getRole().equals("assistant")
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
+        System.out.println("MEOW");
       }
       Task<Void> tts = new Task<>() { // Specify the generic type as Void
-        @Override
-        protected Void call() {
-          TextToSpeech tts = new TextToSpeech();
-          tts.speak(result.getChatMessage().getContent());
-          Platform.runLater(() -> {
-          });
-          return null;
-        }
-      };
+            @Override
+            protected Void call() {
+              TextToSpeech tts = new TextToSpeech();
+              tts.speak(result.getChatMessage().getContent());
+              Platform.runLater(() -> {});
+              return null;
+            }
+          };
       if (GameState.isTts) { // Check Text to Speech
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
