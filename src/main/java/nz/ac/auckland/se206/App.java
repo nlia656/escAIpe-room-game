@@ -16,7 +16,7 @@ public class App extends Application {
 
   public static volatile boolean timerRunning = true;
   private static Scene scene;
-  public static Stage stageTest;
+  public static Stage Stage;
 
   public static void main(final String[] args) {
     launch();
@@ -102,12 +102,12 @@ public class App extends Application {
   }
 
   public static Stage getStage() {
-    return stageTest;
+    return Stage;
   }
 
   @Override
   public void start(final Stage stage) throws IOException {
-    stageTest = stage;
+    App.Stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
