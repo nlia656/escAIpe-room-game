@@ -8,6 +8,11 @@
        src: url('/fonts/bank-gothic-medium-bt.ttf');
    }
 
+   @font-face {
+       font-family: "Papyrus";
+       src: url('/fonts/papyrus.ttf');
+   }
+
 
    #gameTitle {
        -fx-font-size: 34;
@@ -37,4 +42,19 @@
    #levelText {
        -fx-font-size: 19;
        -fx-font-family: "BankGothic Md BT"
+   }
+
+   #codeTitle {
+       -fx-font-size: 30;
+       -fx-font-family: "Papyrus";
+   }
+
+   #riddleCodeLabel {
+       -fx-font-size: 70;
+       -fx-font-family: "Papyrus";
+   }
+
+   #puzzleCodeLabel {
+       -fx-font-size: 70;
+       -fx-font-family: "Papyrus";
    }
