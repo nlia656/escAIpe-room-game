@@ -11,11 +11,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** This is the entry point of the JavaFX application. */
+/**
+ * This is the entry point of the JavaFX application.
+ */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
   private static Scene scene;
+  public static Stage Stage;
 
   public static void main(final String[] args) {
     launch();
@@ -41,35 +44,38 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /** Create and run a timer that handles game timing. */
+  /**
+   * Create and run a timer that handles game timing.
+   */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-          @Override
-          protected Void call() throws Exception {
-            // Create a timer thread
-            for (int i = GameState.timeLimit; i >= 0; i--) {
-              if (!timerRunning) {
-                break;
-              }
-              if (GameState.isGameComplete) {
-                GameState.isGameComplete = false;
-                return null;
-              }
-              if (!GameState.isPaused) {
-                final int finalI = i;
-                Platform.runLater(
-                    () -> {
-                      GameState.timeLeft = finalI;
-                      if (finalI == 0) {
-                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-                      }
-                    });
-              }
-              Thread.sleep(1000);
-            }
+      @Override
+      protected Void call() throws Exception {
+        // Create a timer thread
+        for (int i = GameState.timeLimit; i >= 0; i--) {
+          if (!timerRunning) {
+            break;
+          }
+          if (GameState.isGameComplete) {
+            GameState.isGameComplete = false;
             return null;
           }
-        };
+          if (!GameState.isPaused) {
+            final int finalI = i;
+            Platform.runLater(
+                () -> {
+                  GameState.timeLeft = new StringBuilder().append(finalI / 60).append(":")
+                      .append(finalI % 60).toString();
+                  if (finalI == 0) {
+                    App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                  }
+                });
+          }
+          Thread.sleep(1000);
+        }
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -100,9 +106,14 @@ public class App extends Application {
     SceneManager.removeAppUi(AppUi.LOCK);
   }
 
+  public static Stage getStage() {
+    return Stage;
+  }
+
   @Override
   public void start(final Stage stage) throws IOException {
     GameState.initial();
+    App.Stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
     SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));

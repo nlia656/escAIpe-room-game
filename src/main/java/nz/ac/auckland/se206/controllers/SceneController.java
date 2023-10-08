@@ -28,7 +28,7 @@ public class SceneController {
             new KeyFrame(
                 Duration.seconds(0.5),
                 event -> {
-                  lblTime.setText(String.valueOf(GameState.timeLeft));
+                  lblTime.setText(GameState.timeLeft);
                   lblGameMaster.setText(GameState.lastMsg);
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
@@ -64,8 +64,9 @@ public class SceneController {
     Notifications notification = Notifications.create();
     notification.title(title);
     notification.text(message);
-    notification.position(Pos.CENTER);
+    notification.position(Pos.BOTTOM_RIGHT);
     notification.hideAfter(Duration.seconds(3));
+    notification.owner(App.getStage());
     notification.show();
   }
 
