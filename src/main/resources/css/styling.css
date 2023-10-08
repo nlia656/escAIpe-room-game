@@ -1,0 +1,20 @@
+   @font-face {
+       font-family: "Britannic Bold";
+       src: url('/fonts/britanic.ttf');
+   }
+
+   @font-face {
+       font-family: "BankGothic Md BT";
+       src: url('/fonts/bank-gothic-medium-bt.ttf');
+   }
+
+
+   #gameTitle {
+       -fx-font-size: 34;
+       -fx-font-family: "Britannic Bold";
+   }
+
+   #gameBlurb {
+       -fx-font-size: 28;
+       -fx-font-family: "BankGothic Md BT";
+   }
