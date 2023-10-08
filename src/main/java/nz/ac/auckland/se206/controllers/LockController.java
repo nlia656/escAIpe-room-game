@@ -97,7 +97,9 @@ public class LockController {
   @FXML
   private void escapeButtonReleased() {
     isReleasedMouse = true;
-    if((int)(processBar.getProgress()*100) == 100){
+    int level = (GameState.buttonLevel+1)*25;
+    boolean result = level+10>=(int)(processBar.getProgress()*100)&&(int)(processBar.getProgress()*100)>=level-10;
+    if(result){
       backToHome();
     }
     else{
