@@ -18,3 +18,23 @@
        -fx-font-size: 28;
        -fx-font-family: "BankGothic Md BT";
    }
+
+   #credit {
+       -fx-font-size: 16;
+       -fx-font-family: "BankGothic Md BT";
+   }
+
+   #creditTitle {
+       -fx-font-size: 28;
+       -fx-font-family: "BankGothic Md BT";
+   }
+
+   #sliderText {
+       -fx-font-size: 28;
+       -fx-font-family: "BankGothic Md BT"
+   }
+
+   #levelText {
+       -fx-font-size: 19;
+       -fx-font-family: "BankGothic Md BT"
+   }
