@@ -52,14 +52,6 @@ public class SceneController {
     }
   }
 
-  // protected void showDialog(String title, String headerText, String message) {
-  //   Alert alert = new Alert(Alert.AlertType.INFORMATION);
-  //   alert.setTitle(title);
-  //   alert.setHeaderText(headerText);
-  //   alert.setContentText(message);
-  //   alert.showAndWait();
-  // }
-
   protected void showNotifications(String title, String message) {
     Notifications notification = Notifications.create();
     notification.title(title);
