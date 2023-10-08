@@ -25,7 +25,7 @@ public class GameState {
     "couch2",
     "couch3",
     "plant",
-   "table"
+    "table"
   };
 
   public static String puzzleAnswer;

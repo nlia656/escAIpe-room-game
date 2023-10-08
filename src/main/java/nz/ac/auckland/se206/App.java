@@ -85,12 +85,12 @@ public class App extends Application {
   public static void loadRoom() throws IOException {
     // Add the scenes to the HashMap
     SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
-    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
     SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
     SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
+    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
   }
 
   @FXML
@@ -112,6 +112,7 @@ public class App extends Application {
 
   @Override
   public void start(final Stage stage) throws IOException {
+    GameState.initial();
     App.Stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start"));
@@ -119,6 +120,7 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));
     SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
     SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
+    loadRoom();
     stage.setResizable(false);
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
     stage.setTitle("Heist of the Century: The Art Museum Affair");
