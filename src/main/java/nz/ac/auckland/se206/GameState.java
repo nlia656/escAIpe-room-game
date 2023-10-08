@@ -35,7 +35,7 @@ public class GameState {
   /** Indicates whether the puzzle has been resolved. */
   public static boolean isPuzzleResolved;
 
-  public static int timeLeft;
+  public static String timeLeft;
   public static boolean isPaused;
   public static int timeLimit;
   public static boolean isUnlimitedHint;
@@ -73,7 +73,7 @@ public class GameState {
     hasBookOpened = false;
     isUnlimitedHint = false;
     remainsHint = 0;
-    timeLeft = timeLimit;
+    timeLeft = "";
     isGameComplete = false;
     firstTimeCode = false;
     secondTimeCode = false;
