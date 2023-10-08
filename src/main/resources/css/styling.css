@@ -1,18 +1,17 @@
    @font-face {
        font-family: "Britannic Bold";
-       src: url('/fonts/britanic.ttf');
+       src: url('../fonts/britanic.ttf');
    }
 
    @font-face {
        font-family: "BankGothic Md BT";
-       src: url('/fonts/bank-gothic-medium-bt.ttf');
+       src: url('../fonts/bank-gothic-medium-bt.ttf');
    }
 
    @font-face {
        font-family: "Papyrus";
-       src: url('/fonts/papyrus.ttf');
+       src: url('../fonts/papyrus.ttf');
    }
-
 
    #gameTitle {
        -fx-font-size: 34;
