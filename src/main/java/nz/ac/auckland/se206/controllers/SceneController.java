@@ -64,7 +64,7 @@ public class SceneController {
     Notifications notification = Notifications.create();
     notification.title(title);
     notification.text(message);
-    notification.position(Pos.BOTTOM_RIGHT);
+    notification.position(Pos.TOP_CENTER);
     notification.hideAfter(Duration.seconds(3));
     notification.owner(App.getStage());
     notification.show();
