@@ -5,7 +5,7 @@ public class GameState {
 
   public static final String[] rooms = {"lobby", "dino"};
   public static final String[] artRoomRiddleAnswers = {
-    "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
+    "dagger", "book", "armour", "crown", "vase1","vase2", "pillar", "sword"
   };
   public static final String[] puzzleObjects = {
     "couch1",
@@ -15,7 +15,7 @@ public class GameState {
     "poster3",
     "poster2",
     "poster1",
-    "vase",
+    "vase3",
     "painting1",
     "painting2",
     "painting3",
