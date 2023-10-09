@@ -57,3 +57,18 @@
        -fx-font-size: 70;
        -fx-font-family: "Papyrus";
    }
+
+   .button {
+       -fx-border-radius: 6px;
+       -fx-background-color: #b5a10c;
+       -fx-text-fill: white;
+       -fx-font-family: "BankGothic Md BT";
+       -fx-font-size: 32px;
+       -fx-text-align: center;
+       -fx-transition-duration: 0.4s;
+   }
+
+   .button:hover {
+       -fx-background-color: white;
+       -fx-text-fill: #b5a10c;
+   }
