@@ -1,16 +1,16 @@
    @font-face {
        font-family: "Britannic Bold";
-       src: url('../fonts/britanic.ttf');
+       src: url('britanic.ttf');
    }
 
    @font-face {
        font-family: "BankGothic Md BT";
-       src: url('../fonts/bank-gothic-medium-bt.ttf');
+       src: url('bank-gothic-medium-bt.ttf');
    }
 
    @font-face {
        font-family: "Papyrus";
-       src: url('../fonts/papyrus.ttf');
+       src: url('papyrus.ttf');
    }
 
    #gameTitle {
