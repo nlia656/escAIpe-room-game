@@ -57,3 +57,33 @@
        -fx-font-size: 70;
        -fx-font-family: "Papyrus";
    }
+
+   .button {
+       -fx-border-radius: 2px;
+       -fx-background-color: #b5a10c;
+       -fx-text-fill: white;
+       -fx-font-family: "BankGothic Md BT";
+       -fx-font-size: 32px;
+       -fx-text-align: center;
+       -fx-transition-duration: 0.4s;
+       -fx-border-width: 2px;
+       -fx-border-style: solid;
+       -fx-border-color: #b5a10c;
+   }
+
+   .button:hover {
+       -fx-background-color: white;
+       -fx-text-fill: #b5a10c;
+   }
+
+   #startGame {
+       -fx-font-size: 17px;
+   }
+
+   #goBack {
+       -fx-font-size: 15px;
+   }
+
+   #goMainMenu {
+       -fx-font-size: 30px;
+   }
