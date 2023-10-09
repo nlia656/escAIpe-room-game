@@ -10,9 +10,9 @@ public class LosePageController {
 
   @FXML
   private void onStartPage() throws IOException {
-    App.unloadRoom();
-    GameState.initial();
-    App.loadRoom();
     App.setUi(AppUi.START);
+    App.unloadRoom();
+    App.loadRoom();
+    GameState.initial();
   }
 }

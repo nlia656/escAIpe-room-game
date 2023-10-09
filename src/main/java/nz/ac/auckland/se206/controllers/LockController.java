@@ -88,8 +88,8 @@ public class LockController {
     if (GameState.isUnlocked) {
       App.setUi(AppUi.WIN_SCREEN);
       App.unloadRoom();
-      GameState.initial();
       App.loadRoom();
+      GameState.initial();
     }
   }
 
