@@ -87,8 +87,8 @@ public class LockController {
   private void escapeButtonClicked() throws IOException {
     if (GameState.isUnlocked) {
       App.setUi(AppUi.WIN_SCREEN);
-      App.unloadRoom();
       GameState.initial();
+      App.unloadRoom();
       App.loadRoom();
     }
   }
