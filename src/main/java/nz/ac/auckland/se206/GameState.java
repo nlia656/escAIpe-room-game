@@ -16,7 +16,7 @@ public class GameState {
       "poster3",
       "poster2",
       "poster1",
-      "vase",
+      "vase3",
       "painting1",
       "painting2",
       "painting3",
