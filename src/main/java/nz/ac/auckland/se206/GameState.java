@@ -69,6 +69,7 @@ public class GameState {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.
     isPaused = false;
+    artFound = false;
     isUnlocked = false;
     onArtRoom = false;
     onDinoRoom = false;
