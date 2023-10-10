@@ -11,21 +11,25 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ChatController">
 
   <children>
-      <ImageView fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/lobbyRoom.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="562.0" fitWidth="724.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/artRoom.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dnoRoo" fitHeight="560.0" fitWidth="720.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/dinoRoom.png" />
-         </image>
-      </ImageView>
+      <AnchorPane>
+         <children>
+            <ImageView fx:id="picLobbyRoom" fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lobbyRoom.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="picArtRoom" fitHeight="562.0" fitWidth="724.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/artRoom.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="picDinoRoom" fitHeight="560.0" fitWidth="720.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/dinoRoom.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
       <ImageView fitHeight="712.0" fitWidth="517.0" layoutX="122.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Phone_1_thumbnail.png" />

@@ -9,6 +9,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -32,6 +33,10 @@ public class ChatController {
   @FXML private Button noTtsButton;
   @FXML private Button sendButton;
   @FXML private Button hintButton;
+  @FXML private ImageView picDinoRoom;
+  @FXML private ImageView picArtRoom;
+  @FXML private ImageView picLobbyRoom;
+
 
   private ChatCompletionRequest chatCompletionRequest;
   private ChatCompletionRequest hintCompletionRequest;
@@ -278,5 +283,21 @@ public class ChatController {
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+  }
+
+  public void setChatBackground () {
+    if (GameState.onArtRoom) {
+      picArtRoom.setOpacity(1.0);
+      picDinoRoom.setOpacity(0.0);
+      picLobbyRoom.setOpacity(0.0);
+    } else if (GameState.onDinoRoom) {
+      picArtRoom.setOpacity(0.0);
+      picDinoRoom.setOpacity(1.0);
+      picLobbyRoom.setOpacity(0.0);
+    } else {
+      picArtRoom.setOpacity(0.0);
+      picDinoRoom.setOpacity(0.0);
+      picLobbyRoom.setOpacity(1.0);
+    }
   }
 }
