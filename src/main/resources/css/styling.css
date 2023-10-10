@@ -76,6 +76,10 @@
        -fx-text-fill: #b5a10c;
    }
 
+   #creditToMenu {
+       -fx-font-size: 12px;
+   }
+
    #closeBook {
        -fx-font-size: 12px;
    }

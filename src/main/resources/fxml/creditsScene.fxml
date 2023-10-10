@@ -50,7 +50,7 @@
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Button layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onRemoveRooms" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
+      <Button fx:id="creditToMenu" layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onRemoveRooms" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
