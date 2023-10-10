@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -39,7 +38,7 @@ public class LevelController {
   }
 
   @FXML
-  private void onStart() throws IOException {
+  private void onStart() {
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;

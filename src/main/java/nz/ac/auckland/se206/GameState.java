@@ -60,7 +60,7 @@ public class GameState {
   public static boolean artFound;
   public static boolean hasBookOpened;
   public static int buttonLevel;
-  private static double randNumber;
+  public static String puzzleCode;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -92,17 +92,13 @@ public class GameState {
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
-    randNumber = Math.random();
-    randomCode = (int) (randNumber * 100);
-    if (randomCode < 10) {
-      riddleCode = "0" + randomCode;
-    } else {
-      riddleCode = Integer.toString(randomCode);
-    }
+    riddleCode=String.format("%02d",getRandom(99));
+    puzzleCode=String.format("%02d",getRandom(99));
     buttonLevel=getRandom(3);
     System.out.println(riddleAnswer);
-    System.out.println(riddleCode);
     System.out.println(puzzleAnswer);
-    System.out.println(randomCode);
+    System.out.print(riddleCode);
+    System.out.println(puzzleCode);
+    System.out.println(buttonLevel);
   }
 }

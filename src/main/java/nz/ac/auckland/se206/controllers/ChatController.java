@@ -55,6 +55,11 @@ public class ChatController {
             Platform.runLater(
                 () -> {
                   finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
                 });
             return null;
           }
@@ -142,18 +147,23 @@ public class ChatController {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg, "You said");
     // Run GPT model in a separate thread
-    Task<Void> task = new Task<Void>() { // Specify the generic type as Void
-          @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
-            inProcess();
-            runGpt(msg);
-            Platform.runLater(
-                () -> {
-                  finishProcess();
-                });
-            return null;
-          }
-        };
+    Task<Void> task = new Task<>() { // Specify the generic type as Void
+      @Override
+      protected Void call() throws Exception { // Specify the generic type as Void
+        inProcess();
+        runGpt(msg);
+        Platform.runLater(
+            () -> {
+              finishProcess();
+              try {
+                Thread.sleep(200);
+              } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+              }
+            });
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -202,9 +212,7 @@ public class ChatController {
               Thread.sleep(200);
             }
             Platform.runLater(
-                () -> {
-                  inputText.setText("");
-                });
+                () -> inputText.setText(""));
             return null;
           }
         };
@@ -246,7 +254,7 @@ public class ChatController {
     Task<Void> task =
         new Task<>() {
           @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
+          protected Void call() { // Specify the generic type as Void
             inProcess();
             try { // Run the GPT to give hints to user
               hintCompletionRequest.addMessage(
@@ -262,6 +270,11 @@ public class ChatController {
             Platform.runLater(
                 () -> {
                   finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
                 });
             return null;
           }

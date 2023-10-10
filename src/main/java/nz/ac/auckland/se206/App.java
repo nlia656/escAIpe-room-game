@@ -60,12 +60,7 @@ public class App extends Application {
                 final int finalI = i;
                 Platform.runLater(
                     () -> {
-                      GameState.timeLeft =
-                          new StringBuilder()
-                              .append(finalI / 60)
-                              .append(":")
-                              .append(finalI % 60)
-                              .toString();
+                      GameState.timeLeft=String.format("%d:%02d", finalI / 60, finalI % 60);
                       if (finalI == 0) {
                         App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
                       }
