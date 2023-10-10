@@ -2,9 +2,11 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,6 +17,11 @@
             <Image url="@../images/robberyRoom.jpg" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="36.0" layoutY="103.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="655.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="36.0">
+         <effect>
+            <Shadow height="255.0" radius="127.0" width="255.0" />
+         </effect>
+      </Rectangle>
       <Text fx:id="gameTitle" fill="#b5a10c" layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heist of the Century: The Art Museum Affair" textAlignment="CENTER" wrappingWidth="660.5735473632812">
          <font>
             <Font name="Britannic Bold" size="32.0" />
@@ -50,7 +57,7 @@
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Button layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onRemoveRooms" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
+      <Button fx:id="creditToMenu" layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onRemoveRooms" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

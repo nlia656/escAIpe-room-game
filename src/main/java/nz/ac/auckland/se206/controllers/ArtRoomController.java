@@ -82,7 +82,10 @@ public class ArtRoomController extends SceneController {
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if (answer.equals(GameState.riddleAnswer)) { // If riddle solved, and correct item, get code.
+    if(answer.contains("vase")){
+      answer="vase";
+    }
+    if (GameState.riddleAnswer.contains(answer)) { // If riddle solved, and correct item, get code.
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);

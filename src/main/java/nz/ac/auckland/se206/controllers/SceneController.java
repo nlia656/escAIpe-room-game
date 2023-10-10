@@ -56,7 +56,7 @@ public class SceneController {
     Notifications notification = Notifications.create();
     notification.title(title);
     notification.text(message);
-    notification.position(Pos.TOP_CENTER);
+    notification.position(Pos.BOTTOM_RIGHT);
     notification.hideAfter(Duration.seconds(3));
     notification.owner(App.getStage());
     notification.show();
@@ -87,7 +87,7 @@ public class SceneController {
         && !GameState.isPuzzleCodeGiven
         && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      staticPuzzleCodeLabel.setText(GameState.puzzleCode);
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }
