@@ -1,15 +1,15 @@
    @font-face {
-       font-family: "Britannic Bold";
+       /*font-family: "Britannic Bold";*/
        src: url('britanic.ttf');
    }
 
    @font-face {
-       font-family: "BankGothic Md BT";
+       /*font-family: "BankGothic Md BT";*/
        src: url('bank-gothic-medium-bt.ttf');
    }
 
    @font-face {
-       font-family: "Papyrus";
+       /*font-family: "Papyrus";*/
        src: url('papyrus.ttf');
    }
 
@@ -85,5 +85,5 @@
    }
 
    #goMainMenu {
-       -fx-font-size: 30px;
+       -fx-font-size: 26px;
    }
