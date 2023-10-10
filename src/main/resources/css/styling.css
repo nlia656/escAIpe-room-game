@@ -76,6 +76,10 @@
        -fx-text-fill: #b5a10c;
    }
 
+   #creditToMenu {
+       -fx-font-size: 12px;
+   }
+
    #closeBook {
        -fx-font-size: 12px;
    }
@@ -250,4 +254,9 @@
        -fx-background-color: #adaaaa;
        -fx-border-color: #adaaaa;
        -fx-text-fill: white;
+   }
+
+   #ttsButton {
+       -fx-font-family: "BankGothic Md BT";
+       -fx-font-size: 18px;
    }
