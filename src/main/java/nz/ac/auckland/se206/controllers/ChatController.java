@@ -4,11 +4,8 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
@@ -23,7 +20,7 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Controller class for the chat view. */
-public class ChatController {
+public class ChatController extends SceneController {
 
   @FXML private Text hintRemains;
   @FXML private Text hintsGone;
@@ -36,6 +33,7 @@ public class ChatController {
   @FXML private ImageView picDinoRoom;
   @FXML private ImageView picArtRoom;
   @FXML private ImageView picLobbyRoom;
+  @FXML private Label lblTime;
 
 
   private ChatCompletionRequest chatCompletionRequest;
@@ -45,6 +43,7 @@ public class ChatController {
   /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
+    startTextSync(lblTime, lblGameMaster1);
     Task<Void> task =
         new Task<>() {
           @Override
