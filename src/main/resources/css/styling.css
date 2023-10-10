@@ -76,6 +76,14 @@
        -fx-text-fill: #b5a10c;
    }
 
+   #closeBook {
+       -fx-font-size: 12px;
+   }
+
+   #chatOpen {
+       -fx-font-size: 12px
+   }
+
    #startGame {
        -fx-font-size: 17px;
    }
