@@ -46,7 +46,7 @@
     <Button fx:id="hintButton" layoutX="332.0" layoutY="471.0" mnemonicParsing="false" onAction="#onAskHint" prefHeight="26.0" prefWidth="55.0" text="Hints" />
     <Text fx:id="hintRemains" layoutX="508.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5/5" visible="false" wrappingWidth="20.80126953125" />
       <Text fx:id="hintsGone" layoutX="508.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Out of hints!" visible="false" wrappingWidth="59.33333333333326" />
-      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="43.0" layoutY="60.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="43.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/paperscroll.png" />
          </image>

@@ -43,7 +43,6 @@ public class ChatController extends SceneController {
   /** Initializes the chat view, loading the riddle. */
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster1);
     Task<Void> task =
         new Task<>() {
           @Override
