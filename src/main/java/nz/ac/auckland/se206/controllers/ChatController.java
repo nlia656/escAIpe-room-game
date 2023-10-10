@@ -80,8 +80,8 @@ public class ChatController {
    *
    * @param msg the chat message to append
    */
-  private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+  private void appendChatMessage(ChatMessage msg, String role) {
+    chatTextArea.appendText(role + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -96,7 +96,11 @@ public class ChatController {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
+      if (result.getChatMessage().getRole().equals("assistant")) {
+        appendChatMessage(result.getChatMessage(), "Game master");
+      } else {
+        appendChatMessage(result.getChatMessage(), "You said");
+      }
       GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant")
           && result.getChatMessage().getContent().startsWith("Correct")) {
@@ -136,7 +140,7 @@ public class ChatController {
     // Clear input text field
     inputText.clear();
     ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+    appendChatMessage(msg, "You said");
     // Run GPT model in a separate thread
     Task<Void> task = new Task<Void>() { // Specify the generic type as Void
           @Override
@@ -250,7 +254,7 @@ public class ChatController {
               ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
               Choice result = hintCompletionResult.getChoices().iterator().next();
               hintCompletionRequest.addMessage(result.getChatMessage());
-              appendChatMessage(result.getChatMessage());
+              appendChatMessage(result.getChatMessage(), "Game master");
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);

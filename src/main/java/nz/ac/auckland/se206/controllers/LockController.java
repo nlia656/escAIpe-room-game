@@ -122,6 +122,10 @@ public class LockController {
     if (GameState.isUnlocked) {
       isReleasedMouse = false;
       increaseProgressBar();
+      App.setUi(AppUi.WIN_SCREEN);
+      GameState.initial();
+      App.unloadRoom();
+      App.loadRoom();
     }
   }
 
