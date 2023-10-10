@@ -11,12 +11,7 @@ public class ArtRoomController extends SceneController {
 
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster);
-  }
-
-  @FXML
-  private void onOpenGameMaster() {
-    App.setUi(AppUi.CHAT);
+    startTextSync(lblTime, lblGameMaster1);
   }
 
   @FXML
@@ -49,6 +44,10 @@ public class ArtRoomController extends SceneController {
   }
 
   @FXML
+  private void onOpenPhone() {
+    App.setUi(AppUi.CHAT);
+  }
+  @FXML
   private void onRiddleItem(MouseEvent event) {
     String name = ((Rectangle) event.getSource()).getId();
     clickForRiddle(name);
@@ -73,7 +72,7 @@ public class ArtRoomController extends SceneController {
   }
 
   private void clickForRiddle(String answer) {
-    // If riddle isnt solved, show alert
+    // If riddle isn't solved, show alert
     if (!GameState.isRiddleResolved) {
       showRiddleNotSolved();
       return;

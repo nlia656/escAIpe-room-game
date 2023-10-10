@@ -20,16 +20,16 @@ public class SceneController {
   @FXML private Label puzzleCodeLabel;
   @FXML private Label riddleCodeLabel;
   @FXML protected Label lblTime;
-  @FXML protected Label lblGameMaster;
+  @FXML protected Label lblGameMaster1;
 
-  public static void startTextSync(Label lblTime, Label lblGameMaster) {
+  public static void startTextSync(Label lblTime, Label lblGameMaster1) {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
-                  lblGameMaster.setText(GameState.lastMsg);
+                  lblGameMaster1.setText(GameState.lastMsg);
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
