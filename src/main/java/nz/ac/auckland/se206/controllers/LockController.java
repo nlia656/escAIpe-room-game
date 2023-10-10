@@ -178,7 +178,7 @@ public class LockController {
   }
 
   private void increaseProgressBar() {
-    Task task = new Task<Void>() {
+    Task<Void> task = new Task<>() {
       @Override
       public Void call() throws InterruptedException {
         for (int i = 0; i <= 100; i++) {
@@ -209,17 +209,17 @@ public class LockController {
   }
 
   @FXML
-  private void onEnter(ActionEvent event) throws IOException {
+  private void onEnter(ActionEvent event) {
     checkCode();
   }
 
   @FXML
-  private void onBack(ActionEvent event) throws IOException {
+  private void onBack(ActionEvent event) {
     App.setUi(AppUi.LOBBY_ROOM);
   }
 
   private void buttonDisable() {
-    // Disables all of the buttons on the lock as it is complete.
+    // Disables all the buttons on the lock as it is complete.
     button0.setDisable(true);
     button1.setDisable(true);
     button2.setDisable(true);

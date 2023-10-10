@@ -16,21 +16,17 @@ public class SceneManager {
     LOSE_SCREEN,
     WIN_SCREEN,
     LOCK,
-    CREDITS;
+    CREDITS
   }
 
-  private static HashMap<AppUi, Parent> uiMap = new HashMap<AppUi, Parent>();
+  private static HashMap<AppUi, Parent> uiMap = new HashMap<>();
 
   public static void addAppUi(AppUi appUi, Parent ui) {
     uiMap.put(appUi, ui);
   }
 
   public static void removeAppUi(AppUi appUi) {
-    if (uiMap.containsKey(appUi)) {
-      uiMap.remove(appUi);
-    } else {
-      return;
-    }
+    uiMap.remove(appUi);
   }
 
   public static Parent getAppUi(AppUi appUi) {

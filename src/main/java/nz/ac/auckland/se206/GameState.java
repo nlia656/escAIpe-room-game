@@ -92,8 +92,8 @@ public class GameState {
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
-    riddleCode=String.format("%2d",getRandom(99));
-    puzzleCode=String.format("%2d",getRandom(99));
+    riddleCode=String.format("%02d",getRandom(99));
+    puzzleCode=String.format("%02d",getRandom(99));
     buttonLevel=getRandom(3);
     System.out.println(riddleAnswer);
     System.out.println(puzzleAnswer);
