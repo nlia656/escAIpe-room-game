@@ -59,6 +59,7 @@ public class GameState {
   public static boolean isPuzzleCodeGiven;
   public static boolean artFound;
   public static boolean hasBookOpened;
+  public static int buttonLevel;
   private static double randNumber;
 
   public static int getRandom(int range) {
@@ -98,6 +99,7 @@ public class GameState {
     } else {
       riddleCode = Integer.toString(randomCode);
     }
+    buttonLevel=getRandom(3);
     System.out.println(riddleAnswer);
     System.out.println(riddleCode);
     System.out.println(puzzleAnswer);
