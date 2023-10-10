@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -8,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -33,7 +36,6 @@ public class ChatController extends SceneController {
   @FXML private ImageView picDinoRoom;
   @FXML private ImageView picArtRoom;
   @FXML private ImageView picLobbyRoom;
-  @FXML private Label lblTime;
 
 
   private ChatCompletionRequest chatCompletionRequest;
@@ -76,6 +78,15 @@ public class ChatController extends SceneController {
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(GameState.timeLeft);
+                }));
+    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.play();
   }
 
   /**
@@ -285,17 +296,17 @@ public class ChatController extends SceneController {
 
   public void setChatBackground () {
     if (GameState.onArtRoom) {
-      picArtRoom.setOpacity(1.0);
-      picDinoRoom.setOpacity(0.0);
-      picLobbyRoom.setOpacity(0.0);
+      picArtRoom.setVisible(true);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(false);
     } else if (GameState.onDinoRoom) {
-      picArtRoom.setOpacity(0.0);
-      picDinoRoom.setOpacity(1.0);
-      picLobbyRoom.setOpacity(0.0);
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(true);
+      picLobbyRoom.setVisible(false);
     } else {
-      picArtRoom.setOpacity(0.0);
-      picDinoRoom.setOpacity(0.0);
-      picLobbyRoom.setOpacity(1.0);
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(true);
     }
   }
 }
