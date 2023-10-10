@@ -87,7 +87,7 @@ public class SceneController {
         && !GameState.isPuzzleCodeGiven
         && GameState.hasBookOpened) {
       GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
+      staticPuzzleCodeLabel.setText(GameState.puzzleCode);
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }

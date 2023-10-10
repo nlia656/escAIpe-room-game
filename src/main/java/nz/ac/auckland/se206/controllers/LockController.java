@@ -92,7 +92,7 @@ public class LockController {
       StringBuilder sb = new StringBuilder();
       StringBuilder exitKey = new StringBuilder();
       exitKey.append(GameState.riddleCode);
-      exitKey.append(BookPuzzleController.puzzleCode);
+      exitKey.append(GameState.puzzleCode);
       sb.append(passcode.get(0));
       sb.append(passcode.get(1));
       sb.append(passcode.get(2));
