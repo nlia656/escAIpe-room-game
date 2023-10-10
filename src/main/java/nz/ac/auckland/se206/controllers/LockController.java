@@ -118,19 +118,15 @@ public class LockController {
   }
 
   @FXML
-  private void escapeButtonClicked() throws IOException {
+  private void escapeButtonClicked() {
     if (GameState.isUnlocked) {
       isReleasedMouse = false;
       increaseProgressBar();
-      App.setUi(AppUi.WIN_SCREEN);
-      GameState.initial();
-      App.unloadRoom();
-      App.loadRoom();
     }
   }
 
   @FXML
-  private void escapeButtonReleased() {
+  private void escapeButtonReleased() throws IOException {
     isReleasedMouse = true;
     if (result) {
       backToHome();
@@ -149,11 +145,11 @@ public class LockController {
   private void inprocessBar(int i){
     if (i== 25) {
       setGreen(process25);
-    } else if (i == 50) {
+    } else if (i == 40) {
       setGreen(process50);
-    } else if (i == 75) {
+    } else if (i == 65) {
       setGreen(process75);
-    } else if (i == 100) {
+    } else if (i == 90) {
       setGreen(process100);
     }
     int level = (GameState.buttonLevel + 1) * 25;
@@ -174,9 +170,11 @@ public class LockController {
     indicator.setImage(new Image("/images/greenindicator.png"));
   }
 
-  private void backToHome() {
+  private void backToHome() throws IOException {
     App.setUi(AppUi.WIN_SCREEN);
+    GameState.initial();
     App.unloadRoom();
+    App.loadRoom();
   }
 
   private void increaseProgressBar() {
