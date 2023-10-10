@@ -118,7 +118,7 @@ public class LockController {
   }
 
   @FXML
-  private void escapeButtonClicked() {
+  private void escapeButtonClicked() throws IOException {
     if (GameState.isUnlocked) {
       isReleasedMouse = false;
       increaseProgressBar();
