@@ -9,11 +9,13 @@ public class LobbyRoomController extends SceneController {
 
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster);
+    startTextSync(lblTime, lblGameMaster1);
   }
 
   @FXML
-  private void onOpenGameMaster() {
+  private void onOpenPhone() {
+    ChatController chatController = App.getChatController();
+    chatController.setChatBackground();
     App.setUi(AppUi.CHAT);
   }
 

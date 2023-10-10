@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.ChatController;
 
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
@@ -17,6 +18,7 @@ public class App extends Application {
   public static volatile boolean timerRunning = true;
   private static Scene scene;
   public static Stage stage;
+  private static ChatController chatController;
 
   public static void main(final String[] args) {
     launch();
@@ -29,8 +31,8 @@ public class App extends Application {
    * @return The UI node of the FXML file.
    * @throws IOException If the file is not found.
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
-    return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
+  private static FXMLLoader loadFxml(final String fxml) throws IOException {
+    return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
   }
 
   /**
@@ -45,32 +47,37 @@ public class App extends Application {
   /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-          @Override
-          protected Void call() throws Exception {
-            // Create a timer thread
-            for (int i = GameState.timeLimit; i >= 0; i--) {
-              if (!timerRunning) {
-                break;
-              }
-              if (GameState.isGameComplete) {
-                GameState.isGameComplete = false;
-                return null;
-              }
-              if (!GameState.isPaused) {
-                final int finalI = i;
-                Platform.runLater(
+      @Override
+      protected Void call() throws Exception {
+        // Create a timer thread
+        for (int i = GameState.timeLimit; i >= 0; i--) {
+          if (!timerRunning) {
+            break;
+          }
+          if (GameState.isGameComplete) {
+            GameState.isGameComplete = false;
+            return null;
+          }
+          if (!GameState.isPaused) {
+            final int finalI = i;
+            Platform.runLater(
                     () -> {
-                      GameState.timeLeft=String.format("%d:%02d", finalI / 60, finalI % 60);
+                      GameState.timeLeft =
+                              new StringBuilder()
+                                      .append(finalI / 60)
+                                      .append(":")
+                                      .append(finalI % 60)
+                                      .toString();
                       if (finalI == 0) {
                         App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
                       }
                     });
-              }
-              Thread.sleep(1000);
-            }
-            return null;
           }
-        };
+          Thread.sleep(1000);
+        }
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -79,13 +86,19 @@ public class App extends Application {
   @FXML
   public static void loadRoom() throws IOException {
     // Add the scenes to the HashMap
-    SceneManager.addAppUi(AppUi.CHAT, loadFxml("chat"));
-    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom"));
-    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom"));
-    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom"));
-    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle"));
-    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll"));
-    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock"));
+    FXMLLoader chat = loadFxml("chat");
+    SceneManager.addAppUi(AppUi.CHAT, chat.load());
+    chatController = chat.getController();
+    SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom").load());
+    SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom").load());
+    SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom").load());
+    SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle").load());
+    SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
+    SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
+  }
+
+  public static ChatController getChatController() {
+    return chatController;
   }
 
   @FXML
@@ -110,11 +123,11 @@ public class App extends Application {
     GameState.initial();
     App.stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
-    SceneManager.addAppUi(AppUi.START, loadFxml("start"));
-    SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level"));
-    SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene"));
-    SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage"));
-    SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage"));
+    SceneManager.addAppUi(AppUi.START, loadFxml("start").load());
+    SceneManager.addAppUi(AppUi.LEVEL, loadFxml("level").load());
+    SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene").load());
+    SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage").load());
+    SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage").load());
     loadRoom();
     stage.setResizable(false);
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);

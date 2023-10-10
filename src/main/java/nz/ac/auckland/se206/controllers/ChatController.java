@@ -1,15 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -22,7 +23,7 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Controller class for the chat view. */
-public class ChatController {
+public class ChatController extends SceneController {
 
   @FXML private Text hintRemains;
   @FXML private Text hintsGone;
@@ -32,6 +33,10 @@ public class ChatController {
   @FXML private Button noTtsButton;
   @FXML private Button sendButton;
   @FXML private Button hintButton;
+  @FXML private ImageView picDinoRoom;
+  @FXML private ImageView picArtRoom;
+  @FXML private ImageView picLobbyRoom;
+
 
   private ChatCompletionRequest chatCompletionRequest;
   private ChatCompletionRequest hintCompletionRequest;
@@ -78,6 +83,15 @@ public class ChatController {
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(GameState.timeLeft);
+                }));
+    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.play();
   }
 
   /**
@@ -291,5 +305,21 @@ public class ChatController {
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+  }
+
+  public void setChatBackground () {
+    if (GameState.onArtRoom) {
+      picArtRoom.setVisible(true);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(false);
+    } else if (GameState.onDinoRoom) {
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(true);
+      picLobbyRoom.setVisible(false);
+    } else {
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(true);
+    }
   }
 }
