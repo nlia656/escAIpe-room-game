@@ -1,16 +1,16 @@
    @font-face {
        font-family: "Britannic Bold";
-       src: url('../fonts/britanic.ttf');
+       src: url('./britanic.ttf');
    }
 
    @font-face {
        font-family: "BankGothic Md BT";
-       src: url('../fonts/bank-gothic-medium-bt.ttf');
+       src: url('./bank-gothic-medium-bt.ttf');
    }
 
    @font-face {
        font-family: "Papyrus";
-       src: url('../fonts/papyrus.ttf');
+       src: url('./papyrus.ttf');
    }
 
    #gameTitle {
@@ -76,6 +76,14 @@
        -fx-text-fill: #b5a10c;
    }
 
+   #closeBook {
+       -fx-font-size: 12px;
+   }
+
+   #chatOpen {
+       -fx-font-size: 12px
+   }
+
    #startGame {
        -fx-font-size: 17px;
    }
@@ -85,5 +93,161 @@
    }
 
    #goMainMenu {
-       -fx-font-size: 30px;
+       -fx-font-size: 26px;
+   }
+
+   #backButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #backButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #enterButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #enterButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #resetButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #resetButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button1 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button1:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button2 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button2:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button3 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button3:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button4 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button4:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button5 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button5:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button6 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button6:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button7 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button7:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button8 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button8:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button9 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button9:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button0 {
+       -fx-font-size: 20px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button0:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
    }
