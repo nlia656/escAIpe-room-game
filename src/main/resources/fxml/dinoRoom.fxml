@@ -106,7 +106,7 @@
          </children>
       </HBox>
 
-      <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="60.0" onMouseClicked="#scrollDinoClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="scrollDino" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="60.0" onMouseClicked="#scrollClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/paperscroll.png" />
          </image>
@@ -114,15 +114,15 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <Rectangle fx:id="phone" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="33.0" layoutY="435.0" onMouseClicked="#onOpenPhone" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0">
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor></Rectangle>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" layoutX="40.0" layoutY="450.0" opacity="0.75" stroke="WHITE" strokeType="INSIDE" width="130.0">
          <effect>
             <BoxBlur />
          </effect>
       </Rectangle>
       <Label fx:id="lblGameMaster1" alignment="TOP_LEFT" layoutX="43.0" layoutY="450.0" prefHeight="80.0" prefWidth="124.0" text="Hello and welcome to meoww" textOverrun="CLIP" wrapText="true" />
+      <Rectangle fx:id="phone" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="33.0" layoutY="435.0" onMouseClicked="#onOpenPhone" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
    </children>
 </AnchorPane>
