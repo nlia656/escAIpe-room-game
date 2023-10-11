@@ -260,3 +260,33 @@
        -fx-font-family: "BankGothic Md BT";
        -fx-font-size: 18px;
    }
+
+   #sendButton {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #hintButton {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #exitChat {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #timeLeft {
+       -fx-font-size: 20px;
+       -fx-font-family: "BankGothic Md BT";
+   }
+
+   #lblTime {
+       -fx-font-size: 20px;
+       -fx-font-family: "BankGothic Md BT";
+   }
+
+   #inputText {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
