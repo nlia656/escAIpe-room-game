@@ -64,7 +64,7 @@ public class SceneController {
 
   protected void showRiddleNotSolved() {
     showNotifications(
-        "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+        "Solve the riddle!", "Open the phone to receive your first clue to escape!");
   }
 
   @FXML
