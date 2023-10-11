@@ -16,7 +16,8 @@ public class SceneManager {
     LOSE_SCREEN,
     WIN_SCREEN,
     LOCK,
-    CREDITS
+    CREDITS,
+    BENCH_PUZZLE
   }
 
   private static HashMap<AppUi, Parent> uiMap = new HashMap<>();
