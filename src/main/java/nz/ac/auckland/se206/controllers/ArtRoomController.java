@@ -49,6 +49,7 @@ public class ArtRoomController extends SceneController {
     chatController.setChatBackground();
     App.setUi(AppUi.CHAT);
   }
+
   @FXML
   private void onRiddleItem(MouseEvent event) {
     String name = ((Rectangle) event.getSource()).getId();
@@ -58,9 +59,7 @@ public class ArtRoomController extends SceneController {
   @FXML
   private void benchClicked() {
     // Add your code for handling the bench1Clicked event here
-    if (!GameState.isRiddleResolved) {
-      showRiddleNotSolved();
-    }
+    App.setUi(AppUi.BENCH_PUZZLE);
   }
 
   @FXML
@@ -82,8 +81,8 @@ public class ArtRoomController extends SceneController {
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if(answer.contains("vase")){
-      answer="vase";
+    if (answer.contains("vase")) {
+      answer = "vase";
     }
     if (GameState.riddleAnswer.contains(answer)) { // If riddle solved, and correct item, get code.
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");

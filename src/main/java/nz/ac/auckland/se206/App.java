@@ -6,7 +6,6 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -47,37 +46,37 @@ public class App extends Application {
   /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (!timerRunning) {
-            break;
-          }
-          if (GameState.isGameComplete) {
-            GameState.isGameComplete = false;
-            return null;
-          }
-          if (!GameState.isPaused) {
-            final int finalI = i;
-            Platform.runLater(
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (!timerRunning) {
+                break;
+              }
+              if (GameState.isGameComplete) {
+                GameState.isGameComplete = false;
+                return null;
+              }
+              if (!GameState.isPaused) {
+                final int finalI = i;
+                Platform.runLater(
                     () -> {
                       GameState.timeLeft =
-                              new StringBuilder()
-                                      .append(finalI / 60)
-                                      .append(":")
-                                      .append(finalI % 60)
-                                      .toString();
+                          new StringBuilder()
+                              .append(finalI / 60)
+                              .append(":")
+                              .append(finalI % 60)
+                              .toString();
                       if (finalI == 0) {
                         App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
                       }
                     });
+              }
+              Thread.sleep(1000);
+            }
+            return null;
           }
-          Thread.sleep(1000);
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -95,6 +94,7 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle").load());
     SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
     SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
+    SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
   }
 
   public static ChatController getChatController() {
@@ -110,6 +110,7 @@ public class App extends Application {
     SceneManager.removeAppUi(AppUi.DINO_ROOM);
     SceneManager.removeAppUi(AppUi.LOBBY_ROOM);
     SceneManager.removeAppUi(AppUi.BOOK_PUZZLE);
+    SceneManager.removeAppUi(AppUi.BENCH_PUZZLE);
     SceneManager.removeAppUi(AppUi.SCROLL);
     SceneManager.removeAppUi(AppUi.LOCK);
   }
