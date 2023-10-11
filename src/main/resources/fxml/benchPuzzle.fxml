@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: #47636e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BenchController">
+   <children>
+      <ImageView fitHeight="305.0" fitWidth="665.0" layoutX="39.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/belowBench.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="goBack" layoutX="605.0" layoutY="492.0" mnemonicParsing="false" onAction="#onCloseBench" prefHeight="35.0" prefWidth="100.0" text="Go Back" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="21.0" layoutX="210.0" layoutY="229.0" stroke="#c2774e" strokeType="INSIDE" strokeWidth="3.0" width="300.0" />
+      <Rectangle fx:id="fourBar" arcHeight="5.0" arcWidth="5.0" fill="#db9969" height="21.0" layoutX="210.0" layoutY="229.0" stroke="#c2774e" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="300.0" />
+      <Rectangle fx:id="threeBar" arcHeight="5.0" arcWidth="5.0" fill="#db9969" height="21.0" layoutX="210.0" layoutY="229.0" stroke="#c2774e" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="233.0" />
+      <Rectangle fx:id="twoBar" arcHeight="5.0" arcWidth="5.0" fill="#db9969" height="21.0" layoutX="210.0" layoutY="229.0" stroke="#c2774e" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="151.0" />
+      <Rectangle fx:id="oneBar" arcHeight="5.0" arcWidth="5.0" fill="#db9969" height="21.0" layoutX="210.0" layoutY="229.0" stroke="#c2774e" strokeType="INSIDE" strokeWidth="3.0" visible="false" width="78.0" />
+   </children>
+</AnchorPane>
