@@ -37,7 +37,7 @@ public class ArtRoomController extends SceneController {
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
+      showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
       GameState.secondTimeCode = false;
       GameState.isPuzzleCodeGiven = true;
     }
@@ -58,8 +58,10 @@ public class ArtRoomController extends SceneController {
 
   @FXML
   private void benchClicked() {
-    // Add your code for handling the bench1Clicked event here
-    App.setUi(AppUi.BENCH_PUZZLE);
+    if (GameState.isPuzzleCodeGiven) {
+      showNotifications("Clue Found!", "Go to the elevator and try to escape!");
+      App.setUi(AppUi.BENCH_PUZZLE);
+    }
   }
 
   @FXML
