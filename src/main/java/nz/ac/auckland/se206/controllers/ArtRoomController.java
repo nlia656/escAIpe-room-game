@@ -7,6 +7,12 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the art room scene
+ * It handles the events that occur in the art room
+ * It extends the SceneController class
+ * It contains methods that are called when the player clicks on an item
+ */
 public class ArtRoomController extends SceneController {
 
   /**
