@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LobbyRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LobbyRoomController">
    <children>
       <ImageView fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -52,21 +52,22 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="30.0" layoutX="15.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
       <HBox layoutX="20.0" layoutY="30.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="168.0" text="Time Remaining:">
+            <Label prefHeight="30.0" prefWidth="170.0" text="Time Remaining:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblTime" prefHeight="26.0" prefWidth="82.0" text="0">
+            <Label fx:id="lblTime" prefHeight="30.0" prefWidth="55.0" text="0" textFill="#fffefe">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="43.0" layoutY="60.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="60.0">
+      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="60.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/paperscroll.png" />
          </image>
