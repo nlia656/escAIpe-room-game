@@ -61,6 +61,7 @@ public class GameState {
   public static boolean hasBookOpened;
   public static int buttonLevel;
   public static String puzzleCode;
+  public static boolean isBenchPuzzle;
 
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
@@ -69,6 +70,7 @@ public class GameState {
   public static void initial() {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.
+    isBenchPuzzle = false;
     isPaused = false;
     artFound = false;
     isUnlocked = false;

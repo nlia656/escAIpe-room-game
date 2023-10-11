@@ -62,6 +62,21 @@ public class SceneController {
     notification.show();
   }
 
+  @FXML
+  protected void scrollClicked() {
+    // Change scene to scroll and change alerts depending on game progress.
+    App.setUi(AppUi.SCROLL);
+    if (GameState.firstTimeCode) {
+      showNotifications("Code discovered!", "Now go find the book to continue.");
+      GameState.firstTimeCode = false;
+      GameState.isRiddleCodeGiven = true;
+    } else if (GameState.secondTimeCode) {
+      showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
+      GameState.secondTimeCode = false;
+      GameState.isPuzzleCodeGiven = true;
+    }
+  }
+
   protected void showRiddleNotSolved() {
     showNotifications(
         "Solve the riddle!", "Open the phone to receive your first clue to escape!");
@@ -76,6 +91,10 @@ public class SceneController {
   protected void checkClickItem(String name) {
     if (!GameState.isRiddleResolved) {
       showRiddleNotSolved();
+      return;
+    }
+    if (name.equals("couch3") || name.equals("couch2") || name.equals("couch1") && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+      showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
       return;
     }
     System.out.println(name + " clicked");

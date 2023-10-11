@@ -29,21 +29,6 @@ public class ArtRoomController extends SceneController {
   }
 
   @FXML
-  private void scrollArtClicked() {
-    // Change scene to scroll to see code, change alerts based on progress.
-    App.setUi(AppUi.SCROLL);
-    if (GameState.firstTimeCode) {
-      showNotifications("Code discovered!", "Now go find the book to continue.");
-      GameState.firstTimeCode = false;
-      GameState.isRiddleCodeGiven = true;
-    } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
-      GameState.secondTimeCode = false;
-      GameState.isPuzzleCodeGiven = true;
-    }
-  }
-
-  @FXML
   private void onOpenPhone() {
     ChatController chatController = App.getChatController();
     chatController.setChatBackground();
@@ -59,8 +44,9 @@ public class ArtRoomController extends SceneController {
   @FXML
   private void benchClicked() {
     if (GameState.isPuzzleCodeGiven) {
-      showNotifications("Clue Found!", "Go to the elevator and try to escape!");
       App.setUi(AppUi.BENCH_PUZZLE);
+      showNotifications("Clue Found!", "Go to the elevator and try to escape!");
+      GameState.isBenchPuzzle = true;
     }
   }
 
