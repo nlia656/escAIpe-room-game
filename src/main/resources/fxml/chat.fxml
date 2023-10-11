@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" visible="false" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ChatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ChatController">
 
   <children>
       <AnchorPane>
          <children>
-            <ImageView fx:id="picLobbyRoom" fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="picLobbyRoom" fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/lobbyRoom.png" />
                </image>
