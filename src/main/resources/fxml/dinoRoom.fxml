@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,11 +10,26 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.DinoRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.DinoRoomController">
    <children>
       <ImageView fitHeight="560.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/dinoRoom.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="252.0" fitWidth="140.0" layoutX="35.0" layoutY="438.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/phonebackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="8.0" fitWidth="110.0" layoutX="60.0" layoutY="438.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/phone_bar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="456.0" fitWidth="292.0" layoutX="-41.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Phone.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dinoToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="515.0" layoutY="438.0" onMouseClicked="#goArtRoom" pickOnBounds="true" preserveRatio="true" rotate="320.0">
@@ -97,12 +113,15 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="456.0" fitWidth="292.0" layoutX="-41.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Phone_1_thumbnail.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="lblGameMaster1" alignment="TOP_LEFT" layoutX="38.0" layoutY="426.0" prefHeight="112.0" prefWidth="133.0" text="Hello and welcome to meoww" textOverrun="CLIP" wrapText="true" />
-      <Rectangle fx:id="phone" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="125.0" layoutX="34.0" layoutY="416.0" onMouseClicked="#onOpenPhone" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0" />
+      <Rectangle fx:id="phone" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="33.0" layoutY="435.0" onMouseClicked="#onOpenPhone" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" layoutX="40.0" layoutY="450.0" opacity="0.75" stroke="WHITE" strokeType="INSIDE" width="130.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="lblGameMaster1" alignment="TOP_LEFT" layoutX="43.0" layoutY="450.0" prefHeight="80.0" prefWidth="124.0" text="Hello and welcome to meoww" textOverrun="CLIP" wrapText="true" />
    </children>
 </AnchorPane>
