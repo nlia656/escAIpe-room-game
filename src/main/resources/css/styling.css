@@ -295,3 +295,7 @@
        -fx-font-size: 12px;
        -fx-font-family: "Comic Sans MS";
    }
+
+   #closeBook {
+       -fx-font-size: 15px;
+   }
