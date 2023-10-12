@@ -45,22 +45,6 @@ public class LobbyRoomController extends SceneController {
   }
 
   /**
-   * This method is called when the player clicks the scroll
-   */
-  @FXML
-  private void scrollLobbyClicked() {
-    // Change scene to scroll and show alerts depending on game progress.
-    App.setUi(AppUi.SCROLL);
-    if (GameState.firstTimeCode) {
-      showNotifications("Code discovered!", "Now go find the book to continue.");
-      GameState.firstTimeCode = false;
-    } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
-      GameState.secondTimeCode = false;
-    }
-  }
-
-  /**
    * This method is called when the player clicks the elevator
    * if the riddle and puzzle is not solved, it shows an alert
    * else it changes the scene to the lock

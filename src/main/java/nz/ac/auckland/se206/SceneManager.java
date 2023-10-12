@@ -23,7 +23,7 @@ public class SceneManager {
     BENCH_PUZZLE
   }
 
-  private static final HashMap<AppUi, Parent> uiMap = new HashMap<>();
+  private static HashMap<AppUi, Parent> uiMap = new HashMap<>();
 
   /**
    * This method is used to add the app ui

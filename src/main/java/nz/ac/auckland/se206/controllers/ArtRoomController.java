@@ -47,28 +47,6 @@ public class ArtRoomController extends SceneController {
     GameState.onArtRoom = false;
     GameState.onDinoRoom = true;
   }
-  /*
-   * This method is called when the player clicks the scroll
-   * Changes the scene to the scroll
-   * Sets the GameState booleans to reflect the current scene
-   * If the player has not found the code before, the game master will give a hint
-   * If the player has found the code before, the game master will tell the player to go to the elevator
-   */
-
-  @FXML
-  private void scrollArtClicked() {
-    // Change scene to scroll to see code, change alerts based on progress.
-    App.setUi(AppUi.SCROLL);
-    if (GameState.firstTimeCode) {
-      showNotifications("Code discovered!", "Now go find the book to continue.");
-      GameState.firstTimeCode = false;
-      GameState.isRiddleCodeGiven = true;
-    } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
-      GameState.secondTimeCode = false;
-      GameState.isPuzzleCodeGiven = true;
-    }
-  }
 
   /**
    * This method is called when the player clicks the phone button Changes the scene to the chat
@@ -99,8 +77,12 @@ public class ArtRoomController extends SceneController {
    */
   @FXML
   private void benchClicked() {
+    if (GameState.isPuzzleCodeGiven) {
+      showNotifications("Clue Found!", "Go to the elevator and try to escape!");
+    }
     // Add your code for handling the bench1Clicked event here
     App.setUi(AppUi.BENCH_PUZZLE);
+    GameState.isBenchPuzzle = true;
   }
 
   /**
