@@ -8,6 +8,10 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the bench scene
+ * It handles the events that occur in the bench scene
+ */
 public class BenchController {
 
   @FXML private Rectangle fourBar;
@@ -20,6 +24,9 @@ public class BenchController {
 
   @FXML private Rectangle twoBar;
 
+  /**
+   * This method is called by the FXMLLoader when initialization is complete
+   */
   @FXML
   public void initialize() {
     oneBar.setVisible(false);
@@ -37,6 +44,10 @@ public class BenchController {
     }
   }
 
+  /**
+   * This method is called when the player clicks the "Go to Lobby" button
+   * @param event The event that triggered this method
+   */
   @FXML
   void onCloseBench(ActionEvent event) {
     App.setUi(AppUi.ART_ROOM);

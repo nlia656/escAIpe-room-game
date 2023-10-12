@@ -5,13 +5,26 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the lobby room scene
+ * Extends SceneController
+ */
 public class LobbyRoomController extends SceneController {
 
+  /**
+   * This method is called when the scene is loaded
+   * to sync the time and game master text
+   */
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster1);
+    startTextSync(lblTime, lblGameMaster);
   }
 
+  /**
+   * This method is called when the player clicks the phone
+   * Changes the scene to the phone
+   * Also toggles the chat background
+   */
   @FXML
   private void onOpenPhone() {
     ChatController chatController = App.getChatController();
@@ -19,6 +32,11 @@ public class LobbyRoomController extends SceneController {
     App.setUi(AppUi.CHAT);
   }
 
+  /**
+   * This method is called when the player clicks the art room arrow
+   * Changes the scene to the art room
+   * Sets the GameState booleans to reflect the current scene
+   */
   @FXML
   private void goArtRoom() {
     App.setUi(AppUi.ART_ROOM);
@@ -26,6 +44,9 @@ public class LobbyRoomController extends SceneController {
     GameState.onArtRoom = true;
   }
 
+  /**
+   * This method is called when the player clicks the scroll
+   */
   @FXML
   private void scrollLobbyClicked() {
     // Change scene to scroll and show alerts depending on game progress.
@@ -39,6 +60,11 @@ public class LobbyRoomController extends SceneController {
     }
   }
 
+  /**
+   * This method is called when the player clicks the elevator
+   * if the riddle and puzzle is not solved, it shows an alert
+   * else it changes the scene to the lock
+   */
   @FXML
   private void elevatorClicked() {
     // Change scene to lock if both puzzle and riddle are solved.

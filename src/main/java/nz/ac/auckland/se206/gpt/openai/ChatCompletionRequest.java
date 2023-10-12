@@ -187,12 +187,11 @@ public class ChatCompletionRequest {
       // Send the HTTP request and process the response
       CloseableHttpClient client = HttpClients.createDefault();
       ResponseChatCompletion responseChat =
-          (ResponseChatCompletion)
-              client.execute(
-                  httpPost,
-                  httpResponse ->
-                      mapperApiMapper.readValue(
-                          httpResponse.getEntity().getContent(), ResponseChatCompletion.class));
+          client.execute(
+              httpPost,
+              httpResponse ->
+                  mapperApiMapper.readValue(
+                      httpResponse.getEntity().getContent(), ResponseChatCompletion.class));
 
       // Check for API call success and handle any errors
       if (!responseChat.success && responseChat.code != 0) {

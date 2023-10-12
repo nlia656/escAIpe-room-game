@@ -42,9 +42,7 @@ public class GptPromptEngineering {
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint. Do not include the word you are giving a hint for in your response in any"
           + " capacity. Make the hint a little different everytime.";
-    } else if (GameState.isRiddleResolved
-        && !GameState.isPuzzleResolved
-        && GameState.hasBookOpened) { // Check conditionals.
+    } else if (!GameState.isPuzzleResolved && GameState.hasBookOpened) { // Check conditionals.
       if (Set.of(
               "poster1",
               "poster2",
@@ -69,10 +67,10 @@ public class GptPromptEngineering {
         return "[System] tell the player the following words briefly: 'Look closely around the"
             + " rooms for the object to click'";
       }
-    } else if (GameState.isRiddleResolved && !GameState.artFound) {
+    } else if (!GameState.artFound) {
       return "[System] tell the player the following words briefly: 'Look for the answer of the"
           + " riddle for a clue'";
-    } else if (GameState.artFound && !GameState.hasBookOpened) {
+    } else if (!GameState.hasBookOpened) {
       return "[System] tell the player the following words briefly: 'Look for a book in the room"
           + " with the dinosaur'";
     } else {

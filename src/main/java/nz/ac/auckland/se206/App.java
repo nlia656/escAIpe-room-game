@@ -28,9 +28,8 @@ public class App extends Application {
    *
    * @param fxml The name of the FXML file (without extension).
    * @return The UI node of the FXML file.
-   * @throws IOException If the file is not found.
    */
-  private static FXMLLoader loadFxml(final String fxml) throws IOException {
+  private static FXMLLoader loadFxml(final String fxml) {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
   }
 
@@ -62,11 +61,9 @@ public class App extends Application {
                 Platform.runLater(
                     () -> {
                       GameState.timeLeft =
-                          new StringBuilder()
-                              .append(finalI / 60)
-                              .append(":")
-                              .append(finalI % 60)
-                              .toString();
+                          finalI / 60
+                              + ":"
+                              + finalI % 60;
                       if (finalI == 0) {
                         App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
                       }
@@ -82,6 +79,10 @@ public class App extends Application {
     thread.start();
   }
 
+  /**
+   * This method is used to load the room
+   * @throws IOException if the fxml file is not found
+   */
   @FXML
   public static void loadRoom() throws IOException {
     // Add the scenes to the HashMap
@@ -97,10 +98,17 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
   }
 
+  /**
+   * This method is used to get the chat controller
+   * @return the chat controller
+   */
   public static ChatController getChatController() {
     return chatController;
   }
 
+  /**
+   * This method is used to unload the room
+   */
   @FXML
   public static void unloadRoom() {
     // Remove the scenes from the HashMap
@@ -115,10 +123,19 @@ public class App extends Application {
     SceneManager.removeAppUi(AppUi.LOCK);
   }
 
+  /**
+   * This method is used to get the stage
+   * @return the stage
+   */
   public static Stage getStage() {
     return stage;
   }
 
+  /**
+   * This method is used to start the application
+   * @param stage the stage
+   * @throws IOException if the fxml file is not found
+   */
   @Override
   public void start(final Stage stage) throws IOException {
     GameState.initial();

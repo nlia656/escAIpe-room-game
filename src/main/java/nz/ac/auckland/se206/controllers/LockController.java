@@ -15,6 +15,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the lock scene
+ */
 public class LockController {
 
   @FXML private ImageView resultIndicator;
@@ -64,40 +67,37 @@ public class LockController {
   private boolean isReleasedMouse = false;
 
   /**
-   * Initializes the room view, it is called when the room loads.
+   * This method is used to type the code into the text box
+   * @param input the number that is pressed
    */
-  public void initialize() {
-    if (GameState.isUnlocked) {
-      textBox.clear();
-      textBox.appendText("Door Unlocked");
-      buttonDisable();
-    }
-    // Initialization code goes here
-  }
-
-  private void typeCode(int i) {
+  private void typeCode(int input) {
     if (textBox.getText().equals("Incorrect passcode")) {
       textBox.clear();
     }
     if (passcode.size() < 4) {
-      passcode.add(i);
-      textBox.appendText(Integer.toString(i));
+      passcode.add(input);
+      textBox.appendText(Integer.toString(input));
     }
   }
 
+  /**
+   * This method is used to check whether the code is correct
+   */
   private void checkCode() {
     // If passcode is correct length (4), check whether it is the correct code as the riddle and
     // puzzle code.
     if (passcode.size() == 4) {
-      StringBuilder sb = new StringBuilder();
+/*      StringBuilder sb = new StringBuilder();
       StringBuilder exitKey = new StringBuilder();
       exitKey.append(GameState.riddleCode);
       exitKey.append(GameState.puzzleCode);
       sb.append(passcode.get(0));
       sb.append(passcode.get(1));
       sb.append(passcode.get(2));
-      sb.append(passcode.get(3));
-      if (sb.toString().contentEquals(exitKey)) {
+      sb.append(passcode.get(3));*/
+      String passcodeString=String.format("%01d%01d%01d%01d",passcode.get(0),passcode.get(1),passcode.get(2),passcode.get(3));
+      String answer = String.format("%s%s",GameState.riddleAnswer,GameState.puzzleAnswer);
+      if (answer.equals(passcodeString)) {
         textBox.clear();
         textBox.appendText("Door Unlocked");
         buttonDisable();
@@ -117,14 +117,21 @@ public class LockController {
     }
   }
 
+  /**
+   * This method is used to increase the process bar
+   */
   @FXML
-  private void escapeButtonClicked() throws IOException {
+  private void escapeButtonClicked() {
     if (GameState.isUnlocked) {
       isReleasedMouse = false;
       increaseProgressBar();
     }
   }
 
+  /**
+   * This method is used to go back to the home screen
+   * @throws IOException if the fxml file is not found
+   */
   @FXML
   private void escapeButtonReleased() throws IOException {
     isReleasedMouse = true;
@@ -135,6 +142,9 @@ public class LockController {
     }
   }
 
+  /**
+   * This method is used to reset the process bar
+   */
   private void resetProgressBar() {
     processBar.setProgress(0);
     setRed(process100);
@@ -142,6 +152,11 @@ public class LockController {
     setRed(process50);
     setRed(process25);
   }
+
+  /**
+   * This method is used to change the indicator of the process bar
+   * @param i the current progress of the process bar
+   */
   private void inprocessBar(int i){
     if (i== 25) {
       setGreen(process25);
@@ -162,21 +177,40 @@ public class LockController {
     }
   }
 
+  /**
+   * This method is used to set the indicator to green
+   * @param indicator the indicator that is going to be set
+   */
   private void setRed(ImageView indicator) {
     indicator.setImage(new Image("/images/redindicator.png"));
   }
 
+  /**
+   * This method is used to set the indicator to red
+   * @param indicator the indicator that is going to be set
+   */
   private void setGreen(ImageView indicator) {
     indicator.setImage(new Image("/images/greenindicator.png"));
   }
 
+  /**
+   * This method is used to go back to the home screen
+   * Changes the scene to the win screen
+   * Unloads the room
+   * Resets the game state
+   * Loads the room
+   * @throws IOException if the fxml file is not found
+   */
   private void backToHome() throws IOException {
     App.setUi(AppUi.WIN_SCREEN);
-    GameState.initial();
     App.unloadRoom();
+    GameState.initial();
     App.loadRoom();
   }
 
+  /**
+   * This method is used to increase the process bar
+   */
   private void increaseProgressBar() {
     Task<Void> task = new Task<>() {
       @Override
@@ -197,27 +231,43 @@ public class LockController {
     thread.start();
   }
 
+  /**
+   * This method handles buttons input
+   * @param event the button that is pressed
+   */
   @FXML
   private void onType(ActionEvent event) {
     typeCode(Integer.parseInt(((Button) event.getSource()).getText()));
   }
 
+  /**
+   * This method is used to reset the text box when the reset button is pressed
+   */
   @FXML
-  private void onReset(ActionEvent event) {
+  private void onReset() {
     passcode.clear();
     textBox.clear();
   }
 
+  /**
+   * This method is used to check the code when the enter button is pressed
+   */
   @FXML
-  private void onEnter(ActionEvent event) {
+  private void onEnter() {
     checkCode();
   }
 
+  /**
+   * This method is used to go back to the lobby room
+   */
   @FXML
-  private void onBack(ActionEvent event) {
+  private void onBack() {
     App.setUi(AppUi.LOBBY_ROOM);
   }
 
+  /**
+   * This method is used to disable all the buttons after the lock is unlocked
+   */
   private void buttonDisable() {
     // Disables all the buttons on the lock as it is complete.
     button0.setDisable(true);
