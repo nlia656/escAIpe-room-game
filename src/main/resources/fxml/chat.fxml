@@ -60,6 +60,11 @@
          </cursor>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5a10c" height="30.0" layoutX="15.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="190.0" />
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="296.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/phone_bar.png" />
+         </image>
+      </ImageView>
       <HBox layoutX="20.0" layoutY="30.0">
          <children>
             <Label fx:id="timeLeft" prefHeight="30.0" prefWidth="120.0" text="Time Left:" textFill="WHITE">
@@ -67,17 +72,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblTime" prefHeight="30.0" prefWidth="50.0" text="0" textFill="WHITE">
+            <Label fx:id="lblTime" prefHeight="30.0" prefWidth="65.0" text="0" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="296.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/phone_bar.png" />
-         </image>
-      </ImageView>
   </children>
 </AnchorPane>

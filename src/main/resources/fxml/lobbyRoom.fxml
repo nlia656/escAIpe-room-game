@@ -53,20 +53,6 @@
          </cursor>
       </Rectangle>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5a10c" height="30.0" layoutX="15.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="190.0" />
-      <HBox layoutX="20.0" layoutY="30.0">
-         <children>
-            <Label fx:id="timeLeft" prefHeight="30.0" prefWidth="120.0" text="Time Left:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblTime" prefHeight="30.0" prefWidth="46.0" text="0" textFill="#fffefe">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="60.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/paperscroll.png" />
@@ -98,5 +84,19 @@
             <Image url="@../images/phone_bar.png" />
          </image>
       </ImageView>
+      <HBox layoutX="20.0" layoutY="30.0">
+         <children>
+            <Label fx:id="timeLeft" prefHeight="30.0" prefWidth="120.0" text="Time Left:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" prefHeight="30.0" prefWidth="65.0" text="0" textFill="#fffefe">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
