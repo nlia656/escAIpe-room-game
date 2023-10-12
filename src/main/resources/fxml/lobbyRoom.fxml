@@ -61,7 +61,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="lobbyToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="200.0" layoutY="400.0" onMouseClicked="#goArtRoom" pickOnBounds="true" preserveRatio="true" rotate="37.0">
+      <ImageView fx:id="lobbyToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#goArtRoom" pickOnBounds="true" preserveRatio="true" rotate="37.0">
          <image>
             <Image url="@../images/arrow.png" />
          </image>

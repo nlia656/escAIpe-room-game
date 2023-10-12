@@ -26,7 +26,7 @@
             <Image url="@../images/Phone.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="artToLobby" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="585.0" layoutY="444.0" onMouseClicked="#goLobby" pickOnBounds="true" preserveRatio="true" rotate="320.0">
+      <ImageView fx:id="artToLobby" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="613.0" layoutY="419.0" onMouseClicked="#goLobby" pickOnBounds="true" preserveRatio="true" rotate="320.0">
          <image>
             <Image url="@../images/arrow.png" />
          </image>
