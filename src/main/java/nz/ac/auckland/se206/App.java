@@ -11,12 +11,14 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 
-/** This is the entry point of the JavaFX application. */
+/**
+ * This is the entry point of the JavaFX application.
+ */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
-  private static Scene scene;
   public static Stage stage;
+  private static Scene scene;
   private static ChatController chatController;
 
   public static void main(final String[] args) {
@@ -28,9 +30,8 @@ public class App extends Application {
    *
    * @param fxml The name of the FXML file (without extension).
    * @return The UI node of the FXML file.
-   * @throws IOException If the file is not found.
    */
-  private static FXMLLoader loadFxml(final String fxml) throws IOException {
+  private static FXMLLoader loadFxml(final String fxml) {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
   }
 
@@ -43,45 +44,48 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /** Create and run a timer that handles game timing. */
+  /**
+   * Create and run a timer that handles game timing.
+   */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-          @Override
-          protected Void call() throws Exception {
-            // Create a timer thread
-            for (int i = GameState.timeLimit; i >= 0; i--) {
-              if (!timerRunning) {
-                break;
-              }
-              if (GameState.isGameComplete) {
-                GameState.isGameComplete = false;
-                return null;
-              }
-              if (!GameState.isPaused) {
-                final int finalI = i;
-                Platform.runLater(
-                    () -> {
-                      GameState.timeLeft =
-                          new StringBuilder()
-                              .append(finalI / 60)
-                              .append(":")
-                              .append(finalI % 60)
-                              .toString();
-                      if (finalI == 0) {
-                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-                      }
-                    });
-              }
-              Thread.sleep(1000);
-            }
+      @Override
+      protected Void call() throws Exception {
+        // Create a timer thread
+        for (int i = GameState.timeLimit; i >= 0; i--) {
+          if (!timerRunning) {
+            break;
+          }
+          if (GameState.isGameComplete) {
+            GameState.isGameComplete = false;
             return null;
           }
-        };
+          if (!GameState.isPaused) {
+            final int finalI = i;
+            Platform.runLater(
+                () -> {
+                  GameState.timeLeft =
+                      String.format("%d:%02d", finalI / 60, finalI % 60);
+                  if (finalI == 0) {
+                    App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                  }
+                });
+          }
+          Thread.sleep(1000);
+        }
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
   }
 
+  /**
+   * This method is used to load the room
+   *
+   * @throws IOException if the fxml file is not found
+   */
   @FXML
   public static void loadRoom() throws IOException {
     // Add the scenes to the HashMap
@@ -97,10 +101,18 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
   }
 
+  /**
+   * This method is used to get the chat controller
+   *
+   * @return the chat controller
+   */
   public static ChatController getChatController() {
     return chatController;
   }
 
+  /**
+   * This method is used to unload the room
+   */
   @FXML
   public static void unloadRoom() {
     // Remove the scenes from the HashMap
@@ -115,10 +127,21 @@ public class App extends Application {
     SceneManager.removeAppUi(AppUi.LOCK);
   }
 
+  /**
+   * This method is used to get the stage
+   *
+   * @return the stage
+   */
   public static Stage getStage() {
     return stage;
   }
 
+  /**
+   * This method is used to start the application
+   *
+   * @param stage the stage
+   * @throws IOException if the fxml file is not found
+   */
   @Override
   public void start(final Stage stage) throws IOException {
     GameState.initial();

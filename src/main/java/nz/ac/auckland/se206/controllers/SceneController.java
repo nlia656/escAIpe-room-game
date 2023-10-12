@@ -13,6 +13,9 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class is the mother class controller for the scene
+ */
 public class SceneController {
 
   @FXML public static Label staticPuzzleCodeLabel;
@@ -20,26 +23,37 @@ public class SceneController {
   @FXML private Label puzzleCodeLabel;
   @FXML private Label riddleCodeLabel;
   @FXML protected Label lblTime;
-  @FXML protected Label lblGameMaster1;
+  @FXML protected Label lblGameMaster;
 
-  public static void startTextSync(Label lblTime, Label lblGameMaster1) {
+  /**
+   * This method is used to sync the time and game master text
+   * @param lblTime the label for the time
+   * @param lblGameMaster the label for the game master text
+   */
+  public static void startTextSync(Label lblTime, Label lblGameMaster) {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
-                  lblGameMaster1.setText(GameState.lastMsg);
+                  lblGameMaster.setText(GameState.lastMsg);
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
   }
 
+  /**
+   * This method is to get the code label
+   */
   public void initialize() {
     staticPuzzleCodeLabel = puzzleCodeLabel;
     staticRiddleCodeLabel = riddleCodeLabel;
   }
 
+  /**
+   * This method is called when the player clicks to close the scroll
+   */
   @FXML
   private void onCloseScroll() {
     // Change the scene back to the previous on scene.
@@ -52,6 +66,11 @@ public class SceneController {
     }
   }
 
+  /**
+   * This method is used to make a notification in game
+   * @param title the title of the notification
+   * @param message the message of the notification
+   */
   protected void showNotifications(String title, String message) {
     Notifications notification = Notifications.create();
     notification.title(title);
@@ -62,6 +81,9 @@ public class SceneController {
     notification.show();
   }
 
+  /**
+   * This method is called when the player clicks on the scroll
+   */
   @FXML
   protected void scrollClicked() {
     // Change scene to scroll and change alerts depending on game progress.
@@ -80,25 +102,31 @@ public class SceneController {
       GameState.isPuzzleCodeGiven = true;
     }
   }
-
+  /**
+   * This method is used to show riddle not solved notification
+   */
   protected void showRiddleNotSolved() {
     showNotifications(
         "Solve the riddle!", "Open the phone to receive your first clue to escape!");
   }
 
+  /**
+   * This method is used to handle the click on the item
+   * @param event the object that is clicked
+   */
   @FXML
   public void onClickItem(MouseEvent event) {
     String name = ((Rectangle) event.getSource()).getId();
     checkClickItem(name);
   }
 
+  /**
+   * This method is used to check if the item is clicked
+   * @param name the name of the item
+   */
   protected void checkClickItem(String name) {
     if (!GameState.isRiddleResolved) {
       showRiddleNotSolved();
-      return;
-    }
-    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1")) && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
-      showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
       return;
     }
     System.out.println(name + " clicked");
@@ -113,6 +141,10 @@ public class SceneController {
       staticPuzzleCodeLabel.setText(GameState.puzzleCode);
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
+    }
+    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1")) && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+      showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
+      return;
     }
   }
 }

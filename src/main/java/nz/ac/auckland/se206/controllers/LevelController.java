@@ -9,6 +9,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the level scene
+ */
 public class LevelController {
 
   @FXML private Button startButton;
@@ -16,9 +19,12 @@ public class LevelController {
 
   @FXML private Slider timeSlider;
 
-  @FXML private Text levelTexts;
+  @FXML private Text levelText;
   @FXML private CheckBox ttsButton;
 
+  /**
+   * This method is used to round the slider value to the nearest integer
+   */
   @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
@@ -26,17 +32,30 @@ public class LevelController {
     setLevelText();
   }
 
+  /**
+   * This method is called to go back to start screen
+   */
   @FXML
   private void onBack() {
     App.setUi(AppUi.START);
   }
 
+  /**
+   * This method is used to round the slider value to the nearest integer
+   */
   @FXML
   private void finishTime() {
     double time = timeSlider.getValue();
     timeSlider.setValue(Math.round(time));
   }
 
+  /**
+   * This method is called to start the game
+   * it sets time, hint and difficulty based on the user's selection
+   * it also sets the tts option
+   * it also starts the timer
+   * then it loads the art room
+   */
   @FXML
   private void onStart() {
     switch ((int) levelSlider.getValue()) {
@@ -77,18 +96,22 @@ public class LevelController {
     GameState.onArtRoom = true;
   }
 
+  /**
+   * This method is called to set the text for which level the user selects.
+   * Change the text based on the level the user selects.
+   */
   @FXML
   private void setLevelText() { // Set the text for which level the user selects.
     switch ((int) levelSlider.getValue()) {
       case 0:
-        levelTexts.setText("In Easy Mode, you can get any amount of hints from the game master.");
+        levelText.setText("In Easy Mode, you can get any amount of hints from the game master.");
         break;
       case 1:
-        levelTexts.setText(
+        levelText.setText(
             "In Medium Mode, you can get a maximum of 5 hints from the game master.");
         break;
       case 2:
-        levelTexts.setText("In Hard Mode, you cannot get any hints from game master.");
+        levelText.setText("In Hard Mode, you cannot get any hints from game master.");
         break;
       default:
         break;

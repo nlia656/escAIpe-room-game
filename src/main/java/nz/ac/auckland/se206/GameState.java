@@ -51,7 +51,6 @@ public class GameState {
   public static boolean onDinoRoom;
   public static boolean onLobbyRoom;
   public static boolean isGameComplete;
-  public static int randomCode;
   public static String riddleCode;
   public static boolean firstTimeCode;
   public static boolean secondTimeCode;
@@ -63,10 +62,18 @@ public class GameState {
   public static String puzzleCode;
   public static boolean isBenchPuzzle;
 
+  /**
+   * Get a random number from 0 to range.
+   * @param range the range of the random number
+   * @return the random number
+   */
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
 
+  /**
+   * This method is used to initialize the game state
+   */
   public static void initial() {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.

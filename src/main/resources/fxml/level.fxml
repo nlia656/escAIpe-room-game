@@ -11,15 +11,15 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LevelController">
   <children>
-      <ImageView fitHeight="540.0" fitWidth="1026.0" layoutX="-46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-5.0">
-         <image>
-            <Image url="@../images/robberyRoom.jpg" />
-         </image>
-      </ImageView>
+    <ImageView fitHeight="540.0" fitWidth="1026.0" layoutX="-46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-5.0">
+      <image>
+        <Image url="@../images/robberyRoom.jpg" />
+      </image>
+    </ImageView>
     <Text fx:id="gameTitle" fill="#b5a10c" layoutX="211.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="307.2734375">
-         <font>
-            <Font name="Britannic Bold" size="32.0" />
-         </font></Text>
+      <font>
+        <Font name="Britannic Bold" size="32.0" />
+      </font></Text>
     <Slider fx:id="levelSlider" blockIncrement="1.0" layoutX="190.0" layoutY="150.0" majorTickUnit="1.0" max="2.0" minorTickCount="1" onMouseReleased="#finishSlide" onScrollFinished="#finishSlide" prefHeight="14.0" prefWidth="350.0" />
     <Slider fx:id="timeSlider" blockIncrement="1.0" layoutX="190.0" layoutY="240.0" majorTickUnit="1.0" max="2.0" minorTickCount="1" onMouseReleased="#finishTime" onScrollFinished="#finishTime" prefHeight="14.0" prefWidth="350.0" />
     <Text fx:id="sliderText" fill="#fffa94" layoutX="149.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Easy" textAlignment="CENTER" wrappingWidth="81.0401611328125">
@@ -53,15 +53,15 @@
       </font>
     </Text>
     <CheckBox fx:id="ttsButton" layoutX="95.0" layoutY="420.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="164.0" text="Turn on TTS" textFill="#fffa94">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font></CheckBox>
+      <font>
+        <Font name="Bank Gothic Medium BT" size="16.0" />
+      </font></CheckBox>
     <Button fx:id="startGame" layoutX="498.0" layoutY="365.0" mnemonicParsing="false" onAction="#onStart" prefHeight="48.0" prefWidth="99.0" text="Start!" />
-      <Button fx:id="goBack" layoutX="498.0" layoutY="420.0" mnemonicParsing="false" onAction="#onBack" prefHeight="48.0" prefWidth="99.0" text="Go back" />
-      <Text fx:id="sliderText" fill="#fffa94" layoutX="469.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" textAlignment="CENTER" wrappingWidth="112.240234375">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="28.0" />
-         </font>
-      </Text>
+    <Button fx:id="goBack" layoutX="498.0" layoutY="420.0" mnemonicParsing="false" onAction="#onBack" prefHeight="48.0" prefWidth="99.0" text="Go back" />
+    <Text fx:id="sliderText" fill="#fffa94" layoutX="469.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" textAlignment="CENTER" wrappingWidth="112.240234375">
+      <font>
+        <Font name="Bank Gothic Medium BT" size="28.0" />
+      </font>
+    </Text>
   </children>
 </AnchorPane>

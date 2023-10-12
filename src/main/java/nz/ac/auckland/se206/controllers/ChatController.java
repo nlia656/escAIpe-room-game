@@ -22,7 +22,11 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Controller class for the chat view. */
+/**
+ * This class is the controller for the chat scene.
+ * It handles the events that occur in the chat scene.
+ * It extends the SceneController class.
+ */
 public class ChatController extends SceneController {
 
   @FXML private Text hintRemains;
@@ -42,9 +46,14 @@ public class ChatController extends SceneController {
   private ChatCompletionRequest hintCompletionRequest;
   private boolean isGptRunning = false;
 
-  /** Initializes the chat view, loading the riddle. */
+  /**
+   * This method is called by the FXMLLoader when initialization is complete.
+   * It runs the GPT model to generate the riddle.
+   * It also sets up the timer label in this scene.
+   */
   @FXML
   public void initialize() {
+    //Create a new thread to run the GPT model
     Task<Void> task =
         new Task<>() {
           @Override
