@@ -53,7 +53,7 @@
          </cursor>
       </Rectangle>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5a10c" height="30.0" layoutX="15.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="190.0" />
-      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="70.0" onMouseClicked="#scrollLobbyClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="scrollLobby" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="70.0" onMouseClicked="#scrollClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/paperscroll.png" />
          </image>
@@ -61,10 +61,6 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <Rectangle fx:id="phone" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="112.0" layoutX="34.0" layoutY="429.0" onMouseClicked="#onOpenPhone" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="142.0">
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor></Rectangle>
       <ImageView fx:id="lobbyToArt" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="44.0" layoutX="200.0" layoutY="400.0" onMouseClicked="#goArtRoom" pickOnBounds="true" preserveRatio="true" rotate="37.0">
          <image>
             <Image url="@../images/arrow.png" />

@@ -21,20 +21,6 @@ public class DinoRoomController extends SceneController {
   }
 
   @FXML
-  private void scrollDinoClicked() {
-    // Change scene to scroll and change alerts depending on game progress.
-    App.setUi(AppUi.SCROLL);
-    if (GameState.firstTimeCode) {
-      showNotifications("Code discovered!", "Now go find the book to continue.");
-      GameState.firstTimeCode = false;
-      GameState.isRiddleCodeGiven = true;
-    } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "You can try to escape through the elevator now.");
-      GameState.secondTimeCode = false;
-    }
-  }
-
-  @FXML
   private void onOpenPhone() {
     ChatController chatController = App.getChatController();
     chatController.setChatBackground();
