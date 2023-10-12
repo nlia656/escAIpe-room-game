@@ -71,7 +71,11 @@ public class SceneController {
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
+      if (!GameState.isBenchPuzzle) {
+        showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
+      } else {
+        showNotifications("Code discovered!", "Now go to the elevator and try to escape!");
+      }
       GameState.secondTimeCode = false;
       GameState.isPuzzleCodeGiven = true;
     }
@@ -93,7 +97,7 @@ public class SceneController {
       showRiddleNotSolved();
       return;
     }
-    if (name.equals("couch3") || name.equals("couch2") || name.equals("couch1") && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1")) && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
       showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
       return;
     }
