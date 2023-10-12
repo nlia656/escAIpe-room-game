@@ -11,9 +11,9 @@ public class ChatCompletionResult {
   /** Represents a choice in the chat completion result. */
   public class Choice {
 
-    private final ChatMessage message;
-    private final int index;
-    private final String finishReason;
+    private ChatMessage message;
+    private int index;
+    private String finishReason;
 
     /**
      * Constructs a new Choice object with the specified parameters.
@@ -63,7 +63,7 @@ public class ChatCompletionResult {
   private int usageCompletionTokens;
   private int usageTotalTokens;
 
-  private final List<Choice> choices;
+  private List<Choice> choices;
 
   /**
    * Constructs a new ChatCompletionResult object with the provided chat completion data.

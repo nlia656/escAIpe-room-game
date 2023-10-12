@@ -82,11 +82,32 @@ public class SceneController {
   }
 
   /**
+   * This method is called when the player clicks on the scroll
+   */
+  @FXML
+  protected void scrollClicked() {
+    // Change scene to scroll and change alerts depending on game progress.
+    App.setUi(AppUi.SCROLL);
+    if (GameState.firstTimeCode) {
+      showNotifications("Code discovered!", "Now go find the book to continue.");
+      GameState.firstTimeCode = false;
+      GameState.isRiddleCodeGiven = true;
+    } else if (GameState.secondTimeCode) {
+      if (!GameState.isBenchPuzzle) {
+        showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
+      } else {
+        showNotifications("Code discovered!", "Now go to the elevator and try to escape!");
+      }
+      GameState.secondTimeCode = false;
+      GameState.isPuzzleCodeGiven = true;
+    }
+  }
+  /**
    * This method is used to show riddle not solved notification
    */
   protected void showRiddleNotSolved() {
     showNotifications(
-        "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+        "Solve the riddle!", "Open the phone to receive your first clue to escape!");
   }
 
   /**
@@ -120,6 +141,10 @@ public class SceneController {
       staticPuzzleCodeLabel.setText(GameState.puzzleCode);
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
+    }
+    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1")) && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+      showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
+      return;
     }
   }
 }

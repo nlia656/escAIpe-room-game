@@ -187,6 +187,7 @@ public class ChatCompletionRequest {
       // Send the HTTP request and process the response
       CloseableHttpClient client = HttpClients.createDefault();
       ResponseChatCompletion responseChat =
+          (ResponseChatCompletion)
           client.execute(
               httpPost,
               httpResponse ->
