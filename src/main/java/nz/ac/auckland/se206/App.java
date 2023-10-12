@@ -11,12 +11,14 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 
-/** This is the entry point of the JavaFX application. */
+/**
+ * This is the entry point of the JavaFX application.
+ */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
-  private static Scene scene;
   public static Stage stage;
+  private static Scene scene;
   private static ChatController chatController;
 
   public static void main(final String[] args) {
@@ -42,38 +44,38 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /** Create and run a timer that handles game timing. */
+  /**
+   * Create and run a timer that handles game timing.
+   */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-          @Override
-          protected Void call() throws Exception {
-            // Create a timer thread
-            for (int i = GameState.timeLimit; i >= 0; i--) {
-              if (!timerRunning) {
-                break;
-              }
-              if (GameState.isGameComplete) {
-                GameState.isGameComplete = false;
-                return null;
-              }
-              if (!GameState.isPaused) {
-                final int finalI = i;
-                Platform.runLater(
-                    () -> {
-                      GameState.timeLeft =
-                          finalI / 60
-                              + ":"
-                              + finalI % 60;
-                      if (finalI == 0) {
-                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-                      }
-                    });
-              }
-              Thread.sleep(1000);
-            }
+      @Override
+      protected Void call() throws Exception {
+        // Create a timer thread
+        for (int i = GameState.timeLimit; i >= 0; i--) {
+          if (!timerRunning) {
+            break;
+          }
+          if (GameState.isGameComplete) {
+            GameState.isGameComplete = false;
             return null;
           }
-        };
+          if (!GameState.isPaused) {
+            final int finalI = i;
+            Platform.runLater(
+                () -> {
+                  GameState.timeLeft =
+                      String.format("%d:%02d", finalI / 60, finalI % 60);
+                  if (finalI == 0) {
+                    App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                  }
+                });
+          }
+          Thread.sleep(1000);
+        }
+        return null;
+      }
+    };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -81,6 +83,7 @@ public class App extends Application {
 
   /**
    * This method is used to load the room
+   *
    * @throws IOException if the fxml file is not found
    */
   @FXML
@@ -100,6 +103,7 @@ public class App extends Application {
 
   /**
    * This method is used to get the chat controller
+   *
    * @return the chat controller
    */
   public static ChatController getChatController() {
@@ -125,6 +129,7 @@ public class App extends Application {
 
   /**
    * This method is used to get the stage
+   *
    * @return the stage
    */
   public static Stage getStage() {
@@ -133,6 +138,7 @@ public class App extends Application {
 
   /**
    * This method is used to start the application
+   *
    * @param stage the stage
    * @throws IOException if the fxml file is not found
    */
