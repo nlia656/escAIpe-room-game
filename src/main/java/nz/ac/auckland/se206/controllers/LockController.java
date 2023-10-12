@@ -87,17 +87,15 @@ public class LockController {
     // If passcode is correct length (4), check whether it is the correct code as the riddle and
     // puzzle code.
     if (passcode.size() == 4) {
-/*      StringBuilder sb = new StringBuilder();
+      StringBuilder sb = new StringBuilder();
       StringBuilder exitKey = new StringBuilder();
       exitKey.append(GameState.riddleCode);
       exitKey.append(GameState.puzzleCode);
       sb.append(passcode.get(0));
       sb.append(passcode.get(1));
       sb.append(passcode.get(2));
-      sb.append(passcode.get(3));*/
-      String passcodeString=String.format("%01d%01d%01d%01d",passcode.get(0),passcode.get(1),passcode.get(2),passcode.get(3));
-      String answer = String.format("%s%s",GameState.riddleAnswer,GameState.puzzleAnswer);
-      if (answer.equals(passcodeString)) {
+      sb.append(passcode.get(3));
+      if (sb.toString().contentEquals(exitKey)) {
         textBox.clear();
         textBox.appendText("Door Unlocked");
         buttonDisable();
