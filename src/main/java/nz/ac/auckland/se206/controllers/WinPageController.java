@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -17,9 +18,20 @@ public class WinPageController {
    */
   @FXML
   private void onStartPage() throws IOException {
-    App.unloadRoom();
-    GameState.initial();
-    App.loadRoom();
+    Task<Void> task = new Task<>() {
+      @Override
+      protected Void call() throws Exception {
+          GameState.isGameComplete = true;
+          Thread.sleep(1000);
+          App.unloadRoom();
+          GameState.initial();
+          App.loadRoom();
+        return null;
+      }
+    };
     App.setUi(AppUi.START);
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    thread.start();
   }
 }

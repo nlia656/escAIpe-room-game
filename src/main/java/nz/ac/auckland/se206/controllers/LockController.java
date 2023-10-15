@@ -128,10 +128,9 @@ public class LockController {
 
   /**
    * This method is used to go back to the home screen
-   * @throws IOException if the fxml file is not found
    */
   @FXML
-  private void escapeButtonReleased() throws IOException {
+  private void escapeButtonReleased() {
     isReleasedMouse = true;
     if (result) {
       backToHome();
@@ -156,18 +155,18 @@ public class LockController {
    * @param i the current progress of the process bar
    */
   private void inprocessBar(int i){
-    if (i== 25) {
+    if (i== 20) {
       setGreen(process25);
-    } else if (i == 40) {
+    } else if (i == 45) {
       setGreen(process50);
-    } else if (i == 65) {
+    } else if (i == 70) {
       setGreen(process75);
-    } else if (i == 90) {
+    } else if (i == 95) {
       setGreen(process100);
     }
     int level = (GameState.buttonLevel + 1) * 25;
-    result = level + 10 >= (int) (processBar.getProgress() * 100)
-        && (int) (processBar.getProgress() * 100) >= level - 10;
+    result = level + 5 >= (int) (processBar.getProgress() * 100)
+        && (int) (processBar.getProgress() * 100) >= level - 5;
     if (result) {
       setGreen(resultIndicator);
     }else{
@@ -197,13 +196,9 @@ public class LockController {
    * Unloads the room
    * Resets the game state
    * Loads the room
-   * @throws IOException if the fxml file is not found
    */
-  private void backToHome() throws IOException {
+  private void backToHome() {
     App.setUi(AppUi.WIN_SCREEN);
-    App.unloadRoom();
-    GameState.initial();
-    App.loadRoom();
   }
 
   /**
