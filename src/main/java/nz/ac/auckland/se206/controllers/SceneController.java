@@ -128,6 +128,12 @@ public class SceneController {
       return;
     }
     System.out.println(name + " clicked");
+    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
+            && GameState.isPuzzleCodeGiven
+            && !GameState.isBenchPuzzle) {
+      showNotifications("Try again.", "There's nothing here. Maybe another seat?");
+      return;
+    }
     if (GameState.isPuzzleResolved) {
       return;
     }
@@ -140,11 +146,6 @@ public class SceneController {
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }
-    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
-        && GameState.isPuzzleCodeGiven
-        && !GameState.isBenchPuzzle) {
-      showNotifications("Try again.", "There's nothing here. Maybe another seat?");
-      return;
-    }
+
   }
 }

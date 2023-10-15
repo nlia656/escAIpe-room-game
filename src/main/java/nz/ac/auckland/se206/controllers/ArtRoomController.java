@@ -80,7 +80,7 @@ public class ArtRoomController extends SceneController {
    */
   @FXML
   private void benchClicked() {
-    if (GameState.isPuzzleCodeGiven) {
+    if (GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
       showNotifications("Clue Found!", "Go to the elevator and try to escape!");
     }
     // Add your code for handling the bench1Clicked event here
