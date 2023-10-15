@@ -79,9 +79,6 @@ public class ChatController extends SceneController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
-      hintButton.setDisable(true);
-    }
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     hintCompletionRequest =
@@ -95,6 +92,20 @@ public class ChatController extends SceneController {
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
+                  if (GameState.isHard) {
+                    lblHints.setText("");
+                    hintsLeft.setText("No hints!");
+                  } else if (GameState.isUnlimitedHint) {
+                    lblHints.setText("");
+                    hintsLeft.setText("Unlimited hints!");
+                  } else {
+                    lblHints.setText(Integer.toString(GameState.remainsHint));
+                  }
+                  if (GameState.remainsHint == 0) {
+                    hintButton.setVisible(false);
+                  } else {
+                    hintButton.setVisible(true);
+                  }
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
@@ -264,12 +275,6 @@ public class ChatController extends SceneController {
   @FXML
   private void onAskHint() {
     // Give hints depending on difficulty of game
-    if (GameState.isHard) { // Check if the game is hard
-      hintsGone.setText("No hints!");
-      hintsGone.setVisible(true);
-      hintButton.setVisible(false);
-      return;
-    }
     Task<Void> task =
         new Task<>() {
           @Override
@@ -299,12 +304,11 @@ public class ChatController extends SceneController {
           }
         };
     if (!GameState.isUnlimitedHint) {
+      System.out.println("is it medium");
       GameState.remainsHint--;
-      hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
-        hintsGone.setText("Out of hints!");
+        System.out.println("hints gone");
         hintButton.setVisible(false);
-        hintsGone.setVisible(true);
       }
     }
     Thread thread = new Thread(task);

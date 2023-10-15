@@ -23,7 +23,7 @@ public class ArtRoomController extends SceneController {
    */
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster);
+    startTextSync(lblTime, lblGameMaster, lblHints, hintsLeft);
   }
 
   /**
