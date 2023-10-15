@@ -80,6 +80,7 @@ public class SceneController {
    * @param message the message of the notification
    */
   protected void showNotifications(String title, String message) {
+    // Create a notification, show it for three seconds in the bottom right corner of the screen.
     Notifications notification = Notifications.create();
     notification.title(title);
     notification.text(message);
@@ -135,20 +136,25 @@ public class SceneController {
    * @param name the name of the item
    */
   protected void checkClickItem(String name) {
+    // If riddle isn't solved, show not solved notification
     if (!GameState.isRiddleResolved) {
       showRiddleNotSolved();
       return;
     }
     System.out.println(name + " clicked");
+    // If user tries to click on couch when instructed to sit on bench, show notification
     if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
         && GameState.isPuzzleCodeGiven
         && !GameState.isBenchPuzzle) {
       showNotifications("Try again.", "There's nothing here. Maybe another seat?");
       return;
     }
+    // If user tries to click on anything when the puzzle is already resolved and no other
+    // instructions, do nothing.
     if (GameState.isPuzzleResolved) {
       return;
     }
+    // If user clicks on the correct item, resolve puzzle.
     if (GameState.puzzleAnswer.equals(name)
         && GameState.isRiddleResolved
         && !GameState.isPuzzleCodeGiven

@@ -11,9 +11,7 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 
-/**
- * This is the entry point of the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   public static Stage stage;
@@ -43,31 +41,29 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /**
-   * Create and run a timer that handles game timing.
-   */
+  /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (GameState.isGameComplete) {
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (GameState.isGameComplete) {
+                return null;
+              }
+              if (!GameState.isPaused) {
+                GameState.timeLeft = String.format("%d:%02d", i / 60, i % 60);
+                if (i == 0) {
+                  loadRoom();
+                  App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                }
+              }
+              Thread.sleep(1000);
+              // If the game is complete, stop the timer.
+            }
             return null;
           }
-          if (!GameState.isPaused) {
-            GameState.timeLeft = String.format("%d:%02d", i / 60, i % 60);
-            if (i == 0) {
-              loadRoom();
-              App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-            }
-          }
-          Thread.sleep(1000);
-          // If the game is complete, stop the timer.
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -80,25 +76,29 @@ public class App extends Application {
    */
   @FXML
   public static void loadRoom() throws IOException {
+    // Remove scenes from hashmap
     unloadRoom();
     GameState.initial();
-    // Add the scenes to the HashMap
-    Task<Void> task = new Task<>() {
-      @Override
-      protected Void call() throws Exception {
-        FXMLLoader chat = loadFxml("chat");
-        SceneManager.addAppUi(AppUi.CHAT, chat.load());
-        chatController = chat.getController();
-        SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom").load());
-        SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom").load());
-        SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom").load());
-        SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle").load());
-        SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
-        SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
-        SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
-        return null;
-      }
-    };
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Create an object for the chat scene that can so that I can change the opacity of the
+            // background images.
+            FXMLLoader chat = loadFxml("chat");
+            SceneManager.addAppUi(AppUi.CHAT, chat.load());
+            chatController = chat.getController();
+            // Load the scenes to the HashMap
+            SceneManager.addAppUi(AppUi.ART_ROOM, loadFxml("artRoom").load());
+            SceneManager.addAppUi(AppUi.DINO_ROOM, loadFxml("dinoRoom").load());
+            SceneManager.addAppUi(AppUi.LOBBY_ROOM, loadFxml("lobbyRoom").load());
+            SceneManager.addAppUi(AppUi.BOOK_PUZZLE, loadFxml("bookPuzzle").load());
+            SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
+            SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
+            SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
+            return null;
+          }
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -113,9 +113,7 @@ public class App extends Application {
     return chatController;
   }
 
-  /**
-   * This method is used to unload the room
-   */
+  /** This method is used to unload the room */
   @FXML
   public static void unloadRoom() {
     // Remove the scenes from the HashMap
