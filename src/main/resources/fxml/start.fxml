@@ -43,7 +43,7 @@
             <Font name="Times New Roman" size="32.0" />
          </font>
       </Text>
-      <Text fx:id="gameBlurb" fill="#fffa94" layoutX="14.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!" textAlignment="CENTER" wrappingWidth="389.81768798828125">
+      <Text fx:id="gameBlurb" fill="#fffa94" layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!" textAlignment="CENTER" wrappingWidth="389.81768798828125">
          <font>
             <Font name="Courier New" size="28.0" />
          </font>

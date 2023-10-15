@@ -1,16 +1,18 @@
    #gameTitle {
        -fx-font-size: 34;
        -fx-font-family:
-           "Britannic Bold"
+           "Britannic Bold",
            "Times New Roman"
            , sans-serif;
+       -fx-font-weight: bold;
    }
 
    #gameBlurb {
        -fx-font-size: 28;
        -fx-font-family:
            "BankGothic Md BT",
-           "Courier New", monospace;
+           "Courier New",
+           sans-serif;
    }
 
    #credit {
