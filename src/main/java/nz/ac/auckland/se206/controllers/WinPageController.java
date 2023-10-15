@@ -23,8 +23,6 @@ public class WinPageController {
       protected Void call() throws Exception {
           GameState.isGameComplete = true;
           Thread.sleep(1000);
-          App.unloadRoom();
-          GameState.initial();
           App.loadRoom();
         return null;
       }
