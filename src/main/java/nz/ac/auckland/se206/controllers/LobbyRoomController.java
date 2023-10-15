@@ -14,7 +14,7 @@ public class LobbyRoomController extends SceneController {
   /** This method is called when the scene is loaded to sync the time and game master text */
   @FXML
   public void initialize() {
-    startTextSync(lblTime, lblGameMaster);
+    startTextSync(lblTime, lblGameMaster, lblHints);
   }
 
   /**

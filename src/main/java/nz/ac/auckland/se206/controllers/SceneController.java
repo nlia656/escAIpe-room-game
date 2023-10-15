@@ -22,6 +22,7 @@ public class SceneController {
   @FXML private Label riddleCodeLabel;
   @FXML protected Label lblTime;
   @FXML protected Label lblGameMaster;
+  @FXML protected Label lblHints;
 
   /**
    * This method is used to sync the time and game master text
@@ -29,7 +30,7 @@ public class SceneController {
    * @param lblTime the label for the time
    * @param lblGameMaster the label for the game master text
    */
-  public static void startTextSync(Label lblTime, Label lblGameMaster) {
+  public static void startTextSync(Label lblTime, Label lblGameMaster, Label lblHints) {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
@@ -37,6 +38,7 @@ public class SceneController {
                 event -> {
                   lblTime.setText(GameState.timeLeft);
                   lblGameMaster.setText(GameState.lastMsg);
+                  lblHints.setText(Integer.toString(GameState.remainsHint));
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
@@ -129,8 +131,8 @@ public class SceneController {
     }
     System.out.println(name + " clicked");
     if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
-            && GameState.isPuzzleCodeGiven
-            && !GameState.isBenchPuzzle) {
+        && GameState.isPuzzleCodeGiven
+        && !GameState.isBenchPuzzle) {
       showNotifications("Try again.", "There's nothing here. Maybe another seat?");
       return;
     }
@@ -146,6 +148,5 @@ public class SceneController {
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }
-
   }
 }

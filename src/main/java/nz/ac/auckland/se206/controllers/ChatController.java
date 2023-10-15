@@ -79,7 +79,7 @@ public class ChatController extends SceneController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
+    if (GameState.isHard) {
       hintButton.setDisable(true);
     }
     chatCompletionRequest =
@@ -95,6 +95,7 @@ public class ChatController extends SceneController {
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
+                  lblHints.setText(Integer.toString(GameState.remainsHint));
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
@@ -264,12 +265,6 @@ public class ChatController extends SceneController {
   @FXML
   private void onAskHint() {
     // Give hints depending on difficulty of game
-    if (GameState.isHard) { // Check if the game is hard
-      hintsGone.setText("No hints!");
-      hintsGone.setVisible(true);
-      hintButton.setVisible(false);
-      return;
-    }
     Task<Void> task =
         new Task<>() {
           @Override
@@ -299,12 +294,11 @@ public class ChatController extends SceneController {
           }
         };
     if (!GameState.isUnlimitedHint) {
+      System.out.println("is it medium");
       GameState.remainsHint--;
-      hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
-        hintsGone.setText("Out of hints!");
-        hintButton.setVisible(false);
-        hintsGone.setVisible(true);
+        System.out.println("hints gone");
+        hintButton.setDisable(true);
       }
     }
     Thread thread = new Thread(task);
