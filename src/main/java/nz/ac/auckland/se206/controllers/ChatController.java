@@ -95,6 +95,9 @@ public class ChatController extends SceneController {
                   if (GameState.isHard) {
                     lblHints.setText("");
                     hintsLeft.setText("No hints!");
+                  } else if (GameState.isUnlimitedHint) {
+                    lblHints.setText("");
+                    hintsLeft.setText("Unlimited hints!");
                   } else {
                     lblHints.setText(Integer.toString(GameState.remainsHint));
                   }
