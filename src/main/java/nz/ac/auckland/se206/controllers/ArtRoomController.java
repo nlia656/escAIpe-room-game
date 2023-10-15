@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -8,12 +9,13 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
- * This class is the controller for the art room scene
- * It handles the events that occur in the art room
- * It extends the SceneController class
- * It contains methods that are called when the player clicks on an item
+ * This class is the controller for the art room scene It handles the events that occur in the art
+ * room It extends the SceneController class It contains methods that are called when the player
+ * clicks on an item
  */
 public class ArtRoomController extends SceneController {
+
+  @FXML private Label newMessage;
 
   /**
    * This method is called by the FXMLLoader when initialization is complete Starts the text sync
@@ -50,19 +52,21 @@ public class ArtRoomController extends SceneController {
 
   /**
    * This method is called when the player clicks the phone button Changes the scene to the chat
-   * Sets the chat background to the art room
-   * Sets the GameState booleans to reflect the current scene
+   * Sets the chat background to the art room Sets the GameState booleans to reflect the current
+   * scene
    */
   @FXML
   private void onOpenPhone() {
+    GameState.hasPhoneOpened = true;
     ChatController chatController = App.getChatController();
     chatController.setChatBackground();
     App.setUi(AppUi.CHAT);
   }
 
   /**
-   * This method is called when the player clicks a riddle item
-   * Post the name of the item to the clickForRiddle method to check if the answer is correct
+   * This method is called when the player clicks a riddle item Post the name of the item to the
+   * clickForRiddle method to check if the answer is correct
+   *
    * @param event the mouse event
    */
   @FXML
@@ -72,8 +76,7 @@ public class ArtRoomController extends SceneController {
   }
 
   /**
-   * This method is called when the player clicks the bench
-   * Changes the scene to the bench puzzle
+   * This method is called when the player clicks the bench Changes the scene to the bench puzzle
    */
   @FXML
   private void benchClicked() {
@@ -86,9 +89,9 @@ public class ArtRoomController extends SceneController {
   }
 
   /**
-   * This method is called when the player clicks the books
-   * If the riddle is not solved, it will check is this book is the correct answer
-   * If the riddle is solved, the game master will tell the player to find the other book
+   * This method is called when the player clicks the books If the riddle is not solved, it will
+   * check is this book is the correct answer If the riddle is solved, the game master will tell the
+   * player to find the other book
    */
   @FXML
   private void books1Clicked() {
@@ -101,10 +104,11 @@ public class ArtRoomController extends SceneController {
   }
 
   /**
-   * This method is called when the player clicks an item
-   * If the riddle is not solved, it will tell the player to solve the riddle first
-   * If the riddle is solved, it will check if the item is the correct answer
-   * If the item is the correct answer, the game master will tell the player to go to the scroll
+   * This method is called when the player clicks an item If the riddle is not solved, it will tell
+   * the player to solve the riddle first If the riddle is solved, it will check if the item is the
+   * correct answer If the item is the correct answer, the game master will tell the player to go to
+   * the scroll
+   *
    * @param answer the name of the item
    */
   private void clickForRiddle(String answer) {
