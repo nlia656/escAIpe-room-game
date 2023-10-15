@@ -103,6 +103,8 @@ public class ChatController extends SceneController {
                   }
                   if (GameState.remainsHint == 0) {
                     hintButton.setVisible(false);
+                  } else {
+                    hintButton.setVisible(true);
                   }
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
