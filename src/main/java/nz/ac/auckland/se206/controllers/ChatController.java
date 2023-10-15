@@ -122,9 +122,9 @@ public class ChatController extends SceneController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       if (result.getChatMessage().getRole().equals("assistant")) {
-        appendChatMessage(result.getChatMessage(), "Game master");
+        appendChatMessage(result.getChatMessage(), "Security said");
       } else {
-        appendChatMessage(result.getChatMessage(), "You");
+        appendChatMessage(result.getChatMessage(), "You said");
       }
       GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant")
@@ -215,16 +215,16 @@ public class ChatController extends SceneController {
             while (isGptRunning) {
               switch (i) {
                 case 0:
-                  inputText.setText("Game master is typing .");
+                  inputText.setText("Security is typing .");
                   i++;
                   break;
                 case 1:
-                  inputText.setText("Game master is typing ..");
+                  inputText.setText("Security is typing ..");
                   i++;
                   break;
                 case 2:
                   inputText.setText(
-                      "Game master is typing ..."); // Update the graphics so that the user knows
+                      "Security is typing ..."); // Update the graphics so that the user knows
                   // the GPT is replying.
                   i = 0;
                   break;
@@ -281,7 +281,7 @@ public class ChatController extends SceneController {
               ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
               Choice result = hintCompletionResult.getChoices().iterator().next();
               hintCompletionRequest.addMessage(result.getChatMessage());
-              appendChatMessage(result.getChatMessage(), "Game master");
+              appendChatMessage(result.getChatMessage(), "Security said");
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);
