@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: C4A484;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LockController">
+<AnchorPane prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: C4A484;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LockController">
   <Pane layoutX="30.0" layoutY="86.0" prefHeight="367.0" prefWidth="258.0">
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8c95a1" height="367.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="258.0" />
     <Button fx:id="button1" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="1">
@@ -17,43 +21,43 @@
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button3" layoutX="175.0" layoutY="152.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="3">
+    <Button fx:id="button3" layoutX="176.0" layoutY="152.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="3">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button4" layoutX="14.0" layoutY="209.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="4">
+    <Button fx:id="button4" layoutX="14.0" layoutY="204.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="4">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button5" layoutX="95.0" layoutY="209.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="5">
+    <Button fx:id="button5" layoutX="95.0" layoutY="204.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="5">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button6" layoutX="175.0" layoutY="209.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="6">
+    <Button fx:id="button6" layoutX="176.0" layoutY="204.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="6">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button7" layoutX="15.0" layoutY="258.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="7">
+    <Button fx:id="button7" layoutX="14.0" layoutY="256.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="7">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button8" layoutX="96.0" layoutY="258.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="8">
+    <Button fx:id="button8" layoutX="95.0" layoutY="256.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="8">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button9" layoutX="176.0" layoutY="258.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="9">
+    <Button fx:id="button9" layoutX="176.0" layoutY="256.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="9">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="button0" layoutX="95.0" layoutY="311.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="0">
+    <Button fx:id="button0" layoutX="95.0" layoutY="308.0" mnemonicParsing="false" onAction="#onType" prefHeight="42.0" prefWidth="69.0" text="0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="resetButton" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#onReset" prefHeight="42.0" prefWidth="69.0" text="Reset">
+    <Button fx:id="resetButton" layoutX="14.0" layoutY="308.0" mnemonicParsing="false" onAction="#onReset" prefHeight="42.0" prefWidth="69.0" text="Reset">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-    <Button fx:id="enterButton" layoutX="175.0" layoutY="311.0" mnemonicParsing="false" onAction="#onEnter" prefHeight="42.0" prefWidth="69.0" text="Enter">
+    <Button fx:id="enterButton" layoutX="176.0" layoutY="308.0" mnemonicParsing="false" onAction="#onEnter" prefHeight="42.0" prefWidth="69.0" text="Enter">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
