@@ -64,6 +64,8 @@ public class App extends Application {
                       GameState.timeLeft = String.format("%d:%02d", finalI / 60, finalI % 60);
                       if (finalI == 0) {
                         App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                        App.unloadRoom();
+                        GameState.initial();
                       }
                     });
               }
