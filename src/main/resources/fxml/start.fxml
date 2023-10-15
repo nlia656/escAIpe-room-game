@@ -40,12 +40,12 @@
       </Button>
       <Text fx:id="gameTitle" fill="#b5a10c" layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heist of the Century: The Art Museum Affair" textAlignment="CENTER" wrappingWidth="660.5735473632812" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="23.42645263671875">
          <font>
-            <Font name="Britannic Bold" size="32.0" />
+            <Font name="Times New Roman" size="32.0" />
          </font>
       </Text>
-      <Text fx:id="gameBlurb" fill="#fffa94" layoutX="14.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!" textAlignment="CENTER" wrappingWidth="389.81768798828125">
+      <Text fx:id="gameBlurb" fill="#fffa94" layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Master the Art of Deception – Become the Ultimate Artful Criminal in This Daring Museum Escape!" textAlignment="CENTER" wrappingWidth="389.81768798828125">
          <font>
-            <Font name="Bank Gothic Medium BT" size="28.0" />
+            <Font name="Courier New" size="28.0" />
          </font>
       </Text>
    </children>

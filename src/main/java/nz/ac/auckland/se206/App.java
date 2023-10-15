@@ -7,13 +7,12 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.ChatController;
 
-/**
- * This is the entry point of the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   public static volatile boolean timerRunning = true;
@@ -44,38 +43,35 @@ public class App extends Application {
     scene.setRoot(SceneManager.getAppUi(newUi));
   }
 
-  /**
-   * Create and run a timer that handles game timing.
-   */
+  /** Create and run a timer that handles game timing. */
   public static void makeTimer() {
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-      @Override
-      protected Void call() throws Exception {
-        // Create a timer thread
-        for (int i = GameState.timeLimit; i >= 0; i--) {
-          if (!timerRunning) {
-            break;
-          }
-          if (GameState.isGameComplete) {
-            GameState.isGameComplete = false;
+          @Override
+          protected Void call() throws Exception {
+            // Create a timer thread
+            for (int i = GameState.timeLimit; i >= 0; i--) {
+              if (!timerRunning) {
+                break;
+              }
+              if (GameState.isGameComplete) {
+                GameState.isGameComplete = false;
+                return null;
+              }
+              if (!GameState.isPaused) {
+                final int finalI = i;
+                Platform.runLater(
+                    () -> {
+                      GameState.timeLeft = String.format("%d:%02d", finalI / 60, finalI % 60);
+                      if (finalI == 0) {
+                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                      }
+                    });
+              }
+              Thread.sleep(1000);
+            }
             return null;
           }
-          if (!GameState.isPaused) {
-            final int finalI = i;
-            Platform.runLater(
-                () -> {
-                  GameState.timeLeft =
-                      String.format("%d:%02d", finalI / 60, finalI % 60);
-                  if (finalI == 0) {
-                    App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-                  }
-                });
-          }
-          Thread.sleep(1000);
-        }
-        return null;
-      }
-    };
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -110,9 +106,7 @@ public class App extends Application {
     return chatController;
   }
 
-  /**
-   * This method is used to unload the room
-   */
+  /** This method is used to unload the room */
   @FXML
   public static void unloadRoom() {
     // Remove the scenes from the HashMap
@@ -145,6 +139,9 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
     GameState.initial();
+    Font.loadFont(App.class.getResource("/css/bank-gothic-medium-bt.ttf").toExternalForm(), 12);
+    Font.loadFont(App.class.getResource("/css/britanic.ttf").toExternalForm(), 12);
+    Font.loadFont(App.class.getResource("/css/papyrus.ttf").toExternalForm(), 12);
     App.stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start").load());

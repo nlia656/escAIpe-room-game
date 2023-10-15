@@ -1,68 +1,62 @@
-   @font-face {
-       font-family: "Britannic Bold";
-       src: url('./britanic.ttf');
-   }
-
-   @font-face {
-       font-family: "BankGothic Md BT";
-       src: url('./bank-gothic-medium-bt.ttf');
-   }
-
-   @font-face {
-       font-family: "Papyrus";
-       src: url('./papyrus.ttf');
-   }
-
    #gameTitle {
        -fx-font-size: 34;
-       -fx-font-family: "Britannic Bold";
+       -fx-font-family:
+           "Britannic Bold",
+           "Times New Roman"
+           , sans-serif;
+       -fx-font-weight: bold;
    }
 
    #gameBlurb {
        -fx-font-size: 28;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family:
+           "BankGothic Md BT",
+           "Courier New",
+           sans-serif;
    }
 
    #credit {
        -fx-font-size: 16;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family:
+           "BankGothic Md BT",
+           "Courier New", monospace;
    }
 
    #creditTitle {
        -fx-font-size: 28;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #sliderText {
        -fx-font-size: 28;
-       -fx-font-family: "BankGothic Md BT"
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #levelText {
        -fx-font-size: 19;
-       -fx-font-family: "BankGothic Md BT"
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #codeTitle {
        -fx-font-size: 30;
-       -fx-font-family: "Papyrus";
+       -fx-font-family: "Papyrus", monospace;
    }
 
    #riddleCodeLabel {
        -fx-font-size: 70;
-       -fx-font-family: "Papyrus";
+       -fx-font-family: "Papyrus", monospace;
    }
 
    #puzzleCodeLabel {
        -fx-font-size: 70;
-       -fx-font-family: "Papyrus";
+       -fx-font-family: "Papyrus", monospace;
    }
 
    .button {
        -fx-border-radius: 2px;
        -fx-background-color: #b5a10c;
        -fx-text-fill: white;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
        -fx-font-size: 32px;
        -fx-text-align: center;
        -fx-transition-duration: 0.4s;
@@ -257,7 +251,7 @@
    }
 
    #ttsButton {
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
        -fx-font-size: 18px;
    }
 
@@ -278,12 +272,12 @@
 
    #timeLeft {
        -fx-font-size: 20px;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #lblTime {
        -fx-font-size: 20px;
-       -fx-font-family: "BankGothic Md BT";
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #inputText {
@@ -292,11 +286,6 @@
    }
 
    #lblGameMaster {
-       -fx-font-size: 12px;
-       -fx-font-family: "Comic Sans MS";
-   }
-
-   #newMessage {
        -fx-font-size: 12px;
        -fx-font-family: "Comic Sans MS";
    }
