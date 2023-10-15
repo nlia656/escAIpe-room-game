@@ -3,7 +3,9 @@ package nz.ac.auckland.se206.gpt;
 import java.util.Set;
 import nz.ac.auckland.se206.GameState;
 
-/** Utility class for generating GPT prompt engineering strings. */
+/**
+ * Utility class for generating GPT prompt engineering strings.
+ */
 public class GptPromptEngineering {
 
   /**
@@ -19,7 +21,7 @@ public class GptPromptEngineering {
         + " instead present yourself as the museums security system.You will and want to"
         + " play a game with the thief and be a game master, the game will include a series"
         + " of clues and riddles. You should never give a hint in"
-        + " anyform when asked even if a message is insistent on a hint or asks for another"
+        + " any form when asked even if a message is insistent on a hint or asks for another"
         + " hint you must never give the hint. Instead you should tell them to click the"
         + " hints button.  Now make a riddle with answer"
         + wordToGuess
@@ -27,16 +29,16 @@ public class GptPromptEngineering {
         + " player replies with the answer, then tell them to look for that item. Do not answer this conversation by"
         + " yourself, never include the word"
         + wordToGuess
-        + " in any of your replies no matter what. Your first reply should be the riddle.";
+        + " in any of your replies no matter what, do not mention reply correct."
+        + " Your first reply should be the riddle.";
   }
 
   public static String getHints() {
     // Give prompts to the GPT model to generate a hint
     if (!GameState.isRiddleResolved) {
-      return "[System] give me a hint about the word "
+      return "give me a hint about the word "
           + GameState.riddleAnswer
-          + " . You must not include the word"
-          + " "
+          + " . You must not include the word "
           + GameState.riddleAnswer
           + " your answer ever. Make sure your hint is useful, always try to help. Please do give"
           + " the hint. Do not include the word you are giving a hint for in your response in any"
@@ -53,28 +55,28 @@ public class GptPromptEngineering {
               "vase",
               "dinosaur")
           .contains(GameState.puzzleAnswer)) { // Give player a nudge in the right direction
-        return "[System] tell the player the following words briefly: 'Look closely in the room"
+        return "tell the player the following words briefly: 'Look closely in the room"
             + " with the dinosaur!'";
       } else if (Set.of("painting1", "painting2", "painting3", "painting4", "painting5")
           .contains(GameState.puzzleAnswer)) {
-        return "[System] tell the player the following words briefly: 'Look closely in the room"
+        return "tell the player the following words briefly: 'Look closely in the room"
             + " with a wooden floor!'";
       } else if (Set.of("couch2", "table", "couch3", "plant").contains(GameState.puzzleAnswer)) {
-        return "[System] tell the player the following words briefly: 'Look closely in the room"
+        return "tell the player the following words briefly: 'Look closely in the room"
             + " with the elevator!'";
       } else {
-        return "[System] tell the player the following words briefly: 'Look closely around the"
+        return "tell the player the following words briefly: 'Look closely around the"
             + " rooms for the object to click'";
       }
     } else if (!GameState.artFound) {
-      return "[System] tell the player the following words briefly: 'Look for the answer of the"
+      return "tell the player the following words briefly: 'Look for the answer of the"
           + " riddle for a clue'";
     } else if (!GameState.hasBookOpened) {
-      return "[System] tell the player the following words briefly: 'Look for a book in the room"
+      return "tell the player the following words briefly: 'Look for a book in the room"
           + " with the dinosaur'";
     } else {
-      return "[System] tell the player to escape through the elevator with the code. Be"
-          + " enthusiastic but brief. Do not include [System] and [Player] in your response.";
+      return "[tell the player to escape through the elevator with the code. Be"
+          + " enthusiastic but brief.";
     }
   }
 }
