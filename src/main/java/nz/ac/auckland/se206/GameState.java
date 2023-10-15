@@ -3,9 +3,8 @@ package nz.ac.auckland.se206;
 /** Represents the state of the game. */
 public class GameState {
 
-  public static final String[] rooms = {"lobby", "dino"};
   public static final String[] artRoomRiddleAnswers = {
-    "dagger", "book", "armour", "crown", "vase", "pillar", "sword"
+    "dagger", "book", "armour", "crown", "vase1", "pillar", "sword", "vase2"
   };
   public static final String[] puzzleObjects = {
     "couch1",
@@ -15,7 +14,7 @@ public class GameState {
     "poster3",
     "poster2",
     "poster1",
-    "vase",
+    "vase3",
     "painting1",
     "painting2",
     "painting3",
@@ -35,7 +34,7 @@ public class GameState {
   /** Indicates whether the puzzle has been resolved. */
   public static boolean isPuzzleResolved;
 
-  public static int timeLeft;
+  public static String timeLeft;
   public static boolean isPaused;
   public static int timeLimit;
   public static boolean isUnlimitedHint;
@@ -47,33 +46,45 @@ public class GameState {
   public static boolean onArtRoom;
   public static boolean onDinoRoom;
   public static boolean onLobbyRoom;
-  public static boolean isGameComplete;
-  public static int randomCode;
+  public volatile static boolean isGameComplete;
   public static String riddleCode;
   public static boolean firstTimeCode;
   public static boolean secondTimeCode;
   public static boolean isRiddleCodeGiven;
   public static boolean isPuzzleCodeGiven;
   public static boolean artFound;
-  private static double randNumber;
   public static boolean hasBookOpened;
+  public static boolean hasPhoneOpened;
+  public static int buttonLevel;
+  public static String puzzleCode;
+  public static boolean isBenchPuzzle;
 
+  /**
+   * Get a random number from 0 to range.
+   *
+   * @param range the range of the random number
+   * @return the random number
+   */
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
 
+  /** This method is used to initialize the game state */
   public static void initial() {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.
+    isBenchPuzzle = false;
     isPaused = false;
+    artFound = false;
     isUnlocked = false;
     onArtRoom = false;
     onDinoRoom = false;
     onLobbyRoom = false;
     hasBookOpened = false;
+    hasPhoneOpened = false;
     isUnlimitedHint = false;
     remainsHint = 0;
-    timeLeft = timeLimit;
+    timeLeft = "";
     isGameComplete = false;
     firstTimeCode = false;
     secondTimeCode = false;
@@ -87,17 +98,13 @@ public class GameState {
     riddleAnswer = artRoomRiddleAnswers[getRandom(artRoomRiddleAnswers.length - 1)];
     lastMsg = "";
     remainsHint = 0;
-    timeLeft = timeLimit;
-    randNumber = Math.random();
-    randomCode = (int) (randNumber * 100);
-    if (randomCode < 10) {
-      riddleCode = "0" + randomCode;
-    } else {
-      riddleCode = Integer.toString(randomCode);
-    }
+    riddleCode = String.format("%02d", getRandom(99));
+    puzzleCode = String.format("%02d", getRandom(99));
+    buttonLevel = getRandom(3);
     System.out.println(riddleAnswer);
-    System.out.println(riddleCode);
     System.out.println(puzzleAnswer);
-    System.out.println(randomCode);
+    System.out.print(riddleCode);
+    System.out.println(puzzleCode);
+    System.out.println(buttonLevel);
   }
 }

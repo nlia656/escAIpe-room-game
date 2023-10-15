@@ -1,15 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -21,8 +22,11 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Controller class for the chat view. */
-public class ChatController {
+/**
+ * This class is the controller for the chat scene. It handles the events that occur in the chat
+ * scene. It extends the SceneController class.
+ */
+public class ChatController extends SceneController {
 
   @FXML private Text hintRemains;
   @FXML private Text hintsGone;
@@ -32,14 +36,21 @@ public class ChatController {
   @FXML private Button noTtsButton;
   @FXML private Button sendButton;
   @FXML private Button hintButton;
+  @FXML private ImageView picDinoRoom;
+  @FXML private ImageView picArtRoom;
+  @FXML private ImageView picLobbyRoom;
 
   private ChatCompletionRequest chatCompletionRequest;
   private ChatCompletionRequest hintCompletionRequest;
   private boolean isGptRunning = false;
 
-  /** Initializes the chat view, loading the riddle. */
+  /**
+   * This method is called by the FXMLLoader when initialization is complete. It runs the GPT model
+   * to generate the riddle. It also sets up the timer label in this scene.
+   */
   @FXML
   public void initialize() {
+    // Create a new thread to run the GPT model
     Task<Void> task =
         new Task<>() {
           @Override
@@ -55,6 +66,11 @@ public class ChatController {
             Platform.runLater(
                 () -> {
                   finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
                 });
             return null;
           }
@@ -63,16 +79,36 @@ public class ChatController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.remainsHint == 0 && !GameState.isUnlimitedHint) {
-      hintButton.setDisable(true);
-    }
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     hintCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(GameState.timeLeft);
+                  if (GameState.isHard) {
+                    lblHints.setText("");
+                    hintsLeft.setText("No hints!");
+                  } else if (GameState.isUnlimitedHint) {
+                    lblHints.setText("");
+                    hintsLeft.setText("Unlimited hints!");
+                  } else {
+                    lblHints.setText(Integer.toString(GameState.remainsHint));
+                  }
+                  if (GameState.remainsHint == 0) {
+                    hintButton.setVisible(false);
+                  } else {
+                    hintButton.setVisible(true);
+                  }
+                }));
+    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.play();
   }
 
   /**
@@ -80,8 +116,8 @@ public class ChatController {
    *
    * @param msg the chat message to append
    */
-  private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+  private void appendChatMessage(ChatMessage msg, String role) {
+    chatTextArea.appendText(role + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -96,22 +132,26 @@ public class ChatController {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
+      if (result.getChatMessage().getRole().equals("assistant")) {
+        appendChatMessage(result.getChatMessage(), "Security said");
+      } else {
+        appendChatMessage(result.getChatMessage(), "You said");
+      }
       GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant")
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
+        System.out.println("MEOW");
       }
       Task<Void> tts = new Task<>() { // Specify the generic type as Void
-        @Override
-        protected Void call() {
-          TextToSpeech tts = new TextToSpeech();
-          tts.speak(result.getChatMessage().getContent());
-          Platform.runLater(() -> {
-          });
-          return null;
-        }
-      };
+            @Override
+            protected Void call() {
+              TextToSpeech tts = new TextToSpeech();
+              tts.speak(result.getChatMessage().getContent());
+              Platform.runLater(() -> {});
+              return null;
+            }
+          };
       if (GameState.isTts) { // Check Text to Speech
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
@@ -136,9 +176,9 @@ public class ChatController {
     // Clear input text field
     inputText.clear();
     ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+    appendChatMessage(msg, "You said");
     // Run GPT model in a separate thread
-    Task<Void> task = new Task<Void>() { // Specify the generic type as Void
+    Task<Void> task = new Task<>() { // Specify the generic type as Void
           @Override
           protected Void call() throws Exception { // Specify the generic type as Void
             inProcess();
@@ -146,6 +186,11 @@ public class ChatController {
             Platform.runLater(
                 () -> {
                   finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
                 });
             return null;
           }
@@ -181,26 +226,23 @@ public class ChatController {
             while (isGptRunning) {
               switch (i) {
                 case 0:
-                  inputText.setText("Game master is typing .");
+                  inputText.setText("Security is typing .");
                   i++;
                   break;
                 case 1:
-                  inputText.setText("Game master is typing ..");
+                  inputText.setText("Security is typing ..");
                   i++;
                   break;
                 case 2:
                   inputText.setText(
-                      "Game master is typing ..."); // Update the graphics so that the user knows
+                      "Security is typing ..."); // Update the graphics so that the user knows
                   // the GPT is replying.
                   i = 0;
                   break;
               }
               Thread.sleep(200);
             }
-            Platform.runLater(
-                () -> {
-                  inputText.setText("");
-                });
+            Platform.runLater(() -> inputText.setText(""));
             return null;
           }
         };
@@ -233,16 +275,10 @@ public class ChatController {
   @FXML
   private void onAskHint() {
     // Give hints depending on difficulty of game
-    if (GameState.isHard) { // Check if the game is hard
-      hintsGone.setText("No hints!");
-      hintsGone.setVisible(true);
-      hintButton.setVisible(false);
-      return;
-    }
     Task<Void> task =
         new Task<>() {
           @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
+          protected Void call() { // Specify the generic type as Void
             inProcess();
             try { // Run the GPT to give hints to user
               hintCompletionRequest.addMessage(
@@ -250,7 +286,7 @@ public class ChatController {
               ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
               Choice result = hintCompletionResult.getChoices().iterator().next();
               hintCompletionRequest.addMessage(result.getChatMessage());
-              appendChatMessage(result.getChatMessage());
+              appendChatMessage(result.getChatMessage(), "Security said");
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);
@@ -258,21 +294,41 @@ public class ChatController {
             Platform.runLater(
                 () -> {
                   finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
                 });
             return null;
           }
         };
     if (!GameState.isUnlimitedHint) {
+      System.out.println("is it medium");
       GameState.remainsHint--;
-      hintRemains.setText(GameState.remainsHint + "/5");
       if (GameState.remainsHint == 0) {
-        hintsGone.setText("Out of hints!");
+        System.out.println("hints gone");
         hintButton.setVisible(false);
-        hintsGone.setVisible(true);
       }
     }
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+  }
+
+  public void setChatBackground() {
+    if (GameState.onArtRoom) {
+      picArtRoom.setVisible(true);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(false);
+    } else if (GameState.onDinoRoom) {
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(true);
+      picLobbyRoom.setVisible(false);
+    } else {
+      picArtRoom.setVisible(false);
+      picDinoRoom.setVisible(false);
+      picLobbyRoom.setVisible(true);
+    }
   }
 }

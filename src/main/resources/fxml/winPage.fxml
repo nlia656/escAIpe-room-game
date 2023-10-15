@@ -34,7 +34,7 @@
             <Image url="@../images/gunmanfloor.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="260.0" layoutY="359.0" mnemonicParsing="false" onAction="#onStartPage" prefHeight="89.0" prefWidth="204.0" text="Go to main menu">
+      <Button fx:id="goMainMenu" layoutX="260.0" layoutY="359.0" mnemonicParsing="false" onAction="#onStartPage" prefHeight="89.0" prefWidth="204.0" text="Main Menu">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>

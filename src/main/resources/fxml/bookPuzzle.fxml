@@ -14,7 +14,7 @@
             <Image url="@../images/redbook.png" />
          </image>
       </ImageView>
-      <Button layoutX="625.0" layoutY="500.0" mnemonicParsing="false" onAction="#onCloseBook" text="Go Back" />
+      <Button fx:id="closeBook" layoutX="625.0" layoutY="500.0" mnemonicParsing="false" onAction="#onCloseBook" prefHeight="35.0" prefWidth="100.0" text="Go Back" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
       <Text fill="#05671b" fontSmoothingType="LCD" layoutX="87.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find and click on the object shown in the picture snippet!" wrappingWidth="612.1366653442383">
          <font>
             <Font name="Book Antiqua Bold Italic" size="22.0" />

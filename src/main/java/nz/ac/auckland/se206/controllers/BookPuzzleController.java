@@ -7,27 +7,29 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * This class is the controller for the book puzzle scene
+ * It handles the events that occur in the book puzzle scene
+ */
 public class BookPuzzleController {
 
-  public static int puzzleCode = 0;
   @FXML
   private ImageView image;
-  private double randNumber;
 
+  /**
+   * This method is called by the FXMLLoader for initialization
+   * It sets the image for the puzzle
+   */
   @FXML
   public void initialize() {
-    // Generate the puzzle code to give
-    while (puzzleCode < 10) {
-      randNumber = Math.random();
-      puzzleCode = (int) (randNumber * 100);
-    }
-    StringBuilder sb = new StringBuilder();
-    sb.append("/images/");
-    sb.append(GameState.puzzleAnswer);
-    sb.append("Snip.png");
-    image.setImage(new Image(sb.toString())); // Set the random image for puzzle
+    image.setImage(new Image(String.format("/images/%sSnip.png",
+        GameState.puzzleAnswer))); // Set the random image for puzzle
   }
 
+  /**
+   * This method is called when the player clicks the "Go to Dino" button
+   * Changes the scene to the dino room
+   */
   @FXML
   private void onCloseBook() {
     App.setUi(AppUi.DINO_ROOM);

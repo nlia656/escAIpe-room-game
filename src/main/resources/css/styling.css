@@ -1,0 +1,305 @@
+   #gameTitle {
+       -fx-font-size: 34;
+       -fx-font-family:
+           "Britannic Bold",
+           "Times New Roman"
+           , sans-serif;
+       -fx-font-weight: bold;
+   }
+
+   #gameBlurb {
+       -fx-font-size: 28;
+       -fx-font-family:
+           "BankGothic Md BT",
+           "Courier New",
+           sans-serif;
+   }
+
+   #credit {
+       -fx-font-size: 16;
+       -fx-font-family:
+           "BankGothic Md BT",
+           "Courier New", monospace;
+   }
+
+   #creditTitle {
+       -fx-font-size: 28;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #sliderText {
+       -fx-font-size: 28;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #levelText {
+       -fx-font-size: 19;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #codeTitle {
+       -fx-font-size: 30;
+       -fx-font-family: "Papyrus", monospace;
+   }
+
+   #riddleCodeLabel {
+       -fx-font-size: 70;
+       -fx-font-family: "Papyrus", monospace;
+   }
+
+   #puzzleCodeLabel {
+       -fx-font-size: 70;
+       -fx-font-family: "Papyrus", monospace;
+   }
+
+   .button {
+       -fx-border-radius: 2px;
+       -fx-background-color: #b5a10c;
+       -fx-text-fill: white;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+       -fx-font-size: 32px;
+       -fx-text-align: center;
+       -fx-transition-duration: 0.4s;
+       -fx-border-width: 2px;
+       -fx-border-style: solid;
+       -fx-border-color: #b5a10c;
+   }
+
+   .button:hover {
+       -fx-background-color: white;
+       -fx-text-fill: #b5a10c;
+   }
+
+   #creditToMenu {
+       -fx-font-size: 12px;
+   }
+
+   #closeBook {
+       -fx-font-size: 12px;
+   }
+
+   #chatOpen {
+       -fx-font-size: 12px
+   }
+
+   #startGame {
+       -fx-font-size: 17px;
+   }
+
+   #goBack {
+       -fx-font-size: 15px;
+   }
+
+   #goMainMenu {
+       -fx-font-size: 26px;
+   }
+
+   #backButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #backButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #enterButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #enterButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #resetButton {
+       -fx-font-size: 11px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #resetButton.hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button1 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button1:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button2 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button2:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button3 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button3:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button4 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button4:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button5 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button5:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button6 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button6:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button7 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button7:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button8 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button8:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button9 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button9:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #button0 {
+       -fx-font-size: 18px;
+       -fx-background-color: #c2c2c2;
+       -fx-border-color: #c2c2c2;
+   }
+
+   #button0:hover {
+       -fx-background-color: #adaaaa;
+       -fx-border-color: #adaaaa;
+       -fx-text-fill: white;
+   }
+
+   #ttsButton {
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+       -fx-font-size: 18px;
+   }
+
+   #sendButton {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #hintButton {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #exitChat {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #timeLeft {
+       -fx-font-size: 18px;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #lblTime {
+       -fx-font-size: 18px;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #inputText {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #lblGameMaster {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #closeBook {
+       -fx-font-size: 15px;
+   }
+
+   #hintsLeft {
+       -fx-font-size: 18px;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }
+
+   #lblHints {
+       -fx-font-size: 18px;
+       -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
+   }

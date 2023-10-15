@@ -1,86 +1,35 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class ArtRoomController extends ScrollController {
+/**
+ * This class is the controller for the art room scene It handles the events that occur in the art
+ * room It extends the SceneController class It contains methods that are called when the player
+ * clicks on an item
+ */
+public class ArtRoomController extends SceneController {
 
-  @FXML
-  protected static Task<Void> getTimer(Label lblTime, Label lblGameMaster) {
-    // Timer that updates the time left to the user.
-    Task<Void> timer =
-        new Task<>() {
-          @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
-            while (!GameState.isGameComplete) {
-              if (!GameState.isPaused) {
-                Platform.runLater(
-                    () -> {
-                      lblTime.setText(String.valueOf(GameState.timeLeft));
-                      lblGameMaster.setText(GameState.lastMsg);
-                    });
-              }
-              Thread.sleep(300);
-            }
-            return null;
-          }
-        };
-    return timer;
-  }
+  @FXML private Label newMessage;
 
-  @FXML private Label lblGameMaster;
-  @FXML private Label lblTime;
-  @FXML private ImageView scrollArt;
-  @FXML private ImageView artToDino;
-  @FXML private ImageView artToLobby;
-  @FXML private Rectangle dagger;
-  @FXML private Rectangle armour;
-  @FXML private Rectangle pillar;
-  @FXML private Rectangle crown;
-  @FXML private Rectangle vase1;
-  @FXML private Rectangle sword;
-  @FXML private Rectangle vase2;
-  @FXML private Rectangle bench1;
-  @FXML private Rectangle bench2;
-  @FXML private Rectangle painting1;
-  @FXML private Rectangle painting2;
-  @FXML private Rectangle painting3;
-  @FXML private Rectangle painting4;
-  @FXML private Rectangle painting5;
-  @FXML private Rectangle books1;
-  @FXML private Button btnHelp;
-  @FXML private TitledPane artRoomPane;
-
+  /**
+   * This method is called by the FXMLLoader when initialization is complete Starts the text sync
+   * for the game timer and game master messages
+   */
   @FXML
   public void initialize() {
-    Thread timerThread = new Thread(getTimer(lblTime, lblGameMaster));
-    timerThread.setDaemon(true);
-    timerThread.start();
+    startTextSync(lblTime, lblGameMaster, lblHints, hintsLeft);
   }
 
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
-  }
-
-  @FXML
-  private void onOpenGameMaster() {
-    App.setUi(AppUi.CHAT);
-  }
-
+  /**
+   * This method is called when the player clicks the "Go to Lobby" button Changes the scene to the
+   * lobby Sets the GameState booleans to reflect the current scene
+   */
   @FXML
   private void goLobby() {
     App.setUi(AppUi.LOBBY_ROOM);
@@ -88,6 +37,12 @@ public class ArtRoomController extends ScrollController {
     GameState.onLobbyRoom = true;
   }
 
+  /*
+   *This method is called when the player clicks the "Go to Dino" button
+   * Changes the scene to the dino room
+   * Sets the GameState booleans to reflect the current scene
+   *
+   */
   @FXML
   private void goDino() {
     App.setUi(AppUi.DINO_ROOM);
@@ -95,211 +50,81 @@ public class ArtRoomController extends ScrollController {
     GameState.onDinoRoom = true;
   }
 
+  /**
+   * This method is called when the player clicks the phone button Changes the scene to the chat
+   * Sets the chat background to the art room Sets the GameState booleans to reflect the current
+   * scene
+   */
   @FXML
-  private void scrollArtClicked() {
-    // Change scene to scroll to see code, change alerts based on progress.
-    App.setUi(AppUi.SCROLL);
-    if (GameState.firstTimeCode) {
-      showDialog("Info", "Code discovered!", "Now go find the book to continue.");
-      GameState.firstTimeCode = false;
-      GameState.isRiddleCodeGiven = true;
-    } else if (GameState.secondTimeCode) {
-      showDialog("Info", "Code discovered!", "You can try to escape through the elevator now.");
-      GameState.secondTimeCode = false;
-      GameState.isPuzzleCodeGiven = true;
+  private void onOpenPhone() {
+    GameState.hasPhoneOpened = true;
+    ChatController chatController = App.getChatController();
+    chatController.setChatBackground();
+    App.setUi(AppUi.CHAT);
+  }
+
+  /**
+   * This method is called when the player clicks a riddle item Post the name of the item to the
+   * clickForRiddle method to check if the answer is correct
+   *
+   * @param event the mouse event
+   */
+  @FXML
+  private void onRiddleItem(MouseEvent event) {
+    String name = ((Rectangle) event.getSource()).getId();
+    clickForRiddle(name);
+  }
+
+  /**
+   * This method is called when the player clicks the bench Changes the scene to the bench puzzle
+   */
+  @FXML
+  private void benchClicked() {
+    if (GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+      showNotifications("Clue Found!", "Go to the elevator and try to escape!");
     }
-  }
-
-  @FXML
-  private void daggerClicked() {
-
-    // Add your code for handling the daggerClicked event here
-    clickForRiddle("dagger");
-  }
-
-  @FXML
-  private void armourClicked() {
-    // Add your code for handling the armourClicked event here
-    clickForRiddle("armour");
-  }
-
-  @FXML
-  private void pillarClicked() {
-    // Add your code for handling the pillarClicked event here
-    clickForRiddle("pillar");
-  }
-
-  @FXML
-  private void crownClicked() {
-    // Add your code for handling the crownClicked event here
-    clickForRiddle("crown");
-  }
-
-  @FXML
-  private void vase1Clicked() {
-    // Add your code for handling the vase1Clicked event here
-    clickForRiddle("vase");
-  }
-
-  @FXML
-  private void swordClicked() {
-    // Add your code for handling the swordClicked event here
-    clickForRiddle("sword");
-  }
-
-  @FXML
-  private void vase2Clicked() {
-    // Add your code for handling the vase2Clicked event here
-    clickForRiddle("vase");
-  }
-
-  @FXML
-  private void bench1Clicked() {
     // Add your code for handling the bench1Clicked event here
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
+    App.setUi(AppUi.BENCH_PUZZLE);
+    GameState.isBenchPuzzle = true;
   }
 
-  @FXML
-  private void bench2Clicked() {
-    // Add your code for handling the bench2Clicked event here
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-  }
-
-  @FXML
-  private void painting1Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting1"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting2Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting2"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting3Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting3"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting4Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting4"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
-  @FXML
-  private void painting5Clicked() {
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
-      return;
-    }
-    if (GameState.isPuzzleResolved) {
-      return;
-    }
-    if (GameState.puzzleAnswer == "painting5"
-        && GameState.isRiddleResolved
-        && !GameState.isPuzzleCodeGiven
-        && GameState.hasBookOpened) { // Check conditions
-      GameState.isPuzzleResolved = true;
-      staticPuzzleCodeLabel.setText(Integer.toString(BookPuzzleController.puzzleCode));
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
-      GameState.secondTimeCode = true;
-    }
-  }
-
+  /**
+   * This method is called when the player clicks the books If the riddle is not solved, it will
+   * check is this book is the correct answer If the riddle is solved, the game master will tell the
+   * player to find the other book
+   */
   @FXML
   private void books1Clicked() {
     // Add your code for handling the books1Clicked event here
     if (GameState.isRiddleResolved && GameState.artFound && !GameState.hasBookOpened) {
-      showDialog("Info", "Wrong book!", "Find the other book!");
+      showNotifications("Wrong book!", "Find the other book!");
     } else {
       clickForRiddle("book");
     }
   }
 
+  /**
+   * This method is called when the player clicks an item If the riddle is not solved, it will tell
+   * the player to solve the riddle first If the riddle is solved, it will check if the item is the
+   * correct answer If the item is the correct answer, the game master will tell the player to go to
+   * the scroll
+   *
+   * @param answer the name of the item
+   */
   private void clickForRiddle(String answer) {
-    // If riddle isnt solved, show alert
+    // If riddle isn't solved, show alert
     if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info", "Solve the riddle!", "Click on the game master tab to get the riddle to solve!");
+      showRiddleNotSolved();
       return;
     }
     if (GameState.isRiddleCodeGiven) {
       return;
     }
-    if (answer == GameState.riddleAnswer && GameState.isRiddleResolved) { // If riddle solved, and correct item, get code.
-      showDialog("Info", "Code discovered!", "Click the scroll in the top left to view the code.");
+    if (answer.contains("vase")) {
+      answer = "vase";
+    }
+    if (GameState.riddleAnswer.contains(answer)) { // If riddle solved, and correct item, get code.
+      showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);
       System.out.println(GameState.riddleCode);
       GameState.firstTimeCode = true;
