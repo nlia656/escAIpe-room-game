@@ -123,15 +123,15 @@
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5a10c" height="30.0" layoutX="35.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="190.0" AnchorPane.rightAnchor="15.0" />
-      <HBox layoutX="520.0" layoutY="30.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5a10c" height="30.0" layoutX="35.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="210.0" AnchorPane.rightAnchor="15.0" />
+      <HBox layoutX="500.0" layoutY="30.0">
          <children>
-            <Label fx:id="hintsLeft" prefHeight="30.0" prefWidth="120.0" text="Hints Left:" textFill="WHITE">
+            <Label fx:id="hintsLeft" prefHeight="30.0" prefWidth="180.0" text="Hints Left:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblHints" prefHeight="30.0" prefWidth="65.0" text="0" textFill="WHITE">
+            <Label fx:id="lblHints" prefHeight="30.0" prefWidth="35.0" text="0" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

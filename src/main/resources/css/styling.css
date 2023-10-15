@@ -271,12 +271,12 @@
    }
 
    #timeLeft {
-       -fx-font-size: 20px;
+       -fx-font-size: 18px;
        -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #lblTime {
-       -fx-font-size: 20px;
+       -fx-font-size: 18px;
        -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
@@ -295,11 +295,11 @@
    }
 
    #hintsLeft {
-       -fx-font-size: 20px;
+       -fx-font-size: 18px;
        -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
 
    #lblHints {
-       -fx-font-size: 20px;
+       -fx-font-size: 18px;
        -fx-font-family: "BankGothic Md BT", "Courier New", monospace;
    }
