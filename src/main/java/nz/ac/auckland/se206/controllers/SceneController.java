@@ -143,7 +143,7 @@ public class SceneController {
     if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
         && GameState.isPuzzleCodeGiven
         && !GameState.isBenchPuzzle) {
-      showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
+      showNotifications("Try again.", "There's nothing here. Maybe another seat?");
       return;
     }
   }
