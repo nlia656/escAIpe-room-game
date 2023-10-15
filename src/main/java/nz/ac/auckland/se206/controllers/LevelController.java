@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -8,6 +10,7 @@ import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * This class is the controller for the level scene
@@ -94,6 +97,20 @@ public class LevelController {
     // App.loadRoom();
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
+    Task<Void> tts = new Task<>() { // Specify the generic type as Void
+      @Override
+      protected Void call() {
+        TextToSpeech tts = new TextToSpeech();
+        tts.speak(GameState.lastMsg);
+        Platform.runLater(() -> {});
+        return null;
+      }
+    };
+    if (GameState.isTts) { // Check Text to Speech
+      Thread thread = new Thread(tts);
+      thread.setDaemon(true);
+      thread.start();
+    }
   }
 
   /**

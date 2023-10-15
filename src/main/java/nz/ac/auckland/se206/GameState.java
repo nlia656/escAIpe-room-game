@@ -46,7 +46,7 @@ public class GameState {
   public static boolean onArtRoom;
   public static boolean onDinoRoom;
   public static boolean onLobbyRoom;
-  public static boolean isGameComplete;
+  public volatile static boolean isGameComplete;
   public static String riddleCode;
   public static boolean firstTimeCode;
   public static boolean secondTimeCode;
