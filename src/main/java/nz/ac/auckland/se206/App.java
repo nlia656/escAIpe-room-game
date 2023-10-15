@@ -15,7 +15,6 @@ import nz.ac.auckland.se206.controllers.ChatController;
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
-  public static volatile boolean timerRunning = true;
   public static Stage stage;
   private static Scene scene;
   private static ChatController chatController;
@@ -50,24 +49,17 @@ public class App extends Application {
           protected Void call() throws Exception {
             // Create a timer thread
             for (int i = GameState.timeLimit; i >= 0; i--) {
-              if (!timerRunning) {
-                break;
-              }
               if (GameState.isGameComplete) {
-                GameState.isGameComplete = false;
                 return null;
               }
               if (!GameState.isPaused) {
-                final int finalI = i;
-                Platform.runLater(
-                    () -> {
-                      GameState.timeLeft = String.format("%d:%02d", finalI / 60, finalI % 60);
-                      if (finalI == 0) {
-                        App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
-                      }
-                    });
+                GameState.timeLeft = String.format("%d:%02d", i / 60, i % 60);
+                if (i == 0) {
+                  App.setUi(AppUi.LOSE_SCREEN); // When timer runs out, show lose page.
+                }
               }
               Thread.sleep(1000);
+              // If the game is complete, stop the timer.
             }
             return null;
           }
@@ -138,7 +130,6 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    GameState.initial();
     Font.loadFont(App.class.getResource("/css/bank-gothic-medium-bt.ttf").toExternalForm(), 12);
     Font.loadFont(App.class.getResource("/css/britanic.ttf").toExternalForm(), 12);
     Font.loadFont(App.class.getResource("/css/papyrus.ttf").toExternalForm(), 12);
@@ -149,7 +140,17 @@ public class App extends Application {
     SceneManager.addAppUi(AppUi.CREDITS, loadFxml("creditsScene").load());
     SceneManager.addAppUi(AppUi.WIN_SCREEN, loadFxml("winPage").load());
     SceneManager.addAppUi(AppUi.LOSE_SCREEN, loadFxml("losePage").load());
-    loadRoom();
+Task<Void> task = new Task<>() {
+      @Override
+      protected Void call() throws Exception {
+        GameState.initial();
+        loadRoom();
+        return null;
+      }
+    };
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    thread.start();
     stage.setResizable(false);
     scene = new Scene(SceneManager.getAppUi(AppUi.START), 720, 540);
     scene.getStylesheets().add("/css/styling.css");

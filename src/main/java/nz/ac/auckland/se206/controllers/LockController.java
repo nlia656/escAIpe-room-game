@@ -201,9 +201,6 @@ public class LockController {
    */
   private void backToHome() throws IOException {
     App.setUi(AppUi.WIN_SCREEN);
-    App.unloadRoom();
-    GameState.initial();
-    App.loadRoom();
   }
 
   /**
