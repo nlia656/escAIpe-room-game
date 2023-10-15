@@ -23,9 +23,8 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
- * This class is the controller for the chat scene.
- * It handles the events that occur in the chat scene.
- * It extends the SceneController class.
+ * This class is the controller for the chat scene. It handles the events that occur in the chat
+ * scene. It extends the SceneController class.
  */
 public class ChatController extends SceneController {
 
@@ -41,19 +40,17 @@ public class ChatController extends SceneController {
   @FXML private ImageView picArtRoom;
   @FXML private ImageView picLobbyRoom;
 
-
   private ChatCompletionRequest chatCompletionRequest;
   private ChatCompletionRequest hintCompletionRequest;
   private boolean isGptRunning = false;
 
   /**
-   * This method is called by the FXMLLoader when initialization is complete.
-   * It runs the GPT model to generate the riddle.
-   * It also sets up the timer label in this scene.
+   * This method is called by the FXMLLoader when initialization is complete. It runs the GPT model
+   * to generate the riddle. It also sets up the timer label in this scene.
    */
   @FXML
   public void initialize() {
-    //Create a new thread to run the GPT model
+    // Create a new thread to run the GPT model
     Task<Void> task =
         new Task<>() {
           @Override
@@ -127,7 +124,7 @@ public class ChatController extends SceneController {
       if (result.getChatMessage().getRole().equals("assistant")) {
         appendChatMessage(result.getChatMessage(), "Game master");
       } else {
-        appendChatMessage(result.getChatMessage(), "You said");
+        appendChatMessage(result.getChatMessage(), "You");
       }
       GameState.lastMsg = result.getChatMessage().getContent();
       if (result.getChatMessage().getRole().equals("assistant")
@@ -171,22 +168,22 @@ public class ChatController extends SceneController {
     appendChatMessage(msg, "You said");
     // Run GPT model in a separate thread
     Task<Void> task = new Task<>() { // Specify the generic type as Void
-      @Override
-      protected Void call() throws Exception { // Specify the generic type as Void
-        inProcess();
-        runGpt(msg);
-        Platform.runLater(
-            () -> {
-              finishProcess();
-              try {
-                Thread.sleep(200);
-              } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-              }
-            });
-        return null;
-      }
-    };
+          @Override
+          protected Void call() throws Exception { // Specify the generic type as Void
+            inProcess();
+            runGpt(msg);
+            Platform.runLater(
+                () -> {
+                  finishProcess();
+                  try {
+                    Thread.sleep(200);
+                  } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                  }
+                });
+            return null;
+          }
+        };
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
@@ -234,8 +231,7 @@ public class ChatController extends SceneController {
               }
               Thread.sleep(200);
             }
-            Platform.runLater(
-                () -> inputText.setText(""));
+            Platform.runLater(() -> inputText.setText(""));
             return null;
           }
         };
@@ -316,7 +312,7 @@ public class ChatController extends SceneController {
     thread.start();
   }
 
-  public void setChatBackground () {
+  public void setChatBackground() {
     if (GameState.onArtRoom) {
       picArtRoom.setVisible(true);
       picDinoRoom.setVisible(false);

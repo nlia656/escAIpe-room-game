@@ -291,7 +291,12 @@
        -fx-font-family: "Comic Sans MS";
    }
 
-   #lblGameMaster1 {
+   #lblGameMaster {
+       -fx-font-size: 12px;
+       -fx-font-family: "Comic Sans MS";
+   }
+
+   #newMessage {
        -fx-font-size: 12px;
        -fx-font-family: "Comic Sans MS";
    }

@@ -13,9 +13,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import org.controlsfx.control.Notifications;
 
-/**
- * This class is the mother class controller for the scene
- */
+/** This class is the mother class controller for the scene */
 public class SceneController {
 
   @FXML public static Label staticPuzzleCodeLabel;
@@ -27,6 +25,7 @@ public class SceneController {
 
   /**
    * This method is used to sync the time and game master text
+   *
    * @param lblTime the label for the time
    * @param lblGameMaster the label for the game master text
    */
@@ -43,17 +42,13 @@ public class SceneController {
     timeline.play();
   }
 
-  /**
-   * This method is to get the code label
-   */
+  /** This method is to get the code label */
   public void initialize() {
     staticPuzzleCodeLabel = puzzleCodeLabel;
     staticRiddleCodeLabel = riddleCodeLabel;
   }
 
-  /**
-   * This method is called when the player clicks to close the scroll
-   */
+  /** This method is called when the player clicks to close the scroll */
   @FXML
   private void onCloseScroll() {
     // Change the scene back to the previous on scene.
@@ -68,6 +63,7 @@ public class SceneController {
 
   /**
    * This method is used to make a notification in game
+   *
    * @param title the title of the notification
    * @param message the message of the notification
    */
@@ -81,9 +77,7 @@ public class SceneController {
     notification.show();
   }
 
-  /**
-   * This method is called when the player clicks on the scroll
-   */
+  /** This method is called when the player clicks on the scroll */
   @FXML
   protected void scrollClicked() {
     // Change scene to scroll and change alerts depending on game progress.
@@ -102,16 +96,19 @@ public class SceneController {
       GameState.isPuzzleCodeGiven = true;
     }
   }
-  /**
-   * This method is used to show riddle not solved notification
-   */
+
+  /** This method is used to show riddle not solved notification */
   protected void showRiddleNotSolved() {
-    showNotifications(
-        "Solve the riddle!", "Open the phone to receive your first clue to escape!");
+    if (GameState.hasPhoneOpened) {
+      showNotifications("Solve the riddle!", "Open your phone to see your first clue to escape!");
+    } else {
+      showNotifications("Check your phone!", "You have a new message!");
+    }
   }
 
   /**
    * This method is used to handle the click on the item
+   *
    * @param event the object that is clicked
    */
   @FXML
@@ -122,6 +119,7 @@ public class SceneController {
 
   /**
    * This method is used to check if the item is clicked
+   *
    * @param name the name of the item
    */
   protected void checkClickItem(String name) {
@@ -142,7 +140,9 @@ public class SceneController {
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       GameState.secondTimeCode = true;
     }
-    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1")) && GameState.isPuzzleCodeGiven && !GameState.isBenchPuzzle) {
+    if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
+        && GameState.isPuzzleCodeGiven
+        && !GameState.isBenchPuzzle) {
       showNotifications("Try again.", "This seat doesn't give me any clues. Maybe another seat?");
       return;
     }
