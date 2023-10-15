@@ -23,6 +23,7 @@ public class SceneController {
   @FXML protected Label lblTime;
   @FXML protected Label lblGameMaster;
   @FXML protected Label lblHints;
+  @FXML protected Label hintsLeft;
 
   /**
    * This method is used to sync the time and game master text
@@ -30,7 +31,8 @@ public class SceneController {
    * @param lblTime the label for the time
    * @param lblGameMaster the label for the game master text
    */
-  public static void startTextSync(Label lblTime, Label lblGameMaster, Label lblHints) {
+  public static void startTextSync(
+      Label lblTime, Label lblGameMaster, Label lblHints, Label hintsLeft) {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
@@ -38,7 +40,12 @@ public class SceneController {
                 event -> {
                   lblTime.setText(GameState.timeLeft);
                   lblGameMaster.setText(GameState.lastMsg);
-                  lblHints.setText(Integer.toString(GameState.remainsHint));
+                  if (GameState.isHard) {
+                    lblHints.setText("");
+                    hintsLeft.setText("No hints!");
+                  } else {
+                    lblHints.setText(Integer.toString(GameState.remainsHint));
+                  }
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();

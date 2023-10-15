@@ -79,9 +79,6 @@ public class ChatController extends SceneController {
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
-    if (GameState.isHard) {
-      hintButton.setDisable(true);
-    }
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.1).setTopP(0.5).setMaxTokens(140);
     hintCompletionRequest =
@@ -95,7 +92,15 @@ public class ChatController extends SceneController {
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
-                  lblHints.setText(Integer.toString(GameState.remainsHint));
+                  if (GameState.isHard) {
+                    lblHints.setText("");
+                    hintsLeft.setText("No hints!");
+                  } else {
+                    lblHints.setText(Integer.toString(GameState.remainsHint));
+                  }
+                  if (GameState.remainsHint == 0) {
+                    hintButton.setVisible(false);
+                  }
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
     timeline.play();
@@ -298,7 +303,7 @@ public class ChatController extends SceneController {
       GameState.remainsHint--;
       if (GameState.remainsHint == 0) {
         System.out.println("hints gone");
-        hintButton.setDisable(true);
+        hintButton.setVisible(false);
       }
     }
     Thread thread = new Thread(task);
