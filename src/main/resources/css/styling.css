@@ -1,19 +1,3 @@
-   @font-face {
-       font-family: "Britannic Bold";
-       src: url('britanic.ttf') format('truetype'), local("Times New Roman");
-   }
-
-   @font-face {
-       font-family: "BankGothic Md BT";
-       src: url('bank-gothic-medium-bt.ttf') format('truetype'), local("Courier New");
-   }
-
-   @font-face {
-       font-family: "Papyrus";
-       src: url('papyrus.ttf') format('truetype'), local("Courier New");
-   }
-
-
    #gameTitle {
        -fx-font-size: 34;
        -fx-font-family:
