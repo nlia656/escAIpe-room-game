@@ -107,8 +107,8 @@ public class LevelController {
   /** Sets the description text based on the selected level. */
   @FXML
   private void setLevelText() {
+    // Set the description text based on the selected level
     switch ((int) levelSlider.getValue()) {
-        // Set the description text based on the selected level
       case 0:
         levelText.setText("In Easy Mode, you can get any amount of hints from the game master.");
         break;

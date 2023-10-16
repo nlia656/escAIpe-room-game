@@ -32,8 +32,8 @@ public class BenchController {
     threeBar.setVisible(false);
     fourBar.setVisible(false);
 
+    // Set the visibility of bars based on the button level
     switch (GameState.buttonLevel) {
-        // Set the visibility of bars based on the button level
       case 3:
         fourBar.setVisible(true);
         break;
