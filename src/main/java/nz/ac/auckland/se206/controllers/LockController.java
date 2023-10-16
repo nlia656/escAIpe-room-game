@@ -14,7 +14,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** This class is the controller for the lock scene */
+/** This class is the controller for the lock scene. */
 public class LockController {
 
   @FXML private ImageView resultIndicator;
@@ -44,9 +44,9 @@ public class LockController {
   private boolean isReleasedMouse = false;
 
   /**
-   * This method is used to type the code into the text box
+   * This method is used to type the code into the text box.
    *
-   * @param input the number that is pressed
+   * @param input The number that is pressed.
    */
   private void typeCode(int input) {
     if (textBox.getText().equals("Incorrect passcode")) {
@@ -58,7 +58,7 @@ public class LockController {
     }
   }
 
-  /** This method is used to check whether the code is correct */
+  /** This method is used to check whether the code is correct. */
   private void checkCode() {
     // If passcode is correct length (4), check whether it is the correct code as the riddle and
     // puzzle code.
@@ -91,7 +91,7 @@ public class LockController {
     }
   }
 
-  /** This method is used to increase the process bar */
+  /** This method is used to increase the process bar. */
   @FXML
   private void escapeButtonClicked() {
     if (GameState.isUnlocked) {
@@ -100,7 +100,7 @@ public class LockController {
     }
   }
 
-  /** This method is used to go back to the home screen */
+  /** This method is used to go back to the home screen. */
   @FXML
   private void escapeButtonReleased() {
     isReleasedMouse = true;
@@ -111,7 +111,7 @@ public class LockController {
     }
   }
 
-  /** This method is used to reset the process bar */
+  /** This method is used to reset the process bar. */
   private void resetProgressBar() {
     processBar.setProgress(0);
     setRed(process100);
@@ -121,9 +121,9 @@ public class LockController {
   }
 
   /**
-   * This method is used to change the indicator of the process bar
+   * This method is used to change the indicator of the process bar.
    *
-   * @param i the current progress of the process bar
+   * @param i The current progress of the process bar.
    */
   private void inprocessBar(int i) {
     // Change the indicator of the process bar depending on the progress.
@@ -149,32 +149,32 @@ public class LockController {
   }
 
   /**
-   * This method is used to set the indicator to green
+   * This method is used to set the indicator to red.
    *
-   * @param indicator the indicator that is going to be set
+   * @param indicator The indicator that is going to be set to red.
    */
   private void setRed(ImageView indicator) {
     indicator.setImage(new Image("/images/redindicator.png"));
   }
 
   /**
-   * This method is used to set the indicator to red
+   * This method is used to set the indicator to green.
    *
-   * @param indicator the indicator that is going to be set
+   * @param indicator The indicator that is going to be set to green.
    */
   private void setGreen(ImageView indicator) {
     indicator.setImage(new Image("/images/greenindicator.png"));
   }
 
   /**
-   * This method is used to go back to the home screen Changes the scene to the win screen Unloads
-   * the room Resets the game state Loads the room
+   * This method is used to go back to the home screen. Changes the scene to the win screen. Unloads
+   * the room. Resets the game state. Loads the room.
    */
   private void backToHome() {
     App.setUi(AppUi.WIN_SCREEN);
   }
 
-  /** This method is used to increase the process bar */
+  /** This method is used to increase the process bar. */
   private void increaseProgressBar() {
     // Create a new task to increase the progress bar.
     Task<Void> task =
@@ -200,16 +200,16 @@ public class LockController {
   }
 
   /**
-   * This method handles buttons input
+   * This method handles button input.
    *
-   * @param event the button that is pressed
+   * @param event The button that is pressed.
    */
   @FXML
   private void onType(ActionEvent event) {
     typeCode(Integer.parseInt(((Button) event.getSource()).getText()));
   }
 
-  /** This method is used to reset the text box when the reset button is pressed */
+  /** This method is used to reset the text box when the reset button is pressed. */
   @FXML
   private void onReset() {
     // Clear the passcode and text box.
@@ -217,19 +217,19 @@ public class LockController {
     textBox.clear();
   }
 
-  /** This method is used to check the code when the enter button is pressed */
+  /** This method is used to check the code when the enter button is pressed. */
   @FXML
   private void onEnter() {
     checkCode();
   }
 
-  /** This method is used to go back to the lobby room */
+  /** This method is used to go back to the lobby room. */
   @FXML
   private void onBack() {
     App.setUi(AppUi.LOBBY_ROOM);
   }
 
-  /** This method is used to disable all the buttons after the lock is unlocked */
+  /** This method is used to disable all the buttons after the lock is unlocked. */
   private void buttonDisable() {
     // Disables all the buttons on the lock as it is complete.
     button0.setDisable(true);

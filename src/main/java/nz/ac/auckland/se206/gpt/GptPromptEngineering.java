@@ -9,8 +9,8 @@ public class GptPromptEngineering {
   /**
    * Generates a GPT prompt engineering string for a riddle with the given word.
    *
-   * @param wordToGuess the word to be guessed in the riddle
-   * @return the generated prompt engineering string
+   * @param wordToGuess The word to be guessed in the riddle.
+   * @return The generated prompt engineering string.
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
     // Give prompts to the GPT model to generate a riddle with the given word
@@ -31,6 +31,11 @@ public class GptPromptEngineering {
         + " Your first reply should be the riddle.";
   }
 
+  /**
+   * Generates a GPT prompt engineering string for requesting hints.
+   *
+   * @return The generated prompt engineering string for requesting hints.
+   */
   public static String getHints() {
     // Give prompts to the GPT model to generate a hint
     if (!GameState.isRiddleResolved) {

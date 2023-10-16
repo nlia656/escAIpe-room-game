@@ -60,16 +60,16 @@ public class GameState {
   public static boolean isBenchPuzzle;
 
   /**
-   * Get a random number from 0 to range.
+   * Get a random number from 0 to the specified range.
    *
-   * @param range the range of the random number
-   * @return the random number
+   * @param range The range of the random number.
+   * @return The random number.
    */
   public static int getRandom(int range) {
     return (int) (Math.random() * range);
   }
 
-  /** This method is used to initialize the game state */
+  /** Initializes the game state. */
   public static void initial() {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.

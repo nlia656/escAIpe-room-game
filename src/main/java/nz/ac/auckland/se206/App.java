@@ -70,9 +70,9 @@ public class App extends Application {
   }
 
   /**
-   * This method is used to load the room
+   * This method is used to load the room.
    *
-   * @throws IOException if the fxml file is not found
+   * @throws IOException If the FXML file is not found.
    */
   @FXML
   public static void loadRoom() throws IOException {
@@ -105,15 +105,15 @@ public class App extends Application {
   }
 
   /**
-   * This method is used to get the chat controller
+   * This method is used to get the chat controller.
    *
-   * @return the chat controller
+   * @return The chat controller.
    */
   public static ChatController getChatController() {
     return chatController;
   }
 
-  /** This method is used to unload the room */
+  /** This method is used to unload the room. */
   @FXML
   public static void unloadRoom() {
     // Remove the scenes from the HashMap
@@ -129,19 +129,19 @@ public class App extends Application {
   }
 
   /**
-   * This method is used to get the stage
+   * This method is used to get the stage.
    *
-   * @return the stage
+   * @return The stage.
    */
   public static Stage getStage() {
     return stage;
   }
 
   /**
-   * This method is used to start the application
+   * This method is used to start the application.
    *
-   * @param stage the stage
-   * @throws IOException if the fxml file is not found
+   * @param stage The stage.
+   * @throws IOException If the FXML file is not found.
    */
   @Override
   public void start(final Stage stage) throws IOException {
