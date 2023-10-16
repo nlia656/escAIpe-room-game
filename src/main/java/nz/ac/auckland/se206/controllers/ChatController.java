@@ -142,9 +142,9 @@ public class ChatController extends SceneController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       if (result.getChatMessage().getRole().equals("assistant")) {
-        appendChatMessage(result.getChatMessage(), "Security said");
+        appendChatMessage(result.getChatMessage(), "Security");
       } else {
-        appendChatMessage(result.getChatMessage(), "You said");
+        appendChatMessage(result.getChatMessage(), "You");
       }
       GameState.lastMsg = result.getChatMessage().getContent();
       // Check if the riddle is resolved
@@ -184,7 +184,7 @@ public class ChatController extends SceneController {
     }
     inputText.clear();
     ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg, "You said");
+    appendChatMessage(msg, "You");
     Task<Void> task =
         new Task<>() {
           @Override
@@ -299,7 +299,7 @@ public class ChatController extends SceneController {
               ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
               Choice result = hintCompletionResult.getChoices().iterator().next();
               hintCompletionRequest.addMessage(result.getChatMessage());
-              appendChatMessage(result.getChatMessage(), "Security said");
+              appendChatMessage(result.getChatMessage(), "Security");
               GameState.lastMsg = result.getChatMessage().getContent();
             } catch (ApiProxyException e) {
               showApiError(e);
