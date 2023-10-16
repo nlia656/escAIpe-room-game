@@ -60,6 +60,7 @@ public class ChatController extends SceneController {
           protected Void call() {
             inProcess();
             try {
+              // Run the GPT model to generate the riddle
               runGpt(
                   new ChatMessage(
                       "user", GptPromptEngineering.getRiddleWithGivenWord(GameState.riddleAnswer)));
@@ -70,6 +71,7 @@ public class ChatController extends SceneController {
                 () -> {
                   finishProcess();
                   try {
+                    // Sleep 0.2 seconds
                     Thread.sleep(200);
                   } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -84,6 +86,7 @@ public class ChatController extends SceneController {
       hintRemains.setVisible(true);
     }
 
+    // Setting the settings for chat and hints generation
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     hintCompletionRequest =
@@ -99,6 +102,7 @@ public class ChatController extends SceneController {
                 Duration.seconds(0.5),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
+                  // Set the hints label
                   if (GameState.isHard) {
                     lblHints.setText("");
                     hintsLeft.setText("No hints!");
@@ -137,6 +141,7 @@ public class ChatController extends SceneController {
   private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
+      // Run the GPT model
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
@@ -146,6 +151,7 @@ public class ChatController extends SceneController {
         appendChatMessage(result.getChatMessage(), "You said");
       }
       GameState.lastMsg = result.getChatMessage().getContent();
+      // Check if the riddle is resolved
       if (result.getChatMessage().getRole().equals("assistant")
           && result.getChatMessage().getContent().startsWith("Correct")) {
         GameState.isRiddleResolved = true;
@@ -155,6 +161,7 @@ public class ChatController extends SceneController {
           new Task<>() {
             @Override
             protected Void call() {
+              // Run the text to speech
               TextToSpeech tts = new TextToSpeech();
               tts.speak(result.getChatMessage().getContent());
               Platform.runLater(() -> {});
@@ -178,6 +185,7 @@ public class ChatController extends SceneController {
    */
   @FXML
   private void onSendMessage(ActionEvent event) {
+    // Get the message from the text field
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
       return;
@@ -190,11 +198,13 @@ public class ChatController extends SceneController {
           @Override
           protected Void call() throws Exception {
             inProcess();
+            // Run the GPT
             runGpt(msg);
             Platform.runLater(
                 () -> {
                   finishProcess();
                   try {
+                    // Sleep 0.2 seconds
                     Thread.sleep(200);
                   } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -215,6 +225,7 @@ public class ChatController extends SceneController {
    */
   @FXML
   private void onGoBack(ActionEvent event) {
+    // Go back to previous scene
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
@@ -231,6 +242,7 @@ public class ChatController extends SceneController {
           @Override
           protected Void call() throws Exception {
             int i = 0;
+            // Updating the animation of Gpt typing
             while (isGptRunning) {
               switch (i) {
                 case 0:
@@ -246,6 +258,7 @@ public class ChatController extends SceneController {
                   i = 0;
                   break;
               }
+              // Sleep 0.2 seconds
               Thread.sleep(200);
             }
             Platform.runLater(() -> inputText.setText(""));
@@ -261,7 +274,7 @@ public class ChatController extends SceneController {
     thread.start();
   }
 
-  /** Ends typing animation. */
+  /** This method disables the buttons and text field. */
   private void finishProcess() {
     isGptRunning = false;
     inputText.setDisable(false);
@@ -275,6 +288,7 @@ public class ChatController extends SceneController {
    * @param e the exception containing the error message
    */
   private void showApiError(ApiProxyException e) {
+    // Display an error alert
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Warning");
     alert.setHeaderText("OpenAI Api Error");
@@ -289,6 +303,7 @@ public class ChatController extends SceneController {
         new Task<>() {
           @Override
           protected Void call() {
+            // Run the GPT model to generate hints
             inProcess();
             try {
               hintCompletionRequest.addMessage(
@@ -305,6 +320,7 @@ public class ChatController extends SceneController {
                 () -> {
                   finishProcess();
                   try {
+                    // Sleep 0.2 seconds
                     Thread.sleep(200);
                   } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -313,8 +329,10 @@ public class ChatController extends SceneController {
             return null;
           }
         };
+    // Decrease the number of hints left
     if (!GameState.isUnlimitedHint) {
       GameState.remainsHint--;
+      // If no hints left, don't show button
       if (GameState.remainsHint == 0) {
         hintButton.setVisible(false);
       }
@@ -326,6 +344,7 @@ public class ChatController extends SceneController {
 
   /** Sets the chat background based on the current room. */
   public void setChatBackground() {
+    // Set the chat background based on the current room
     if (GameState.onArtRoom) {
       picArtRoom.setVisible(true);
       picDinoRoom.setVisible(false);

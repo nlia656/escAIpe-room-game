@@ -26,12 +26,14 @@ public class BenchController {
    */
   @FXML
   public void initialize() {
+    // Initialize the button level
     oneBar.setVisible(false);
     twoBar.setVisible(false);
     threeBar.setVisible(false);
     fourBar.setVisible(false);
 
     switch (GameState.buttonLevel) {
+        // Set the visibility of bars based on the button level
       case 3:
         fourBar.setVisible(true);
         break;
@@ -53,7 +55,7 @@ public class BenchController {
    * @param event The event that triggered this method
    */
   @FXML
-  void onGoBack(ActionEvent event) {
+  void onBackStart(ActionEvent event) {
     App.setUi(AppUi.ART_ROOM);
   }
 }
