@@ -52,7 +52,7 @@ public class LevelController {
     switch ((int) levelSlider.getValue()) {
       case 0:
         GameState.isUnlimitedHint = true;
-        GameState.remainsHint = 0;
+        GameState.remainsHint = 999;
         GameState.isHard = false;
         break;
       case 1:
