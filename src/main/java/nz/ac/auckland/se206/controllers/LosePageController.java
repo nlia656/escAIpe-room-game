@@ -10,11 +10,9 @@ public class LosePageController {
 
   /**
    * This method is called to go back to the start screen.
-   *
-   * @throws IOException If there is an I/O error while transitioning to the start screen.
    */
   @FXML
-  private void onStartPage() throws IOException {
+  private void onStartPage() {
     App.setUi(AppUi.START);
   }
 }
