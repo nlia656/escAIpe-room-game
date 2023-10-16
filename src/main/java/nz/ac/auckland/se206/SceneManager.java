@@ -52,9 +52,4 @@ public class SceneManager {
   public static Parent getAppUi(AppUi appUi) {
     return uiMap.get(appUi);
   }
-
-  /** Clears all AppUi elements from the SceneManager. */
-  public static void clearAppUi() {
-    uiMap.clear();
-  }
 }
