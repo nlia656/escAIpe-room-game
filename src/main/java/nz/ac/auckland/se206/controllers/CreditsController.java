@@ -12,7 +12,7 @@ public class CreditsController {
    * the start screen.
    */
   @FXML
-  public void onBackStart() {
+  private void onBackStart() {
     // Remove the current scene from the hash map and navigate back to the start screen.
     App.setUi(AppUi.START);
   }
