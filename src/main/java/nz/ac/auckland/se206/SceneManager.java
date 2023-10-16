@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 
 /** This class is used to manage the scenes and their associated UI elements. */
 public class SceneManager {
+  /** Enumerations representing the various user interface (UI) scenes in the application. */
   public enum AppUi {
     ART_ROOM,
     CHAT,

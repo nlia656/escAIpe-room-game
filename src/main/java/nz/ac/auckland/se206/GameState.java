@@ -69,7 +69,7 @@ public class GameState {
     return (int) (Math.random() * range);
   }
 
-  /** Initializes the game state. */
+  /** Initializes all of the game state's booleans to false. */
   public static void initial() {
     // Reset all the booleans to their original states so that the game runs from the beginning each
     // time.

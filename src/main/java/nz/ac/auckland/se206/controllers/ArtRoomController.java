@@ -87,6 +87,7 @@ public class ArtRoomController extends SceneController {
    * @param answer the name of the item
    */
   private void clickForRiddle(String answer) {
+    // If riddle isn't solved, show not solved notification
     if (!GameState.isRiddleResolved) {
       showRiddleNotSolved();
       return;
@@ -97,6 +98,7 @@ public class ArtRoomController extends SceneController {
     if (answer.contains("vase")) {
       answer = "vase";
     }
+    // If the answer is correct, show the code
     if (GameState.riddleAnswer.contains(answer)) {
       showNotifications("Code discovered!", "Click the scroll in the top left to view the code.");
       staticRiddleCodeLabel.setText(GameState.riddleCode);

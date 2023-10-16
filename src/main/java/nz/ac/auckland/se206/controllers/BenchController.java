@@ -26,12 +26,14 @@ public class BenchController {
    */
   @FXML
   public void initialize() {
+    // Initialize the button level
     oneBar.setVisible(false);
     twoBar.setVisible(false);
     threeBar.setVisible(false);
     fourBar.setVisible(false);
 
     switch (GameState.buttonLevel) {
+        // Set the visibility of bars based on the button level
       case 3:
         fourBar.setVisible(true);
         break;
