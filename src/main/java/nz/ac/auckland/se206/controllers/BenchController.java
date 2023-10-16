@@ -50,7 +50,7 @@ public class BenchController {
    * @param event The event that triggered this method
    */
   @FXML
-  void onBackStartPage(ActionEvent event) {
+  void onGoBack(ActionEvent event) {
     App.setUi(AppUi.ART_ROOM);
   }
 }

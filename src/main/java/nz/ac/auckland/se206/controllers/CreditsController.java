@@ -12,7 +12,7 @@ public class CreditsController {
    * start screen.
    */
   @FXML
-  public void onBackStartPage() {
+  public void onBackMainMenu() {
     // Remove the scenes from the hash map to be reloaded.
     App.setUi(AppUi.START);
   }
