@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.App;
@@ -12,11 +11,9 @@ public class WinPageController {
 
   /**
    * This method is called to go back to the start screen.
-   *
-   * @throws IOException If the FXML file cannot be loaded.
    */
   @FXML
-  private void onStartPage() throws IOException {
+  private void onStartPage() {
     // Thread to unload rooms and load rooms when player goes back to start page
     Task<Void> task =
         new Task<>() {
