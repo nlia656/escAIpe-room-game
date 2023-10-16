@@ -57,7 +57,7 @@
             <Font name="Bank Gothic Medium BT" size="16.0" />
          </font>
       </Text>
-      <Button fx:id="creditToMenu" layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onBackMainMenu" prefHeight="23.0" prefWidth="147.0" text="Back to main menu">
+      <Button fx:id="creditToStart" layoutX="543.0" layoutY="68.0" mnemonicParsing="false" onAction="#onBackStart" prefHeight="23.0" prefWidth="147.0" text="Back to start page">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
