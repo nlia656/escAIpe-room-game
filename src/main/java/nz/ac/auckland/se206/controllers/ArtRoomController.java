@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -13,8 +12,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  * room. Extends the SceneController class.
  */
 public class ArtRoomController extends SceneController {
-
-  @FXML private Label newMessage;
 
   /**
    * Initializes the controller. Starts the text synchronization for game timer, game master
