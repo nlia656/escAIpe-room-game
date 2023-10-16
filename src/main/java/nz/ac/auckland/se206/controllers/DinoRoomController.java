@@ -6,15 +6,14 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/**
- * This class is the controller for the dino room scene It extends from the SceneController class
- */
+/** Controller class for the dino room scene. Extends the SceneController class. */
 public class DinoRoomController extends SceneController {
+
   @FXML private Label newMessage;
 
   /**
-   * This method is called by the FXMLLoader when initialization is complete Starts the text sync
-   * for the game timer and game master messages
+   * Called by the FXMLLoader when initialization is complete. Starts the text sync for the game
+   * timer and game master messages.
    */
   @FXML
   public void initialize() {
@@ -22,8 +21,8 @@ public class DinoRoomController extends SceneController {
   }
 
   /**
-   * This method is called when the player clicks the "Go to Lobby" button Changes the scene to the
-   * lobby Sets the GameState booleans to reflect the current scene
+   * Handles the "Go to Lobby" button click event. Changes the scene to the lobby and updates
+   * GameState booleans.
    */
   @FXML
   private void goArtRoom() {
@@ -33,8 +32,8 @@ public class DinoRoomController extends SceneController {
   }
 
   /**
-   * This method is called when user clicks on the phone Changes the scene to the phone Also toggles
-   * the chat background
+   * Handles the "Open Phone" button click event. Changes the scene to the phone and sets chat
+   * background.
    */
   @FXML
   private void onOpenPhone() {
@@ -44,16 +43,19 @@ public class DinoRoomController extends SceneController {
     App.setUi(AppUi.CHAT);
   }
 
-  /** This method is called when the player clicks the book */
+  /**
+   * Handles the click event for the second set of books. Checks if the riddle is solved and starts
+   * the book puzzle if conditions are met.
+   */
   @FXML
   public void books2Clicked() {
-    // Tell player to solve riddle first
-    // If riddle code given, start book puzzle.
+    // Check if riddle is resolved and art is found
     if (GameState.isRiddleResolved && GameState.artFound) {
       App.setUi(AppUi.BOOK_PUZZLE);
       GameState.firstTimeCode = false;
       GameState.hasBookOpened = true;
     }
+    // Check the click item
     checkClickItem("books2");
   }
 }

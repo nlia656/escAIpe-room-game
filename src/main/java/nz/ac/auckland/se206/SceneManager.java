@@ -3,9 +3,7 @@ package nz.ac.auckland.se206;
 import java.util.HashMap;
 import javafx.scene.Parent;
 
-/**
- * This class is used to manage the scenes
- */
+/** This class is used to manage the scenes and their associated UI elements. */
 public class SceneManager {
   public enum AppUi {
     ART_ROOM,
@@ -26,31 +24,35 @@ public class SceneManager {
   private static HashMap<AppUi, Parent> uiMap = new HashMap<>();
 
   /**
-   * This method is used to add the app ui
-   * @param appUi the name of room
-   * @param ui the scene of the room
+   * Adds an AppUi and its associated UI element to the SceneManager.
+   *
+   * @param appUi The name of the room.
+   * @param ui The scene of the room.
    */
   public static void addAppUi(AppUi appUi, Parent ui) {
     uiMap.put(appUi, ui);
   }
 
   /**
-   * This method is used to remove the app ui
-   * @param appUi the name of room
+   * Removes an AppUi from the SceneManager.
+   *
+   * @param appUi The name of the room to remove.
    */
   public static void removeAppUi(AppUi appUi) {
     uiMap.remove(appUi);
   }
 
   /**
-   * This method is used to get the app ui
-   * @param appUi the name of room
-   * @return the scene of the room
+   * Retrieves the UI element associated with an AppUi.
+   *
+   * @param appUi The name of the room.
+   * @return The scene of the room.
    */
   public static Parent getAppUi(AppUi appUi) {
     return uiMap.get(appUi);
   }
 
+  /** Clears all AppUi elements from the SceneManager. */
   public static void clearAppUi() {
     uiMap.clear();
   }

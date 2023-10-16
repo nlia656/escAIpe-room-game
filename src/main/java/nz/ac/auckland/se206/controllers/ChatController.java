@@ -26,8 +26,8 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
- * This class is the controller for the chat scene. It handles the events that occur in the chat
- * scene. It extends the SceneController class.
+ * Controller class for the chat scene. Handles events and interactions that occur in the chat
+ * scene. Extends the SceneController class.
  */
 public class ChatController extends SceneController {
 
@@ -48,8 +48,8 @@ public class ChatController extends SceneController {
   private boolean isGptRunning = false;
 
   /**
-   * This method is called by the FXMLLoader when initialization is complete. It runs the GPT model
-   * to generate the riddle. It also sets up the timer label in this scene.
+   * Initializes the controller. Runs the GPT model to generate the riddle. Sets up the timer label
+   * in this scene.
    */
   @FXML
   public void initialize() {
@@ -57,7 +57,7 @@ public class ChatController extends SceneController {
     Task<Void> task =
         new Task<>() {
           @Override
-          protected Void call() { // Specify the generic type as Void
+          protected Void call() {
             inProcess();
             try {
               runGpt(
@@ -78,10 +78,12 @@ public class ChatController extends SceneController {
             return null;
           }
         };
+
     // Configure the hints
     if (!GameState.isUnlimitedHint && GameState.remainsHint != 0) {
       hintRemains.setVisible(true);
     }
+
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     hintCompletionRequest =
@@ -89,6 +91,8 @@ public class ChatController extends SceneController {
     Thread thread = new Thread(task);
     thread.setDaemon(true);
     thread.start();
+
+    // Set up timer label
     Timeline timeline =
         new Timeline(
             new KeyFrame(
@@ -110,7 +114,7 @@ public class ChatController extends SceneController {
                     hintButton.setVisible(true);
                   }
                 }));
-    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
   }
 
@@ -118,6 +122,7 @@ public class ChatController extends SceneController {
    * Appends a chat message to the chat text area.
    *
    * @param msg the chat message to append
+   * @param role the role of the sender
    */
   private void appendChatMessage(ChatMessage msg, String role) {
     chatTextArea.appendText(role + ": " + msg.getContent() + "\n\n");
@@ -131,7 +136,7 @@ public class ChatController extends SceneController {
    */
   private void runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
-    try { // Run the GPT model
+    try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
@@ -146,7 +151,8 @@ public class ChatController extends SceneController {
         GameState.isRiddleResolved = true;
         System.out.println("MEOW");
       }
-      Task<Void> tts = new Task<>() { // Specify the generic type as Void
+      Task<Void> tts =
+          new Task<>() {
             @Override
             protected Void call() {
               TextToSpeech tts = new TextToSpeech();
@@ -155,7 +161,7 @@ public class ChatController extends SceneController {
               return null;
             }
           };
-      if (GameState.isTts) { // Check Text to Speech
+      if (GameState.isTts) {
         Thread thread = new Thread(tts);
         thread.setDaemon(true);
         thread.start();
@@ -176,14 +182,13 @@ public class ChatController extends SceneController {
     if (message.trim().isEmpty()) {
       return;
     }
-    // Clear input text field
     inputText.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg, "You said");
-    // Run GPT model in a separate thread
-    Task<Void> task = new Task<>() { // Specify the generic type as Void
+    Task<Void> task =
+        new Task<>() {
           @Override
-          protected Void call() throws Exception { // Specify the generic type as Void
+          protected Void call() throws Exception {
             inProcess();
             runGpt(msg);
             Platform.runLater(
@@ -210,7 +215,6 @@ public class ChatController extends SceneController {
    */
   @FXML
   private void onGoBack(ActionEvent event) {
-    // Go back to the previous scene
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
     } else if (GameState.onDinoRoom) {
@@ -220,6 +224,7 @@ public class ChatController extends SceneController {
     }
   }
 
+  /** Displays typing animation while waiting for GPT response. */
   private void inProcess() {
     Task<Void> runAnis =
         new Task<>() {
@@ -237,9 +242,7 @@ public class ChatController extends SceneController {
                   i++;
                   break;
                 case 2:
-                  inputText.setText(
-                      "Security is typing ..."); // Update the graphics so that the user knows
-                  // the GPT is replying.
+                  inputText.setText("Security is typing ...");
                   i = 0;
                   break;
               }
@@ -258,16 +261,20 @@ public class ChatController extends SceneController {
     thread.start();
   }
 
+  /** Ends typing animation. */
   private void finishProcess() {
-    // Reset the graphics
     isGptRunning = false;
     inputText.setDisable(false);
     sendButton.setDisable(false);
     hintButton.setDisable(false);
   }
 
+  /**
+   * Displays an error alert for API proxy issues.
+   *
+   * @param e the exception containing the error message
+   */
   private void showApiError(ApiProxyException e) {
-    // Error alert for GPT
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Warning");
     alert.setHeaderText("OpenAI Api Error");
@@ -275,15 +282,15 @@ public class ChatController extends SceneController {
     alert.showAndWait();
   }
 
+  /** Asks for hints from the GPT model. */
   @FXML
   private void onAskHint() {
-    // Give hints depending on difficulty of game
     Task<Void> task =
         new Task<>() {
           @Override
-          protected Void call() { // Specify the generic type as Void
+          protected Void call() {
             inProcess();
-            try { // Run the GPT to give hints to user
+            try {
               hintCompletionRequest.addMessage(
                   new ChatMessage("user", GptPromptEngineering.getHints()));
               ChatCompletionResult hintCompletionResult = hintCompletionRequest.execute();
@@ -307,10 +314,8 @@ public class ChatController extends SceneController {
           }
         };
     if (!GameState.isUnlimitedHint) {
-      System.out.println("is it medium");
       GameState.remainsHint--;
       if (GameState.remainsHint == 0) {
-        System.out.println("hints gone");
         hintButton.setVisible(false);
       }
     }
@@ -319,8 +324,8 @@ public class ChatController extends SceneController {
     thread.start();
   }
 
+  /** Sets the chat background based on the current room. */
   public void setChatBackground() {
-    // Depending on which room the user is in, set the background opacity
     if (GameState.onArtRoom) {
       picArtRoom.setVisible(true);
       picDinoRoom.setVisible(false);

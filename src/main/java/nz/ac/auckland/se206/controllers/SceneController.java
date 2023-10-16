@@ -13,7 +13,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import org.controlsfx.control.Notifications;
 
-/** This class is the mother class controller for the scene */
+/** This class is the mother class controller for the scene. */
 public class SceneController {
 
   @FXML public static Label staticPuzzleCodeLabel;
@@ -26,10 +26,12 @@ public class SceneController {
   @FXML protected Label hintsLeft;
 
   /**
-   * This method is used to sync the time and game master text
+   * This method is used to sync the time and game master text.
    *
-   * @param lblTime the label for the time
-   * @param lblGameMaster the label for the game master text
+   * @param lblTime The label for the time.
+   * @param lblGameMaster The label for the game master text.
+   * @param lblHints The label for the hints.
+   * @param hintsLeft The label for the hints left.
    */
   public void startTextSync(Label lblTime, Label lblGameMaster, Label lblHints, Label hintsLeft) {
     Timeline timeline =
@@ -53,13 +55,13 @@ public class SceneController {
     timeline.play();
   }
 
-  /** This method is to get the code label */
+  /** This method is to get the code label. */
   public void initialize() {
     staticPuzzleCodeLabel = puzzleCodeLabel;
     staticRiddleCodeLabel = riddleCodeLabel;
   }
 
-  /** This method is called when the player clicks to close the scroll */
+  /** This method is called when the player clicks to close the scroll. */
   @FXML
   private void onCloseScroll() {
     // Change the scene back to the previous on scene.
@@ -73,10 +75,10 @@ public class SceneController {
   }
 
   /**
-   * This method is used to make a notification in game
+   * This method is used to make a notification in the game.
    *
-   * @param title the title of the notification
-   * @param message the message of the notification
+   * @param title The title of the notification.
+   * @param message The message of the notification.
    */
   protected void showNotifications(String title, String message) {
     // Create a notification, show it for three seconds in the bottom right corner of the screen.
@@ -89,7 +91,7 @@ public class SceneController {
     notification.show();
   }
 
-  /** This method is called when the player clicks on the scroll */
+  /** This method is called when the player clicks on the scroll. */
   @FXML
   protected void scrollClicked() {
     // Change scene to scroll and change alerts depending on game progress.
@@ -109,7 +111,7 @@ public class SceneController {
     }
   }
 
-  /** This method is used to show riddle not solved notification */
+  /** This method is used to show a notification that the riddle is not solved. */
   protected void showRiddleNotSolved() {
     if (GameState.hasPhoneOpened) {
       showNotifications("Solve the riddle!", "Open your phone to see your first clue to escape!");
@@ -119,9 +121,9 @@ public class SceneController {
   }
 
   /**
-   * This method is used to handle the click on the item
+   * This method is used to handle the click on the item.
    *
-   * @param event the object that is clicked
+   * @param event The object that is clicked.
    */
   @FXML
   public void onClickItem(MouseEvent event) {
@@ -130,9 +132,9 @@ public class SceneController {
   }
 
   /**
-   * This method is used to check if the item is clicked
+   * This method is used to check if the item is clicked.
    *
-   * @param name the name of the item
+   * @param name The name of the item.
    */
   protected void checkClickItem(String name) {
     // If riddle isn't solved, show not solved notification
