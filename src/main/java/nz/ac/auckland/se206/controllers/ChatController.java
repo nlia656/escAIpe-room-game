@@ -32,11 +32,8 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class ChatController extends SceneController {
 
   @FXML private Text hintRemains;
-  @FXML private Text hintsGone;
-  @FXML private Button backButton;
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
-  @FXML private Button noTtsButton;
   @FXML private Button sendButton;
   @FXML private Button hintButton;
   @FXML private ImageView picDinoRoom;
@@ -180,11 +177,9 @@ public class ChatController extends SceneController {
 
   /**
    * Sends a message to the GPT model.
-   *
-   * @param event the action event triggered by the send button
    */
   @FXML
-  private void onSendMessage(ActionEvent event) {
+  private void onSendMessage() {
     // Get the message from the text field
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
@@ -220,11 +215,9 @@ public class ChatController extends SceneController {
 
   /**
    * Navigates back to the previous view.
-   *
-   * @param event the action event triggered by the go back button
    */
   @FXML
-  private void onGoBack(ActionEvent event) {
+  private void onGoBack() {
     // Go back to previous scene
     if (GameState.onArtRoom) {
       App.setUi(AppUi.ART_ROOM);
