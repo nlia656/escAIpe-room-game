@@ -12,9 +12,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * This class is the controller for the level scene
- */
+/** This class is the controller for the level scene */
 public class LevelController {
 
   @FXML private Button startButton;
@@ -25,9 +23,7 @@ public class LevelController {
   @FXML private Text levelText;
   @FXML private CheckBox ttsButton;
 
-  /**
-   * This method is used to round the slider value to the nearest integer
-   */
+  /** This method is used to round the slider value to the nearest integer */
   @FXML
   private void finishSlide() {
     double level = levelSlider.getValue();
@@ -35,17 +31,13 @@ public class LevelController {
     setLevelText();
   }
 
-  /**
-   * This method is called to go back to start screen
-   */
+  /** This method is called to go back to start screen */
   @FXML
   private void onBack() {
     App.setUi(AppUi.START);
   }
 
-  /**
-   * This method is used to round the slider value to the nearest integer
-   */
+  /** This method is used to round the slider value to the nearest integer */
   @FXML
   private void finishTime() {
     double time = timeSlider.getValue();
@@ -53,11 +45,8 @@ public class LevelController {
   }
 
   /**
-   * This method is called to start the game
-   * it sets time, hint and difficulty based on the user's selection
-   * it also sets the tts option
-   * it also starts the timer
-   * then it loads the art room
+   * This method is called to start the game it sets time, hint and difficulty based on the user's
+   * selection it also sets the tts option it also starts the timer then it loads the art room
    */
   @FXML
   private void onStart() {
@@ -98,14 +87,14 @@ public class LevelController {
     App.setUi(AppUi.ART_ROOM);
     GameState.onArtRoom = true;
     Task<Void> tts = new Task<>() { // Specify the generic type as Void
-      @Override
-      protected Void call() {
-        TextToSpeech tts = new TextToSpeech();
-        tts.speak(GameState.lastMsg);
-        Platform.runLater(() -> {});
-        return null;
-      }
-    };
+          @Override
+          protected Void call() {
+            TextToSpeech tts = new TextToSpeech();
+            tts.speak(GameState.lastMsg);
+            Platform.runLater(() -> {});
+            return null;
+          }
+        };
     if (GameState.isTts) { // Check Text to Speech
       Thread thread = new Thread(tts);
       thread.setDaemon(true);
@@ -114,8 +103,8 @@ public class LevelController {
   }
 
   /**
-   * This method is called to set the text for which level the user selects.
-   * Change the text based on the level the user selects.
+   * This method is called to set the text for which level the user selects. Change the text based
+   * on the level the user selects.
    */
   @FXML
   private void setLevelText() { // Set the text for which level the user selects.
@@ -124,8 +113,7 @@ public class LevelController {
         levelText.setText("In Easy Mode, you can get any amount of hints from the game master.");
         break;
       case 1:
-        levelText.setText(
-            "In Medium Mode, you can get a maximum of 5 hints from the game master.");
+        levelText.setText("In Medium Mode, you can get a maximum of 5 hints from the game master.");
         break;
       case 2:
         levelText.setText("In Hard Mode, you cannot get any hints from game master.");

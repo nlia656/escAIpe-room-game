@@ -9,8 +9,8 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
- * This class is the controller for the bench scene
- * It handles the events that occur in the bench scene
+ * This class is the controller for the bench scene It handles the events that occur in the bench
+ * scene
  */
 public class BenchController {
 
@@ -24,15 +24,15 @@ public class BenchController {
 
   @FXML private Rectangle twoBar;
 
-  /**
-   * This method is called by the FXMLLoader when initialization is complete
-   */
+  /** This method is called by the FXMLLoader when initialization is complete */
   @FXML
   public void initialize() {
+    // Initialise the button level
     oneBar.setVisible(false);
     twoBar.setVisible(false);
     threeBar.setVisible(false);
     fourBar.setVisible(false);
+    // Set the button level
     if (GameState.buttonLevel == 3) {
       fourBar.setVisible(true);
     } else if (GameState.buttonLevel == 2) {
@@ -46,6 +46,7 @@ public class BenchController {
 
   /**
    * This method is called when the player clicks the "Go to Lobby" button
+   *
    * @param event The event that triggered this method
    */
   @FXML

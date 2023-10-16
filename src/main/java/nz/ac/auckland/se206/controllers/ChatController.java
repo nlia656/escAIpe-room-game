@@ -6,8 +6,11 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -317,6 +320,7 @@ public class ChatController extends SceneController {
   }
 
   public void setChatBackground() {
+    // Depending on which room the user is in, set the background opacity
     if (GameState.onArtRoom) {
       picArtRoom.setVisible(true);
       picDinoRoom.setVisible(false);
