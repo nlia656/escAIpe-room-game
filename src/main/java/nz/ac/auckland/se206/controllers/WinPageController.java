@@ -9,9 +9,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 /** This class is the controller for the win scene. */
 public class WinPageController {
 
-  /**
-   * This method is called to go back to the start screen.
-   */
+  /** This method is called to go back to the start screen. */
   @FXML
   private void onStartPage() {
     // Thread to unload rooms and load rooms when player goes back to start page

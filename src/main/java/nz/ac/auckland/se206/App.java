@@ -2,7 +2,6 @@ package nz.ac.auckland.se206;
 
 import java.io.IOException;
 import java.util.Objects;
-
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -71,9 +70,7 @@ public class App extends Application {
     thread.start();
   }
 
-  /**
-   * This method is used to load the room.
-   */
+  /** This method is used to load the room. */
   @FXML
   public static void loadRoom() {
     // Remove scenes from hashmap
@@ -145,9 +142,14 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Font.loadFont(Objects.requireNonNull(App.class.getResource("/css/bank-gothic-medium-bt.ttf")).toExternalForm(), 12);
-    Font.loadFont(Objects.requireNonNull(App.class.getResource("/css/britanic.ttf")).toExternalForm(), 12);
-    Font.loadFont(Objects.requireNonNull(App.class.getResource("/css/papyrus.ttf")).toExternalForm(), 12);
+    Font.loadFont(
+        Objects.requireNonNull(App.class.getResource("/css/bank-gothic-medium-bt.ttf"))
+            .toExternalForm(),
+        12);
+    Font.loadFont(
+        Objects.requireNonNull(App.class.getResource("/css/britanic.ttf")).toExternalForm(), 12);
+    Font.loadFont(
+        Objects.requireNonNull(App.class.getResource("/css/papyrus.ttf")).toExternalForm(), 12);
     App.stage = stage;
     // Load the scenes that don't need to be reset when replaying games.
     SceneManager.addAppUi(AppUi.START, loadFxml("start").load());

@@ -46,9 +46,7 @@ public class BenchController {
     }
   }
 
-  /**
-   * Handles the click event for the "Go to Lobby" button.
-   */
+  /** Handles the click event for the "Go to Lobby" button. */
   @FXML
   private void onBackStart() {
     App.setUi(AppUi.ART_ROOM);
