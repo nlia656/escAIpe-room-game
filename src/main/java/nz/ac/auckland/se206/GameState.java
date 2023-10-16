@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 /** Represents the state of the game. */
 public class GameState {
 
+  public static volatile boolean isGameComplete;
   public static final String[] artRoomRiddleAnswers = {
     "dagger", "book", "armour", "crown", "vase1", "pillar", "sword", "vase2"
   };
@@ -46,7 +47,6 @@ public class GameState {
   public static boolean onArtRoom;
   public static boolean onDinoRoom;
   public static boolean onLobbyRoom;
-  public volatile static boolean isGameComplete;
   public static String riddleCode;
   public static boolean firstTimeCode;
   public static boolean secondTimeCode;
