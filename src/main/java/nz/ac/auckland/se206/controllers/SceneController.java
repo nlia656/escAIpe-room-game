@@ -31,8 +31,7 @@ public class SceneController {
    * @param lblTime the label for the time
    * @param lblGameMaster the label for the game master text
    */
-  public static void startTextSync(
-      Label lblTime, Label lblGameMaster, Label lblHints, Label hintsLeft) {
+  public void startTextSync(Label lblTime, Label lblGameMaster, Label lblHints, Label hintsLeft) {
     Timeline timeline =
         new Timeline(
             new KeyFrame(

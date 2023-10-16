@@ -126,6 +126,7 @@ public class LockController {
    * @param i the current progress of the process bar
    */
   private void inprocessBar(int i) {
+    // Change the indicator of the process bar depending on the progress.
     if (i == 20) {
       setGreen(process25);
     } else if (i == 45) {
@@ -135,6 +136,7 @@ public class LockController {
     } else if (i == 95) {
       setGreen(process100);
     }
+    // Check whether the progress is within the range of the level.
     int level = (GameState.buttonLevel + 1) * 25;
     result =
         level + 5 >= (int) (processBar.getProgress() * 100)
@@ -174,6 +176,7 @@ public class LockController {
 
   /** This method is used to increase the process bar */
   private void increaseProgressBar() {
+    // Create a new task to increase the progress bar.
     Task<Void> task =
         new Task<>() {
           @Override
@@ -182,8 +185,10 @@ public class LockController {
               if (isReleasedMouse) {
                 return null;
               }
+              // Increase the progress bar by 0.01 each time.
               processBar.setProgress(processBar.getProgress() + 0.01);
               inprocessBar(i);
+              // Sleep for 50 milliseconds.
               Thread.sleep(50);
             }
             return null;

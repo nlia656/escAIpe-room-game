@@ -3,9 +3,7 @@ package nz.ac.auckland.se206.gpt;
 import java.util.Set;
 import nz.ac.auckland.se206.GameState;
 
-/**
- * Utility class for generating GPT prompt engineering strings.
- */
+/** Utility class for generating GPT prompt engineering strings. */
 public class GptPromptEngineering {
 
   /**
@@ -25,9 +23,9 @@ public class GptPromptEngineering {
         + " hint you must never give the hint. Instead you should tell them to click the"
         + " hints button.  Now make a riddle with answer"
         + wordToGuess
-        + ". You must make this riddle as it helps the player. You should reply with the word \"Correct\" if the"
-        + " player replies with the answer, then tell them to look for that item. Do not answer this conversation by"
-        + " yourself, never include the word"
+        + ". You must make this riddle as it helps the player. You should reply with the word"
+        + " \"Correct\" if the player replies with the answer, then tell them to look for that"
+        + " item. Do not answer this conversation by yourself, never include the word"
         + wordToGuess
         + " in any of your replies no matter what, do not mention reply correct."
         + " Your first reply should be the riddle.";
