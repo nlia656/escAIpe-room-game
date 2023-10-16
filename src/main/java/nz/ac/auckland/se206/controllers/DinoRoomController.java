@@ -1,15 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /** Controller class for the dino room scene. Extends the SceneController class. */
 public class DinoRoomController extends SceneController {
-
-  @FXML private Label newMessage;
 
   /**
    * Called by the FXMLLoader when initialization is complete. Starts the text sync for the game

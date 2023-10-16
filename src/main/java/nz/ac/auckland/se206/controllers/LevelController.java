@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
@@ -18,7 +17,6 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class LevelController {
 
-  @FXML private Button startButton;
   @FXML private Slider levelSlider;
   @FXML private Slider timeSlider;
   @FXML private Text levelText;
