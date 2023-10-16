@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -175,9 +174,7 @@ public class ChatController extends SceneController {
     }
   }
 
-  /**
-   * Sends a message to the GPT model.
-   */
+  /** Sends a message to the GPT model. */
   @FXML
   private void onSendMessage() {
     // Get the message from the text field
@@ -213,9 +210,7 @@ public class ChatController extends SceneController {
     thread.start();
   }
 
-  /**
-   * Navigates back to the previous view.
-   */
+  /** Navigates back to the previous view. */
   @FXML
   private void onGoBack() {
     // Go back to previous scene
