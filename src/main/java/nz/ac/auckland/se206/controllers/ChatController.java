@@ -149,7 +149,7 @@ public class ChatController {
       // Check if the riddle is resolved
       if (result.getChatMessage().getRole().equals("assistant")
           && (GameState.lastMsg.contains("Correct")
-              || GameState.lastMsg.contains("correct")
+              || GameState.lastMsg.contains("correctly")
               || GameState.lastMsg.contains("Well done"))) {
         GameState.isRiddleResolved = true;
         System.out.println("MEOW");

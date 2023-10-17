@@ -25,9 +25,7 @@ public class GptPromptEngineering {
         + wordToGuess
         + ". You must make this riddle as it helps the player. You must reply with the word"
         + " \"Correct\" verbatim only if the player replies with the answer or solves the riddle"
-        + " correctly, then tell them to look for that item. However if the player replies with a"
-        + " wrong answer, include the following words exactly in your response 'This is the wrong"
-        + " answer' and do not use the word 'correct' or the phrase 'well done' in that response."
+        + " correctly, then tell them to look for that item. "
         + " Do not answer this conversation by yourself, you must never include the word"
         + wordToGuess
         + " in any of your replies no matter what, do not say that you will reply correct if the"
