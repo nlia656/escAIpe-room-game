@@ -3,9 +3,7 @@ package nz.ac.auckland.se206.gpt;
 import java.util.Set;
 import nz.ac.auckland.se206.GameState;
 
-/**
- * Utility class for generating GPT prompt engineering strings.
- */
+/** Utility class for generating GPT prompt engineering strings. */
 public class GptPromptEngineering {
 
   /**
