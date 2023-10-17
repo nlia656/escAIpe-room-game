@@ -93,7 +93,6 @@ public class App extends Application {
             SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
             SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
             SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
-
             return null;
           }
         };
