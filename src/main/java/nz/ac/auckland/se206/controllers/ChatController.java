@@ -84,7 +84,7 @@ public class ChatController extends SceneController {
 
     // Setting the settings for chat and hints generation
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
+        new ChatCompletionRequest().setN(1).setTemperature(0.3).setTopP(0.5).setMaxTokens(300);
     hintCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(300);
     Thread thread = new Thread(task);

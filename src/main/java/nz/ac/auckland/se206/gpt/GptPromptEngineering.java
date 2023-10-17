@@ -27,7 +27,8 @@ public class GptPromptEngineering {
         + " \"Correct\" if the player replies with the answer, then tell them to look for that"
         + " item. Do not answer this conversation by yourself, never include the word"
         + wordToGuess
-        + " in any of your replies no matter what, do not mention reply correct."
+        + " in any of your replies no matter what, do not mention reply correct. If player says"
+        + " words similar with \"correct\", ask them to give the actual answer."
         + " Your first reply should be the riddle.";
   }
 
@@ -77,7 +78,8 @@ public class GptPromptEngineering {
     } else if (!GameState.hasBookOpened) {
       return "tell the player the following words briefly: 'Look for a book in the room"
           + " with the dinosaur'";
-    } else {
+    }
+    else {
       return "[tell the player to escape through the elevator with the code. Be"
           + " enthusiastic but brief.";
     }
