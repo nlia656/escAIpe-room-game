@@ -13,6 +13,7 @@ public class DinoRoomController extends SceneController {
    * timer and game master messages.
    */
   @FXML
+  @Override
   public void initialize() {
     startTextSync(lblTime, lblGameMaster, lblHints, hintsLeft);
   }
