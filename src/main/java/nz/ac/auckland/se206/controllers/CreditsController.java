@@ -5,24 +5,22 @@ import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/**
- * Controller class for the credits scene.
- */
+/** Controller class for the credits scene. */
 public class CreditsController {
 
-  @FXML
-  private TextArea creditText;
+  @FXML private TextArea creditText;
 
   @FXML
   private void initialize() {
     String credit =
+        // Credits for the images used in the game
         "Image by redgreystock\n"
             + "https://www.freepik.com/free-vector/isometric-elevator-hall-interior_8407434.htm\n"
             + "Image by macrovector\n"
             + "https://www.freepik.com/free-vector/ethnic-museum-isometric-composition_6380056.htm\n"
             + "https://www.freepik.com/free-vector/isometric-color-illustration-museum-interior-with-exhibit-painting_3791816.htm\n"
-            + "https://www.freepik.com/free-vector/law-justice-trial-with-prisoner-cage_15080049.htm\n "
-            + "https://www.freepik.com/free-vector/super-agent-cartoon-poster-with-man-running-shooting-with-gun-vector-illustration_37420219.htm\n"
+            + "https://www.freepik.com/free-vector/law-justice-trial-with-prisoner-cage_15080049.htm\n"
+            + " https://www.freepik.com/free-vector/super-agent-cartoon-poster-with-man-running-shooting-with-gun-vector-illustration_37420219.htm\n"
             + "Image by Freepik\n"
             + "https://www.freepik.com/free-photo/top-view-blank-menu-book_7453988.htm\n"
             + "Image by upklyak\n"
@@ -35,6 +33,7 @@ public class CreditsController {
             + "https://www.freepik.com/free-vector/new-modern-realistic-front-view-black-iphone-mockup-isolated-white-mobile-template-vector_33632328.htm\n"
             + "Image by rawpixel.com\n"
             + "https://www.freepik.com/free-vector/blur-pink-blue-abstract-gradient-background-vector_34378069.htm";
+    // Set the text of the text area to the credits
     creditText.setText(credit);
   }
 
