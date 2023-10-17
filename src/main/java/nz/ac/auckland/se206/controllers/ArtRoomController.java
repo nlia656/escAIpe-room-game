@@ -18,6 +18,7 @@ public class ArtRoomController extends SceneController {
    * messages, and hints.
    */
   @FXML
+  @Override
   public void initialize() {
     startTextSync(lblTime, lblGameMaster, lblHints, hintsLeft);
   }

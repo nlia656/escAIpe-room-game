@@ -13,6 +13,7 @@ public class LobbyRoomController extends SceneController {
    * master text.
    */
   @FXML
+  @Override
   public void initialize() {
     startTextSync(lblTime, lblGameMaster, lblHints, hintsLeft);
   }

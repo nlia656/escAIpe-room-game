@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -28,7 +29,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * Controller class for the chat scene. Handles events and interactions that occur in the chat
  * scene. Extends the SceneController class.
  */
-public class ChatController extends SceneController {
+public class ChatController {
 
   @FXML private Text hintRemains;
   @FXML private TextArea chatTextArea;
@@ -38,6 +39,9 @@ public class ChatController extends SceneController {
   @FXML private ImageView picDinoRoom;
   @FXML private ImageView picArtRoom;
   @FXML private ImageView picLobbyRoom;
+  @FXML private Label lblTime;
+  @FXML private Label lblHints;
+  @FXML private Label hintsLeft;
   private Timeline typingAnimation;
   private int typeTime = 0;
 
