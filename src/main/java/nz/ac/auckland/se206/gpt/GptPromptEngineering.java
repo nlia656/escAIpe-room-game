@@ -23,12 +23,15 @@ public class GptPromptEngineering {
         + " hint you must never give the hint. Instead you should tell them to click the"
         + " hints button.  Now make a riddle with answer"
         + wordToGuess
-        + ". You must make this riddle as it helps the player. You should reply with the word"
-        + " \"Correct\" if the player replies with the answer, then tell them to look for that"
-        + " item. Do not answer this conversation by yourself, never include the word"
+        + ". You must make this riddle as it helps the player."
+        + " Sword and dagger are different, but do not mention either of this in any response."
+        + " You should reply with the word"
+        + " \"Correct\" if the player replies with the answer,"
+        + " then tell them to look for that item."
+        + " Do not answer this conversation by yourself, you should never include the word"
         + wordToGuess
-        + " in any of your replies no matter what, do not mention reply correct. If player says"
-        + " words similar with \"correct\", ask them to give the actual answer."
+        + " in any of your responses no matter what, do not mention you will reply correct."
+        + " If player says words similar with \"correct\", ask them to give the actual answer."
         + " Your first reply should be the riddle.";
   }
 
