@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreditsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreditsController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="1026.0" layoutX="-48.838012695312386" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-5.0">
          <image>
@@ -32,31 +30,6 @@
             <Font name="Bank Gothic Medium BT" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="credit" fill="#fffa94" layoutX="40.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by redgreystock on Freepik https://www.freepik.com/free-vector/isometric-elevator-hall-interior_8407434.htm" wrappingWidth="649.229736328125">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="credit" fill="#fffa94" layoutX="40.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by macrovector on Freepik https://www.freepik.com/free-vector/ethnic-museum-isometric-composition_6380056.htm https://www.freepik.com/free-vector/isometric-color-illustration-museum-interior-with-exhibit-painting_3791816.htm https://www.freepik.com/free-vector/law-justice-trial-with-prisoner-cage_15080049.htm https://www.freepik.com/free-vector/super-agent-cartoon-poster-with-man-running-shooting-with-gun-vector-illustration_37420219.htm" wrappingWidth="649.229736328125">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="credit" fill="#fffa94" layoutX="41.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by Freepik https://www.freepik.com/free-photo/top-view-blank-menu-book_7453988.htm" wrappingWidth="649.229736328125">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="credit" fill="#fffa94" layoutX="41.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by upklyak on Freepik https://www.freepik.com/free-vector/realistic-open-parchment-scroll-transparent_39845337.htm" wrappingWidth="649.229736328125">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="credit" fill="#fffa94" layoutX="41.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image by vectorpouch Freepik https://www.freepik.com/free-vector/robbery-jewelry-shop-robber-with-nail-puller_5603493.htm" wrappingWidth="649.229736328125">
-         <font>
-            <Font name="Bank Gothic Medium BT" size="16.0" />
-         </font>
-      </Text>
       <Button fx:id="creditToStart" layoutX="549.0" layoutY="68.0" mnemonicParsing="false" onAction="#onBackStart" prefHeight="37.0" prefWidth="141.0" text="Go back">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -65,5 +38,6 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Button>
+      <TextArea fx:id="creditText" editable="false" layoutX="17.0" layoutY="125.0" opacity="0.7" prefHeight="399.0" prefWidth="685.0" style="-fx-text-fill: #3261a4;" text="Placeholder" wrapText="true" />
    </children>
 </AnchorPane>
