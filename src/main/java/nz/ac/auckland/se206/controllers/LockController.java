@@ -1,15 +1,19 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -41,7 +45,21 @@ public class LockController {
   @FXML private Button button9;
   @FXML private Button backButton;
   @FXML private ImageView escapeButton;
+  @FXML private Label lblTime;
   private boolean isReleasedMouse = false;
+
+  @FXML
+  private void initialize(){
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0.5),
+                event -> {
+                  lblTime.setText(GameState.timeLeft);
+                }));
+    timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+    timeline.play();
+  }
 
   /**
    * This method is used to type the code into the text box.
