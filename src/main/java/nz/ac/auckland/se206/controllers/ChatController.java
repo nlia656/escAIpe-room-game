@@ -314,6 +314,7 @@ public class ChatController extends SceneController {
    * Sets the typing text. By reading the typeTime variable, it will set the text to the correct.
    */
   private void setTypingText() {
+    // Depending on the typeTime variable, set the text to the correct typing animation
     switch (typeTime) {
       case 0:
         inputText.setText("Security is typing .");
