@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LobbyRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LobbyRoomController">
    <children>
       <ImageView fitHeight="525.0" fitWidth="600.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -74,7 +74,7 @@
             <BoxBlur />
          </effect>
       </Rectangle>
-      <Label fx:id="lblGameMaster" alignment="TOP_LEFT" layoutX="43.0" layoutY="450.0" prefHeight="80.0" prefWidth="124.0" text="Hello and welcome to meoww" textOverrun="CLIP" wrapText="true" />
+      <Label fx:id="lblGameMaster" alignment="TOP_LEFT" layoutX="43.0" layoutY="450.0" prefHeight="80.0" prefWidth="124.0" text="Sync error. Please close and restart the game." textOverrun="CLIP" wrapText="true" />
       <ImageView fitHeight="8.0" fitWidth="100.0" layoutX="64.0" layoutY="437.0" pickOnBounds="true">
          <image>
             <Image url="@../images/phone_bar.png" />
