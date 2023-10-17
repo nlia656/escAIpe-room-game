@@ -101,11 +101,7 @@ public class SceneController {
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      if (!GameState.isBenchPuzzle) {
-        showNotifications("Code discovered!", "Now go take a seat and find the next clue.");
-      } else {
-        showNotifications("Code discovered!", "Now go to the elevator and try to escape!");
-      }
+      showNotifications("Code discovered!", "Now go to the elevator and try to escape! Maybe there's time to take a seat and relax?");
       GameState.secondTimeCode = false;
       GameState.isPuzzleCodeGiven = true;
     }
@@ -147,7 +143,7 @@ public class SceneController {
     if ((name.equals("couch3") || name.equals("couch2") || name.equals("couch1"))
         && GameState.isPuzzleCodeGiven
         && !GameState.isBenchPuzzle) {
-      showNotifications("Try again.", "There's nothing here. Maybe another seat?");
+      showNotifications("This is a nice seat", "There's nothing here.");
       return;
     }
     // If user tries to click on anything when the puzzle is already resolved and no other
