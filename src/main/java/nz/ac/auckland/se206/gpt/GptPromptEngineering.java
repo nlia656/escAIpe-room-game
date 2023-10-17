@@ -28,8 +28,9 @@ public class GptPromptEngineering {
         + " that item. Do not answer this conversation by yourself, never include the word"
         + wordToGuess
         + " in any of your replies no matter what, do not mention reply correct. If player says"
-        + " words similar with \"correct\", ask them to give the actual answer."
-        + " Your first reply should be the riddle.";
+        + " words similar with \"correct\", ask them to give the actual answer. If the player"
+        + " replies with a wrong answer, tell them the following words exactly 'This is the wrong"
+        + " answer.' Your first reply should be the riddle.";
   }
 
   /**
