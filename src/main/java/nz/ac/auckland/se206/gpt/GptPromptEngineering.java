@@ -81,8 +81,7 @@ public class GptPromptEngineering {
     } else if (!GameState.hasBookOpened) {
       return "tell the player the following words briefly: 'Look for a book in the room"
           + " with the dinosaur'";
-    }
-    else {
+    } else {
       return "[tell the player to escape through the elevator with the code. Be"
           + " enthusiastic but brief.";
     }
