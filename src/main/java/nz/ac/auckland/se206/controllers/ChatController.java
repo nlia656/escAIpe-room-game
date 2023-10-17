@@ -311,8 +311,8 @@ public class ChatController extends SceneController {
                 () -> {
                   finishProcess();
                   try {
-                    // Sleep 0.2 seconds
-                    Thread.sleep(200);
+                    // Sleep 0.4 seconds
+                    Thread.sleep(400);
                   } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                   }
