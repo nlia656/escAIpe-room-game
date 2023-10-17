@@ -101,7 +101,9 @@ public class SceneController {
       GameState.firstTimeCode = false;
       GameState.isRiddleCodeGiven = true;
     } else if (GameState.secondTimeCode) {
-      showNotifications("Code discovered!", "Now go to the elevator and try to escape! Maybe there's time to take a seat and relax?");
+      showNotifications(
+          "Code discovered!",
+          "Now go to the elevator and try to escape! Maybe there's time to take a seat and relax?");
       GameState.secondTimeCode = false;
       GameState.isPuzzleCodeGiven = true;
     }
