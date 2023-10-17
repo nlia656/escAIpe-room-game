@@ -24,15 +24,13 @@ public class GptPromptEngineering {
         + " hints button.  Now make a riddle with answer"
         + wordToGuess
         + ". You must make this riddle as it helps the player. You must reply with the word"
-        + " \"Correct\" verbatim only if the player replies with the answer or solves the riddle"
-        + " correctly, then tell them to look for that item. "
-        + " Do not answer this conversation by yourself, you must never include the word"
+        + " \"Correct\" verbatim to tell them they are correct only if the player replies with the"
+        + " answer or solves the riddle correctly, then tell them to look for that item.  Do not"
+        + " answer this conversation by yourself, you must never include the word"
         + wordToGuess
-        + " in any of your replies no matter what, do not say that you will reply correct if the"
-        + " player is right. If player says words similar with \"correct\", ask them to give the"
-        + " actual answer.  in any of your responses no matter what, do not mention you will reply"
-        + " correct. Sword and dagger are different, do not mention either of this in any"
-        + " response.Your first reply should be the riddle.";
+        + " in any of your replies no matter what. If player says words similar with \"correct\","
+        + " ask them to give the actual answer. Sword and dagger are different, do not mention"
+        + " either of this in any response.Your first reply should be the riddle.";
   }
 
   /**
