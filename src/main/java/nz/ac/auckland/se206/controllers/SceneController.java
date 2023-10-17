@@ -37,7 +37,7 @@ public class SceneController {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
-                Duration.seconds(0.5),
+                Duration.seconds(0.25),
                 event -> {
                   lblTime.setText(GameState.timeLeft);
                   lblGameMaster.setText(GameState.lastMsg);
