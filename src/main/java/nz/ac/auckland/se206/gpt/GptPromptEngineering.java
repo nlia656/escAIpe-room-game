@@ -29,10 +29,13 @@ public class GptPromptEngineering {
         + " \"Correct\" verbatim if the player replies with the answer, then tell them to look for"
         + " that item. Do not answer this conversation by yourself, never include the word"
         + wordToGuess
+        + " in any of your replies no matter what, do not mention reply correct. If player says"
+        + " words similar with \"correct\", ask them to give the actual answer. If the player"
+        + " replies with a wrong answer, tell them the following words exactly 'This is the wrong"
+        + " answer.'"
         + " in any of your responses no matter what, do not mention you will reply correct."
-        + " Sword and dagger is not the same thing, do not mention it in your response."
-        + " If player says words similar with \"correct\", ask them to give the actual answer."
-        + " Your first reply should be the riddle.";
+        + " Sword and dagger are different, do not mention either of this in any response."
+        + "Your first reply should be the riddle.";
   }
 
   /**
