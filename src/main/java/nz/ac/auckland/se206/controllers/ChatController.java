@@ -149,7 +149,7 @@ public class ChatController extends SceneController {
       GameState.lastMsg = result.getChatMessage().getContent();
       // Check if the riddle is resolved
       if (result.getChatMessage().getRole().equals("assistant")
-          && (GameState.lastMsg.contains("Correct")|GameState.lastMsg.contains("correct"))) {
+          && (GameState.lastMsg.contains("Correct") || GameState.lastMsg.contains("correct"))) {
         GameState.isRiddleResolved = true;
         System.out.println("MEOW");
       }
