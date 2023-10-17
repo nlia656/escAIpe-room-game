@@ -196,8 +196,8 @@ public class ChatController extends SceneController {
                 () -> {
                   finishProcess();
                   try {
-                    // Sleep 0.2 seconds
-                    Thread.sleep(200);
+                    // Sleep 0.4 seconds
+                    Thread.sleep(400);
                   } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                   }
@@ -234,14 +234,17 @@ public class ChatController extends SceneController {
             while (isGptRunning) {
               switch (i) {
                 case 0:
+                  inputText.setText("");
                   inputText.setText("Security is typing .");
                   i++;
                   break;
                 case 1:
+                  inputText.setText("");
                   inputText.setText("Security is typing ..");
                   i++;
                   break;
                 case 2:
+                  inputText.setText("");
                   inputText.setText("Security is typing ...");
                   i = 0;
                   break;

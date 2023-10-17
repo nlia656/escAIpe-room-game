@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -93,6 +94,7 @@ public class App extends Application {
             SceneManager.addAppUi(AppUi.SCROLL, loadFxml("codeScroll").load());
             SceneManager.addAppUi(AppUi.LOCK, loadFxml("lock").load());
             SceneManager.addAppUi(AppUi.BENCH_PUZZLE, loadFxml("benchPuzzle").load());
+
             return null;
           }
         };
