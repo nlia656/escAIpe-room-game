@@ -3,9 +3,7 @@ package nz.ac.auckland.se206.gpt;
 import java.util.Set;
 import nz.ac.auckland.se206.GameState;
 
-/**
- * Utility class for generating GPT prompt engineering strings.
- */
+/** Utility class for generating GPT prompt engineering strings. */
 public class GptPromptEngineering {
 
   /**
@@ -25,17 +23,18 @@ public class GptPromptEngineering {
         + " hint you must never give the hint. Instead you should tell them to click the"
         + " hints button.  Now make a riddle with answer"
         + wordToGuess
-        + ". You must make this riddle as it helps the player. You should reply with the word"
-        + " \"Correct\" verbatim if the player replies with the answer, then tell them to look for"
-        + " that item. Do not answer this conversation by yourself, never include the word"
+        + ". You must make this riddle as it helps the player. You must reply with the word"
+        + " \"Correct\" verbatim only if the player replies with the answer or solves the riddle"
+        + " correctly, then tell them to look for that item. However if the player replies with a"
+        + " wrong answer, include the following words exactly in your response 'This is the wrong"
+        + " answer' and do not use the word 'correct' or the phrase 'well done' in that response."
+        + " Do not answer this conversation by yourself, you must never include the word"
         + wordToGuess
-        + " in any of your replies no matter what, do not mention reply correct. If player says"
-        + " words similar with \"correct\", ask them to give the actual answer. If the player"
-        + " replies with a wrong answer, tell them the following words exactly 'This is the wrong"
-        + " answer.'"
-        + " in any of your responses no matter what, do not mention you will reply correct."
-        + " Sword and dagger are different, do not mention either of this in any response."
-        + "Your first reply should be the riddle.";
+        + " in any of your replies no matter what, do not say that you will reply correct if the"
+        + " player is right. If player says words similar with \"correct\", ask them to give the"
+        + " actual answer.  in any of your responses no matter what, do not mention you will reply"
+        + " correct. Sword and dagger are different, do not mention either of this in any"
+        + " response.Your first reply should be the riddle.";
   }
 
   /**
