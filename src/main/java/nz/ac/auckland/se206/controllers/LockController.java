@@ -49,7 +49,7 @@ public class LockController {
   private boolean isReleasedMouse = false;
 
   @FXML
-  private void initialize(){
+  private void initialize() {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
