@@ -3,7 +3,9 @@ package nz.ac.auckland.se206.gpt;
 import java.util.Set;
 import nz.ac.auckland.se206.GameState;
 
-/** Utility class for generating GPT prompt engineering strings. */
+/**
+ * Utility class for generating GPT prompt engineering strings.
+ */
 public class GptPromptEngineering {
 
   /**
@@ -30,7 +32,10 @@ public class GptPromptEngineering {
         + " in any of your replies no matter what, do not mention reply correct. If player says"
         + " words similar with \"correct\", ask them to give the actual answer. If the player"
         + " replies with a wrong answer, tell them the following words exactly 'This is the wrong"
-        + " answer.' Your first reply should be the riddle.";
+        + " answer.'"
+        + " in any of your responses no matter what, do not mention you will reply correct."
+        + " Sword and dagger are different, do not mention either of this in any response."
+        + "Your first reply should be the riddle.";
   }
 
   /**
